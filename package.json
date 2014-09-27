@@ -1,0 +1,26 @@
+{
+  "name": "fluentnode",
+  "version": "0.1.0",
+  "description": "Fluent apis for node (based on the concepts used in C#'s FluentSharp",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/o2platform/fluentnode.git"
+  },
+  "keywords": [
+    "fluent"
+  ],
+  "author": "Dinis Cruz <dinis.cruz@owasp.org> (http://blog.diniscruz.com/)",
+  "license": "apache 2",
+  "bugs": {
+    "url": "https://github.com/o2platform/fluentnode/issues"
+  },
+  "homepage": "https://github.com/o2platform/fluentnode",
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.21.4"
+  }
+}
