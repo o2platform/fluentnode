@@ -7,7 +7,7 @@ Methods implemented
 
 * fluent-path
  * **{pathA}.path.join({pathA}**   - same as path.join(pathA, pathB)
- * {pathA}.pathCombine({pathA}** - same as path.join(pathA, pathB)
+ * **{pathA}.pathCombine({pathA}** - same as path.join(pathA, pathB)
 
 * fluent-array
  * **{array}.first()**  - first element of an array same as array[0]
