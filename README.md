@@ -19,5 +19,9 @@ Methods implemented
  * **{array}.second()** - second element of an array same as array[1]
  * **{array}.third()** - third element of an array same as array[2]
  * **{array}.forth()** - forth element of an array same as array[3]
- 
+
+* fluent-object
+ * **{object}.str()**  - same as {object}.toString()
+ * **{string}.json()**  - same as JSON.stringify({object})
+
 all methods and tests are written in CoffeScript

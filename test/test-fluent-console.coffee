@@ -16,9 +16,11 @@ describe 'fluent-console',->
         
     it 'console_log', ->
         expect("".console_log).to.be.an('Function')
-        console.log('direct log msg')
-        'msg using extension method'.console_log()
+        console.log  ('direct log msg')
+        returnValue = 'msg using extension method'.console_log()
+        
         expect(log_Messages).to.deep.equal([ 'direct log msg', 'msg using extension method' ])
+        expect(returnValue ).to.equal('msg using extension method')
         
     it 'log', ->
         expect("".log).to.be.an('Function')
