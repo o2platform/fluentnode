@@ -5,6 +5,10 @@ Fluent apis for node (based on the concepts used in C#'s FluentSharp
 
 Methods implemented
 
+* fluent-console
+ * **{string}.log()**  - log to console
+ * **{string}.console_og()**  - log to console
+ 
 * fluent-path
  * **{pathA}.path.join({pathA}**   - same as path.join(pathA, pathB)
  * **{pathA}.pathCombine({pathA}** - same as path.join(pathA, pathB)
