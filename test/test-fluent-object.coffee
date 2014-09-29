@@ -18,3 +18,9 @@ describe 'fluent-object',->
         expect("123".json()).to.equal("\"123\"")
         expect({}   .json()).to.equal("{}")
         expect({a:1}.json()).to.equal("{\"a\":1}")
+    
+    it 'json_inspect',->
+        expect(""   .json_inspect).to.be.an('Function')
+        o = {}
+        o.o = o
+        expect(o.json_inspect()).to.equal("{ o: [Circular] }")

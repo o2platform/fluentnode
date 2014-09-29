@@ -7,7 +7,7 @@ Methods implemented
 
 * fluent-console
  * **{string}.log()**  - log to console
- * **{string}.console_og()**  - log to console
+ * **{string}.console_log()**  - log to console
  
 * fluent-path
  * **{pathA}.path.join({pathA}**   - same as path.join(pathA, pathB)
@@ -21,7 +21,9 @@ Methods implemented
  * **{array}.forth()** - forth element of an array same as array[3]
 
 * fluent-object
- * **{object}.str()**  - same as {object}.toString()
- * **{string}.json()**  - same as JSON.stringify({object})
+ * **{object}.str()**          - same as {object}.toString()
+ * **{string}.json()**         - same as JSON.stringify({object})
+ * **{string}.json_inspect()** - same as util.inspect({object})   (handles circlar references)
+ 
 
 all methods and tests are written in CoffeScript
