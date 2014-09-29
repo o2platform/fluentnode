@@ -3,3 +3,4 @@ require('./src/fluent-path');
 require('./src/fluent-array');
 require('./src/fluent-console');
 require('./src/fluent-object');
+require('./src/fluent-fs');

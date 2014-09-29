@@ -19,6 +19,10 @@ describe 'fluent-object',->
         expect({}   .json()).to.equal("{}")
         expect({a:1}.json()).to.equal("{\"a\":1}")
     
+    it 'json_pretty', ->
+        expect({a:1}        .json_pretty()).to.equal('{\n  \"a\": 1\n}')
+        expect([{a:1},{b:1}].json_pretty()).to.equal('[\n  {\n    \"a\": 1\n  },\n  {\n    \"b\": 1\n  }\n]')
+    
     it 'json_inspect',->
         expect(""   .json_inspect).to.be.an('Function')
         o = {}
