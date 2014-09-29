@@ -33,3 +33,7 @@ Methods implemented
  
 
 all methods and tests are written in CoffeScript
+
+### Development
+
+Build Status: [![Build Status](https://travis-ci.org/o2platform/FluentNode.svg?branch=master)](https://travis-ci.org/o2platform/FluentNode)
