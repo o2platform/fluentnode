@@ -2,6 +2,13 @@ require('../src/fluent-array')
 expect     = require('chai').expect
 
 describe 'fluent-array',->
+    
+    it 'empty',->
+        expect([            ].empty).to.be.an('Function')        
+        expect([            ].empty()).to.be.true
+        expect([''          ].empty()).to.be.false
+        expect([null        ].empty()).to.be.false
+        
     it 'first',->
         expect([            ].first).to.be.an('Function')
         expect([            ].first()).to.equal(null)
@@ -26,4 +33,4 @@ describe 'fluent-array',->
     it 'fourth',->
         expect([               ].fourth).to.be.an('Function')
         expect([               ].fourth()).to.equal(null)
-        expect(['1','2','3','4'].fourth()).to.equal('4')        
+        expect(['1','2','3','4'].fourth()).to.equal('4')

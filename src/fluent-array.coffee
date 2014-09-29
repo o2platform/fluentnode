@@ -1,7 +1,9 @@
-Array.prototype.first  = -> if(this.length    ) then return this[0] else return null
+Array::empty  = -> @.length == 0
+
+Array::first  = -> if(@.length    ) then return @[0] else return null
     
-Array.prototype.second = -> if(this.length > 1) then return this[1] else return null
+Array::second = -> if(@.length > 1) then return @[1] else return null
     
-Array.prototype.third  = -> if(this.length > 2) then return this[2] else return null
+Array::third  = -> if(@.length > 2) then return @[2] else return null
     
-Array.prototype.fourth = -> if(this.length > 3) then return this[3] else return null
+Array::fourth = -> if(@.length > 3) then return @[3] else return null

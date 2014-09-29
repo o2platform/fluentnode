@@ -10,6 +10,7 @@ Methods implemented
  * **{pathA}.pathCombine({pathA}** - same as path.join(pathA, pathB)
 
 * fluent-array
+ * **{array}.empty()**  - true if array is empty
  * **{array}.first()**  - first element of an array same as array[0]
  * **{array}.second()** - second element of an array same as array[1]
  * **{array}.third()** - third element of an array same as array[2]
