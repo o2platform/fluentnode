@@ -6,11 +6,15 @@ Object.defineProperty Object.prototype, 'console_log',
         console.log(value)
         return value
 
-Object.defineProperty Object.prototype, 'log', 
+Object.defineProperty String.prototype, 'log', 
     enumerable  : false,  
     writable    : true,     
     value: Object::console_log
-    
+   
+Object.defineProperty Object.prototype, '_log', 
+    enumerable  : false,  
+    writable    : true,     
+    value: Object::console_log   
     
     
 #Object::console_log = ->

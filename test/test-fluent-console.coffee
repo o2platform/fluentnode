@@ -26,3 +26,8 @@ describe 'fluent-console',->
         expect("".log).to.be.an('Function')
         "log using .log()".log()
         expect(log_Messages).to.deep.equal([ "log using .log()"])
+        
+    it '_log', ->
+        expect("".log).to.be.an('Function')
+        "log using ._log()".log()
+        expect(log_Messages).to.deep.equal([ "log using ._log()"])    

@@ -6,11 +6,11 @@ Object.defineProperty Object.prototype, 'str',
     value: ->
         return @.toString()
     
-Object.defineProperty Object.prototype, 'json',
-    enumerable  : false,  
-    writable    : true,
-    value: ->
-        return JSON.stringify(@)
+#Object.defineProperty Object.prototype, 'json',
+#    enumerable  : false,  
+#    writable    : true,
+#    value: ->
+#        return JSON.stringify(@)
     
 Object.defineProperty Object.prototype, 'json_pretty',
     enumerable  : false,  

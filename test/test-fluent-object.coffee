@@ -12,12 +12,12 @@ describe 'fluent-object',->
         expect({}   .str()).to.equal({}   .toString() )
         expect({a:1}.str()).to.equal("[object Object]")
     
-    it 'json',->
-        expect(""   .json).to.be.an('Function')
-        expect(""   .json()).to.equal("\"\"")
-        expect("123".json()).to.equal("\"123\"")
-        expect({}   .json()).to.equal("{}")
-        expect({a:1}.json()).to.equal("{\"a\":1}")
+#    it 'json',->
+#        expect(""   .json).to.be.an('Function')
+#        expect(""   .json()).to.equal("\"\"")
+#        expect("123".json()).to.equal("\"123\"")
+#        expect({}   .json()).to.equal("{}")
+#        expect({a:1}.json()).to.equal("{\"a\":1}")
     
     it 'json_pretty', ->
         expect({a:1}        .json_pretty()).to.equal('{\n  \"a\": 1\n}')
