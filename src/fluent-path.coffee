@@ -25,10 +25,10 @@ class FluentPath
 
 
 Object.defineProperty(String.prototype, 'path', {
-                                                    get: -> new FluentPath(this.toString()),
+                                                    get: -> new FluentPath(this.toString())
                                                     configurable: true
                                                 })
 
-String.prototype.pathCombine = (pathToAppend) -> new FluentPath(this.toString()).join(pathToAppend)
+String::path_Combine        = (pathToAppend) -> new FluentPath(this.toString()).join(pathToAppend)
 
 module.exports = FluentPath

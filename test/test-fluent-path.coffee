@@ -44,10 +44,10 @@ describe 'fluent-path',->
             expect(fluent_join).to.equal(item.result , "fluent join didn't match for" + JSON.stringify(item))
             expect(direct_Join).to.equal(item.result , "direct join didn't match for" + JSON.stringify(item))
     
-    it 'pathCombine', ->
-        expect("".pathCombine  ).to.be.an('Function')
-        expect("".pathCombine()).to.be.an('String')
+    it 'path_Combine', ->
+        expect("".path_Combine  ).to.be.an('Function')
+        expect("".path_Combine()).to.be.an('String')
         
-        expect(""   .pathCombine()).to.equal('')
-        expect("abc".pathCombine()).to.equal('abc')
-        expect("abc".pathCombine('def')).to.equal('abc/def')
+        expect(""   .path_Combine()).to.equal('')
+        expect("abc".path_Combine()).to.equal('abc')
+        expect("abc".path_Combine('def')).to.equal('abc/def')
