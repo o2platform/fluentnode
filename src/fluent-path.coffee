@@ -30,5 +30,7 @@ Object.defineProperty(String.prototype, 'path', {
                                                 })
 
 String::path_Combine        = (pathToAppend) -> new FluentPath(this.toString()).join(pathToAppend)
+String::path_Extension      = ()             -> path.extname(@.toString())
+
 
 module.exports = FluentPath

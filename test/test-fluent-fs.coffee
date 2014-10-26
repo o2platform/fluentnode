@@ -24,6 +24,16 @@ describe 'fluent-fs',->
     expect(tmpName.file_Delete()).to.be.true
     expect(tmpName.exists()     ).to.be.false
 
+  it 'file_Contents' , ->
+    expect(''.file_Contents).to.be.an('function')
+    file_Name     = '_temp_name_'.add_Random_String(5)
+    file_Contents = 'value_'.add_Random_String(5)
+    expect(file_Name.file_Exists()).to.be.false
+    file_Contents.saveAs(file_Name)
+    expect(file_Name.file_Exists()).to.be.true
+    expect(file_Name.file_Contents()).to.equal(file_Contents)
+    expect(file_Name.file_Delete()).to.be.true
+
   it 'file_Exists' , ->
     expect(''.file_Exists).to.be.an('function')
     expect('.git'      .file_Exists()).to.be.true
@@ -38,10 +48,19 @@ describe 'fluent-fs',->
 
   it 'files' , ->
     expect(''.files).to.be.an('function')
-    files = './'.files().filter (file) -> file isnt '.DS_Store'
-    expect(files).to.be.an('Array')
-    expectedFiles = '.git,.gitignore,.travis.yml,LICENSE,README.md,index.js,node_modules,package.json,src,test'.split(',')
+    files = './'.files().filter (file) -> file isnt '.DS_Store'.realPath()
+    expectedFiles = (file.realPath() for file in '.gitignore,.travis.yml,LICENSE,README.md,index.js,package.json'.split(','))
     expect(files).to.deep.equal(expectedFiles)
+
+    expect('./'.files('.yml' )).to.deep.equal(['.travis.yml'.realPath()])
+    expect('./'.files('.json')).to.deep.equal(['package.json'.realPath()])
+
+
+  it 'folders' , ->
+    expect(''.folders).to.be.an('function')
+    folders = './'.folders()
+    expectedFolders = (folder.realPath() for folder in '.git,node_modules,src,test'.split(','))
+    expect(folders).to.deep.equal(expectedFolders)
 
   it 'is_Folder', ->
     expect(''.is_Folder).to.be.an('function')
@@ -60,6 +79,15 @@ describe 'fluent-fs',->
     expect('.git'        .realPath()).to.equal(process.cwd().path_Combine('.git'      ))
     expect('.gitignore'  .realPath()).to.equal(process.cwd().path_Combine('.gitignore'))
     expect('.gitignore2' .realPath()).to.equal(null)
+
+  it 'saveAs', ->
+    file_Name  = '_tmp_file_'  .add_Random_String(5)
+    file_Value = 'value'.add_Random_String(5)
+
+    expect(file_Name.exists()          ).to.be.false
+    expect(file_Value.saveAs(file_Name)).to.be.true
+    expect(file_Name.exists()          ).to.be.true
+    expect(file_Name.file_Delete()     ).to.be.true
 
   it 'temp_Name_In_Folder', ->
     tmpName = './'.temp_Name_In_Folder()

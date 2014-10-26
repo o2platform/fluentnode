@@ -21,18 +21,21 @@ install using
  * **{object}.console_log()**  - log to console
 
 * fluent-fs
- * **{string}.exists()**           - same as {object}.fileExists()
- * **{string}.file_Exists()**      - true if a file called {string} exists (same as fs.existsSync)
- * **{string}.file_Not_Exists()**  - false if a file called {string} exists (same as not fs.existsSync)
- * **{string}.is_Directory()**     - same as {string}.is_Folder()
- * **{string}.is_Folder()**        - same as fs.lstatSync({string}).isDirectory()
- * **{string}.is_File()**          - same as fs.lstatSync({string}).isFile()
- * **{string}.files()**            - list of files from folder (same as fs.readdirSync)
+ * **{string}.exists()**            - same as {object}.fileExists()
+ * **{string}.file_Exists()**       - true if a file called {string} exists (same as fs.existsSync)
+ * **{string}.file_Not_Exists()**   - false if a file called {string} exists (same as not fs.existsSync)
+ * **{string}.is_Directory()**      - same as {string}.is_Folder()
+ * **{string}.is_Folder()**         - same as fs.lstatSync({string}).isDirectory()
+ * **{string}.is_File()**           - same as fs.lstatSync({string}).isFile()
+ * **{string}.files_and_Folders()** - list of files and folders from folder (returns full path)
+ * **{string}.files()**             - list of files from folder (returns full path)
+ * **{string}.files(extension)**    - list of files from folder with extension (returns full path)
+ * **{string}.folders()**           - list of folders from folder (returns full path)
 
 
 * fluent-path
  * **{pathA}.path.join({pathA}**   - same as path.join(pathA, pathB)
- * **{pathA}.pathCombine({pathA}** - same as path.join(pathA, pathB)
+ * **{pathA}.path_Combine({pathA}** - same as path.join(pathA, pathB)
 
 
 * fluent-object

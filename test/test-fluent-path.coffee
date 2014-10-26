@@ -51,3 +51,12 @@ describe 'fluent-path',->
         expect(""   .path_Combine()).to.equal('')
         expect("abc".path_Combine()).to.equal('abc')
         expect("abc".path_Combine('def')).to.equal('abc/def')
+
+    it 'path_Extension', ->
+        expect("".path_Extension  ).to.be.an('Function')
+        expect("".path_Extension()).to.be.an('String')
+
+        expect("index.html"    .path_Extension()).to.equal('.html')
+        expect("index.abc.html".path_Extension()).to.equal('.html')
+        expect("index."        .path_Extension()).to.equal('.')
+        expect("index"        .path_Extension()).to.equal('')
