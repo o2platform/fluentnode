@@ -33,7 +33,7 @@ String::file_Create         = ->
 
 String::file_Delete         = ->
                                   file = @.toString().realPath()
-                                  return null if not file
+                                  return true if not file
                                   fs.unlinkSync file
                                   return file.file_Not_Exists()
 
@@ -59,10 +59,7 @@ String::files               = (extension)->
                                     return (file for file in files when file.path_Extension() is extension)
                                   return files
 
-String::folders             = ->
-                                  path = @.toString()
-                                  path.path_Combine(item).realPath() for item in fs.readdirSync path  when item.is_Folder()
-
+String::folders             = ->  item for item in @.files_and_Folders() when item.is_Folder()
 
 String::is_Folder           = ->  try fs.lstatSync(@.toString()).isDirectory() catch then false
 String::is_File             = ->  try fs.lstatSync(@.toString()).isFile()      catch then false
