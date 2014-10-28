@@ -45,18 +45,44 @@ describe 'fluent-path',->
             expect(direct_Join).to.equal(item.result , "direct join didn't match for" + JSON.stringify(item))
     
     it 'path_Combine', ->
-        expect("".path_Combine  ).to.be.an('Function')
-        expect("".path_Combine()).to.be.an('String')
+        expect("".path_Combine  ).to.be.an('function')
+        expect("".path_Combine()).to.be.an('string')
         
         expect(""   .path_Combine()).to.equal('')
         expect("abc".path_Combine()).to.equal('abc')
         expect("abc".path_Combine('def')).to.equal('abc/def')
 
-    it 'path_Extension', ->
-        expect("".path_Extension  ).to.be.an('Function')
-        expect("".path_Extension()).to.be.an('String')
+    it 'file_Extension', ->
+        expect("".file_Extension  ).to.be.an('function')
+        expect("".file_Extension()).to.be.an('string')
 
-        expect("index.html"    .path_Extension()).to.equal('.html')
-        expect("index.abc.html".path_Extension()).to.equal('.html')
-        expect("index."        .path_Extension()).to.equal('.')
-        expect("index"        .path_Extension()).to.equal('')
+        expect("index.html"    .file_Extension()).to.equal('.html')
+        expect("index.abc.html".file_Extension()).to.equal('.html')
+        expect("index."        .file_Extension()).to.equal('.')
+        expect("index"         .file_Extension()).to.equal('')
+
+    it 'file_Name', ->
+        expect(''        .file_Name  ).to.be.an('function')
+        expect(''        .file_Name()).to.equal('')
+        expect('/a/b'    .file_Name()).to.equal('b')
+        expect('/a/b/c'  .file_Name()).to.equal('c')
+        expect('/a/b.txt'.file_Name()).to.equal('b.txt')
+
+    it 'file_Name_Without_Extension', ->
+        expect(''        .file_Name_Without_Extension  ).to.be.an('function')
+        expect(''        .file_Name_Without_Extension()).to.equal(''  )
+        expect('/a/b'    .file_Name_Without_Extension()).to.equal('b' )
+        expect('/a/b..c' .file_Name_Without_Extension()).to.equal('b.')
+        expect('/a/b.txt'.file_Name_Without_Extension()).to.equal('b' )
+
+    it 'file_Names', ->
+        source = ['/a/b','/a/b/', '/a/b/c', '/a/d/f.txt']
+        result = ['b'   ,'b'    , 'c'     , 'f.txt'     ]
+        expect(source.file_Names  ).to.be.an('function')
+        expect(source.file_Names()).to.deep.equal(result)
+
+    it 'file_Names_Without_Extension', ->
+        source = ['/a/b','/a/b/', '/a/b/c', '/a/d/f.txt']
+        result = ['b'   ,'b'    , 'c'     , 'f'     ]
+        expect(source.file_Names_Without_Extension  ).to.be.an('function')
+        expect(source.file_Names_Without_Extension()).to.deep.equal(result)

@@ -29,8 +29,12 @@ Object.defineProperty(String.prototype, 'path', {
                                                     configurable: true
                                                 })
 
-String::path_Combine        = (pathToAppend) -> new FluentPath(this.toString()).join(pathToAppend)
-String::path_Extension      = ()             -> path.extname(@.toString())
+String::path_Combine         = (pathToAppend) -> new FluentPath(this.toString()).join(pathToAppend)
+String::file_Extension       = ()             -> path.extname(@.toString())
+String::file_Name            = ()             -> path.basename @.toString()
+Array::file_Names            = ()             -> file.file_Name() for file in @
 
+String::file_Name_Without_Extension  = ()     -> path.basename @.toString().replace(@.toString().file_Extension(), "")
+Array::file_Names_Without_Extension  = ()     -> file.file_Name_Without_Extension() for file in @
 
 module.exports = FluentPath

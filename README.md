@@ -36,7 +36,10 @@ install using
 * fluent-path
  * **{pathA}.path.join({pathA}**   - same as path.join(pathA, pathB)
  * **{pathA}.path_Combine({pathA}** - same as path.join(pathA, pathB)
-
+ * **{path}.file_Extension**
+ * **{path}.file_Name_Without_Extension**
+ * **{path}.file_Name()** - extracts last part of the path (same as ***path.basename({path}***)
+ * **{path}.file_Names()** - extracts last part of the path (uses ***{path}.file_Name()***)
 
 * fluent-object
  * **{object}.str()**          - same as {object}.toString()

@@ -51,12 +51,15 @@ String::file_Exists         = ->
 String::file_Not_Exists     = ->  (fs.existsSync @.toString()) == false
 String::files_and_Folders   = ->
                                   path = @.toString()
-                                  path.path_Combine(item).realPath() for item in fs.readdirSync path
+                                  try
+                                    path.path_Combine(item).realPath() for item in fs.readdirSync path
+                                  catch
+                                    []
 
 String::files               = (extension)->
                                   files = (item for item in @.files_and_Folders() when item.is_File())
                                   if extension
-                                    return (file for file in files when file.path_Extension() is extension)
+                                    return (file for file in files when file.file_Extension() is extension)
                                   return files
 
 String::folders             = ->  item for item in @.files_and_Folders() when item.is_Folder()
@@ -83,6 +86,7 @@ String::create_Dir          = String::folder_Create
 String::delete_File         = String::file_Delete
 String::delete_Folder       = String::folder_Delete
 String::folder_Exists       = String::is_Folder
+String::fullPath            = String::realPath
 String::is_Directory        = String::is_Folder
 String::touch               = String::file_Create
 String::not_Exists          = String::file_Not_Exists
