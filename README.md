@@ -36,6 +36,7 @@ install using
 * fluent-path
  * **{pathA}.path.join({pathA}**   - same as path.join(pathA, pathB)
  * **{pathA}.path_Combine({pathA}** - same as path.join(pathA, pathB)
+ * **{path}.append_To_Process_Cwd_Path** -
  * **{path}.file_Extension**
  * **{path}.file_Name_Without_Extension**
  * **{path}.file_Name()** - extracts last part of the path (same as ***path.basename({path}***)
@@ -50,6 +51,7 @@ install using
  * **{string}.append({stringToAppend})**              - same as {string} + {stringToAppend}
  * **{string}.add_Random_Chars({stringToAppend})**    - adds a number of chars {stringToAppend}
  * **{string}.add_Random_String({stringToAppend})**   - adds a number of letters and/or numbers to {stringToAppend}
+ * **{string}.add_5_Random_Letters**
  * **{string}.size({string})**                        - same as {string}.length
 
 all methods and tests are written in CoffeScript
