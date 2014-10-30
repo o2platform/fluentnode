@@ -17,17 +17,32 @@ install using
  * **{array}.size()**   - size  of the array
 
 * fluent-assert
+ * **{Array}.assert_Is_Array**
+ * **{Array}.assert_Size_Is**
+
  * **{Boolean}.assert_Is_True**
  * **{Boolean}.assert_Is_False**
+
  * **{Function}.assert_Throws**
  * **{Function}.assert_Not_Throws**
  * **{Function}.assert_Is_Function**
+
+ * **{Object}.assert_Is_Equal_To
+ * **{Object}.assert_Is_Not_Equal_To
+ * **{Object}.assert_Is_Object
+
  * **{String}.assert_Is_Equal_To**
+ * **{String}.assert_Is_Not_Equal_To**
+ * **{String}.assert_Is_Json**
+ * **{String}.assert_Length_Is**
+ * **{String}.assert_Length_Is_Not**
+ * **{String}.assert_Size_Is**
+ * **{String}.assert_Size_Is_Not**
  * **{String}.assert_That_File_Exists**
  * **{String}.assert_That_File_Not_Exists**
  * **{String}.assert_That_Folder_Exists**
  * **{String}.assert_That_Folder_Not_Exists**
- 
+
 * fluent-boolean
  * **{boolean}.is_True**
  * **{boolean}.is_False**

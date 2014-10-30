@@ -34,7 +34,15 @@ describe 'fluent-array',->
         expect([               ].fourth).to.be.an('Function')
         expect([               ].fourth()).to.equal(null)
         expect(['1','2','3','4'].fourth()).to.equal('4')
-        
+
+    it 'last', ->
+        expect([            ].last).to.be.an('Function')
+        expect([            ].last()).to.equal(null)
+        expect([''          ].last()).to.equal('')
+        expect(['123'       ].last()).to.equal('123')
+        expect(['123', 'abc'].last()).to.equal('abc')
+        expect(['123', null ].last()).to.equal(null)
+
     it 'size',->
         expect([            ].size).to.be.an('Function')
         expect([            ].size()).to.equal(0)

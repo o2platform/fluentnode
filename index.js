@@ -4,6 +4,8 @@
 require('coffee-script/register');              // adding coffee-script support
 
 require('./src/fluent-array'    );
+require('./src/fluent-assert'   );
+require('./src/fluent-boolean'  );
 require('./src/fluent-console'  );
 require('./src/fluent-fs'       );
 require('./src/fluent-object'   );
