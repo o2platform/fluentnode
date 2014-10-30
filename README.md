@@ -16,6 +16,22 @@ install using
  * **{array}.forth()**  - forth element of an array same as array[3]
  * **{array}.size()**   - size  of the array
 
+* fluent-assert
+ * **{Boolean}.assert_Is_True**
+ * **{Boolean}.assert_Is_False**
+ * **{Function}.assert_Throws**
+ * **{Function}.assert_Not_Throws**
+ * **{Function}.assert_Is_Function**
+ * **{String}.assert_Is_Equal_To**
+ * **{String}.assert_That_File_Exists**
+ * **{String}.assert_That_File_Not_Exists**
+ * **{String}.assert_That_Folder_Exists**
+ * **{String}.assert_That_Folder_Not_Exists**
+ 
+* fluent-boolean
+ * **{boolean}.is_True**
+ * **{boolean}.is_False**
+
 * fluent-console
  * **{object}.log()**          - log to console
  * **{object}.console_log()**  - log to console

@@ -5,12 +5,12 @@ expect     = require('chai').expect
 describe 'fluent-object',->
     
     it 'str',->
-        expect(""   .str).to.be.an('Function')
-        expect(""   .str()).to.equal(""   .toString() )
-        expect("123".str()).to.equal("123".toString() )
-        expect([]   .str()).to.equal([]   .toString() )
-        expect({}   .str()).to.equal({}   .toString() )
-        expect({a:1}.str()).to.equal("[object Object]")
+        expect(""    .str).to.be.an('Function')
+        expect(""    .str()).to.equal(""   .toString() )
+        expect("123" .str()).to.equal("123".toString() )
+        expect([]    .str()).to.equal([]   .toString() )
+        expect({}    .str()).to.equal({}   .toString() )
+        expect({a:'1'}.str()).to.equal("[object Object]")
     
 #    it 'json',->
 #        expect(""   .json).to.be.an('Function')

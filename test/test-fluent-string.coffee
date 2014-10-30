@@ -25,9 +25,9 @@ describe 'fluent-string',->
         expect(value.add_Random_String(1)  .size()).to.equal   (value.size() + 1  )
         expect(value.add_Random_String(100).size()).to.equal   (value.size() + 100)
 
-    it 'add_Random_String', ->
-        expect(value.add_5_Random_String            ).to.be.an ('Function')
-        expect(value.add_5_Random_String()  .size()).to.equal  (value.size() + 5 )
+    it 'add_5_Random_Letters', ->
+        expect(value.add_5_Random_Letters            ).to.be.an ('Function')
+        expect(value.add_5_Random_Letters()  .size()).to.equal  (value.size() + 5 )
 
     it 'size', ->              
         expect(value.size).to.be.an('Function')
