@@ -58,6 +58,18 @@ Object.defineProperty Object.prototype, 'assert_Is_Object',
                                                             assert.equal(typeof(@), 'object')
                                                             @
 
+String::assert_Contains             = (target)->
+                                          source    = @.toString()
+                                          message   = "expected string '#{source}' to contain the string '#{target}'"
+                                          assert(source.indexOf(target)> -1, message)
+                                          @
+
+String::assert_Not_Contains         = (target)->
+                                          source    = @.toString()
+                                          message   = "expected string '#{source}' to not contain the string '#{target}'"
+                                          assert(source.indexOf(target) == -1, message)
+                                          @
+
 String::assert_Is_Equal_To          = (target)->
                                           source    = @.toString()
                                           assert.equal(source, target)

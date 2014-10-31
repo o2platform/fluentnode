@@ -46,7 +46,6 @@ describe 'fluent-assert',->
       (->).assert_Is_Function()
       (->).assert_Is_Function.assert_Is_Function()
 
-
   describe 'Object', ->
     it 'assert_Is_Equal_To', ->
       ''.assert_Is_Equal_To.assert_Is_Function()
@@ -70,6 +69,22 @@ describe 'fluent-assert',->
       {}.assert_Is_Object().assert_Is_Equal_To({})
 
   describe 'String', ->
+    it 'assert_Contains', ->
+      ''.assert_Contains.assert_Is_Function()
+      ''.assert_Contains(''          ).assert_Is_Equal_To('')
+      '123'.assert_Contains('1'      ).assert_Is_Equal_To('123')
+      '123'.assert_Contains('123'    ).assert_Is_Equal_To('123')
+      (->'123'.assert_Contains('1'  )).assert_Not_Throws()
+      (->'123'.assert_Contains('0'  )).assert_Throws()
+
+    it 'assert_Not_Contains', ->
+      ''.assert_Not_Contains.assert_Is_Function()
+      ''.assert_Not_Contains('a'         ).assert_Is_Equal_To('')
+      '123'.assert_Not_Contains('a'      ).assert_Is_Equal_To('123')
+      '123'.assert_Not_Contains('aaa'    ).assert_Is_Equal_To('123')
+      (->'123'.assert_Not_Contains('a'  )).assert_Not_Throws()
+      (->'123'.assert_Not_Contains('2'  )).assert_Throws()
+
     it 'assert_Is_Json', ->
       ''.assert_Is_Json.assert_Is_Function()
       '{}'.assert_Is_Json().assert_Is_Equal_To({})
