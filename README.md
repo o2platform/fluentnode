@@ -27,18 +27,20 @@ install using
  * **{Function}.assert_Not_Throws**
  * **{Function}.assert_Is_Function**
 
+ * **{Number}.assert_Is_Equal_To**
+
  * **{Object}.assert_Is_Equal_To
  * **{Object}.assert_Is_Not_Equal_To
  * **{Object}.assert_Is_Object
 
-
  * **{String}.assert_Contains**
- * **{String}.assert_Not_Contains**
+ * **{String}.assert_Equals
  * **{String}.assert_Is_Equal_To**
  * **{String}.assert_Is_Not_Equal_To**
  * **{String}.assert_Is_Json**
  * **{String}.assert_Length_Is**
  * **{String}.assert_Length_Is_Not**
+ * **{String}.assert_Not_Contains**
  * **{String}.assert_Size_Is**
  * **{String}.assert_Size_Is_Not**
  * **{String}.assert_That_File_Exists**
@@ -66,6 +68,9 @@ install using
  * **{string}.files(extension)**    - list of files from folder with extension (returns full path)
  * **{string}.folders()**           - list of folders from folder (returns full path)
 
+* fluent-number
+
+ * **random_String**
 
 * fluent-path
  * **{pathA}.path.join({pathA}**   - same as path.join(pathA, pathB)
@@ -83,13 +88,15 @@ install using
  
  * fluent-string
  * **{string}.append({stringToAppend})**              - same as {string} + {stringToAppend}
- * **{string}.add_Random_Chars({stringToAppend})**    - adds a number of chars {stringToAppend}
- * **{string}.add_Random_String({stringToAppend})**   - adds a number of letters and/or numbers to {stringToAppend}
  * **{string}.add_5_Random_Letters**
+ * **{string}.add_Random_Chars({stringToAppend})**    - adds a number of chars {stringToAppend}
+ * **{string}.add_Random_Letters
+ * **{string}.add_Random_String({stringToAppend})**   - adds a number of letters and/or numbers to {stringToAppend}
+ * **{string}.add_Random_Numbers
  * **{string}.size({string})**                        - same as {string}.length
 
 all methods and tests are written in CoffeScript
 
 ### Development
 
-Build Status: [![Build Status](https://travis-ci.org/o2platform/FluentNode.svg?branch=master)](https://travis-ci.org/o2platform/FluentNode)
+Build Status: [![Build Status](https://travis-ci.org/o2platform/fluentnode.svg?branch=master)](https://travis-ci.org/o2platform/fluentnode)

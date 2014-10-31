@@ -40,6 +40,11 @@ Function::assert_Is_Function        = ->
                                           assert.equal(test, 'function', message)
                                           @
 
+Number::assert_Is_Equal_To          = (target)->
+                                          source    = @
+                                          assert.equal(source, target)
+                                          @
+
 Object.defineProperty Object.prototype, 'assert_Is_Equal_To',
                                           enumerable  : false,
                                           writable    : true,
@@ -125,5 +130,6 @@ String::assert_That_Folder_Not_Exists = ->
                                           assert(test, message)
                                           folder
 
+String::assert_Equals      = String::assert_Is_Equal_To
 String::assert_Size_Is     = String::assert_Length_Is
 String::assert_Size_Is_Not = String::assert_Length_Is_Not

@@ -8,6 +8,7 @@ require('./src/fluent-assert'   );
 require('./src/fluent-boolean'  );
 require('./src/fluent-console'  );
 require('./src/fluent-fs'       );
+require('./src/fluent-number'   );
 require('./src/fluent-object'   );
 require('./src/fluent-path'     );
 require('./src/fluent-string'   );

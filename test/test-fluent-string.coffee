@@ -25,9 +25,33 @@ describe 'fluent-string',->
         expect(value.add_Random_String(1)  .size()).to.equal   (value.size() + 1  )
         expect(value.add_Random_String(100).size()).to.equal   (value.size() + 100)
 
+    it 'add_Random_Letters', ->
+        expect(value.add_Random_Letters            ).to.be.an ('Function')
+        expect(value.add_Random_Letters(5)  .size()).to.equal  (value.size() + 5 )
+        randomLetters = "".add_Random_Letters(5);
+        charSet_Numbers = '0123456789'
+        charSet_Letters = 'abcdefghijklmnopqrstuvwxyz'
+        for char in randomLetters
+            (-> charSet_Numbers.assert_Contains(char)).assert_Throws()
+            (-> charSet_Letters.assert_Contains(char)).assert_Not_Throws()
+
     it 'add_5_Random_Letters', ->
         expect(value.add_5_Random_Letters            ).to.be.an ('Function')
         expect(value.add_5_Random_Letters()  .size()).to.equal  (value.size() + 5 )
+
+    it 'add_Random_Numbers', ->
+        expect(value.add_Random_Numbers            ).to.be.an ('Function')
+        expect(value.add_Random_Numbers(5)  .size()).to.equal  (value.size() + 5 )
+        expect(""   .add_Random_Numbers(500)  .size()).to.equal  (500 )
+        randomNumbers = "".add_Random_Numbers(5);
+        charSet_Numbers = '0123456789'
+        charSet_Letters = 'abcdefghijklmnopqrstuvwxyz'
+        for char in randomNumbers
+            (-> charSet_Numbers.assert_Contains(char)).assert_Not_Throws()
+            (-> charSet_Letters.assert_Contains(char)).assert_Throws()
+
+
+
 
     it 'size', ->              
         expect(value.size).to.be.an('Function')

@@ -46,6 +46,14 @@ describe 'fluent-assert',->
       (->).assert_Is_Function()
       (->).assert_Is_Function.assert_Is_Function()
 
+  describe 'Number', ->
+    it 'assert_Is_Equal_To',->
+      it 'assert_Is_Equal_To', ->
+      (0).assert_Is_Equal_To.assert_Is_Function()
+      (0).assert_Is_Equal_To(0)
+      (-> (0).assert_Is_Equal_To(0)).assert_Not_Throws()
+      (-> (0).assert_Is_Equal_To(1)).assert_Throws()
+
   describe 'Object', ->
     it 'assert_Is_Equal_To', ->
       ''.assert_Is_Equal_To.assert_Is_Function()
@@ -84,6 +92,12 @@ describe 'fluent-assert',->
       '123'.assert_Not_Contains('aaa'    ).assert_Is_Equal_To('123')
       (->'123'.assert_Not_Contains('a'  )).assert_Not_Throws()
       (->'123'.assert_Not_Contains('2'  )).assert_Throws()
+
+    it 'assert_Is_Equal_To', ->
+      ''.assert_Is_Equal_To.assert_Is_Function()
+      'a'.assert_Is_Equal_To('a')
+      (-> 'a'.assert_Is_Equal_To('a')).assert_Not_Throws()
+      (-> 'a'.assert_Is_Equal_To('b')).assert_Throws()
 
     it 'assert_Is_Json', ->
       ''.assert_Is_Json.assert_Is_Function()
