@@ -129,7 +129,7 @@ String::assert_That_Folder_Not_Exists = ->
                                           message = "[assert_That_Not_Folder_Exists]: #{folder}"
                                           assert(test, message)
                                           folder
-
+String::assert_Is          = String::assert_Is_Equal_To
 String::assert_Equals      = String::assert_Is_Equal_To
 String::assert_Size_Is     = String::assert_Length_Is
 String::assert_Size_Is_Not = String::assert_Length_Is_Not

@@ -11,4 +11,7 @@ String::add_5_Random_Letters = ()              -> @.add_Random_Letters(5)
 String::add_Random_Numbers   = (size          )->
                                                   charSet = '0123456789'
                                                   @ + (charSet[Math.floor(Math.random() * charSet.length)]  for i in [1..size]).join('')
+
+String::lower                = ()              -> @.toLowerCase()
 String::size                 = ()              -> @.length
+String::upper                = ()              -> @.toUpperCase()

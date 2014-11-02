@@ -51,10 +51,18 @@ describe 'fluent-string',->
             (-> charSet_Letters.assert_Contains(char)).assert_Throws()
 
 
-
+    it 'lower', ->
+        expect(value.lower).to.be.an('Function')
+        expect(value.lower()        ).to.equal(value.toLowerCase())
+        expect(value.lower().upper()).to.equal(value.toUpperCase())
 
     it 'size', ->              
         expect(value.size).to.be.an('Function')
         expect(''.size()                 ).to.equal(0)        
         expect(value.size()              ).to.equal(6)
-        expect(value.append('abc').size()).to.equal(9)    
+        expect(value.append('abc').size()).to.equal(9)
+
+    it 'lower', ->
+        expect(value.upper          ).to.be.an('Function')
+        expect(value.upper()        ).to.equal(value.toUpperCase())
+        expect(value.upper().lower()).to.equal(value.toLowerCase())

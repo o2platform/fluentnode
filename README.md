@@ -93,7 +93,9 @@ install using
  * **{string}.add_Random_Letters
  * **{string}.add_Random_String({stringToAppend})**   - adds a number of letters and/or numbers to {stringToAppend}
  * **{string}.add_Random_Numbers
+ * **{string}.lower
  * **{string}.size({string})**                        - same as {string}.length
+ * **{string}.upper
 
 all methods and tests are written in CoffeScript
 
