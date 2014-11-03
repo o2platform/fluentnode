@@ -1,3 +1,4 @@
+require('../src/fluent-assert')
 require('../src/fluent-string')
 expect = require('chai').expect
 
@@ -50,6 +51,15 @@ describe 'fluent-string',->
             (-> charSet_Numbers.assert_Contains(char)).assert_Not_Throws()
             (-> charSet_Letters.assert_Contains(char)).assert_Throws()
 
+    it 'ends_With',->
+        value.ends_With.assert_Is_Function()
+        value.ends_With('3'         ).assert_Is_True()
+        value.ends_With('2'         ).assert_Is_False()
+        value.ends_With('123'       ).assert_Is_True()
+        value.ends_With(value       ).assert_Is_True()
+        value.ends_With(value + '1' ).assert_Is_False()
+        value.ends_With('1' + value).assert_Is_False()
+        value.assert_Is(value)
 
     it 'lower', ->
         expect(value.lower).to.be.an('Function')
@@ -66,3 +76,26 @@ describe 'fluent-string',->
         expect(value.upper          ).to.be.an('Function')
         expect(value.upper()        ).to.equal(value.toUpperCase())
         expect(value.upper().lower()).to.equal(value.toLowerCase())
+
+    it 'trim', ->
+        value.trim.assert_Is_Function()
+        value.trim().assert_Is    (value)
+        'a 1'.trim().assert_Is    ('a 1')
+        'a1 '.trim().assert_Is    ('a1' )
+        ' 1 '.trim().assert_Is    ('1'  )
+        '   '.trim().assert_Is    (''  )
+        'a1 '.trim().assert_Is_Not('a 1')
+        ' 1 '.trim().assert_Is_Not('a 1')
+        '   '.trim().assert_Is_Not('a 1')
+
+
+    it 'starts_With',->
+        value.starts_With.assert_Is_Function()
+        value.starts_With('a'         ).assert_Is_True()
+        value.starts_With('b'         ).assert_Is_False()
+        value.starts_With('abc'       ).assert_Is_True()
+        value.starts_With(value       ).assert_Is_True()
+        value.starts_With(value + 'a' ).assert_Is_False()
+        value.starts_With( 'a' + value).assert_Is_False()
+        value.assert_Is(value)
+

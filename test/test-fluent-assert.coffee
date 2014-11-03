@@ -104,6 +104,12 @@ describe 'fluent-assert',->
       '{}'.assert_Is_Json().assert_Is_Equal_To({})
       '{"a":"b"}'.assert_Is_Json().assert_Is_Equal_To({a: 'b'})
 
+    it 'assert_Is_String', ->
+      ''.assert_Is_String.assert_Is_Function()
+      'aa'.assert_Is_String()
+      #this is a bug
+      ''.assert_Is_String().assert_Is_Equal_To({})
+
     it 'assert_Length_Is', ->
       "".assert_Length_Is.assert_Is_Function()
       "".assert_Length_Is.assert_Is_Equal_To("".assert_Size_Is)

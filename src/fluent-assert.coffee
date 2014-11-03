@@ -92,6 +92,11 @@ String::assert_Is_Json              = ->
                                           catch
                                             throw '[assert_Is_JSON] failed to convert string to json'
 
+String::assert_Is_String              = =>
+                                          assert.equal(typeof(@), 'object')              # not the best test, but if @ is not a string there will be an run-time-error
+                                          #assert.equal(typeof(@), 'array', message)     # this doesn't work
+                                          @                                              # also not working as expected
+
 String::assert_Length_Is               = (size)->
                                           message = "[assert_Length_Is]"
                                           assert.equal(@.length, size, message)
@@ -130,6 +135,7 @@ String::assert_That_Folder_Not_Exists = ->
                                           assert(test, message)
                                           folder
 String::assert_Is          = String::assert_Is_Equal_To
+String::assert_Is_Not      = String::assert_Is_Not_Equal_To
 String::assert_Equals      = String::assert_Is_Equal_To
 String::assert_Size_Is     = String::assert_Length_Is
 String::assert_Size_Is_Not = String::assert_Length_Is_Not

@@ -12,6 +12,11 @@ String::add_Random_Numbers   = (size          )->
                                                   charSet = '0123456789'
                                                   @ + (charSet[Math.floor(Math.random() * charSet.length)]  for i in [1..size]).join('')
 
+String::ends_With            = (value)         -> if not value then false else @.toString().slice(-value.length)==value
 String::lower                = ()              -> @.toLowerCase()
 String::size                 = ()              -> @.length
+String::starts_With          = (value)         -> if not value then false else @.toString().slice(0,value.length)==value
+String::trim                 = ()              -> @.replace(/^\s+|\s+$/g, '')
 String::upper                = ()              -> @.toUpperCase()
+
+

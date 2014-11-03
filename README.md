@@ -35,9 +35,12 @@ install using
 
  * **{String}.assert_Contains**
  * **{String}.assert_Equals
+ * **{String}.assert_Is**
+ * **{String}.assert_Is_Not**
  * **{String}.assert_Is_Equal_To**
  * **{String}.assert_Is_Not_Equal_To**
  * **{String}.assert_Is_Json**
+ * **{String}.assert_Is_String**
  * **{String}.assert_Length_Is**
  * **{String}.assert_Length_Is_Not**
  * **{String}.assert_Not_Contains**
