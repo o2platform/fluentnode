@@ -14,8 +14,17 @@ Array::assert_Size_Is               = (size)->
                                           @
 
 
-Boolean::assert_Is_True             = ->
-                                          message = "[assert_Is_True]"
+Array::assert_Contains      = (value)->
+                                         message = "[assert_Contains]"
+                                         @.contains(value).assert_Is_True(message)
+                                         @
+Array::assert_Not_Contains  = (value)->
+                                         message = "[assert_Contains]"
+                                         @.not_Contains(value).assert_Is_True(message)
+                                         @
+
+Boolean::assert_Is_True             = (message)->
+                                          message = message|| "[assert_Is_True]"
                                           assert.equal(@, true, message)
                                           return true
 

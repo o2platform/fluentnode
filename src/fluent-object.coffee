@@ -24,6 +24,20 @@ Object.defineProperty Object.prototype, 'json_inspect',
     value: ->
         return require('util').inspect(@)
 
+Object.defineProperty Object.prototype, 'keys',
+    enumerable  : false,
+    writable    : true,
+    value: ->
+        return (key for own key of @)
+
+Object.defineProperty Object.prototype, 'keys_All',
+    enumerable  : false,
+    writable    : true,
+    value: ->
+        return (key for key of @)
+
+
+
 #This is how they were done originally (which broke a lot of things)
 #Object::str          = -> @.toString()
 #Object::json         = -> JSON.stringify(@)

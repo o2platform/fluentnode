@@ -1,4 +1,5 @@
 require('../src/fluent-array')
+require('../src/fluent-assert')
 expect     = require('chai').expect
 
 describe 'fluent-array',->
@@ -50,3 +51,27 @@ describe 'fluent-array',->
         expect(['123'       ].size()).to.equal(1)
         expect(['123', 'abc'].size()).to.equal(2)
         expect(['123', null ].size()).to.equal(2)
+
+    it 'contains',->
+        [].contains.assert_Is_Function()
+        [            ].contains(   ).assert_Is_False()
+        [            ].contains('' ).assert_Is_False()
+        [''          ].contains('' ).assert_Is_True()
+        [''          ].contains(   ).assert_Is_False()
+        ['1'         ].contains('1').assert_Is_True()
+        ['1'         ].contains('2').assert_Is_False()
+        ['1','2'     ].contains('1').assert_Is_True()
+        ['1','2'     ].contains('2').assert_Is_True()
+        ['1','2'     ].contains('3').assert_Is_False()
+
+    it 'not_Contains',->
+        [].not_Contains.assert_Is_Function()
+        [            ].not_Contains(   ).assert_Is_True()
+        [            ].not_Contains('' ).assert_Is_True()
+        [''          ].not_Contains('' ).assert_Is_False()
+        [''          ].not_Contains(   ).assert_Is_True()
+        ['1'         ].not_Contains('1').assert_Is_False()
+        ['1'         ].not_Contains('2').assert_Is_True()
+        ['1','2'     ].not_Contains('1').assert_Is_False()
+        ['1','2'     ].not_Contains('2').assert_Is_False()
+        ['1','2'     ].not_Contains('3').assert_Is_True()

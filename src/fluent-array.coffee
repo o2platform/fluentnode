@@ -11,3 +11,6 @@ Array::fourth = -> if(@.length > 3) then return @[3] else return null
 Array::last   = -> if(@.length    ) then return @[@.length-1] else return null
 
 Array::size   = -> return @.length
+
+Array::contains      = (value)-> (value in @)
+Array::not_Contains  = (value)-> (value not in @)

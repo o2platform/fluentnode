@@ -28,3 +28,19 @@ describe 'fluent-object',->
         o = {}
         o.o = o
         expect(o.json_inspect()).to.equal("{ o: [Circular] }")
+
+    it 'keys', ->
+        abc = { key1:'', key2:''}
+        abc.keys().assert_Is_Equal_To(['key1', 'key2'])
+
+    it 'keys_All', ->
+        class abc
+            constructor:->
+                @key1 = ''
+                @key2 = ''
+            key1_All:->
+            key2_All:->
+
+        new abc().keys()    .assert_Is_Equal_To(['key1', 'key2'])
+        new abc().keys_All().assert_Is_Equal_To(['key1', 'key2', 'key1_All', 'key2_All'])
+        console.log new abc().keys_All()

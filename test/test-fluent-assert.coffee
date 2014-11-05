@@ -14,6 +14,18 @@ describe 'fluent-assert',->
       ['a'    ].assert_Size_Is(1).assert_Is_Equal_To(['a'   ])
       ['a','b'].assert_Size_Is(2).assert_Is_Equal_To(['a','b'])
 
+    it 'assert_Contains', ->
+        [       ].assert_Contains.  assert_Is_Function()
+        ['a'    ].assert_Contains('a').assert_Is_Equal_To(['a'   ])
+        ['a','b'].assert_Contains('b').assert_Is_Equal_To(['a','b'])
+        (-> ['a'].assert_Contains('')).assert_Throws()
+
+    it 'assert_Not_Contains', ->
+        [       ].assert_Not_Contains.assert_Is_Function()
+        ['a'    ].assert_Not_Contains('1').assert_Is_Equal_To(['a'   ])
+        ['a','b'].assert_Not_Contains('2').assert_Is_Equal_To(['a','b'])
+        (-> ['' ].assert_Not_Contains('')).assert_Throws()
+
   describe 'Boolean',->
     it 'assert_Is_True', ->
       true.assert_Is_True.assert_Is_Function()

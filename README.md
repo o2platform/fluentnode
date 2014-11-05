@@ -15,50 +15,59 @@ install using
  * **{array}.third()**  - third element of an array same as array[2]
  * **{array}.forth()**  - forth element of an array same as array[3]
  * **{array}.size()**   - size  of the array
+ * **{array}.contains()**
+ * **{array}.not_Contains()**
 
 * fluent-assert
- * **{Array}.assert_Is_Array**
- * **{Array}.assert_Size_Is**
+ * **{array}.assert_Is_Array()**
+ * **{array}.assert_Size_Is()**
+ * **{array}.assert_Contains()**
+ * **{array}.assert_Not_Contains()**
 
- * **{Boolean}.assert_Is_True**
- * **{Boolean}.assert_Is_False**
+ * **{boolean}.assert_Is_True()**
+ * **{boolean}.assert_Is_False()**
 
- * **{Function}.assert_Throws**
- * **{Function}.assert_Not_Throws**
- * **{Function}.assert_Is_Function**
+ * **{function}.assert_Throws()**
+ * **{function}.assert_Not_Throws()**
+ * **{function}.assert_Is_Function()**
 
- * **{Number}.assert_Is_Equal_To**
+ * **{number}.assert_Is_Equal_To()**
 
- * **{Object}.assert_Is_Equal_To
- * **{Object}.assert_Is_Not_Equal_To
- * **{Object}.assert_Is_Object
+ * **{object}.assert_Is_Equal_To()**
+ * **{object}.assert_Is_Not_Equal_To()**
+ * **{object}.assert_Is_Object()**
 
- * **{String}.assert_Contains**
- * **{String}.assert_Equals
- * **{String}.assert_Is**
- * **{String}.assert_Is_Not**
- * **{String}.assert_Is_Equal_To**
- * **{String}.assert_Is_Not_Equal_To**
- * **{String}.assert_Is_Json**
- * **{String}.assert_Is_String**
- * **{String}.assert_Length_Is**
- * **{String}.assert_Length_Is_Not**
- * **{String}.assert_Not_Contains**
- * **{String}.assert_Size_Is**
- * **{String}.assert_Size_Is_Not**
- * **{String}.assert_That_File_Exists**
- * **{String}.assert_That_File_Not_Exists**
- * **{String}.assert_That_Folder_Exists**
- * **{String}.assert_That_Folder_Not_Exists**
+ * **{string}.assert_Contains()**
+ * **{string}.assert_Equals()**
+ * **{string}.assert_Is()**
+ * **{string}.assert_Is_Not()**
+ * **{string}.assert_Is_Equal_To()**
+ * **{string}.assert_Is_Not_Equal_To()**
+ * **{string}.assert_Is_Json()**
+ * **{string}.assert_Is_String()**
+ * **{string}.assert_Length_Is()**
+ * **{string}.assert_Length_Is_Not()**
+ * **{string}.assert_Not_Contains()**
+ * **{string}.assert_Size_Is()**
+ * **{string}.assert_Size_Is_Not()**
+ * **{string}.assert_That_File_Exists()**
+ * **{string}.assert_That_File_Not_Exists()**
+ * **{string}.assert_That_Folder_Exists()**
+ * **{string}.assert_That_Folder_Not_Exists()**
 
 * fluent-boolean
- * **{boolean}.is_True**
- * **{boolean}.is_False**
+ * **{boolean}.is_True()**
+ * **{boolean}.is_False()**
 
 * fluent-console
  * **{object}.log()**          - log to console
  * **{object}.console_log()**  - log to console
 
+* fluent-function
+ * **{function}.ctor()**
+ * **{function}.invoke()**
+ * **{function}.new()**
+ 
 * fluent-fs
  * **{string}.exists()**            - same as {object}.fileExists()
  * **{string}.file_Exists()**       - true if a file called {string} exists (same as fs.existsSync)
@@ -72,8 +81,7 @@ install using
  * **{string}.folders()**           - list of folders from folder (returns full path)
 
 * fluent-number
-
- * **random_String**
+ * **random_String()**
 
 * fluent-path
  * **{pathA}.path.join({pathA}**   - same as path.join(pathA, pathB)
@@ -88,17 +96,19 @@ install using
  * **{object}.str()**          - same as {object}.toString()
  * **{string}.json()**         - same as JSON.stringify({object})
  * **{string}.json_inspect()** - same as util.inspect({object})   (handles circlar references)
+ * **{string}.keys()**
+ * **{string}.keys_All()**
  
  * fluent-string
  * **{string}.append({stringToAppend})**              - same as {string} + {stringToAppend}
  * **{string}.add_5_Random_Letters**
  * **{string}.add_Random_Chars({stringToAppend})**    - adds a number of chars {stringToAppend}
- * **{string}.add_Random_Letters
+ * **{string}.add_Random_Letters**
  * **{string}.add_Random_String({stringToAppend})**   - adds a number of letters and/or numbers to {stringToAppend}
- * **{string}.add_Random_Numbers
- * **{string}.lower
+ * **{string}.add_Random_Numbers**
+ * **{string}.lower**
  * **{string}.size({string})**                        - same as {string}.length
- * **{string}.upper
+ * **{string}.upper**
 
 all methods and tests are written in CoffeScript
 
