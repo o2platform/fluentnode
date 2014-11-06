@@ -93,11 +93,12 @@ install using
  * **{path}.file_Names()** - extracts last part of the path (uses ***{path}.file_Name()***)
 
 * fluent-object
+ * **{object}.call_Function({function})** calls function with current object passed the first parameter
+ * **{object}.json_pretty()**  - same as JSON.stringify({object}, null, ' ' )
+ * **{object}.json_inspect()** - same as util.inspect({object})   (handles circlar references)
+ * **{object}.keys()**
+ * **{object}.keys_All()**
  * **{object}.str()**          - same as {object}.toString()
- * **{string}.json()**         - same as JSON.stringify({object})
- * **{string}.json_inspect()** - same as util.inspect({object})   (handles circlar references)
- * **{string}.keys()**
- * **{string}.keys_All()**
  
  * fluent-string
  * **{string}.append({stringToAppend})**              - same as {string} + {stringToAppend}

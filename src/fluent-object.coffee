@@ -36,7 +36,11 @@ Object.defineProperty Object.prototype, 'keys_All',
     value: ->
         return (key for key of @)
 
-
+Object.defineProperty Object.prototype, 'call_Function',
+    enumerable  : false,
+    writable    : true,
+    value: (method)->
+        return method(@)
 
 #This is how they were done originally (which broke a lot of things)
 #Object::str          = -> @.toString()

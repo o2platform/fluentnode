@@ -43,4 +43,10 @@ describe 'fluent-object',->
 
         new abc().keys()    .assert_Is_Equal_To(['key1', 'key2'])
         new abc().keys_All().assert_Is_Equal_To(['key1', 'key2', 'key1_All', 'key2_All'])
-        console.log new abc().keys_All()
+
+    it 'call_Function',()->
+        check_Call_Param = (source)->
+            source.assert_Is_Equal_To({'a'})
+            'b'
+        {'a'}.call_Function.assert_Is_Function()
+        {'a'}.call_Function(check_Call_Param).assert_Is('b')
