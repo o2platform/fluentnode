@@ -9,52 +9,53 @@ install using
 **Methods implemented (NOTE LIST NOT FULLY UPDATED)**
 
 * fluent-array
- * **{array}.empty()**  - true if array is empty
- * **{array}.first()**  - first element of an array same as array[0]
- * **{array}.second()** - second element of an array same as array[1]
- * **{array}.third()**  - third element of an array same as array[2]
- * **{array}.forth()**  - forth element of an array same as array[3]
- * **{array}.size()**   - size  of the array
- * **{array}.contains()**
- * **{array}.not_Contains()**
+    * **{array}.empty()**  - true if array is empty
+    * **{array}.first()**  - first element of an array same as array[0]
+    * **{array}.second()** - second element of an array same as array[1]
+    * **{array}.third()**  - third element of an array same as array[2]
+    * **{array}.forth()**  - forth element of an array same as array[3]
+    * **{array}.size()**   - size  of the array
+    * **{array}.contains()**
+    * **{array}.not_Contains()**
 
 * fluent-assert
- * **{array}.assert_Is_Array()**
- * **{array}.assert_Size_Is()**
- * **{array}.assert_Contains()**
- * **{array}.assert_Not_Contains()**
-
- * **{boolean}.assert_Is_True()**
- * **{boolean}.assert_Is_False()**
-
- * **{function}.assert_Throws()**
- * **{function}.assert_Not_Throws()**
- * **{function}.assert_Is_Function()**
-
- * **{number}.assert_Is_Equal_To()**
-
- * **{object}.assert_Is_Equal_To()**
- * **{object}.assert_Is_Not_Equal_To()**
- * **{object}.assert_Is_Object()**
-
- * **{string}.assert_Contains()**
- * **{string}.assert_Equals()**
- * **{string}.assert_Is()**
- * **{string}.assert_Is_Not()**
- * **{string}.assert_Is_Equal_To()**
- * **{string}.assert_Is_Not_Equal_To()**
- * **{string}.assert_Is_Json()**
- * **{string}.assert_Is_String()**
- * **{string}.assert_Length_Is()**
- * **{string}.assert_Length_Is_Not()**
- * **{string}.assert_Not_Contains()**
- * **{string}.assert_Size_Is()**
- * **{string}.assert_Size_Is_Not()**
- * **{string}.assert_That_File_Exists()**
- * **{string}.assert_That_File_Not_Exists()**
- * **{string}.assert_That_Folder_Exists()**
- * **{string}.assert_That_Folder_Not_Exists()**
-
+    * array
+        * **{array}.assert_Is_Array()**
+        * **{array}.assert_Size_Is()**
+        * **{array}.assert_Contains()**
+        * **{array}.assert_Not_Contains()**
+    * boolean
+        * **{boolean}.assert_Is_True()**
+        * **{boolean}.assert_Is_False()**
+    * function
+        * **{function}.assert_Throws()**
+        * **{function}.assert_Not_Throws()**
+        * **{function}.assert_Is_Function()**
+    * number
+        * **{number}.assert_Is_Equal_To()**
+    * object
+        * **{object}.assert_Is_Equal_To()**
+        * **{object}.assert_Is_Not_Equal_To()**
+        * **{object}.assert_Is_Object()**
+    * string
+        * **{string}.assert_Contains()**
+        * **{string}.assert_Equals()**
+        * **{string}.assert_Is()**
+        * **{string}.assert_Is_Not()**
+        * **{string}.assert_Is_Equal_To()**
+        * **{string}.assert_Is_Not_Equal_To()**
+        * **{string}.assert_Is_Json()**
+        * **{string}.assert_Is_String()**
+        * **{string}.assert_Length_Is()**
+        * **{string}.assert_Length_Is_Not()**
+        * **{string}.assert_Not_Contains()**
+        * **{string}.assert_Size_Is()**
+        * **{string}.assert_Size_Is_Not()**
+        * **{string}.assert_That_File_Exists()**
+        * **{string}.assert_That_File_Not_Exists()**
+        * **{string}.assert_That_Folder_Exists()**
+        * **{string}.assert_That_Folder_Not_Exists()**
+        
 * fluent-boolean
  * **{boolean}.is_True()**
  * **{boolean}.is_False()**
