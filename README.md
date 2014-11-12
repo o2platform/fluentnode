@@ -9,21 +9,28 @@ install using
 **Methods implemented (NOTE LIST NOT FULLY UPDATED)**
 
 * fluent-array
+    * **{array}.contains()**
     * **{array}.empty()**  - true if array is empty
     * **{array}.first()**  - first element of an array same as array[0]
-    * **{array}.second()** - second element of an array same as array[1]
-    * **{array}.third()**  - third element of an array same as array[2]
     * **{array}.forth()**  - forth element of an array same as array[3]
-    * **{array}.size()**   - size  of the array
-    * **{array}.contains()**
     * **{array}.not_Contains()**
+    * **{array}.second()** - second element of an array same as array[1]
+    * **{array}.starts_With()**
+    * **{array}.size()**   - size  of the array
+    * **{array}.take()**
+    * **{array}.third()**  - third element of an array same as array[2]
+    * **{array}.unique()**
+
 
 * fluent-assert
     * array
         * **{array}.assert_Is_Array()**
-        * **{array}.assert_Size_Is()**
         * **{array}.assert_Contains()**
+        * **{array}.assert_Empty()**
         * **{array}.assert_Not_Contains()**
+        * **{array}.assert_Not_Empty()**
+        * **{array}.assert_Size_Is()**
+        * **{array}.assert_Size_Is_Not()**
     * boolean
         * **{boolean}.assert_Is_True()**
         * **{boolean}.assert_Is_False()**

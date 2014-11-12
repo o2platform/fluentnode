@@ -75,3 +75,28 @@ describe 'fluent-array',->
         ['1','2'     ].not_Contains('1').assert_Is_False()
         ['1','2'     ].not_Contains('2').assert_Is_False()
         ['1','2'     ].not_Contains('3').assert_Is_True()
+
+    it 'unique', ->
+        [            ].unique.assert_Is_Function()
+        [            ].unique().assert_Is_Equal_To([])
+        [''          ].unique().assert_Is_Equal_To([''])
+        ['1'         ].unique().assert_Is_Equal_To(['1'])
+        ['1','2'     ].unique().assert_Is_Equal_To(['1','2'])
+        ['1','1'     ].unique().assert_Is_Equal_To(['1'])
+        ['1','2','1' ].unique().assert_Is_Equal_To(['1','2'])
+    it 'starts_With', ->
+        [            ].starts_With.assert_Is_Function()
+        [            ].starts_With(   ).assert_Is_Equal_To([        ])
+        [''          ].starts_With('' ).assert_Is_Equal_To([        ])
+        [' '         ].starts_With(' ').assert_Is_Equal_To([' '     ])
+        ['1','23','2'].starts_With('1').assert_Is_Equal_To(['1'     ])
+        ['1','23','2'].starts_With('2').assert_Is_Equal_To(['23','2'])
+        ['1','23','2'].starts_With('4').assert_Is_Equal_To([        ])
+    it 'take', ->
+        [            ].take.assert_Is_Function()
+        [            ].take( ).assert_Is_Equal_To([        ])
+        [''          ].take(0).assert_Is_Equal_To([        ])
+        [' '         ].take(1).assert_Is_Equal_To([' '     ])
+        ['1','23','2'].take(1).assert_Is_Equal_To(['1'     ])
+        ['1','23','2'].take(2).assert_Is_Equal_To(['1','23'])
+        ['1','23','2'].take(0).assert_Is_Equal_To([        ])

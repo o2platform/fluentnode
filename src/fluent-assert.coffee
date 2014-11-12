@@ -2,26 +2,37 @@ require './fluent-boolean'
 require './fluent-path'
 assert = require('assert')
 
-Array::assert_Is_Array              = ->
-                                          message = "[assert_Is_Array]"
+Array::assert_Is_Array              = (message)->
+                                          message = message || "[assert_Is_Array]"
                                           (typeof(@.length)).assert_Is_Equal_To('number')
                                           assert.equal(typeof(@), 'object', message)
                                           #assert.equal(typeof(@), 'array', message)     # this doesn't work
                                           @
-Array::assert_Size_Is               = (size)->
-                                          message = "[assert_Is_Array]"
-                                          assert.equal(@.length, size, message)
-                                          @
-
-
-Array::assert_Contains      = (value)->
-                                         message = "[assert_Contains]"
+Array::assert_Contains              = (value, message)->
+                                         message = message || "[assert_Contains]"
                                          @.contains(value).assert_Is_True(message)
                                          @
-Array::assert_Not_Contains  = (value)->
-                                         message = "[assert_Contains]"
+Array::assert_Empty                 = (value, message)->
+                                         message = message || "[assert_Empty]"
+                                         @assert_Size_Is(0, message)
+                                         @
+Array::assert_Not_Contains          = (value, message)->
+                                         message = message || "[assert_Contains]"
                                          @.not_Contains(value).assert_Is_True(message)
                                          @
+Array::assert_Not_Empty             = (value, message)->
+                                         message = message || "[assert_Not_Empty]"
+                                         @assert_Size_Is_Not(0, message)
+                                         @
+Array::assert_Size_Is               = (size, message)->
+                                          message = message || "[assert_Size_Is]"
+                                          assert.equal(@.length, size, message)
+                                          @
+Array::assert_Size_Is_Not           = (size, message)->
+                                          message = message || "[assert_Size_Is_Not]"
+                                          assert.notEqual(@.length, size, message)
+                                          @
+
 
 Boolean::assert_Is_True             = (message)->
                                           message = message|| "[assert_Is_True]"
