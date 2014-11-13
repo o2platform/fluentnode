@@ -39,8 +39,10 @@ Object.defineProperty Object.prototype, 'keys_All',
 Object.defineProperty Object.prototype, 'call_Function',
     enumerable  : false,
     writable    : true,
-    value: (method)->
-        return method(@)
+    value: (method, params...)->
+        callParams = [@]
+        callParams.push param for param in params
+        return method.apply(null,callParams)
 
 #This is how they were done originally (which broke a lot of things)
 #Object::str          = -> @.toString()
