@@ -1,5 +1,9 @@
-FluentNode
+FluentNode &nbsp;&nbsp;&nbsp[![Build Status](https://travis-ci.org/o2platform/fluentnode.svg?branch=master)](https://travis-ci.org/o2platform/fluentnode)
 ==========
+
+[![NPM](https://nodei.co/npm/fluentnode.png)](https://nodei.co/npm/fluentnode/)
+
+[![NPM](https://nodei.co/npm-dl/fluentnode.png)](https://nodei.co/npm/fluentnode/)
 
 Fluent apis for node (based on the concepts used in C#'s FluentSharp
 
@@ -120,7 +124,3 @@ install using
  * **{string}.upper**
 
 all methods and tests are written in CoffeScript
-
-### Development
-
-Build Status: [![Build Status](https://travis-ci.org/o2platform/fluentnode.svg?branch=master)](https://travis-ci.org/o2platform/fluentnode)
