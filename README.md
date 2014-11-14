@@ -5,25 +5,28 @@ FluentNode &nbsp;&nbsp;&nbsp;[![Build Status](https://travis-ci.org/o2platform/f
 
 [![NPM](https://nodei.co/npm-dl/fluentnode.png)](https://nodei.co/npm/fluentnode/)
 
-Fluent apis for node (based on the concepts used in C#'s FluentSharp
+**FluentNode** are a set of Fluent apis for node applications (based on the concepts used in [O2 Platforms](http://blog.diniscruz.com/p/owasp-o2-platform.html) C#'s [FluentSharp](https://github.com/o2platform/FluentSharp) APIs
 
-install using
-<pre>npm install fluentnode</pre>
+## Install on Node.js
+```
+npm install fluentnode --save
+```
 
-**Methods implemented (NOTE LIST NOT FULLY UPDATED)**
+## FluentNode API
 
-* fluent-array
-    * **{array}.contains()**
-    * **{array}.empty()**  - true if array is empty
-    * **{array}.first()**  - first element of an array same as array[0]
-    * **{array}.forth()**  - forth element of an array same as array[3]
-    * **{array}.not_Contains()**
-    * **{array}.second()** - second element of an array same as array[1]
-    * **{array}.starts_With()**
-    * **{array}.size()**   - size  of the array
-    * **{array}.take()**
-    * **{array}.third()**  - third element of an array same as array[2]
-    * **{array}.unique()**
+#### fluent-array
+
+* **{array}.contains()**
+* **{array}.empty()**  - true if array is empty
+* **{array}.first()**  - first element of an array same as array[0]
+* **{array}.forth()**  - forth element of an array same as array[3]
+* **{array}.not_Contains()**
+* **{array}.second()** - second element of an array same as array[1]
+* **{array}.starts_With()**
+* **{array}.size()**   - size  of the array
+* **{array}.take()**
+* **{array}.third()**  - third element of an array same as array[2]
+* **{array}.unique()**
 
 
 * fluent-assert
@@ -124,3 +127,9 @@ install using
  * **{string}.upper**
 
 all methods and tests are written in CoffeScript
+
+##Contribute
+
+As you can see the descriptions above are not in a complete state. See [see Add method descriptions to README.md help](https://github.com/o2platform/fluentnode/issues/3) for how to help
+
+If you want more prototype methods, please fork this repo and send a PR with  the implementation :)
