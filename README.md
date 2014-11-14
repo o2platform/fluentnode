@@ -1,4 +1,4 @@
-FluentNode &nbsp;&nbsp;&nbsp[![Build Status](https://travis-ci.org/o2platform/fluentnode.svg?branch=master)](https://travis-ci.org/o2platform/fluentnode)
+FluentNode &nbsp;&nbsp;&nbsp;[![Build Status](https://travis-ci.org/o2platform/fluentnode.svg?branch=master)](https://travis-ci.org/o2platform/fluentnode)
 ==========
 
 [![NPM](https://nodei.co/npm/fluentnode.png)](https://nodei.co/npm/fluentnode/)
