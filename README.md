@@ -133,3 +133,6 @@ all methods and tests are written in CoffeScript
 As you can see the descriptions above are not in a complete state. See [see Add method descriptions to README.md help](https://github.com/o2platform/fluentnode/issues/3) for how to help
 
 If you want more prototype methods, please fork this repo and send a PR with  the implementation :)
+
+##Projects using FluentNode
+* TeamMentor 4.0 GraphDB - https://github.com/TeamMentor/TM_4_0_GraphDB
