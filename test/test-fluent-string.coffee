@@ -51,6 +51,15 @@ describe 'fluent-string',->
             (-> charSet_Numbers.assert_Contains(char)).assert_Not_Throws()
             (-> charSet_Letters.assert_Contains(char)).assert_Throws()
 
+    it 'contains',->
+        value.contains.assert_Is_Function()
+        value.contains('3'         ).assert_Is_True()
+        value.contains('2'         ).assert_Is_True()
+        value.contains('123'       ).assert_Is_True()
+        value.contains(value       ).assert_Is_True()
+        value.contains(value + '1' ).assert_Is_False()
+        value.contains('1' + value).assert_Is_False()
+
     it 'ends_With',->
         value.ends_With.assert_Is_Function()
         value.ends_With('3'         ).assert_Is_True()
@@ -65,6 +74,15 @@ describe 'fluent-string',->
         expect(value.lower).to.be.an('Function')
         expect(value.lower()        ).to.equal(value.toLowerCase())
         expect(value.lower().upper()).to.equal(value.toUpperCase())
+
+    it 'not_Contains',->
+        value.not_Contains.assert_Is_Function()
+        value.not_Contains('3'         ).assert_Is_False()
+        value.not_Contains('2'         ).assert_Is_False()
+        value.not_Contains('123'       ).assert_Is_False()
+        value.not_Contains(value       ).assert_Is_False()
+        value.not_Contains(value + '1' ).assert_Is_True()
+        value.not_Contains('1' + value ).assert_Is_True()
 
     it 'size', ->              
         expect(value.size).to.be.an('Function')

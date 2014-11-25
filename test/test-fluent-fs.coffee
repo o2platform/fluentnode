@@ -1,3 +1,4 @@
+require('../src/fluent-string')
 require('../src/fluent-path')
 require('../src/fluent-fs')
 expect     = require('chai').expect
@@ -51,14 +52,13 @@ describe 'fluent-fs',->
     files = './'.files().filter (file) -> file isnt '.DS_Store'.realPath()
     expectedFiles = (file.realPath() for file in '.gitignore,.travis.yml,LICENSE,README.md,index.js,package.json'.split(','))
     expect(files).to.deep.equal(expectedFiles)
-
     expect('./'.files('.yml' )).to.deep.equal(['.travis.yml'.realPath()])
     expect('./'.files('.json')).to.deep.equal(['package.json'.realPath()])
 
 
   it 'folders' , ->
     expect(''.folders).to.be.an('function')
-    folders = './'.folders()
+    folders = (folder for folder in './'.folders() when folder.not_Contains('.c9'))             #handle scenario when we coded inside Cloud9 IDE 
     expectedFolders = (folder.realPath() for folder in '.git,node_modules,src,test'.split(','))
     expect(folders).to.deep.equal(expectedFolders)
 
