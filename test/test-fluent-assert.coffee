@@ -179,3 +179,17 @@ describe 'fluent-assert',->
       'aaaaaaaa'.assert_That_Folder_Not_Exists().assert_Is_Equal_To('aaaaaaaa')
       (-> '.aaa'.assert_That_Folder_Not_Exists()).assert_Not_Throws()
       (-> '.git'.assert_That_Folder_Not_Exists()).assert_Throws()
+      
+    it 'assert_Is_Null', ->
+      assert_Is_Null.assert_Is_Function();
+      assert_Is_Null(null)
+      (-> assert_Is_Null(null)).assert_Not_Throws()
+      (-> assert_Is_Null('123')).assert_Throws()
+
+    it 'assert_Is_Not_Null', ->
+      assert_Is_Not_Null.assert_Is_Function();
+      assert_Is_Not_Null('123')
+      (-> assert_Is_Not_Null('123')).assert_Not_Throws()
+      (-> assert_Is_Not_Null(null)).assert_Throws()
+
+    

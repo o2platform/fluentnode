@@ -83,6 +83,20 @@ Object.defineProperty Object.prototype, 'assert_Is_Object',
                                                             assert.equal(typeof(@), 'object')
                                                             @
 
+Object.defineProperty Object.prototype, 'assert_Is_Null',
+                                          enumerable  : false,
+                                          writable    : true,
+                                          value: (target)->
+                                              (target == null).assert_Is_True("expected value to be null:" + target)
+                                              null
+            
+Object.defineProperty Object.prototype, 'assert_Is_Not_Null',
+                                          enumerable  : false,
+                                          writable    : true,
+                                          value: (target)->
+                                              (target == null).assert_Is_False("expected value to not be null")
+                                              null
+            
 String::assert_Contains             = (target)->
                                           source    = @.toString()
                                           message   = "expected string '#{source}' to contain the string '#{target}'"
