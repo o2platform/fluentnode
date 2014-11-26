@@ -16,6 +16,7 @@ npm install fluentnode --save
 
 #### fluent-array
 
+* **{array}.add()**
 * **{array}.contains()**
 * **{array}.empty()**  - true if array is empty
 * **{array}.first()**  - first element of an array same as array[0]
