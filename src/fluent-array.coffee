@@ -10,6 +10,7 @@ Array::first          =        -> if(@.length    ) then @[0]          else null
 Array::contains       = (value)-> (value in @)
 Array::fourth         =        -> if(@.length > 3) then @[3]          else null
 Array::last           =        -> if(@.length    ) then @[@.length-1] else null
+Array::log            =        -> @.str().log()
 Array::not_Contains   = (value)-> value not in @
 Array::second         =        -> if(@.length > 1) then @[1]          else null
 Array::size           =        -> @.length

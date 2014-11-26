@@ -1,4 +1,5 @@
 require('../src/fluent-console')
+require('../src/fluent-array')
 expect     = require('chai').expect
 
 describe 'fluent-console',->
@@ -22,12 +23,17 @@ describe 'fluent-console',->
         expect(log_Messages).to.deep.equal([ 'direct log msg', 'msg using extension method' ])
         expect(returnValue ).to.equal('msg using extension method')
         
-    it 'log', ->
+    it '{string}.log', ->
         expect("".log).to.be.an('Function')
         "log using .log()".log()
         expect(log_Messages).to.deep.equal([ "log using .log()"])
+    
+    it '{array}.log', ->
+        expect([].log).to.be.an('Function')
+        ['1','3',5,'abc'].log()
+        log_Messages.assert_Is(['1,3,5,abc'])        
         
-    it '_log', ->
-        expect("".log).to.be.an('Function')
-        "log using ._log()".log()
-        expect(log_Messages).to.deep.equal([ "log using ._log()"])    
+        
+    #it '_log', ->
+    #    expect("".log).to.be.an('Function')
+    #    expect(log_Messages).to.deep.equal([ "log using ._log()"])    

@@ -59,7 +59,9 @@ describe 'fluent-array',->
         expect(['123'       ].last()).to.equal('123')
         expect(['123', 'abc'].last()).to.equal('abc')
         expect(['123', null ].last()).to.equal(null)
-
+    
+    #it 'log', ->  # see '{array}.log" test in test-fluent-console
+        
     it 'size',->
         expect([            ].size).to.be.an('Function')
         expect([            ].size()).to.equal(0)

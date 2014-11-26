@@ -21,6 +21,8 @@ npm install fluentnode --save
 * **{array}.empty()**  - true if array is empty
 * **{array}.first()**  - first element of an array same as array[0]
 * **{array}.forth()**  - forth element of an array same as array[3]
+* **{array}.last()**
+* **{array}.log)**
 * **{array}.not_Contains()**
 * **{array}.second()** - second element of an array same as array[1]
 * **{array}.starts_With()**

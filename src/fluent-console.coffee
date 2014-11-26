@@ -11,10 +11,10 @@ Object.defineProperty String.prototype, 'log',
     writable    : true,     
     value: Object::console_log
    
-Object.defineProperty Object.prototype, '_log', 
-    enumerable  : false,  
-    writable    : true,     
-    value: Object::console_log   
+#Object.defineProperty Object.prototype, '_log', 
+#    enumerable  : false,  
+#    writable    : true,     
+#    value: Object::console_log   
     
     
 #Object::console_log = ->
