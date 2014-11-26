@@ -30,7 +30,8 @@ describe 'fluent-console',->
     
     it '{array}.log', ->
         expect([].log).to.be.an('Function')
-        ['1','3',5,'abc'].log()
+        target = ['1','3',5,'abc']
+        target.log().assert_Is(target)
         log_Messages.assert_Is(['1,3,5,abc'])        
         
         
