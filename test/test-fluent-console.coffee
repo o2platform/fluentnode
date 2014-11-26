@@ -33,8 +33,3 @@ describe 'fluent-console',->
         target = ['1','3',5,'abc']
         target.log().assert_Is(target)
         log_Messages.assert_Is(['1,3,5,abc'])        
-        
-        
-    #it '_log', ->
-    #    expect("".log).to.be.an('Function')
-    #    expect(log_Messages).to.deep.equal([ "log using ._log()"])    

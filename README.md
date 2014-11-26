@@ -116,9 +116,9 @@ npm install fluentnode --save
 * **{string}.folders()**           - list of folders from folder (returns full path)
 
 ####  fluent-number
-* ** {number}.random_String()**
-* ** {number}.random_Letters()**
-* ** {number}.str()
+* **{number}.random_String()**
+* **{number}.random_Letters()**
+* **{number}.str()**
 
 ####  fluent-path
 * **{pathA}.path.join({pathA}**   - same as path.join(pathA, pathB)
@@ -154,7 +154,7 @@ npm install fluentnode --save
 * **{string}.size({string})**                        - same as {string}.length
 * **{string}.upper()**
 
-all methods and tests are written in CoffeScript
+All methods and tests are written in CoffeScript
 
 ##Contribute
 
