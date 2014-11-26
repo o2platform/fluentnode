@@ -37,6 +37,7 @@ npm install fluentnode --save
   * **{array}.assert_Not_Contains()**
   * **{array}.assert_Not_Empty()**
   * **{array}.assert_Size_Is()**
+  * **{array}.assert_Size_Is_Bigger_Than()**
   * **{array}.assert_Size_Is_Not()**
 * boolean
   * **{boolean}.assert_Is_True()**
@@ -72,6 +73,8 @@ npm install fluentnode --save
   * **{string}.assert_Is_Not_Equal_To()**
   * **{string}.assert_Is_Json()**
   * **{string}.assert_Is_String()**
+  * **{string}.assert_File_Exists()**
+  * **{string}.assert_File_Not_Exists()**
   * **{string}.assert_Length_Is()**
   * **{string}.assert_Length_Is_Not()**
   * **{string}.assert_Not_Contains()**
@@ -97,13 +100,15 @@ npm install fluentnode --save
  
 ####  fluent-fs
 * **{string}.exists()**            - same as {object}.fileExists()
-* **{string}.file_Exists()**       - true if a file called {string} exists (same as fs.existsSync)
-* **{string}.file_Not_Exists()**   - false if a file called {string} exists (same as not fs.existsSync)
 * **{string}.is_Directory()**      - same as {string}.is_Folder()
 * **{string}.is_Folder()**         - same as fs.lstatSync({string}).isDirectory()
 * **{string}.is_File()**           - same as fs.lstatSync({string}).isFile()
+* **{string}.file_Exists()**       - true if a file called {string} exists (same as fs.existsSync)
+* **{string}.file_Not_Exists()**   - false if a file called {string} exists (same as not fs.existsSync)
+* **{string}.file_Write()**
 * **{string}.files_and_Folders()** - list of files and folders from folder (returns full path)
 * **{string}.files()**             - list of files from folder (returns full path)
+* **{string}.files_Recursive**
 * **{string}.files(extension)**    - list of files from folder with extension (returns full path)
 * **{string}.folders()**           - list of folders from folder (returns full path)
 
@@ -116,7 +121,7 @@ npm install fluentnode --save
 * **{pathA}.path.join({pathA}**   - same as path.join(pathA, pathB)
 * **{pathA}.path_Combine({pathA}** - same as path.join(pathA, pathB)
 * **{path}.append_To_Process_Cwd_Path** -
-* **{string}.file_Parent_Folder**
+* **{path}.file_Parent_Folder**
 * **{path}.file_Dir_Name**
 * **{path}.file_Name_Without_Extension**
 * **{path}.file_Name()** - extracts last part of the path (same as ***path.basename({path}***)
@@ -133,18 +138,18 @@ npm install fluentnode --save
  
 ####  fluent-string
 * **{string}.append({stringToAppend})**              - same as {string} + {stringToAppend}
-* **{string}.add_5_Random_Letters**
+* **{string}.add_5_Random_Letters()**
 * **{string}.add_Random_Chars({stringToAppend})**    - adds a number of chars {stringToAppend}
 * **{string}.add_Random_Letters**
 * **{string}.add_Random_String({stringToAppend})**   - adds a number of letters and/or numbers to {stringToAppend}
-* **{string}.add_Random_Numbers**
-* **{string}.before**
-* **{string}.before_Last**
-* **{string}.contains**
-* **{string}.lower**
-* **{string}.not_Contains**
+* **{string}.add_Random_Numbers()**
+* **{string}.before()**
+* **{string}.before_Last()**
+* **{string}.contains()**
+* **{string}.lower()**
+* **{string}.not_Contains()**
 * **{string}.size({string})**                        - same as {string}.length
-* **{string}.upper**
+* **{string}.upper()**
 
 all methods and tests are written in CoffeScript
 

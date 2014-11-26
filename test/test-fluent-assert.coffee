@@ -13,7 +13,17 @@ describe 'fluent-assert',->
       [       ].assert_Size_Is(0).assert_Is_Equal_To([      ])
       ['a'    ].assert_Size_Is(1).assert_Is_Equal_To(['a'   ])
       ['a','b'].assert_Size_Is(2).assert_Is_Equal_To(['a','b'])
-
+    
+    it 'assert_Size_Is_Bigger_Than',->
+      [       ].assert_Size_Is_Bigger_Than.  assert_Is_Function()
+      [       ].assert_Size_Is_Bigger_Than(-1).assert_Is_Equal_To([      ])
+      [''     ].assert_Size_Is_Bigger_Than(0).assert_Is_Equal_To([''    ])
+      ['a'    ].assert_Size_Is_Bigger_Than(0).assert_Is_Equal_To(['a'   ])
+      ['a','b'].assert_Size_Is_Bigger_Than(1).assert_Is_Equal_To(['a','b'])
+      (-> ['' ].assert_Size_Is_Bigger_Than(-1)).assert_Not_Throws()
+      (-> ['' ].assert_Size_Is_Bigger_Than(1)).assert_Throws()
+      
+      
     it 'assert_Size_Is_Not', ->
       [       ].assert_Size_Is_Not.  assert_Is_Function()
       [       ].assert_Size_Is_Not(1).assert_Is_Equal_To([      ])

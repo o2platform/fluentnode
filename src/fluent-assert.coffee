@@ -25,9 +25,13 @@ Array::assert_Not_Empty             = (value, message)->
                                          @assert_Size_Is_Not(0, message)
                                          @
 Array::assert_Size_Is               = (size, message)->
-                                          message = message || "[assert_Size_Is]"
+                                          message = message || "[assert_Size_Is] expected #{@.length} and it was #{size}"
                                           assert.equal(@.length, size, message)
                                           @
+Array::assert_Size_Is_Bigger_Than   = (size, message)->
+                                          message = message || "[assert_Size_Is_Bigger_Than] expected bigger than #{size}, but it was #{@.length} "
+                                          (@.length > size).assert_Is_True(message)
+                                          @                                             
 Array::assert_Size_Is_Not           = (size, message)->
                                           message = message || "[assert_Size_Is_Not]"
                                           assert.notEqual(@.length, size, message)
@@ -200,8 +204,10 @@ String::assert_That_Folder_Not_Exists = ->
                                           message = "[assert_That_Not_Folder_Exists]: #{folder}"
                                           assert(test, message)
                                           folder
-String::assert_Is          = String::assert_Is_Equal_To
-String::assert_Is_Not      = String::assert_Is_Not_Equal_To
-String::assert_Equals      = String::assert_Is_Equal_To
-String::assert_Size_Is     = String::assert_Length_Is
-String::assert_Size_Is_Not = String::assert_Length_Is_Not
+String::assert_Is              = String::assert_Is_Equal_To
+String::assert_Is_Not          = String::assert_Is_Not_Equal_To
+String::assert_Equals          = String::assert_Is_Equal_To
+String::assert_File_Exists     = String::assert_That_File_Exists
+String::assert_File_Not_Exists = String::assert_That_File_Not_Exists
+String::assert_Size_Is         = String::assert_Length_Is
+String::assert_Size_Is_Not     = String::assert_Length_Is_Not

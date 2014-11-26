@@ -47,6 +47,14 @@ describe 'fluent-fs',->
     expect('./index.js'.file_Not_Exists()).to.be.false
     expect('./aaa.js'  .file_Not_Exists()).to.be.true
 
+  it 'file_Write',->
+    content = (20).random_Letters()
+    tmpFile = './src'.fullPath().path_Combine('_temp_file.abcd').assert_File_Not_Exists()
+                                .file_Write(content)
+    tmpFile.assert_File_Exists()
+           .file_Contents().assert_Is(content)
+    tmpFile.file_Delete().assert_Is_True()
+    
   it 'files' , ->
     expect(''.files).to.be.an('function')
     files = './'.files().filter (file) -> file isnt '.DS_Store'.realPath()
@@ -55,6 +63,14 @@ describe 'fluent-fs',->
     expect('./'.files('.yml' )).to.deep.equal(['.travis.yml'.realPath()])
     expect('./'.files('.json')).to.deep.equal(['package.json'.realPath()])
 
+  it 'files_Recursive' , ->
+    ''.files_Recursive.assert_Is_Function()
+    './src'.files_Recursive().assert_Size_Is_Bigger_Than(9)
+                             .assert_Contains('./src/fluent-fs.coffee'.fullPath())
+    tmpFile = './src'.fullPath().path_Combine('_temp_file.abcd').file_Write((20).random_Letters())
+    './src'.files_Recursive('.abcd').assert_Size_Is(1)
+                                    .first().assert_Is(tmpFile)
+    tmpFile.file_Delete().assert_Is_True()
 
   it 'folders' , ->
     expect(''.folders).to.be.an('function')

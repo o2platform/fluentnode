@@ -48,6 +48,10 @@ String::file_Exists         = ->
                                   if(file)
                                     return fs.existsSync  file
                                   return false
+String::file_Write  = (content)->          
+                                  content.saveAs(@.str())
+                                  @
+                                  
 String::file_Not_Exists     = ->  (fs.existsSync @.toString()) == false
 String::files_and_Folders   = ->
                                   path = @.toString()
@@ -61,7 +65,16 @@ String::files               = (extension)->
                                   if extension
                                     return (file for file in files when file.file_Extension() is extension)
                                   return files
-
+String::files_Recursive     = (extension)->
+                                  files = []
+                                  for item in @.str().files_and_Folders()
+                                    if (item.is_Folder())
+                                      files = files.concat(item.files_Recursive(extension))
+                                    else
+                                      if (not extension or item.file_Extension() is extension)
+                                        files.push(item)
+                                  return files
+                                
 String::folders             = ->  item for item in @.files_and_Folders() when item.is_Folder()
 
 String::is_Folder           = ->  try fs.lstatSync(@.toString()).isDirectory() catch then false
