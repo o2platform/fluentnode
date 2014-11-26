@@ -136,6 +136,8 @@ npm install fluentnode --save
 * **{string}.add_Random_Letters**
 * **{string}.add_Random_String({stringToAppend})**   - adds a number of letters and/or numbers to {stringToAppend}
 * **{string}.add_Random_Numbers**
+* **{string}.before**
+* **{string}.before_Last**
 * **{string}.contains**
 * **{string}.lower**
 * **{string}.not_Contains**

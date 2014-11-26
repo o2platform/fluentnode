@@ -12,6 +12,8 @@ String::add_Random_Numbers   = (size          )->
                                                   charSet = '0123456789'
                                                   @ + (charSet[Math.floor(Math.random() * charSet.length)]  for i in [1..size]).join('')
 
+String::before               = (value         )-> @.substring(0,@indexOf(value))
+String::before_Last          = (value         )-> @.substring(0,@lastIndexOf(value))
 String::contains             = (value         )-> @.indexOf(value) > -1
 
 String::ends_With            = (value)         -> if not value then false else @.toString().slice(-value.length)==value
