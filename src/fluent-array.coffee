@@ -1,4 +1,10 @@
-Array::add            = (value...)-> if (value instanceof Array) then @.concat(value) else @.concat([value])
+Array::add            = (value...)-> 
+                                    if (value instanceof Array) 
+                                        for item in value
+                                            @.push(item) 
+                                    else
+                                        @.push([value])
+                                    @
 Array::empty          =        -> @.length == 0
 Array::first          =        -> if(@.length    ) then @[0]          else null
 Array::contains       = (value)-> (value in @)

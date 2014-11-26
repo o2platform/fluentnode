@@ -12,6 +12,14 @@ describe 'fluent-array',->
         ['a','b'].add( 'c','d' ).assert_Is(['a','b','c','d'])
         ['1','1'].add( 1,2,3,4 ).assert_Is(['1','1',1,2,3,4])
         
+        a = []
+        a.add('1')
+        a.assert_Is(['1'])
+        a.add('2','3')
+        a.assert_Is(['1','2','3'])
+        a.add(4).add(5,6)
+        a.assert_Is(['1','2','3',4, 5, 6])
+        
     it 'empty',->
         expect([            ].empty).to.be.an('Function')        
         expect([            ].empty()).to.be.true
