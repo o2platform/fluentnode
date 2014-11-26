@@ -75,8 +75,7 @@ describe 'fluent-assert',->
       (->).assert_Is_Function.assert_Is_Function()
 
   describe 'Number', ->
-    it 'assert_Is_Equal_To',->
-      it 'assert_Is_Equal_To, assert_Is', ->
+    it 'assert_Is_Equal_To, assert_Is',->
       (0).assert_Is_Equal_To.assert_Is_Function()
       (0).assert_Is_Equal_To(0)
       (-> (0).assert_Is_Equal_To(0)).assert_Not_Throws()
@@ -114,10 +113,36 @@ describe 'fluent-assert',->
       (-> '12'.assert_Is_Not_Equal_To('42')).assert_Not_Throws()
       (-> '12'.assert_Is_Not_Equal_To('12')).assert_Throws()
 
+    it 'assert_Is_Null', ->
+      assert_Is_Null.assert_Is_Function();
+      assert_Is_Null(null)
+      (-> assert_Is_Null(null)).assert_Not_Throws()
+      (-> assert_Is_Null('123')).assert_Throws()
+
+    it 'assert_Is_Not_Null', ->
+      assert_Is_Not_Null.assert_Is_Function();
+      assert_Is_Not_Null('123')
+      (-> assert_Is_Not_Null('123')).assert_Not_Throws()
+      (-> assert_Is_Not_Null(null)).assert_Throws()
+      
     it 'assert_Is_Object', ->
       {}.assert_Is_Object.assert_Is_Function()
       {}.assert_Is_Object().assert_Is_Equal_To({})
 
+    it 'assert_Is_Undefined', ->
+      assert_Is_Undefined.assert_Is_Function();
+      assert_Is_Undefined(undefined)
+      aaaa = undefined
+      assert_Is_Undefined(aaaa)
+      (-> assert_Is_Undefined(undefined)).assert_Not_Throws()
+      (-> assert_Is_Undefined('123')).assert_Throws()
+
+    it 'assert_Is_Not_Undefined', ->
+      assert_Is_Not_Undefined.assert_Is_Function();
+      assert_Is_Not_Undefined('123')
+      (-> assert_Is_Not_Undefined('123')).assert_Not_Throws()
+      (-> assert_Is_Not_Undefined(undefined)).assert_Throws()
+      
   describe 'String', ->
     it 'assert_Contains', ->
       ''.assert_Contains.assert_Is_Function()
@@ -193,17 +218,5 @@ describe 'fluent-assert',->
       'aaaaaaaa'.assert_That_Folder_Not_Exists().assert_Is_Equal_To('aaaaaaaa')
       (-> '.aaa'.assert_That_Folder_Not_Exists()).assert_Not_Throws()
       (-> '.git'.assert_That_Folder_Not_Exists()).assert_Throws()
-      
-    it 'assert_Is_Null', ->
-      assert_Is_Null.assert_Is_Function();
-      assert_Is_Null(null)
-      (-> assert_Is_Null(null)).assert_Not_Throws()
-      (-> assert_Is_Null('123')).assert_Throws()
-
-    it 'assert_Is_Not_Null', ->
-      assert_Is_Not_Null.assert_Is_Function();
-      assert_Is_Not_Null('123')
-      (-> assert_Is_Not_Null('123')).assert_Not_Throws()
-      (-> assert_Is_Not_Null(null)).assert_Throws()
 
     

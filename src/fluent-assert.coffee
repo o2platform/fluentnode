@@ -60,18 +60,19 @@ Function::assert_Is_Function        = ->
                                           assert.equal(test, 'function', message)
                                           @
 
-Number::assert_Is                   = Number::assert_Is_Equal_To 
 Number::assert_Is_Equal_To          = (target)->
                                           source    = @
                                           assert.equal(source, target)
                                           @
-Number::assert_Is_Not               = Number::assert_Is_Not_Equal_To 
 Number::assert_Is_Not_Equal_To      = (target)->
                                           source    = @
                                           assert.notEqual(source, target)
                                           @
 Number::assert_Is_Number            = (message)->
                                           @
+
+Number::assert_Is                   = Number::assert_Is_Equal_To 
+Number::assert_Is_Not               = Number::assert_Is_Not_Equal_To
 
 Object.defineProperty Object.prototype, 'assert_Is_Equal_To',
                                           enumerable  : false,
@@ -103,6 +104,20 @@ Object.defineProperty Object.prototype, 'assert_Is_Not_Null',
                                           writable    : true,
                                           value: (target)->
                                               (target == null).assert_Is_False("expected value to not be null")
+                                              null
+
+Object.defineProperty Object.prototype, 'assert_Is_Undefined',
+                                          enumerable  : false,
+                                          writable    : true,
+                                          value: (target)->
+                                              (typeof(target) == 'undefined').assert_Is_True("expected value to be undefined:" + target)
+                                              null
+            
+Object.defineProperty Object.prototype, 'assert_Is_Not_Undefined',
+                                          enumerable  : false,
+                                          writable    : true,
+                                          value: (target)->
+                                              (typeof(target) == 'undefined').assert_Is_False("expected value to not be undefined")
                                               null
             
 String::assert_Contains             = (target)->

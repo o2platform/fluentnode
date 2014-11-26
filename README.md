@@ -57,6 +57,8 @@ npm install fluentnode --save
   * **{object}.assert_Is_Not_Equal_To()**
   * **{object}.assert_Is_Not_Null()** 
   * **{object}.assert_Is_Object()**
+  * **{object}.assert_Is_Undefined()**
+  * **{object}.assert_Is_Not_Undefined()**
 * string
   * **{string}.assert_Contains()**
   * **{string}.assert_Equals()**
