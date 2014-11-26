@@ -60,9 +60,17 @@ Function::assert_Is_Function        = ->
                                           assert.equal(test, 'function', message)
                                           @
 
+Number::assert_Is                   = Number::assert_Is_Equal_To 
 Number::assert_Is_Equal_To          = (target)->
                                           source    = @
                                           assert.equal(source, target)
+                                          @
+Number::assert_Is_Not               = Number::assert_Is_Not_Equal_To 
+Number::assert_Is_Not_Equal_To      = (target)->
+                                          source    = @
+                                          assert.notEqual(source, target)
+                                          @
+Number::assert_Is_Number            = (message)->
                                           @
 
 Object.defineProperty Object.prototype, 'assert_Is_Equal_To',

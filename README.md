@@ -46,7 +46,11 @@ npm install fluentnode --save
   * **{function}.assert_Not_Throws()**
   * **{function}.assert_Is_Function()**
 * number
+  * **{number}.assert_Is()**
   * **{number}.assert_Is_Equal_To()**
+  * **{number}.assert_Is_Not()**
+  * **{number}.assert_Is_Not_Equal_To()**
+  * **{number}.assert_Is_Number()**
 * object
   * **{object}.assert_Is_Equal_To()**
   * **{object}.assert_Is_Null()**
@@ -98,7 +102,9 @@ npm install fluentnode --save
 * **{string}.folders()**           - list of folders from folder (returns full path)
 
 ####  fluent-number
-* **random_String()**
+* ** {number}.random_String()**
+* ** {number}.random_Letters()**
+* ** {number}.str()
 
 ####  fluent-path
 * **{pathA}.path.join({pathA}**   - same as path.join(pathA, pathB)
