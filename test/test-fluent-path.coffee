@@ -11,6 +11,12 @@ describe 'fluent-path',->
         expect("abc".path_Combine()).to.equal('abc')
         expect("abc".path_Combine('def')).to.equal('abc/def')
 
+    it 'path_Combine , file_Parent_Folder', ->
+        ''.file_Dir_Name.assert_Is_Function()
+        '.'.fullPath().path_Combine('aaaa')
+                     .file_Dir_Name().assert_Is(".".fullPath())
+        '/abc/def/123.txt'.file_Parent_Folder().assert_Is('/abc/def')
+
     it 'append_To_Process_Cwd_Path', ->
         expect(""           .append_To_Process_Cwd_Path  ).to.be.an('function')
         expect(""           .append_To_Process_Cwd_Path()).to.equal(process.cwd())

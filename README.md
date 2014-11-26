@@ -116,10 +116,12 @@ npm install fluentnode --save
 * **{pathA}.path.join({pathA}**   - same as path.join(pathA, pathB)
 * **{pathA}.path_Combine({pathA}** - same as path.join(pathA, pathB)
 * **{path}.append_To_Process_Cwd_Path** -
-* **{path}.file_Extension**
+* **{string}.file_Parent_Folder**
+* **{path}.file_Dir_Name**
 * **{path}.file_Name_Without_Extension**
 * **{path}.file_Name()** - extracts last part of the path (same as ***path.basename({path}***)
 * **{path}.file_Names()** - extracts last part of the path (uses ***{path}.file_Name()***)
+* **{string}.file_Parent_Folder**
 
 ####  fluent-object
 * **{object}.call_Function({function})** calls function with current object passed the first parameter

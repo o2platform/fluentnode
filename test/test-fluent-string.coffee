@@ -65,7 +65,7 @@ describe 'fluent-string',->
         'a.b.c'.before('.').assert_Is('a'    )
     
         
-    it.only 'before_Last',->
+    it 'before_Last',->
         value.before_Last.assert_Is_Function()
         value.before_Last('3'  ).assert_Is('abc12')
         value.before_Last('2'  ).assert_Is('abc1' )
