@@ -52,3 +52,14 @@ describe 'fluent-object',->
             'd'
         {'a'}.call_Function.assert_Is_Function()
         {'a'}.call_Function(check_Call_Param, 'b', 'c').assert_Is('d')
+        
+    it 'repl_Me',(done)->
+        anObject = {a : 'an value' , b :2}
+        anObject.repl_Me.assert_Is_Function()
+        
+        replMe = anObject.repl_Me done
+        replMe.assert_Is_Object()
+        replMe.context.that.assert_Is(anObject)
+        replMe.rli.close()
+        
+        

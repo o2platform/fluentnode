@@ -137,6 +137,7 @@ npm install fluentnode --save
 * **{object}.json_inspect()** - same as util.inspect({object})   (handles circlar references)
 * **{object}.keys()**
 * **{object}.keys_All()**
+* **{object}.repl_Me(onExit)**  - starts an node('repl') with the {object} object mapped as the 'that' variable (inside the repl)
 * **{object}.str()**          - same as {object}.toString()
  
 ####  fluent-string

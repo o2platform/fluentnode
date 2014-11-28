@@ -44,6 +44,18 @@ Object.defineProperty Object.prototype, 'call_Function',
         callParams.push param for param in params
         return method.apply(null,callParams)
 
+Object.defineProperty Object.prototype, 'repl_Me',
+    enumerable  : false,
+    writable    : true,
+    value: (onExit)->
+        repl = require('repl')
+        replServer = repl.start {prompt: '[fluentnode] repl> '}
+        replServer.context.that = @
+        replServer.context.replServer = replServer
+        replServer.on 'exit', ->
+          onExit()
+        replServer
+
 #This is how they were done originally (which broke a lot of things)
 #Object::str          = -> @.toString()
 #Object::json         = -> JSON.stringify(@)
