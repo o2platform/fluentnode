@@ -115,6 +115,17 @@ npm install fluentnode --save
 * **{string}.files(extension)**    - list of files from folder with extension (returns full path)
 * **{string}.folders()**           - list of folders from folder (returns full path)
 
+####  fluent-http
+* **{server}.add_Sockets_Close_Suport()**
+* **{server}.close_And_Destroy_Sockets()**
+* **{server}.listen_OnPort_Saying()**
+* **{server}.respond_With_String_As_Text()**
+* **{server}.respond_With_Object_As_Json()**
+* **{string}.http_Status()**
+* **{string}.http_GET()**
+* **{string}.GET()**
+* **{string}.GET_Json()**
+
 ####  fluent-number
 * **{number}.random_String()**
 * **{number}.random_Letters()**

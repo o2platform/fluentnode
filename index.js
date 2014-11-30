@@ -7,6 +7,7 @@ require('./src/fluent-array'    );
 require('./src/fluent-assert'   );
 require('./src/fluent-boolean'  );
 require('./src/fluent-console'  );
+require('./src/fluent-http'     );
 require('./src/fluent-fs'       );
 require('./src/fluent-function' );
 require('./src/fluent-number'   );
