@@ -51,6 +51,33 @@ describe 'fluent-string',->
             (-> charSet_Numbers.assert_Contains(char)).assert_Not_Throws()
             (-> charSet_Letters.assert_Contains(char)).assert_Throws()
 
+    it 'after',->
+        value.after.assert_Is_Function()
+        value.after('3'  ).assert_Is(''     )
+        value.after('2'  ).assert_Is('3'    )
+        value.after('123').assert_Is(''     )
+        value.after('b'  ).assert_Is('c123' )
+        value.after('bc1').assert_Is('23'   )
+        value.after('xxx').assert_Is(''     )
+        value.after(null ).assert_Is(''     )
+        'abb'.after('b'  ).assert_Is('b'    )
+        'a.b'.after('.'  ).assert_Is('b'    )
+        'a.b.c'.after('.').assert_Is('b.c'  )
+    
+        
+    it 'after_Last',->
+        value.after_Last.assert_Is_Function()
+        value.after_Last('3'  ).assert_Is(''     )
+        value.after_Last('2'  ).assert_Is('3'    )
+        value.after_Last('123').assert_Is(''     )
+        value.after_Last('b'  ).assert_Is('c123' )
+        value.after_Last('bc1').assert_Is('23'   )
+        value.after_Last('xxx').assert_Is(''     )
+        value.after_Last(null ).assert_Is(''     )
+        'abb'.after_Last('b'  ).assert_Is(''     )
+        'a.b'.after_Last('.'  ).assert_Is('b'    )
+        'a.b.c'.after_Last('.').assert_Is('c'    )
+        
     it 'before',->
         value.before.assert_Is_Function()
         value.before('3'  ).assert_Is('abc12')
