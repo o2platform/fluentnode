@@ -150,7 +150,12 @@ npm install fluentnode --save
 * **{object}.keys_All()**
 * **{object}.repl_Me(onExit)**  - starts an node('repl') with the {object} object mapped as the 'that' variable (inside the repl)
 * **{object}.str()**          - same as {object}.toString()
- 
+
+####  fluent-process_Name
+* **{string}.start_Process(args...)**
+* **{string}.start_Process_Redirect_Console(args...)**
+* **{string}.start_Process(args..., callback)**
+
 ####  fluent-string
 * **{string}.append({stringToAppend})**              - same as {string} + {stringToAppend}
 * **{string}.add_5_Random_Letters()**

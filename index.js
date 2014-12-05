@@ -13,4 +13,5 @@ require('./src/fluent-function' );
 require('./src/fluent-number'   );
 require('./src/fluent-object'   );
 require('./src/fluent-path'     );
+require('./src/fluent-process'  );
 require('./src/fluent-string'   );
