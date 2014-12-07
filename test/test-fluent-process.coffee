@@ -16,7 +16,7 @@ describe 'fluent-process',->
         childProcess = 'ls'.start_Process_Redirect_Console('.')
         childProcess.on 'exit', ->
             console.log 'process ended'
-            log_Messages.first() .assert_Is('LICENSE\nREADME.md\nindex.js\nnode_modules\npackage.json\nsrc\ntest')
+            log_Messages.first() .assert_Contains('README.md')
             log_Messages.second().assert_Is('process ended')
             console.log = original_log
             done()
