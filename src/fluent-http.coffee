@@ -67,6 +67,8 @@ String::GET = (callback) ->
 
 String::GET_Json = (callback) ->
   @.http_GET (error, data, res)-> callback(JSON.parse(data))
+
+
   
 ###options = 
     hostname: @,

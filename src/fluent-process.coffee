@@ -17,6 +17,7 @@ String::start_Process_Capture_Console_Out =  (args..., callback)->
     childProcess.stdout.on 'data', (data)->consoleData+=data
     childProcess.stderr.on 'data', (data)->consoleData+=data
     childProcess.on 'exit', ()->
-      callback(consoleData)
+      process.nextTick ()->
+        callback(consoleData)
     return childProcess
     
