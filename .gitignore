@@ -3,3 +3,6 @@ node_modules
 
 # Cloud9 temp files
 .c9
+.idea
+npm-debug.log
+docs

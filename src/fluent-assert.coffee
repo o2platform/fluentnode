@@ -9,13 +9,18 @@ Array::assert_Is_Array              = (message)->
                                           #assert.equal(typeof(@), 'array', message)     # this doesn't work
                                           @
 Array::assert_Contains              = (value, message)->
-                                         message = message || "[assert_Contains]"
-                                         @.contains(value).assert_Is_True(message)
-                                         @
+                                          message = message || "[assert_Contains]"
+                                          if value instanceof Array
+                                             for item in value
+                                                @.contains(item).assert_Is_True(message)
+                                          else
+                                            message = message || "[assert_Contains]"
+                                            @.contains(value).assert_Is_True(message)
+                                          @
 Array::assert_Empty                 = (value, message)->
-                                         message = message || "[assert_Empty]"
-                                         @assert_Size_Is(0, message)
-                                         @
+                                          message = message || "[assert_Empty]"
+                                          @assert_Size_Is(0, message)
+                                          @
 Array::assert_Not_Contains          = (value, message)->
                                          message = message || "[assert_Contains]"
                                          @.not_Contains(value).assert_Is_True(message)
