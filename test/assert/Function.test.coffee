@@ -1,4 +1,4 @@
-require('../../src/assert/Function')
+require('../../src/assert/assert_Function')
 
 describe 'Assert | Function', ->
   it 'assert_Throws', ->

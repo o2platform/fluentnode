@@ -1,6 +1,6 @@
-require('../../src/assert/Array')
-require('../../src/assert/Function')
-require('../../src/assert/Object')
+require('../../src/assert/assert_Array')
+require('../../src/assert/assert_Function')
+require('../../src/assert/assert_Object')
 
 assert = require 'assert'
 

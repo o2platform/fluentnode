@@ -1,4 +1,4 @@
-require('../../src/assert/Object')
+require('../../src/assert/assert_Object')
 
 describe 'Assert | Object', ->
   it 'assert_Is_Equal_To, assert_Is', ->

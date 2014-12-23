@@ -3,10 +3,10 @@ back to [main](../fluent.html)
 dependencies
 
     assert = require('assert')
-    require './Boolean'
-    require './Function'
-    require './Number'
-    require './String'
+    require './assert_Boolean'
+    require './assert_Function'
+    require './assert_Number'
+    require './assert_String'
     require '../Array'
     require '../String'
 

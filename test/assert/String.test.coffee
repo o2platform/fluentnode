@@ -1,4 +1,4 @@
-require('../../src/assert/String')
+require('../../src/assert/assert_String')
 
 describe 'Assert | String', ->
   it 'assert_Contains', ->

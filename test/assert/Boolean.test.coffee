@@ -1,4 +1,4 @@
-require('../../src/assert/Boolean')
+require('../../src/assert/assert_Boolean')
 
 describe 'Assert | Boolean.test',->
   it 'assert_Is_True', ->
