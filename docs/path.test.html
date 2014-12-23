@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>path.test.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="Array.test.html">
+                Array.test.coffee
+              </a>
+            
+              
+              <a class="source" href="Boolean.test.html">
+                Boolean.test.coffee
+              </a>
+            
+              
+              <a class="source" href="Function.test.html">
+                Function.test.coffee
+              </a>
+            
+              
+              <a class="source" href="Number.test.html">
+                Number.test.coffee
+              </a>
+            
+              
+              <a class="source" href="Object.test.html">
+                Object.test.coffee
+              </a>
+            
+              
+              <a class="source" href="String.test.html">
+                String.test.coffee
+              </a>
+            
+              
+              <a class="source" href="console.test.html">
+                console.test.coffee
+              </a>
+            
+              
+              <a class="source" href="fs.test.html">
+                fs.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.test.html">
+                http.test.coffee
+              </a>
+            
+              
+              <a class="source" href="path.test.html">
+                path.test.coffee
+              </a>
+            
+              
+              <a class="source" href="process.test.html">
+                process.test.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>path.test.coffee</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/path'</span>)
+expect     = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chai'</span>).expect
+
+describe <span class="hljs-string">'path'</span>,<span class="hljs-function">-&gt;</span>
+
+    it <span class="hljs-string">'path_Combine'</span>, <span class="hljs-function">-&gt;</span>
+        expect(<span class="hljs-string">""</span>.path_Combine  ).to.be.an(<span class="hljs-string">'function'</span>)
+        expect(<span class="hljs-string">""</span>.path_Combine()).to.be.an(<span class="hljs-string">'string'</span>)
+        
+        expect(<span class="hljs-string">""</span>   .path_Combine()).to.equal(<span class="hljs-string">''</span>)
+        expect(<span class="hljs-string">"abc"</span>.path_Combine()).to.equal(<span class="hljs-string">'abc'</span>)
+        expect(<span class="hljs-string">"abc"</span>.path_Combine(<span class="hljs-string">'def'</span>)).to.equal(<span class="hljs-string">'abc/def'</span>)
+
+    it <span class="hljs-string">'path_Combine , file_Parent_Folder'</span>, <span class="hljs-function">-&gt;</span>
+        <span class="hljs-string">''</span>.file_Dir_Name.assert_Is_Function()
+        <span class="hljs-string">'.'</span>.fullPath().path_Combine(<span class="hljs-string">'aaaa'</span>)
+                     .file_Dir_Name().assert_Is(<span class="hljs-string">"."</span>.fullPath())
+        <span class="hljs-string">'/abc/def/123.txt'</span>.file_Parent_Folder().assert_Is(<span class="hljs-string">'/abc/def'</span>)
+
+    it <span class="hljs-string">'append_To_Process_Cwd_Path'</span>, <span class="hljs-function">-&gt;</span>
+        expect(<span class="hljs-string">""</span>           .append_To_Process_Cwd_Path  ).to.be.an(<span class="hljs-string">'function'</span>)
+        expect(<span class="hljs-string">""</span>           .append_To_Process_Cwd_Path()).to.equal(process.cwd())
+        expect(<span class="hljs-string">"abc"</span>        .append_To_Process_Cwd_Path()).to.equal(process.cwd() + <span class="hljs-string">'/abc'</span>        )
+        expect(<span class="hljs-string">"abc.txt"</span>    .append_To_Process_Cwd_Path()).to.equal(process.cwd() + <span class="hljs-string">'/abc.txt'</span>    )
+        expect(<span class="hljs-string">"abc/aaa.txt"</span>.append_To_Process_Cwd_Path()).to.equal(process.cwd() + <span class="hljs-string">'/abc/aaa.txt'</span>)
+
+    it <span class="hljs-string">'file_Extension'</span>, <span class="hljs-function">-&gt;</span>
+        expect(<span class="hljs-string">""</span>.file_Extension  ).to.be.an(<span class="hljs-string">'function'</span>)
+        expect(<span class="hljs-string">""</span>.file_Extension()).to.be.an(<span class="hljs-string">'string'</span>)
+
+        expect(<span class="hljs-string">"index.html"</span>    .file_Extension()).to.equal(<span class="hljs-string">'.html'</span>)
+        expect(<span class="hljs-string">"index.abc.html"</span>.file_Extension()).to.equal(<span class="hljs-string">'.html'</span>)
+        expect(<span class="hljs-string">"index."</span>        .file_Extension()).to.equal(<span class="hljs-string">'.'</span>)
+        expect(<span class="hljs-string">"index"</span>         .file_Extension()).to.equal(<span class="hljs-string">''</span>)
+
+    it <span class="hljs-string">'file_Name'</span>, <span class="hljs-function">-&gt;</span>
+        expect(<span class="hljs-string">''</span>        .file_Name  ).to.be.an(<span class="hljs-string">'function'</span>)
+        expect(<span class="hljs-string">''</span>        .file_Name()).to.equal(<span class="hljs-string">''</span>)
+        expect(<span class="hljs-string">'/a/b'</span>    .file_Name()).to.equal(<span class="hljs-string">'b'</span>)
+        expect(<span class="hljs-string">'/a/b/c'</span>  .file_Name()).to.equal(<span class="hljs-string">'c'</span>)
+        expect(<span class="hljs-string">'/a/b.txt'</span>.file_Name()).to.equal(<span class="hljs-string">'b.txt'</span>)
+
+    it <span class="hljs-string">'file_Name_Without_Extension'</span>, <span class="hljs-function">-&gt;</span>
+        expect(<span class="hljs-string">''</span>        .file_Name_Without_Extension  ).to.be.an(<span class="hljs-string">'function'</span>)
+        expect(<span class="hljs-string">''</span>        .file_Name_Without_Extension()).to.equal(<span class="hljs-string">''</span>  )
+        expect(<span class="hljs-string">'/a/b'</span>    .file_Name_Without_Extension()).to.equal(<span class="hljs-string">'b'</span> )
+        expect(<span class="hljs-string">'/a/b..c'</span> .file_Name_Without_Extension()).to.equal(<span class="hljs-string">'b.'</span>)
+        expect(<span class="hljs-string">'/a/b.txt'</span>.file_Name_Without_Extension()).to.equal(<span class="hljs-string">'b'</span> )
+
+    it <span class="hljs-string">'file_Names'</span>, <span class="hljs-function">-&gt;</span>
+        source = [<span class="hljs-string">'/a/b'</span>,<span class="hljs-string">'/a/b/'</span>, <span class="hljs-string">'/a/b/c'</span>, <span class="hljs-string">'/a/d/f.txt'</span>]
+        result = [<span class="hljs-string">'b'</span>   ,<span class="hljs-string">'b'</span>    , <span class="hljs-string">'c'</span>     , <span class="hljs-string">'f.txt'</span>     ]
+        expect(source.file_Names  ).to.be.an(<span class="hljs-string">'function'</span>)
+        expect(source.file_Names()).to.deep.equal(result)
+
+    it <span class="hljs-string">'file_Names_Without_Extension'</span>, <span class="hljs-function">-&gt;</span>
+        source = [<span class="hljs-string">'/a/b'</span>,<span class="hljs-string">'/a/b/'</span>, <span class="hljs-string">'/a/b/c'</span>, <span class="hljs-string">'/a/d/f.txt'</span>]
+        result = [<span class="hljs-string">'b'</span>   ,<span class="hljs-string">'b'</span>    , <span class="hljs-string">'c'</span>     , <span class="hljs-string">'f'</span>     ]
+        expect(source.file_Names_Without_Extension  ).to.be.an(<span class="hljs-string">'function'</span>)
+        expect(source.file_Names_Without_Extension()).to.deep.equal(result)</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

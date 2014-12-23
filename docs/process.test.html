@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>process.test.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="Array.test.html">
+                Array.test.coffee
+              </a>
+            
+              
+              <a class="source" href="Boolean.test.html">
+                Boolean.test.coffee
+              </a>
+            
+              
+              <a class="source" href="Function.test.html">
+                Function.test.coffee
+              </a>
+            
+              
+              <a class="source" href="Number.test.html">
+                Number.test.coffee
+              </a>
+            
+              
+              <a class="source" href="Object.test.html">
+                Object.test.coffee
+              </a>
+            
+              
+              <a class="source" href="String.test.html">
+                String.test.coffee
+              </a>
+            
+              
+              <a class="source" href="console.test.html">
+                console.test.coffee
+              </a>
+            
+              
+              <a class="source" href="fs.test.html">
+                fs.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.test.html">
+                http.test.coffee
+              </a>
+            
+              
+              <a class="source" href="path.test.html">
+                path.test.coffee
+              </a>
+            
+              
+              <a class="source" href="process.test.html">
+                process.test.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>process.test.coffee</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/process'</span>)
+<span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/Array'</span>)
+
+describe <span class="hljs-string">'process'</span>,<span class="hljs-function">-&gt;</span>
+    it <span class="hljs-string">'start_Process'</span>, <span class="hljs-function">-&gt;</span>
+        <span class="hljs-string">''</span>.start_Process.assert_Is_Function()
+        <span class="hljs-string">'echo'</span>.start_Process().assert_Is_Object()
+                            .constructor.name.assert_Is(<span class="hljs-string">'ChildProcess'</span>)
+        <span class="hljs-string">'echo'</span>.start_Process().pid.assert_Is_Number()
+    
+    it <span class="hljs-string">'start_Process_Redirect_Console'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+        original_log = <span class="hljs-built_in">console</span>.log
+        log_Messages = []
+        <span class="hljs-built_in">console</span>.log  = <span class="hljs-function"><span class="hljs-params">(logMsg)</span>-&gt;</span> log_Messages.push(logMsg)
+        
+        childProcess = <span class="hljs-string">'ls'</span>.start_Process_Redirect_Console(<span class="hljs-string">'.'</span>)
+        childProcess.<span class="hljs-literal">on</span> <span class="hljs-string">'exit'</span>, <span class="hljs-function">-&gt;</span>
+            <span class="hljs-built_in">console</span>.log <span class="hljs-string">'process ended'</span>
+            log_Messages.first() .assert_Contains(<span class="hljs-string">'README.md'</span>)
+            log_Messages.second().assert_Is(<span class="hljs-string">'process ended'</span>)
+            <span class="hljs-built_in">console</span>.log = original_log
+            done()
+    
+    it <span class="hljs-string">'String::start_Process_Capture_Console_Out'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+<span class="hljs-function">        
+        <span class="hljs-title">runTest</span> = <span class="hljs-params">(testData,next)</span>-&gt;</span>
+            name          = testData.process_Name
+            parameter     = testData.process_Parameter
+            expected_Data = testData.expected_Data
+            name.start_Process_Capture_Console_Out parameter, <span class="hljs-function"><span class="hljs-params">(data)</span>-&gt;</span>
+                data.assert_Is(expected_Data)
+                next()
+<span class="hljs-function">        
+        <span class="hljs-title">runTests</span> = <span class="hljs-params">(testsData, next)</span>-&gt;</span>
+            <span class="hljs-keyword">if</span> testsData.empty() 
+                next() 
+            <span class="hljs-keyword">else</span> 
+                runTest testsData.pop(), <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span> runTests(testsData, next)
+        
+        testsData = [
+                        {<span class="hljs-attribute">process_Name</span>: <span class="hljs-string">'echo'</span> , <span class="hljs-attribute">process_Parameter</span>: <span class="hljs-string">'hello'</span>       , <span class="hljs-attribute">expected_Data</span>:<span class="hljs-string">'hello\n'</span> }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>travis and cloud9 sometimes failed on a couple of these (not in an consistent/repeatable way)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                        <span class="hljs-comment">#{process_Name: 'echo' , process_Parameter: ['hello','me'], expected_Data:'hello,me\n' }</span>
+                        <span class="hljs-comment">#{process_Name: 'echo' , process_Parameter: []            , expected_Data:'\n' }</span>
+                        <span class="hljs-comment">#{process_Name: 'echo' , process_Parameter: [null]        , expected_Data:'\n' }</span>
+                        <span class="hljs-comment">#{process_Name: 'git'  , process_Parameter: ['xyz'       ], expected_Data:'git: \'xyz\' is not a git command. See \'git --help\'.\n' }</span>
+                        <span class="hljs-comment">#{process_Name: 'ls'   , process_Parameter: '.'           , expected_Data:'LICENSE\nREADME.md\nindex.js\nnode_modules\npackage.json\nsrc\ntest\n' }</span>
+                        <span class="hljs-comment">#{process_Name: 'ls'   , process_Parameter: null          , expected_Data:'ls: cannot access : No such file or directory\n' }</span>
+                    ]    
+        
+        runTests(testsData, done)</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

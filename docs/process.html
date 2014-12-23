@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>process.litcoffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="Array.html">
+                Array.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Boolean.html">
+                Boolean.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Function.html">
+                Function.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Number.html">
+                Number.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Object.html">
+                Object.litcoffee
+              </a>
+            
+              
+              <a class="source" href="String.html">
+                String.litcoffee
+              </a>
+            
+              
+              <a class="source" href="console.html">
+                console.litcoffee
+              </a>
+            
+              
+              <a class="source" href="fluent.html">
+                fluent.litcoffee
+              </a>
+            
+              
+              <a class="source" href="fs.html">
+                fs.litcoffee
+              </a>
+            
+              
+              <a class="source" href="http.html">
+                http.litcoffee
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="path.html">
+                path.litcoffee
+              </a>
+            
+              
+              <a class="source" href="process.html">
+                process.litcoffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>process.litcoffee</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <p>back to <a href="fluent.html">main</a></p>
+<p>dependencies</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>child_process = <span class="hljs-built_in">require</span>(<span class="hljs-string">'child_process'</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p><strong>String::start_Process</strong> args…</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::start_Process = <span class="hljs-function"><span class="hljs-params">(args...)</span>-&gt;</span>
+  args ?= []
+  <span class="hljs-keyword">if</span> args.first() <span class="hljs-keyword">instanceof</span> Array
+    args = args.first()
+  <span class="hljs-keyword">return</span> child_process.spawn(@.str(),args)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p><strong>String::start_Process_Redirect_Console</strong> args…</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::start_Process_Redirect_Console = <span class="hljs-function"><span class="hljs-params">(args...)</span>-&gt;</span>
+  args ?= []
+  childProcess = @.start_Process(args)
+  childProcess.stdout.<span class="hljs-literal">on</span> <span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-params">(data)</span>-&gt;</span><span class="hljs-built_in">console</span>.log(data.str().trim())
+  childProcess.stderr.<span class="hljs-literal">on</span> <span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-params">(data)</span>-&gt;</span><span class="hljs-built_in">console</span>.log(data.str().trim())
+  <span class="hljs-keyword">return</span> childProcess</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p><strong>String::start_Process_Capture_Console_Out</strong> args…, callback</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::start_Process_Capture_Console_Out =  <span class="hljs-function"><span class="hljs-params">(args..., callback)</span>-&gt;</span>
+    consoleData = <span class="hljs-string">""</span>
+    childProcess = @.start_Process(args)
+    childProcess.stdout.<span class="hljs-literal">on</span> <span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-params">(data)</span>-&gt;</span>consoleData+=data
+    childProcess.stderr.<span class="hljs-literal">on</span> <span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-params">(data)</span>-&gt;</span>consoleData+=data
+    childProcess.<span class="hljs-literal">on</span> <span class="hljs-string">'exit'</span>, <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
+      process.nextTick ()-&gt;
+        callback(consoleData)
+    <span class="hljs-keyword">return</span> childProcess</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
