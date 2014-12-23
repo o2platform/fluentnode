@@ -2,7 +2,7 @@
 
 
 require('../src/fluent-array')
-require('../src/assert/fluent-assert')
+#require('../src/assert/fluent-assert')
 expect     = require('chai').expect
 
 describe 'fluent-array',->

@@ -3,6 +3,10 @@ back to [main](../fluent.html)
 dependencies
 
     assert = require('assert')
+    require './Boolean'
+    require './Function'
+    require './Number'
+    require './String'
 
 **Array::assert_Is_Array([message])**
 
@@ -24,6 +28,9 @@ dependencies
         message = message || "[assert_Contains]"
         @.contains(value).assert_Is_True(message)
       @
+
+**Array::assert_Empty**
+
     Array::assert_Empty                 = (value, message)->
       message = message || "[assert_Empty]"
       @assert_Size_Is(0, message)

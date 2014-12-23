@@ -1,5 +1,5 @@
 require('../src/fluent-http')
-require('../src/assert/fluent-assert')
+#require('../src/assert/fluent-assert')
 require('../src/fluent-number')
 
 http = require 'http'

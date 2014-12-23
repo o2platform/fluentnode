@@ -1,5 +1,5 @@
 require('../src/fluent-number')
-require('../src/assert/fluent-assert')
+#require('../src/assert/fluent-assert')
 
 describe 'fluent-number',->
 

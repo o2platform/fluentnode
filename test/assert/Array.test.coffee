@@ -1,7 +1,11 @@
 require('../../src/assert/Array')
-require('../../src/assert/fluent-assert')
+require('../../src/assert/Function')
+require('../../src/assert/Object')
 
-describe.only 'Array',->
+assert = require 'assert'
+
+describe 'Assert | Array',->
+  
   it 'assert_Is_Array', ->
     [].assert_Is_Array.assert_Is_Function()
     [].assert_Is_Array().assert_Is_Equal_To({})
