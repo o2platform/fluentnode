@@ -1,6 +1,8 @@
 dependencies
 
     assert = require 'assert'
+    require '../Boolean'
+    require '../fs'
 
 **String::assert_Contains(target)**
 

@@ -1,6 +1,5 @@
-require('../src/fluent-object')
-#require('../src/assert/fluent-assert')
-require('../src/fluent-function')
+require('../src/Object')
+require('../src/Function')
 
 class Abc
   constructor: ->
@@ -14,7 +13,7 @@ class Abc
     @value
 
 
-describe 'fluent-function',->
+describe 'Function',->
 
   it 'ctor',->
     Abc.assert_Is_Function().ctor().assert_Is_Object()

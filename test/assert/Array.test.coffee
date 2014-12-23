@@ -5,7 +5,7 @@ require('../../src/assert/Object')
 assert = require 'assert'
 
 describe 'Assert | Array',->
-  
+
   it 'assert_Is_Array', ->
     [].assert_Is_Array.assert_Is_Function()
     [].assert_Is_Array().assert_Is_Equal_To({})

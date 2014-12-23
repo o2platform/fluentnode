@@ -1,7 +1,7 @@
-require('../src/fluent-path')
+require('../src/path')
 expect     = require('chai').expect
 
-describe 'fluent-path',->
+describe 'path',->
 
     it 'path_Combine', ->
         expect("".path_Combine  ).to.be.an('function')

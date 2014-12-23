@@ -1,7 +1,6 @@
-require('../src/fluent-number')
-#require('../src/assert/fluent-assert')
+require('../src/Number')
 
-describe 'fluent-number',->
+describe 'Number',->
 
   it 'random_String',->
     (0).random_String.assert_Is_Function()

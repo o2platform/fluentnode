@@ -1,10 +1,9 @@
-require('../src/fluent-http')
-#require('../src/assert/fluent-assert')
-require('../src/fluent-number')
+require('../src/http')
+require('../src/Number')
 
 http = require 'http'
 
-describe 'test fluent-http',->
+describe 'http',->
   test_Port = 45566 + Math.floor((Math.random() * 100) + 1)
   test_Ip   = '127.0.0.1'
   test_Data = 'hello from web'

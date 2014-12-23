@@ -1,8 +1,8 @@
-require('../src/fluent-console')
-require('../src/fluent-array')
+require('../src/console')
+require('../src/Array')
 expect     = require('chai').expect
 
-describe 'fluent-console',->
+describe 'console',->
     
     original_log = null
     log_Messages = null

@@ -1,11 +1,11 @@
 #back to [main](fluent.html)
 require('../src/assert/Array')
-require('../src/fluent-string')
-require('../src/fluent-path')
-require('../src/fluent-fs')
+require('../src/String')
+require('../src/path')
+require('../src/fs')
 expect     = require('chai').expect
 
-describe 'fluent-fs',->
+describe 'fs',->
 
   it 'folder_Create and folder_Delete' , ->
     tmpDir = "./".temp_Name_In_Folder()
@@ -38,16 +38,16 @@ describe 'fluent-fs',->
     expect(file_Name.file_Delete()).to.be.true
 
   it 'file_Exists' , ->
-    expect(''.file_Exists).to.be.an('function')
-    expect('.git'      .file_Exists()).to.be.true
-    expect('./index.js'.file_Exists()).to.be.true
-    expect('./aaa.js'  .file_Exists()).to.be.false
+    ''.file_Exists.assert_Is_Function()
+    '.git'          .file_Exists().assert_Is_True()
+    './src/index.js'.file_Exists().assert_Is_True()
+    './aaa.js'      .file_Exists().assert_Is_False()
 
   it 'file_Not_Exists' , ->
-    expect(''.file_Not_Exists).to.be.an('function')
-    expect('.git'      .file_Not_Exists()).to.be.false
-    expect('./index.js'.file_Not_Exists()).to.be.false
-    expect('./aaa.js'  .file_Not_Exists()).to.be.true
+    ''.file_Not_Exists.assert_Is_Function()
+    '.git'      .file_Not_Exists().assert_Is_False()
+    './index.js'.file_Not_Exists().assert_Is_True()
+    './aaa.js'  .file_Not_Exists().assert_Is_True()
 
   it 'file_Write',->
     content = (20).random_Letters()
@@ -60,7 +60,7 @@ describe 'fluent-fs',->
   it 'files' , ->
     expect(''.files).to.be.an('function')
     files = './'.files().filter (file) -> file isnt '.DS_Store'.realPath()
-    expectedFiles = (file.realPath() for file in '.gitignore,.travis.yml,LICENSE,README.md,index.js,package.json'.split(','))
+    expectedFiles = (file.realPath() for file in '.gitignore,.travis.yml,LICENSE,README.md,package.json'.split(','))
     files.assert_Contains(expectedFiles)
     expect('./'.files('.yml' )).to.deep.equal(['.travis.yml'.realPath()])
     expect('./'.files('.json')).to.deep.equal(['package.json'.realPath()])
@@ -68,7 +68,7 @@ describe 'fluent-fs',->
   it 'files_Recursive' , ->
     ''.files_Recursive.assert_Is_Function()
     './src'.files_Recursive().assert_Size_Is_Bigger_Than(9)
-                             .assert_Contains('./src/fluent-fs.coffee'.fullPath())
+                             .assert_Contains('./src/fs.coffee'.fullPath())
     tmpFile = './src'.fullPath().path_Combine('_temp_file.abcd').file_Write((20).random_Letters())
     './src'.files_Recursive('.abcd').assert_Size_Is(1)
                                     .first().assert_Is(tmpFile)
@@ -78,11 +78,7 @@ describe 'fluent-fs',->
     expect(''.folders).to.be.an('function')
     folders = (folder for folder in './'.folders() when folder.not_Contains('.c9'))             #handle scenario when we coded inside Cloud9 IDE 
     expectedFolders = (folder.realPath() for folder in '.git,src,test'.split(','))
-    console.log expectedFolders
-    console.log folders
-    #for expectedFolder in expectedFolders
     folders.assert_Contains(expectedFolders)
-    #expect(folders).to.deep.equal(expectedFolders)
 
   it 'is_Folder', ->
     expect(''.is_Folder).to.be.an('function')

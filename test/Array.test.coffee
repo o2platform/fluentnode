@@ -1,11 +1,11 @@
 #back to [main](fluent.html)
 
 
-require('../src/fluent-array')
-#require('../src/assert/fluent-assert')
+require('../src/Array')
+
 expect     = require('chai').expect
 
-describe 'fluent-array',->
+describe 'Array',->
     
     it 'add',->
         [       ].add.assert_Is_Function()

@@ -1,8 +1,8 @@
-require('../src/fluent-object')
-require('../src/fluent-console')
+require('../src/Object')
+require('../src/Console')
 expect     = require('chai').expect
 
-describe 'fluent-object',->
+describe 'Object',->
     
     it 'str',->
         expect(""    .str).to.be.an('Function')

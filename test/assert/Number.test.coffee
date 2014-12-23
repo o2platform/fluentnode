@@ -2,7 +2,7 @@ require('../../src/assert/Number')
 
 assert = require 'assert'
 
-describe 'Number', ->
+describe 'Assert | Number', ->
   it 'assert_Is_Equal_To, assert_Is',->
     (0).assert_Is_Equal_To.assert_Is_Function()
     (0).assert_Is_Equal_To(0)

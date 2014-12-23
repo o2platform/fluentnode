@@ -1,4 +1,4 @@
-require './fluent-path'
+require './path'
 
 fs = require('fs')
 

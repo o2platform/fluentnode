@@ -1,7 +1,7 @@
-require('../src/fluent-boolean')
+require('../src/Boolean')
 expect     = require('chai').expect
 
-describe 'fluent-boolean',->
+describe 'Boolean',->
 
   it 'is_True',->
     expect(true.is_True    ).to.be.an('Function')

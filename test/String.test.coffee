@@ -1,8 +1,7 @@
-#require('../src/assert/fluent-assert')
-require('../src/fluent-string')
+require('../src/String')
 expect = require('chai').expect
 
-describe 'fluent-string',->        
+describe 'String',->
     value = "abc123"  
     
     it 'append', ->              

@@ -1,7 +1,7 @@
-require('../src/fluent-process')
-require('../src/fluent-array')
+require('../src/process')
+require('../src/Array')
 
-describe 'fluent-process',->
+describe 'process',->
     it 'start_Process', ->
         ''.start_Process.assert_Is_Function()
         'echo'.start_Process().assert_Is_Object()

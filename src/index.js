@@ -12,15 +12,20 @@ require('coffee-script/register');
 
 // adding the multiple fluentnode files
 
-require('./fluent-array'    );
-require('./fluent-assert'   );
-require('./fluent-boolean'  );
-require('./fluent-console'  );
-require('./fluent-http'     );
-require('./fluent-fs'       );
-require('./fluent-function' );
-require('./fluent-number'   );
-require('./fluent-object'   );
-require('./fluent-path'     );
-require('./fluent-process'  );
-require('./fluent-string'   );
+require('./assert/Array'   );
+require('./assert/Boolean' );
+require('./assert/Function');
+require('./assert/Number'  );
+require('./assert/Object'  );
+require('./assert/String'  );
+require('./Array'    );
+require('./Boolean'  );
+require('./console'  );
+require('./http'     );
+require('./fs'       );
+require('./Function' );
+require('./Number'   );
+require('./Object'   );
+require('./path'     );
+require('./process'  );
+require('./String'   );
