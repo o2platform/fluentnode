@@ -5,15 +5,29 @@ similar to UnderscoreJS (except that FluentNode actualy extends the target Javas
 
 The method extensions/protototypes are included the following files (and tests):
 
-* [fluent-array](fluent-array.html) ([tests](test-fluent-array.html))
-* [fluent-assert](fluent-assert.html)
-* [fluent-boolean](fluent-boolean.html)
-* [fluent-console](fluent-console.html)
-* [fluent-fs](fluent-fs.html)
-* [fluent-function](fluent-function.html)
-* [fluent-http](fluent-http.html)
-* [fluent-number](fluent-number.html)
-* [fluent-object](fluent-object.html)
-* [fluent-path](fluent-path.html)
-* [fluent-process](fluent-process.html)
-* [fluent-string](fluent-string.html)
+####Core Javascript classes
+
+* [Array](Array.html) ([tests](Array.test.html))
+* [Boolean](Boolean.html)
+* [Function](Function.html)
+* [Number](Number.html)
+* [Object](Object.html)
+* [String](String.html)
+
+####Node classes
+
+* [console](console.html)
+* [fs](fs.html)
+* [http](http.html)
+* [path](path.html)
+* [process](process.html)
+
+####Assert helpers
+
+* [assert Array](assert_Array.html)
+* [assert Boolean](assert_Boolean.html)
+* [assert Function](assert_Function.html)
+* [assert Number](assert_Number.html)
+* [assert Object](assert_Object.html)
+* [assert String](assert_String.html)
+

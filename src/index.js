@@ -12,12 +12,12 @@ require('coffee-script/register');
 
 // adding the multiple fluentnode files
 
-require('./assert/Array'   );
-require('./assert/Boolean' );
-require('./assert/Function');
-require('./assert/Number'  );
-require('./assert/Object'  );
-require('./assert/String'  );
+require('./assert/assert_Array'   );
+require('./assert/assert_Boolean' );
+require('./assert/assert_Function');
+require('./assert/assert_Number'  );
+require('./assert/assert_Object'  );
+require('./assert/assert_String'  );
 require('./Array'    );
 require('./Boolean'  );
 require('./console'  );

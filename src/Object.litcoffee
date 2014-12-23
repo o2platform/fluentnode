@@ -1,3 +1,5 @@
+back to [main](fluent.html)
+
 These Object prototypes have to be written using Object.defineProperty so that we can set the
 enumerable value to false (otherwise 'for item of xyz' would include these methods)
 
@@ -10,6 +12,7 @@ Object.defineProperty Object.prototype, 'json',
     value: ->
         return JSON.stringify(@)
 ```
+
 
 **str**
 

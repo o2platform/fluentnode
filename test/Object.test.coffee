@@ -1,5 +1,5 @@
 require('../src/Object')
-require('../src/Console')
+require('../src/console')
 expect     = require('chai').expect
 
 describe 'Object',->

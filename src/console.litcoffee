@@ -1,3 +1,5 @@
+back to [main](fluent.html)
+
     Object.defineProperty Object.prototype, 'console_log',
         enumerable  : false,
         writable    : true,
