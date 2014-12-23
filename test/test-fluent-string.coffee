@@ -1,4 +1,4 @@
-require('../src/fluent-assert')
+require('../src/assert/fluent-assert')
 require('../src/fluent-string')
 expect = require('chai').expect
 

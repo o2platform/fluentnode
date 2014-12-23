@@ -1,5 +1,5 @@
 #back to [main](fluent.html)
-
+require('../src/assert/Array')
 require('../src/fluent-string')
 require('../src/fluent-path')
 require('../src/fluent-fs')
@@ -57,7 +57,7 @@ describe 'fluent-fs',->
            .file_Contents().assert_Is(content)
     tmpFile.file_Delete().assert_Is_True()
     
-  it.only 'files' , ->
+  it 'files' , ->
     expect(''.files).to.be.an('function')
     files = './'.files().filter (file) -> file isnt '.DS_Store'.realPath()
     expectedFiles = (file.realPath() for file in '.gitignore,.travis.yml,LICENSE,README.md,index.js,package.json'.split(','))

@@ -1,5 +1,5 @@
 require('../src/fluent-object')
-require('../src/fluent-assert')
+require('../src/assert/fluent-assert')
 require('../src/fluent-function')
 
 class Abc
