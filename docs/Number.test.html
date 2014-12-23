@@ -100,6 +100,18 @@
 
 describe <span class="hljs-string">'Number'</span>,<span class="hljs-function">-&gt;</span>
 
+  it <span class="hljs-string">'in_Between'</span>, <span class="hljs-function">-&gt;</span>
+    (<span class="hljs-number">10</span>).in_Between( <span class="hljs-number">5</span>,<span class="hljs-number">15</span>).assert_True()
+    (<span class="hljs-number">10</span>).in_Between(-<span class="hljs-number">5</span>,<span class="hljs-number">15</span>).assert_True()
+    (<span class="hljs-number">10</span>).in_Between(<span class="hljs-number">10</span>,<span class="hljs-number">15</span>).assert_False()
+    (<span class="hljs-number">10</span>).in_Between( <span class="hljs-number">5</span>,<span class="hljs-number">10</span>).assert_False()
+    (<span class="hljs-number">10</span>).in_Between(<span class="hljs-number">11</span>,<span class="hljs-number">10</span>).assert_False()
+    (<span class="hljs-number">10</span>).in_Between(<span class="hljs-number">11</span>,<span class="hljs-number">20</span>).assert_False()
+    (<span class="hljs-number">10</span>).in_Between( <span class="hljs-number">5</span>,-<span class="hljs-number">5</span>).assert_False()
+
+  it <span class="hljs-string">'invoke_After'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    (<span class="hljs-number">0</span>).invoke_After(done)
+
   it <span class="hljs-string">'random_String'</span>,<span class="hljs-function">-&gt;</span>
     (<span class="hljs-number">0</span>).random_String.assert_Is_Function()
     (<span class="hljs-number">0</span>).random_String().size().assert_Is_Equal_To(<span class="hljs-number">10</span>)
@@ -109,9 +121,7 @@ describe <span class="hljs-string">'Number'</span>,<span class="hljs-function">-
   it <span class="hljs-string">'str'</span>,<span class="hljs-function">-&gt;</span>
     (<span class="hljs-number">0</span>).str.assert_Is_Function()
     (<span class="hljs-number">0</span>).str().assert_Is(<span class="hljs-string">'0'</span>)
-    (<span class="hljs-number">9</span>).str().assert_Is(<span class="hljs-string">'9'</span>) 
-
-  it <span class="hljs-string">'asd'</span>,<span class="hljs-function">-&gt;</span></pre></div></div>
+    (<span class="hljs-number">9</span>).str().assert_Is(<span class="hljs-string">'9'</span>)</pre></div></div>
             
         </li>
         

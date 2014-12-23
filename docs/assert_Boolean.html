@@ -84,14 +84,14 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p><strong>Boolean::assert_Is_True([message])</strong></p>
+              <p>@.<strong>assert_False</strong> ([message])</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Boolean</span>::assert_Is_True             = <span class="hljs-function"><span class="hljs-params">(message)</span>-&gt;</span>
-  message = message|| <span class="hljs-string">"[assert_Is_True]"</span>
-  assert.equal(@, <span class="hljs-literal">true</span>, message)
-  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Boolean</span>::assert_False = <span class="hljs-function">-&gt;</span>
+  message = <span class="hljs-string">"[assert_Is_False]"</span>
+  assert.equal(@, <span class="hljs-literal">false</span>, message)
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></pre></div></div>
             
         </li>
         
@@ -102,14 +102,44 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p><strong>Boolean::assert_Is_False([message])</strong></p>
+              <p>@.<strong>assert_Is_False</strong> ([message])</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Boolean</span>::assert_Is_False            = <span class="hljs-function">-&gt;</span>
-  message = <span class="hljs-string">"[assert_Is_False]"</span>
-  assert.equal(@, <span class="hljs-literal">false</span>, message)
-  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Boolean</span>::assert_Is_False = <span class="hljs-attribute">Boolean</span>::assert_False</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>@.<strong>assert_Is_True</strong> ([message])</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Boolean</span>::assert_Is_True = <span class="hljs-function"><span class="hljs-params">(message)</span>-&gt;</span>
+  message = message|| <span class="hljs-string">"[assert_Is_True]"</span>
+  assert.equal(@, <span class="hljs-literal">true</span>, message)
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>@.<strong>assert_True</strong> ([message])</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Boolean</span>::assert_True = <span class="hljs-attribute">Boolean</span>::assert_Is_True</pre></div></div>
             
         </li>
         

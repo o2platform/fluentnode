@@ -1,3 +1,4 @@
+require('../src/assert/assert_Boolean')
 require('../src/Object')
 require('../src/Function')
 
@@ -32,3 +33,14 @@ describe 'Function',->
     abc.getValue_Inside_Abc.invoke().assert_Is('abc')
     abc.getValue_Inside_Abc.invoke().assert_Is(new Abc() .value)
     abc.getValue_Inside_Abc.invoke().assert_Is(Abc.ctor().value)
+
+  #we could make this test better by adding a check for measuring that the timeout amount is correct
+  it 'invoke_In', (done)->
+    done.invoke_In.assert_Is_Function()
+    done.invoke_In(0)
+
+  it 'sourceCode', () ->
+    test = ()-> return 12
+    test.assert_Is_Function()
+    test.sourceCode.assert_Is_Function()
+    test.sourceCode().assert_Is("function () {\n        return 12;\n      }")

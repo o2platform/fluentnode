@@ -23,6 +23,11 @@ describe 'console',->
         expect(log_Messages).to.deep.equal([ 'direct log msg', 'msg using extension method' ])
         expect(returnValue ).to.equal('msg using extension method')
 
+    it 'Number.log',->
+        expect((10).log).to.be.an('Function')
+        (10).log()
+        expect(log_Messages).to.deep.equal([ "10"])
+
     it '{string}.log', ->
         expect("".log).to.be.an('Function')
         "log using .log()".log()

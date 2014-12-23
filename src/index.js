@@ -29,3 +29,5 @@ require('./Object'   );
 require('./path'     );
 require('./process'  );
 require('./String'   );
+
+require('./_to_map_and_write_Tests');

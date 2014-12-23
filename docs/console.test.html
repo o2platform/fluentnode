@@ -121,6 +121,11 @@ describe <span class="hljs-string">'console'</span>,<span class="hljs-function">
         expect(log_Messages).to.deep.equal([ <span class="hljs-string">'direct log msg'</span>, <span class="hljs-string">'msg using extension method'</span> ])
         expect(returnValue ).to.equal(<span class="hljs-string">'msg using extension method'</span>)
 
+    it <span class="hljs-string">'Number.log'</span>,<span class="hljs-function">-&gt;</span>
+        expect((<span class="hljs-number">10</span>).log).to.be.an(<span class="hljs-string">'Function'</span>)
+        (<span class="hljs-number">10</span>).log()
+        expect(log_Messages).to.deep.equal([ <span class="hljs-string">"10"</span>])
+
     it <span class="hljs-string">'{string}.log'</span>, <span class="hljs-function">-&gt;</span>
         expect(<span class="hljs-string">""</span>.log).to.be.an(<span class="hljs-string">'Function'</span>)
         <span class="hljs-string">"log using .log()"</span>.log()

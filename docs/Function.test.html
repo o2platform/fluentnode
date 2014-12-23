@@ -96,7 +96,8 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/Object'</span>)
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/assert/assert_Boolean'</span>)
+<span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/Object'</span>)
 <span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/Function'</span>)
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Abc</span></span>
@@ -130,6 +131,29 @@ describe <span class="hljs-string">'Function'</span>,<span class="hljs-function"
     abc.getValue_Inside_Abc.invoke().assert_Is(<span class="hljs-string">'abc'</span>)
     abc.getValue_Inside_Abc.invoke().assert_Is(<span class="hljs-keyword">new</span> Abc() .value)
     abc.getValue_Inside_Abc.invoke().assert_Is(Abc.ctor().value)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>we could make this test better by adding a check for measuring that the timeout amount is correct</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  it <span class="hljs-string">'invoke_In'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    done.invoke_In.assert_Is_Function()
+    done.invoke_In(<span class="hljs-number">0</span>)
+
+  it <span class="hljs-string">'sourceCode'</span>, <span class="hljs-function"><span class="hljs-params">()</span> -&gt;</span>
+<span class="hljs-function">    <span class="hljs-title">test</span> = <span class="hljs-params">()</span>-&gt;</span> <span class="hljs-keyword">return</span> <span class="hljs-number">12</span>
+    test.assert_Is_Function()
+    test.sourceCode.assert_Is_Function()
+    test.sourceCode().assert_Is(<span class="hljs-string">"function () {\n        return 12;\n      }"</span>)</pre></div></div>
             
         </li>
         

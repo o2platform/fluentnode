@@ -49,6 +49,11 @@
               </a>
             
               
+              <a class="source" href="_to_map_and_write_Tests.html">
+                _to_map_and_write_Tests.litcoffee
+              </a>
+            
+              
               <a class="source" href="console.html">
                 console.litcoffee
               </a>
@@ -103,14 +108,107 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p>back to <a href="fluent.html">main</a></p>
+              <p>Adds helper methods to the native javascript Function class</p>
+<p><strong>Function::ctor</strong> params…</p>
+<p>Creates a new object from the parent function</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Function</span>::ctor   = <span class="hljs-function"><span class="hljs-params">(params...)</span>-&gt;</span> <span class="hljs-keyword">new</span> @(params...)
-<span class="hljs-attribute">Function</span>::invoke = <span class="hljs-function"><span class="hljs-params">(params...)</span>-&gt;</span> @.apply(<span class="hljs-literal">null</span>, params)    <span class="hljs-comment"># not sure where to the the this reference for the apply</span>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Function</span>::ctor   = <span class="hljs-function"><span class="hljs-params">(params...)</span>-&gt;</span>
+    <span class="hljs-keyword">new</span> @(params...)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p><strong>Function::invoke</strong> params…</p>
+<p>Invokes the function with the provided params. Note that the this object is set to null</p>
 
-<span class="hljs-attribute">Function</span>::<span class="hljs-keyword">new</span> = <span class="hljs-attribute">Function</span>::ctor</pre></div></div>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Function</span>::invoke = <span class="hljs-function"><span class="hljs-params">(params...)</span>-&gt;</span>
+    @.apply(<span class="hljs-literal">null</span>, params)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p><strong>Function::invoke_In</strong> value</p>
+<p>Invokes the function in <code>value</code> miliseconds</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Function</span>::invoke_In = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+    setTimeout @, value</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p><strong>Function::new</strong> params …</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Function</span>::<span class="hljs-keyword">new</span>    = <span class="hljs-attribute">Function</span>::ctor</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p><strong>Function::sourceCode</strong></p>
+<p>Returns the source code of the current function. This done using an easy trick which is usually not that obvious.
+All we have to do is to call the .toString() method of the function (another option is to append the function to a string <code>@ + &quot;&quot;</code>)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Function</span>::sourceCode = <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
+    @.toString()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <hr>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>back to <a href="fluent.html">index</a></p>
+
+            </div>
             
         </li>
         

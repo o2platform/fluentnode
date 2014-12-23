@@ -4,16 +4,27 @@ dependencies
 
     assert = require('assert')
 
-**Boolean::assert_Is_True([message])**
+@.**assert_False** ([message])
 
-    Boolean::assert_Is_True             = (message)->
+    Boolean::assert_False = ->
+      message = "[assert_Is_False]"
+      assert.equal(@, false, message)
+      return false
+
+
+@.**assert_Is_False** ([message])
+
+    Boolean::assert_Is_False = Boolean::assert_False
+
+
+@.**assert_Is_True** ([message])
+
+    Boolean::assert_Is_True = (message)->
       message = message|| "[assert_Is_True]"
       assert.equal(@, true, message)
       return true
 
-**Boolean::assert_Is_False([message])**
 
-    Boolean::assert_Is_False            = ->
-      message = "[assert_Is_False]"
-      assert.equal(@, false, message)
-      return false
+@.**assert_True** ([message])
+
+    Boolean::assert_True = Boolean::assert_Is_True
