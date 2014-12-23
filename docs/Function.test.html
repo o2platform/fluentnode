@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Function.test.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="Array.test.html">
+                Array.test.coffee
+              </a>
+            
+              
+              <a class="source" href="Boolean.test.html">
+                Boolean.test.coffee
+              </a>
+            
+              
+              <a class="source" href="Function.test.html">
+                Function.test.coffee
+              </a>
+            
+              
+              <a class="source" href="Number.test.html">
+                Number.test.coffee
+              </a>
+            
+              
+              <a class="source" href="Object.test.html">
+                Object.test.coffee
+              </a>
+            
+              
+              <a class="source" href="String.test.html">
+                String.test.coffee
+              </a>
+            
+              
+              <a class="source" href="console.test.html">
+                console.test.coffee
+              </a>
+            
+              
+              <a class="source" href="fs.test.html">
+                fs.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.test.html">
+                http.test.coffee
+              </a>
+            
+              
+              <a class="source" href="path.test.html">
+                path.test.coffee
+              </a>
+            
+              
+              <a class="source" href="process.test.html">
+                process.test.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>Function.test.coffee</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/Object'</span>)
+<span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/Function'</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Abc</span></span>
+  <span class="hljs-attribute">constructor</span>: <span class="hljs-function">-&gt;</span>
+    <span class="hljs-property">@value</span> = <span class="hljs-string">'abc'</span>
+    <span class="hljs-property">@aaaaa</span> = <span class="hljs-string">'abc'</span>
+
+  <span class="hljs-attribute">getValue</span>: <span class="hljs-function">-&gt;</span>
+    <span class="hljs-property">@value</span>
+
+  <span class="hljs-attribute">getValue_Inside_Abc</span>: <span class="hljs-function">=&gt;</span>
+    <span class="hljs-property">@value</span>
+
+
+describe <span class="hljs-string">'Function'</span>,<span class="hljs-function">-&gt;</span>
+
+  it <span class="hljs-string">'ctor'</span>,<span class="hljs-function">-&gt;</span>
+    Abc.assert_Is_Function().ctor().assert_Is_Object()
+                            .value.assert_Is(<span class="hljs-string">'abc'</span>)
+    Abc.ctor().str().assert_Is(<span class="hljs-keyword">new</span> Abc().str())
+    Abc.ctor().value.assert_Is_Not(<span class="hljs-string">'def'</span>)
+    ((<span class="hljs-keyword">new</span> Abc()).keys_All()).assert_Contains(<span class="hljs-string">'getValue'</span>)
+
+  it <span class="hljs-string">'invoke'</span>,<span class="hljs-function">-&gt;</span>
+    Abc.ctor().getValue.assert_Is_Function()
+    abc = <span class="hljs-keyword">new</span> Abc()
+    (abc.getValue()                   != <span class="hljs-literal">undefined</span>).assert_Is_True()
+    (abc.getValue.invoke()            == <span class="hljs-literal">undefined</span>).assert_Is_True()
+    (abc.getValue_Inside_Abc()        != <span class="hljs-literal">undefined</span>).assert_Is_True()
+    (abc.getValue_Inside_Abc.invoke() != <span class="hljs-literal">undefined</span>).assert_Is_True()
+    abc.getValue_Inside_Abc.invoke().assert_Is(<span class="hljs-string">'abc'</span>)
+    abc.getValue_Inside_Abc.invoke().assert_Is(<span class="hljs-keyword">new</span> Abc() .value)
+    abc.getValue_Inside_Abc.invoke().assert_Is(Abc.ctor().value)</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
