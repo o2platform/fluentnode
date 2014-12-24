@@ -1,5 +1,3 @@
-back to [main](fluent.html)
-
 **fluent-array** are methods that extend the Javascript's Array object
 
 
@@ -44,3 +42,5 @@ todo: add support for value to be an array (similar to what is happening with as
                                       output.keys()
 
 
+---
+back to [main](fluent.html)

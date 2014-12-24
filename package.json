@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script/register ./test --recursive",
     "watch": "./node_modules/.bin/mocha -w --compilers coffee:coffee-script/register ./test/**/**.** -R list",
-    "docs": "node_modules/.bin/docco src/*.* -l classic && node_modules/.bin/docco src/**/*.* -l classic && node_modules/.bin/docco test/*.* -l classic"
+    "docs": "cake -w -l classic doc"
 
   },
   "repository": {
