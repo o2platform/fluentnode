@@ -28,6 +28,11 @@ The code is written in literate coffee-script where the documentation is part of
 * [path](src/path.litcoffee)
 * [process](src/process.litcoffee)
 
+#Documentation
+See http://o2platform.com/fluentnode for detailed documentation and source code of all FluentNode methods
+
+![image](https://cloud.githubusercontent.com/assets/656739/5545531/074483de-8b1d-11e4-8dc6-247084d600d5.png)
+
 
 ##Contribute
 See the current [Issues list](https://github.com/o2platform/fluentnode/issues) for a good place to start
