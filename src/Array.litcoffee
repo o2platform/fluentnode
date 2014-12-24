@@ -11,13 +11,19 @@
           @.push([value])
       @
 
-@**contains** (value)
+@.**contains** (value)
 
 returns true if the current array has ```value```
 
-bug: https://github.com/o2platform/fluentnode/issues/23
+Suports the case when ```value``` is a an Array, where all provided elements of the ```value``` array are expected to exists in @
 
     Array::contains = (value)->
+      if value instanceof Array
+        for item in value
+          if not (item in @)
+            return false
+        return true;
+      else
       (value in @)
 
 @.**empty** ()

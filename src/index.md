@@ -21,7 +21,7 @@ The  extensions/protototypes are included the following files (and tests):
 
 ####Core Javascript classes
 
-* [Array](Array.html) ([tests](Array.test.html))
+* [Array](Array.html) ([tests](assert_Array.html))
 * [Boolean](Boolean.html)
 * [Function](Function.html)
 * [Number](Number.html)

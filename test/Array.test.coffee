@@ -85,6 +85,13 @@ describe 'Array',->
         ['1','2'     ].contains('2').assert_Is_True()
         ['1','2'     ].contains('3').assert_Is_False()
 
+        ['1','2'     ].contains(['5'    ]).assert_Is_False()
+        ['1','2'     ].contains(['5','1']).assert_Is_False()
+        ['1','2'     ].contains(['1'    ]).assert_Is_True()
+        ['1','2'     ].contains(['2'    ]).assert_Is_True()
+        ['1','2'     ].contains(['1','1']).assert_Is_True()
+        ['1','2'     ].contains(['2','1']).assert_Is_True()
+
     it 'not_Contains',->
         [].not_Contains.assert_Is_Function()
         [            ].not_Contains(   ).assert_Is_True()
