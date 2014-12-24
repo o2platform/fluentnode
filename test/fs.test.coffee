@@ -40,7 +40,7 @@ describe 'fs',->
   it 'file_Exists' , ->
     ''.file_Exists.assert_Is_Function()
     '.git'          .file_Exists().assert_Is_True()
-    './src/index.js'.file_Exists().assert_Is_True()
+    './src/_register.js'.file_Exists().assert_Is_True()
     './aaa.js'      .file_Exists().assert_Is_False()
 
   it 'file_Not_Exists' , ->
