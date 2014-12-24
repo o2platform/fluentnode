@@ -1,4 +1,3 @@
-back to [main](fluent.html)
 
     crypto = require('crypto')
 
@@ -24,3 +23,6 @@ back to [main](fluent.html)
     String::starts_With          = (value)-> if not value then false else @.toString().slice(0,value.length)==value
     String::trim                 = (     )-> @.replace(/^\s+|\s+$/g, '')
     String::upper                = (     )-> @.toUpperCase()
+
+---
+back to [index](index.html)

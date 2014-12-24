@@ -1,5 +1,3 @@
-back to [main](fluent.html)
-
 dependencies
 
     http  = require('http')
@@ -82,3 +80,6 @@ dependencies
         path: '/',
         method: 'GET'
         console.log @.str()###
+
+---
+back to [index](index.html)

@@ -1,9 +1,7 @@
-back to [main](fluent.html)
-
 These Object prototypes have to be written using Object.defineProperty so that we can set the
 enumerable value to false (otherwise 'for item of xyz' would include these methods)
 
-todo: add check for allready mapped methods.
+todo: add check for already mapped methods.
       once that is done we should be able to add this method safely
 ```
 Object.defineProperty Object.prototype, 'json',
@@ -78,3 +76,5 @@ Object.defineProperty Object.prototype, 'json',
               onExit()
             replServer
 
+---
+back to [index](index.html)

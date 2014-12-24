@@ -57,5 +57,5 @@ Short version of ```toString```
       -> @.toString()
 
 
---------
-back to [index](fluent.html)
+---
+back to [index](index.html)

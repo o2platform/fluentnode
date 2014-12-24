@@ -1,5 +1,3 @@
-back to [main](fluent.html)
-
 dependencies
 
     require './path'
@@ -108,3 +106,7 @@ dependencies
     String::is_Directory        = String::is_Folder
     String::touch               = String::file_Create
     String::not_Exists          = String::file_Not_Exists
+
+
+---
+back to [index](index.html)

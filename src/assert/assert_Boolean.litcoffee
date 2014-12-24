@@ -1,5 +1,3 @@
-back to [main](fluent.html)
-
 dependencies
 
     assert = require('assert')
@@ -28,3 +26,6 @@ dependencies
 @.**assert_True** ([message])
 
     Boolean::assert_True = Boolean::assert_Is_True
+
+---
+back to [index](index.html)

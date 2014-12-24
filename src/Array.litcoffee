@@ -70,4 +70,4 @@ bug: https://github.com/o2platform/fluentnode/issues/24
 
 
 ---
-back to [main](fluent.html)
+back to [index](index.html)

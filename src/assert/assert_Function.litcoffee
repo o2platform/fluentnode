@@ -1,5 +1,3 @@
-back to [main](fluent.html)
-
 dependencies
 
     assert = require('assert')
@@ -25,3 +23,6 @@ dependencies
       test    = typeof(@)
       assert.equal(test, 'function', message)
       @
+
+---
+back to [index](index.html)

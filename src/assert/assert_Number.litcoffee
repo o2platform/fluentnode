@@ -1,5 +1,3 @@
-back to [main](fluent.html)
-
 dependencies
 
     assert = require 'assert'
@@ -30,3 +28,6 @@ dependencies
 **Number::assert_Is_Not(target)**
 
     Number::assert_Is_Not               = Number::assert_Is_Not_Equal_To
+
+---
+back to [index](index.html)

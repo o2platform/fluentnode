@@ -1,5 +1,3 @@
-back to [main](fluent.html)
-
 dependencies
 
     child_process = require('child_process')
@@ -32,3 +30,6 @@ dependencies
           process.nextTick ()->
             callback(consoleData)
         return childProcess
+
+---
+back to [index](index.html)

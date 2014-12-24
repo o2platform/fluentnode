@@ -1,5 +1,3 @@
-back to [main](fluent.html)
-
 dependencies
 
     assert = require('assert')
@@ -75,3 +73,6 @@ note: Ideally we could do something like ```assert.equal(typeof(@), 'array', mes
       message = message || "[assert_Size_Is_Not]"
       assert.notEqual(@.length, size, message)
       @
+
+---
+back to [index](index.html)

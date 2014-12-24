@@ -1,7 +1,6 @@
 Adds helper methods to the native javascript Function class
 
 
-
 **Function::ctor** params...
 
 Creates a new object from the parent function
@@ -40,5 +39,5 @@ All we have to do is to call the .toString() method of the function (another opt
         @.toString()
 
 
---------
-back to [index](fluent.html)
+---
+back to [index](index.html)

@@ -1,5 +1,3 @@
-back to [main](fluent.html)
-
 dependencies
 
     assert = require 'assert'
@@ -89,3 +87,6 @@ dependencies
     String::assert_File_Not_Exists = String::assert_That_File_Not_Exists
     String::assert_Size_Is         = String::assert_Length_Is
     String::assert_Size_Is_Not     = String::assert_Length_Is_Not
+
+---
+back to [index](index.html)
