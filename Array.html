@@ -130,12 +130,14 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p><strong>Array::contains(value)</strong> returns true if the current array has <code>value</code></p>
-<p>todo: add support for value to be an array (similar to what is happening with assert_Contains</p>
+              <p>@<strong>contains</strong> (value)</p>
+<p>returns true if the current array has <code>value</code></p>
+<p>bug:<a href="https://github.com/o2platform/fluentnode/issues/23">https://github.com/o2platform/fluentnode/issues/23</a></p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::contains       = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> (value <span class="hljs-keyword">in</span> @)</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::contains = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+  (value <span class="hljs-keyword">in</span> @)</pre></div></div>
             
         </li>
         
@@ -146,11 +148,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p><strong>Array::empty()</strong></p>
+              <p>@.<strong>empty</strong> ()</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::empty          =        <span class="hljs-function">-&gt;</span> @.length == <span class="hljs-number">0</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::empty = <span class="hljs-function">-&gt;</span>
+  @.length == <span class="hljs-number">0</span></pre></div></div>
             
         </li>
         
@@ -161,13 +164,50 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p><strong>Array::first</strong></p>
+              <p>@.<strong>first</strong> ()</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::first          =        <span class="hljs-function">-&gt;</span> <span class="hljs-keyword">if</span>(@.length    ) <span class="hljs-keyword">then</span> @[<span class="hljs-number">0</span>]          <span class="hljs-keyword">else</span> <span class="hljs-literal">null</span>
-<span class="hljs-attribute">Array</span>::fourth         =        <span class="hljs-function">-&gt;</span> <span class="hljs-keyword">if</span>(@.length &gt; <span class="hljs-number">3</span>) <span class="hljs-keyword">then</span> @[<span class="hljs-number">3</span>]          <span class="hljs-keyword">else</span> <span class="hljs-literal">null</span>
-<span class="hljs-attribute">Array</span>::last           =        <span class="hljs-function">-&gt;</span> <span class="hljs-keyword">if</span>(@.length    ) <span class="hljs-keyword">then</span> @[@.length-<span class="hljs-number">1</span>] <span class="hljs-keyword">else</span> <span class="hljs-literal">null</span>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::first = <span class="hljs-function">-&gt;</span>
+  <span class="hljs-keyword">if</span>(@.length)
+    @[<span class="hljs-number">0</span>]
+  <span class="hljs-keyword">else</span>
+    <span class="hljs-literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>@.<strong>fourth</strong> ()</p>
+<p>bug: <a href="https://github.com/o2platform/fluentnode/issues/24">https://github.com/o2platform/fluentnode/issues/24</a></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::fourth = <span class="hljs-function">-&gt;</span>
+  <span class="hljs-keyword">if</span>(@.length &gt; <span class="hljs-number">3</span>)
+    @[<span class="hljs-number">3</span>]
+  <span class="hljs-keyword">else</span>
+    <span class="hljs-literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>@.<strong>last</strong> ()</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::last  =        <span class="hljs-function">-&gt;</span> <span class="hljs-keyword">if</span>(@.length    ) <span class="hljs-keyword">then</span> @[@.length-<span class="hljs-number">1</span>] <span class="hljs-keyword">else</span> <span class="hljs-literal">null</span>
 <span class="hljs-attribute">Array</span>::log            =        <span class="hljs-function">-&gt;</span>
                                     @.str().log()
                                     @
@@ -186,11 +226,11 @@
         </li>
         
         
-        <li id="section-5">
+        <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <hr>
 
@@ -199,11 +239,11 @@
         </li>
         
         
-        <li id="section-6">
+        <li id="section-8">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
+                <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p>back to <a href="fluent.html">main</a></p>
 
