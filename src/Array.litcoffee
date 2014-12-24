@@ -11,24 +11,51 @@
           @.push([value])
       @
 
-**Array::contains(value)** returns true if the current array has ```value```
+@**contains** (value)
 
-todo: add support for value to be an array (similar to what is happening with assert_Contains
+returns true if the current array has ```value```
 
-    Array::contains       = (value)-> (value in @)
+bug: https://github.com/o2platform/fluentnode/issues/23
 
-**Array::empty()**
+    Array::contains = (value)->
+      (value in @)
 
-    Array::empty          =        -> @.length == 0
+@.**empty** ()
 
-**Array::first**
+    Array::empty = ->
+      @.length == 0
 
-    Array::first          =        -> if(@.length    ) then @[0]          else null
-    Array::fourth         =        -> if(@.length > 3) then @[3]          else null
-    Array::last           =        -> if(@.length    ) then @[@.length-1] else null
-    Array::log            =        ->
-                                        @.str().log()
-                                        @
+@.**first** ()
+
+    Array::first = ->
+      if(@.length)
+        @[0]
+      else
+        null
+
+@.**fourth** ()
+
+bug: https://github.com/o2platform/fluentnode/issues/24
+
+    Array::fourth = ->
+      if(@.length > 3)
+        @[3]
+      else
+        null
+
+@.**last** ()
+
+    Array::last  =  ->
+      if(@.length)
+        @[@.length-1]
+      else
+        null
+
+@.**log** ()
+
+    Array::log = ->
+      @.str().log()
+      @
 
     Array::not_Contains   = (value)-> value not in @
     Array::second         =        -> if(@.length > 1) then @[1]          else null

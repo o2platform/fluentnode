@@ -1,0 +1,4 @@
+[submodule "docs"]
+	path = docs
+	url = git@github.com:o2platform/fluentnode.git
+	branch = gh-pages
