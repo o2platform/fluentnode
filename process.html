@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>index.js</title>
+  <title>process.litcoffee</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -96,7 +96,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>index.js</h1>
+                  <h1>process.litcoffee</h1>
               </div>
           </li>
         
@@ -108,14 +108,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p><a href="fluent.html">Table of contents</a></p>
-<p>this is the entry point of fluentnode and the file called when <code>require(&#39;fluentnode&#39;)</code> is called</p>
+              <p>back to <a href="fluent.html">main</a></p>
+<p>dependencies</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>
-<span class="hljs-comment">/*jslint node: true */</span>
-<span class="hljs-pi">"use strict"</span>;</pre></div></div>
+            <div class="content"><div class='highlight'><pre>child_process = <span class="hljs-built_in">require</span>(<span class="hljs-string">'child_process'</span>)</pre></div></div>
             
         </li>
         
@@ -126,11 +124,15 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>adding coffee-script support, after this line we can import *.coffee files</p>
+              <p><strong>String::start_Process</strong> args…</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'coffee-script/register'</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::start_Process = <span class="hljs-function"><span class="hljs-params">(args...)</span>-&gt;</span>
+  args ?= []
+  <span class="hljs-keyword">if</span> args.first() <span class="hljs-keyword">instanceof</span> Array
+    args = args.first()
+  <span class="hljs-keyword">return</span> child_process.spawn(@.str(),args)</pre></div></div>
             
         </li>
         
@@ -141,30 +143,39 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>adding the multiple fluentnode files</p>
+              <p><strong>String::start_Process_Redirect_Console</strong> args…</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_Array'</span>   );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_Boolean'</span> );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_Function'</span>);
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_Number'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_Object'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_String'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./Array'</span>    );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./Boolean'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./console'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./http'</span>     );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./fs'</span>       );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./Function'</span> );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./Number'</span>   );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./Object'</span>   );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./path'</span>     );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./process'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./String'</span>   );
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::start_Process_Redirect_Console = <span class="hljs-function"><span class="hljs-params">(args...)</span>-&gt;</span>
+  args ?= []
+  childProcess = @.start_Process(args)
+  childProcess.stdout.<span class="hljs-literal">on</span> <span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-params">(data)</span>-&gt;</span><span class="hljs-built_in">console</span>.log(data.str().trim())
+  childProcess.stderr.<span class="hljs-literal">on</span> <span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-params">(data)</span>-&gt;</span><span class="hljs-built_in">console</span>.log(data.str().trim())
+  <span class="hljs-keyword">return</span> childProcess</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p><strong>String::start_Process_Capture_Console_Out</strong> args…, callback</p>
 
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./_to_map_and_write_Tests'</span>);</pre></div></div>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::start_Process_Capture_Console_Out =  <span class="hljs-function"><span class="hljs-params">(args..., callback)</span>-&gt;</span>
+    consoleData = <span class="hljs-string">""</span>
+    childProcess = @.start_Process(args)
+    childProcess.stdout.<span class="hljs-literal">on</span> <span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-params">(data)</span>-&gt;</span>consoleData+=data
+    childProcess.stderr.<span class="hljs-literal">on</span> <span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-params">(data)</span>-&gt;</span>consoleData+=data
+    childProcess.<span class="hljs-literal">on</span> <span class="hljs-string">'exit'</span>, <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
+      process.nextTick ()-&gt;
+        callback(consoleData)
+    <span class="hljs-keyword">return</span> childProcess</pre></div></div>
             
         </li>
         

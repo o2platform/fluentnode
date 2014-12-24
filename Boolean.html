@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>index.js</title>
+  <title>Boolean.litcoffee</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -96,7 +96,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>index.js</h1>
+                  <h1>Boolean.litcoffee</h1>
               </div>
           </li>
         
@@ -108,14 +108,13 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p><a href="fluent.html">Table of contents</a></p>
-<p>this is the entry point of fluentnode and the file called when <code>require(&#39;fluentnode&#39;)</code> is called</p>
+              <p>back to <a href="fluent.html">main</a></p>
+<p><strong>Boolean::is_True()</strong></p>
+<p>returns true if the Boolean value is true</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>
-<span class="hljs-comment">/*jslint node: true */</span>
-<span class="hljs-pi">"use strict"</span>;</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Boolean</span>::is_True  = <span class="hljs-function">-&gt;</span> @.toString() == <span class="hljs-string">'true'</span></pre></div></div>
             
         </li>
         
@@ -126,45 +125,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>adding coffee-script support, after this line we can import *.coffee files</p>
+              <p><strong>Boolean::is_False()</strong></p>
+<p>returns true if the Boolean value is false</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'coffee-script/register'</span>);</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-3">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-3">&#182;</a>
-              </div>
-              <p>adding the multiple fluentnode files</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_Array'</span>   );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_Boolean'</span> );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_Function'</span>);
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_Number'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_Object'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_String'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./Array'</span>    );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./Boolean'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./console'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./http'</span>     );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./fs'</span>       );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./Function'</span> );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./Number'</span>   );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./Object'</span>   );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./path'</span>     );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./process'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./String'</span>   );
-
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./_to_map_and_write_Tests'</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Boolean</span>::is_False = <span class="hljs-function">-&gt;</span> @.toString() == <span class="hljs-string">'false'</span></pre></div></div>
             
         </li>
         

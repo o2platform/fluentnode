@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>index.js</title>
+  <title>console.litcoffee</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -96,7 +96,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>index.js</h1>
+                  <h1>console.litcoffee</h1>
               </div>
           </li>
         
@@ -108,14 +108,22 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p><a href="fluent.html">Table of contents</a></p>
-<p>this is the entry point of fluentnode and the file called when <code>require(&#39;fluentnode&#39;)</code> is called</p>
+              <p>back to <a href="fluent.html">main</a></p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>
-<span class="hljs-comment">/*jslint node: true */</span>
-<span class="hljs-pi">"use strict"</span>;</pre></div></div>
+            <div class="content"><div class='highlight'><pre>Object.defineProperty Object.prototype, <span class="hljs-string">'console_log'</span>,
+    enumerable  : <span class="hljs-literal">false</span>,
+    writable    : <span class="hljs-literal">true</span>,
+    <span class="hljs-attribute">value</span>: <span class="hljs-function">-&gt;</span>
+        value = @.toString()    <span class="hljs-comment"># Dinis: I'm still not sure why this is needed</span>
+        <span class="hljs-built_in">console</span>.log(value)
+        <span class="hljs-keyword">return</span> value
+
+Object.defineProperty String.prototype, <span class="hljs-string">'log'</span>,
+    enumerable  : <span class="hljs-literal">false</span>,
+    writable    : <span class="hljs-literal">true</span>,
+    <span class="hljs-attribute">value</span>: <span class="hljs-attribute">Object</span>::console_log</pre></div></div>
             
         </li>
         
@@ -126,11 +134,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>adding coffee-script support, after this line we can import *.coffee files</p>
+              <p>Object.defineProperty Object.prototype, ‘_log’,
+   enumerable  : false,
+   writable    : true,
+   value: Object::console_log</p>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'coffee-script/register'</span>);</pre></div></div>
             
         </li>
         
@@ -141,30 +150,25 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>adding the multiple fluentnode files</p>
+              <p>Object::console_log = -&gt;
+                           value = @.toString()    # Dinis: I’m still not sure why this is needed
+                           console.log(value)
+                           return value</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_Array'</span>   );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_Boolean'</span> );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_Function'</span>);
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_Number'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_Object'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./assert/assert_String'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./Array'</span>    );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./Boolean'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./console'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./http'</span>     );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./fs'</span>       );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./Function'</span> );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./Number'</span>   );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./Object'</span>   );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./path'</span>     );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./process'</span>  );
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./String'</span>   );
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Object::log         = Object::console_log</p>
 
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'./_to_map_and_write_Tests'</span>);</pre></div></div>
+            </div>
             
         </li>
         
