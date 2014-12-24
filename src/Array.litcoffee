@@ -1,7 +1,9 @@
 **fluent-array** are methods that extend the Javascript's Array object
 
 
-**Array::add(value...)** adds a value to the current array
+@.**add** (value...)
+
+adds a value to the current array
 
     Array::add = (value...)->
       if (value instanceof Array)
@@ -64,7 +66,14 @@ bug: https://github.com/o2platform/fluentnode/issues/24
       @
 
     Array::not_Contains   = (value)-> value not in @
-    Array::second         =        -> if(@.length > 1) then @[1]          else null
+
+@.**not_Empty** ()
+
+    Array::not_Empty = ->
+      @.length != 0
+
+
+    Array::second = -> if(@.length > 1) then @[1]          else null
     Array::size           =        -> @.length
     Array::starts_With    = (value)-> (item for item in @ when value && item.starts_With(value))
     Array::take           = (value)-> if value is -1 then @ else @.slice(0,value)

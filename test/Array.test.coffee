@@ -104,6 +104,13 @@ describe 'Array',->
         ['1','2'     ].not_Contains('2').assert_Is_False()
         ['1','2'     ].not_Contains('3').assert_Is_True()
 
+    it 'not_Empty',->
+        [            ].not_Empty.assert_Is_Function()
+        [            ].not_Empty().assert_Is_False()
+        [''          ].not_Empty().assert_Is_True()
+        [null        ].not_Empty().assert_Is_True()
+
+
     it 'unique', ->
         [            ].unique.assert_Is_Function()
         [            ].unique().assert_Is_Equal_To([])
@@ -120,6 +127,7 @@ describe 'Array',->
         ['1','23','2'].starts_With('1').assert_Is_Equal_To(['1'     ])
         ['1','23','2'].starts_With('2').assert_Is_Equal_To(['23','2'])
         ['1','23','2'].starts_With('4').assert_Is_Equal_To([        ])
+
     it 'take', ->
         [            ].take.assert_Is_Function()
         [            ].take( ).assert_Is_Equal_To([        ])
