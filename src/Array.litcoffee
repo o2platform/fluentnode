@@ -33,24 +33,28 @@ Suports the case when ```value``` is a an Array, where all provided elements of 
     Array::empty = ->
       @.length == 0
 
-@.**first** ()
+@.**item** (index)
 
-    Array::first = ->
-      if(@.length)
-        @[0]
-      else
-        null
+Returns item[index] if array has that item
 
-@.**fourth** ()
+Note: Double check behaviour of Array.length and check for possible edge cases
 
-bug: https://github.com/o2platform/fluentnode/issues/24
+    Array::item = (index)->
+      if typeof(index) is 'number'
+        if @.length > index > -1
+          return @[index]
+      null
 
-    Array::fourth = ->
-      if(@.length > 3)
-        @[3]
-      else
-        null
+@.**first** () @.second** () @.**third** () @.**fourth** ()
 
+Helper functions for the nornally requested Array elements
+
+    Array::first  = -> @.item(0)
+    Array::second = -> @.item(1)
+    Array::third  = -> @.item(2)
+    Array::fourth = -> @.item(3)
+
+    
 @.**last** ()
 
     Array::last  =  ->
@@ -73,11 +77,10 @@ bug: https://github.com/o2platform/fluentnode/issues/24
       @.length != 0
 
 
-    Array::second = -> if(@.length > 1) then @[1]          else null
+
     Array::size           =        -> @.length
     Array::starts_With    = (value)-> (item for item in @ when value && item.starts_With(value))
     Array::take           = (value)-> if value is -1 then @ else @.slice(0,value)
-    Array::third          =        -> if(@.length > 2) then @[2]          else null
     Array::unique         = ()     ->
                                       output = {}
                                       output[@[key]] = @[key] for key in [0...@length]

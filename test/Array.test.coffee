@@ -28,7 +28,16 @@ describe 'Array',->
         expect([            ].empty()).to.be.true
         expect([''          ].empty()).to.be.false
         expect([null        ].empty()).to.be.false
-        
+
+    it 'item',->
+        [0,1].item(0).assert_Is(0)
+        [0,1].item(1).assert_Is(1)
+        assert_Is_Null([0,1].item(2))
+        assert_Is_Null([0,1].item(-1))
+        assert_Is_Null([0,1].item(9999))
+        assert_Is_Null([0,1].item(null))
+        assert_Is_Null([0,1].item(false))
+
     it 'first',->
         expect([            ].first).to.be.an('Function')
         expect([            ].first()).to.equal(null)
