@@ -45,7 +45,11 @@ Note: Double check behaviour of Array.length and check for possible edge cases
           return @[index]
       null
 
-@.**first** () @.second** () @.**third** () @.**fourth** ()
+@.**nth** ()
+  
+    Array::nth = Array::item
+
+@.**first** () @.**second** () @.**third** () @.**fourth** ()
 
 Helper functions for the nornally requested Array elements
 
@@ -54,7 +58,7 @@ Helper functions for the nornally requested Array elements
     Array::third  = -> @.item(2)
     Array::fourth = -> @.item(3)
 
-    
+
 @.**last** ()
 
     Array::last  =  ->
