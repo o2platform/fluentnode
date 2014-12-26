@@ -1,7 +1,7 @@
 Adds helper methods to the native javascript Number class
 
 
-@.**in_Between** (min, max)
+Number#**in_Between** (min, max)
 
 Returns true if @ is between min and max for example
 
@@ -15,7 +15,7 @@ Returns true if @ is between min and max for example
         (min < @ < max)
 
 
-@.**invoke_After** (callback)
+Number#**invoke_After** (callback)
 
 Invokes the **callback** function after @ miliseconds
 
@@ -24,7 +24,7 @@ Invokes the **callback** function after @ miliseconds
             setTimeout callback, @
 
 
-@.**log** ()
+Number#**log** ()
 
 Logs @ to the console
 
@@ -32,7 +32,7 @@ Logs @ to the console
       -> console.log @.toString()
 
 
-@.**random_String** ()
+Number#**random_String** ()
 
 Returns a random string of size @ made of ascii chars
 
@@ -40,7 +40,7 @@ Returns a random string of size @ made of ascii chars
         "".add_Random_String(@ + 0)
 
 
-@.**random_Letters** ()
+Number#**random_Letters** ()
 
 Returns a random string of size @ made of only letters
 
@@ -49,7 +49,7 @@ Returns a random string of size @ made of only letters
         "".add_Random_Letters(@ + 0)
 
 
-@.**str** ()
+Number#**str** ()
 
 Short version of ```toString```
 
