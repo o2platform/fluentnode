@@ -49,6 +49,11 @@
               </a>
             
               
+              <a class="source" href="_register.html">
+                _register.js
+              </a>
+            
+              
               <a class="source" href="_to_map_and_write_Tests.html">
                 _to_map_and_write_Tests.litcoffee
               </a>
@@ -56,11 +61,6 @@
               
               <a class="source" href="console.html">
                 console.litcoffee
-              </a>
-            
-              
-              <a class="source" href="fluent.html">
-                fluent.litcoffee
               </a>
             
               
@@ -75,7 +75,7 @@
             
               
               <a class="source" href="index.html">
-                index.js
+                index.md
               </a>
             
               
@@ -108,8 +108,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p>back to <a href="fluent.html">main</a></p>
-
+              
             </div>
             
             <div class="content"><div class='highlight'><pre>Object.defineProperty Object.prototype, <span class="hljs-string">'console_log'</span>,
@@ -134,10 +133,20 @@ Object.defineProperty String.prototype, <span class="hljs-string">'log'</span>,
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>Object.defineProperty Object.prototype, ‘_log’,
-   enumerable  : false,
-   writable    : true,
-   value: Object::console_log</p>
+              <p>not working of with side effects:</p>
+<pre><code>Object.defineProperty Object.prototype, <span class="hljs-string">'_log'</span>,
+    enumerable  : <span class="hljs-literal">false</span>,
+    writable    : <span class="hljs-literal">true</span>,
+    <span class="hljs-attribute">value</span>: <span class="hljs-attribute">Object</span>::console_log
+
+
+<span class="hljs-attribute">Object</span>::console_log = <span class="hljs-function">-&gt;</span>
+                            value = @.toString()
+                            <span class="hljs-built_in">console</span>.log(value)
+                            <span class="hljs-keyword">return</span> value
+
+<span class="hljs-attribute">Object</span>::log         = <span class="hljs-attribute">Object</span>::console_log
+</code></pre><hr>
 
             </div>
             
@@ -150,23 +159,7 @@ Object.defineProperty String.prototype, <span class="hljs-string">'log'</span>,
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>Object::console_log = -&gt;
-                           value = @.toString()    # Dinis: I’m still not sure why this is needed
-                           console.log(value)
-                           return value</p>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-4">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
-              </div>
-              <p>Object::log         = Object::console_log</p>
+              <p>back to <a href="index.html">index</a></p>
 
             </div>
             

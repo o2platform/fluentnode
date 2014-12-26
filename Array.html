@@ -49,6 +49,11 @@
               </a>
             
               
+              <a class="source" href="_register.html">
+                _register.js
+              </a>
+            
+              
               <a class="source" href="_to_map_and_write_Tests.html">
                 _to_map_and_write_Tests.litcoffee
               </a>
@@ -56,11 +61,6 @@
               
               <a class="source" href="console.html">
                 console.litcoffee
-              </a>
-            
-              
-              <a class="source" href="fluent.html">
-                fluent.litcoffee
               </a>
             
               
@@ -75,7 +75,7 @@
             
               
               <a class="source" href="index.html">
-                index.js
+                index.md
               </a>
             
               
@@ -109,7 +109,8 @@
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
               <p><strong>fluent-array</strong> are methods that extend the Javascript’s Array object</p>
-<p><strong>Array::add(value…)</strong> adds a value to the current array</p>
+<p>@.<strong>add</strong> (value…)</p>
+<p>adds a value to the current array</p>
 
             </div>
             
@@ -130,13 +131,19 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>@<strong>contains</strong> (value)</p>
+              <p>@.<strong>contains</strong> (value)</p>
 <p>returns true if the current array has <code>value</code></p>
-<p>bug:<a href="https://github.com/o2platform/fluentnode/issues/23">https://github.com/o2platform/fluentnode/issues/23</a></p>
+<p>Suports the case when <code>value</code> is a an Array, where all provided elements of the <code>value</code> array are expected to exists in @</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::contains = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+  <span class="hljs-keyword">if</span> value <span class="hljs-keyword">instanceof</span> Array
+    <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> value
+      <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> (item <span class="hljs-keyword">in</span> @)
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+  <span class="hljs-keyword">else</span>
   (value <span class="hljs-keyword">in</span> @)</pre></div></div>
             
         </li>
@@ -164,15 +171,17 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>@.<strong>first</strong> ()</p>
+              <p>@.<strong>item</strong> (index)</p>
+<p>Returns item[index] if array has that item</p>
+<p>Note: Double check behaviour of Array.length and check for possible edge cases</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::first = <span class="hljs-function">-&gt;</span>
-  <span class="hljs-keyword">if</span>(@.length)
-    @[<span class="hljs-number">0</span>]
-  <span class="hljs-keyword">else</span>
-    <span class="hljs-literal">null</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::item = <span class="hljs-function"><span class="hljs-params">(index)</span>-&gt;</span>
+  <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span>(index) <span class="hljs-keyword">is</span> <span class="hljs-string">'number'</span>
+    <span class="hljs-keyword">if</span> @.length &gt; index &gt; -<span class="hljs-number">1</span>
+      <span class="hljs-keyword">return</span> @[index]
+  <span class="hljs-literal">null</span></pre></div></div>
             
         </li>
         
@@ -183,16 +192,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p>@.<strong>fourth</strong> ()</p>
-<p>bug: <a href="https://github.com/o2platform/fluentnode/issues/24">https://github.com/o2platform/fluentnode/issues/24</a></p>
+              <p>@.<strong>nth</strong> ()</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::fourth = <span class="hljs-function">-&gt;</span>
-  <span class="hljs-keyword">if</span>(@.length &gt; <span class="hljs-number">3</span>)
-    @[<span class="hljs-number">3</span>]
-  <span class="hljs-keyword">else</span>
-    <span class="hljs-literal">null</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::nth = <span class="hljs-attribute">Array</span>::item</pre></div></div>
             
         </li>
         
@@ -203,25 +207,15 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>@.<strong>last</strong> ()</p>
+              <p>@.<strong>first</strong> () @.<strong>second</strong> () @.<strong>third</strong> () @.<strong>fourth</strong> ()</p>
+<p>Helper functions for the nornally requested Array elements</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::last  =        <span class="hljs-function">-&gt;</span> <span class="hljs-keyword">if</span>(@.length    ) <span class="hljs-keyword">then</span> @[@.length-<span class="hljs-number">1</span>] <span class="hljs-keyword">else</span> <span class="hljs-literal">null</span>
-<span class="hljs-attribute">Array</span>::log            =        <span class="hljs-function">-&gt;</span>
-                                    @.str().log()
-                                    @
-
-<span class="hljs-attribute">Array</span>::not_Contains   = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> value <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> @
-<span class="hljs-attribute">Array</span>::second         =        <span class="hljs-function">-&gt;</span> <span class="hljs-keyword">if</span>(@.length &gt; <span class="hljs-number">1</span>) <span class="hljs-keyword">then</span> @[<span class="hljs-number">1</span>]          <span class="hljs-keyword">else</span> <span class="hljs-literal">null</span>
-<span class="hljs-attribute">Array</span>::size           =        <span class="hljs-function">-&gt;</span> @.length
-<span class="hljs-attribute">Array</span>::starts_With    = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> (item <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> @ <span class="hljs-keyword">when</span> value &amp;&amp; item.starts_With(value))
-<span class="hljs-attribute">Array</span>::take           = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> <span class="hljs-keyword">if</span> value <span class="hljs-keyword">is</span> -<span class="hljs-number">1</span> <span class="hljs-keyword">then</span> @ <span class="hljs-keyword">else</span> @.slice(<span class="hljs-number">0</span>,value)
-<span class="hljs-attribute">Array</span>::third          =        <span class="hljs-function">-&gt;</span> <span class="hljs-keyword">if</span>(@.length &gt; <span class="hljs-number">2</span>) <span class="hljs-keyword">then</span> @[<span class="hljs-number">2</span>]          <span class="hljs-keyword">else</span> <span class="hljs-literal">null</span>
-<span class="hljs-attribute">Array</span>::unique         = <span class="hljs-function"><span class="hljs-params">()</span>     -&gt;</span>
-                                  output = {}
-                                  output[@[key]] = @[key] <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> [<span class="hljs-number">0.</span>..<span class="hljs-property">@length</span>]
-                                  output.keys()</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::first  = <span class="hljs-function">-&gt;</span> @.item(<span class="hljs-number">0</span>)
+<span class="hljs-attribute">Array</span>::second = <span class="hljs-function">-&gt;</span> @.item(<span class="hljs-number">1</span>)
+<span class="hljs-attribute">Array</span>::third  = <span class="hljs-function">-&gt;</span> @.item(<span class="hljs-number">2</span>)
+<span class="hljs-attribute">Array</span>::fourth = <span class="hljs-function">-&gt;</span> @.item(<span class="hljs-number">3</span>)</pre></div></div>
             
         </li>
         
@@ -232,9 +226,15 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <hr>
+              <p>@.<strong>last</strong> ()</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::last  =  <span class="hljs-function">-&gt;</span>
+  <span class="hljs-keyword">if</span>(@.length)
+    @[@.length-<span class="hljs-number">1</span>]
+  <span class="hljs-keyword">else</span>
+    <span class="hljs-literal">null</span></pre></div></div>
             
         </li>
         
@@ -245,7 +245,65 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <p>back to <a href="fluent.html">main</a></p>
+              <p>@.<strong>log</strong> ()</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::log = <span class="hljs-function">-&gt;</span>
+  @.str().log()
+  @
+
+<span class="hljs-attribute">Array</span>::not_Contains   = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> value <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> @</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>@.<strong>not_Empty</strong> ()</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::not_Empty = <span class="hljs-function">-&gt;</span>
+  @.length != <span class="hljs-number">0</span>
+
+
+
+<span class="hljs-attribute">Array</span>::size           =        <span class="hljs-function">-&gt;</span> @.length
+<span class="hljs-attribute">Array</span>::starts_With    = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> (item <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> @ <span class="hljs-keyword">when</span> value &amp;&amp; item.starts_With(value))
+<span class="hljs-attribute">Array</span>::take           = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> <span class="hljs-keyword">if</span> value <span class="hljs-keyword">is</span> -<span class="hljs-number">1</span> <span class="hljs-keyword">then</span> @ <span class="hljs-keyword">else</span> @.slice(<span class="hljs-number">0</span>,value)
+<span class="hljs-attribute">Array</span>::unique         = <span class="hljs-function"><span class="hljs-params">()</span>     -&gt;</span>
+                                  output = {}
+                                  output[@[key]] = @[key] <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> [<span class="hljs-number">0.</span>..<span class="hljs-property">@length</span>]
+                                  output.keys()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <hr>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>back to <a href="index.html">index</a></p>
 
             </div>
             
