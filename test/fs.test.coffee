@@ -1,4 +1,5 @@
 #back to [main](fluent.html)
+
 require('../src/assert/assert_Array')
 require('../src/String')
 require('../src/path')
@@ -7,13 +8,15 @@ expect     = require('chai').expect
 
 describe 'fs',->
 
-  it 'folder_Create and folder_Delete' , ->
-    tmpDir = "./".temp_Name_In_Folder()
-    expect(tmpDir.folder_Exists()).to.be.false
-    expect(tmpDir.folder_Create()).to.equal(tmpDir.realPath())
-    expect(tmpDir.folder_Exists()).to.be.true
-    expect(tmpDir.folder_Delete()).to.be.true
-    expect(tmpDir.folder_Exists()).to.be.false
+  it 'folder_Create and folder_Delete' , ->               # tests the String's folder_Create and folder_Delete methods
+    "".folder_Create.assert_Is_Function()                 # checks if String::folder_Create exists
+    "".folder_Delete.assert_Is_Function()                 # checks if String::folder_Delete exists
+    tmpDir = "./".temp_Name_In_Folder()                   # get a temp folder name in the folder provided as string
+    tmpDir.folder_Exists().assert_Is_False()              # checks if the folder exists (expects it to be false)
+    tmpDir.folder_Create().assert_Is tmpDir.realPath()    # creates folder and confirms that the return value is the full path to the folder
+    tmpDir.folder_Exists().assert_Is_True()               # confirms that folders exists
+    tmpDir.folder_Delete().assert_Is_True()               # deletes folder (confirming OK result from delete action)
+    tmpDir.folder_Exists().assert_Is_False()              # confirms that doesn't exists
 
   it 'folder_Delete_Recursive' , ->
     tmpDir = "./"   .temp_Name_In_Folder().folder_Create()

@@ -12,8 +12,9 @@ task 'doc', 'rebuild the Docco documentation', (options) ->
   layout = options.layout or 'linear'
   run_Task = ()->
     console.time('docco built in')
-    commands =  [ "node_modules/.bin/docco --layout #{layout} #{srcFolder}/**/**.**"
-                  "node_modules/.bin/docco --layout #{layout} #{srcFolder}/**.**"]
+    commands =  [ "node_modules/.bin/docco --layout #{layout} {#{srcFolder},test}/{**/*,*}"]
+                  #"node_modules/.bin/docco --layout #{layout} #{srcFolder}/**/**.**"
+                  #"node_modules/.bin/docco --layout #{layout} #{srcFolder}/**.**"]
                   #"sed \"s/docco.css/resources\\/#{layout}\\/docco.css/\" < docs/docco.html > index.html"
                   #'rm -r docs']
 
