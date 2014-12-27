@@ -3,10 +3,6 @@ These are working methods that need to be added to respective source code file (
     Function::invoke_In           = (value   )-> setTimeout @, value
     Function::sourceCode          = (        )-> @ + ""
 
-    Number::in_Between     = (min,max )-> (min < @ < max)
-    Number::log                   = -> console.log @.toString()
-    Number::invoke_After          = (callback)-> setTimeout callback, @
-    Number::wait                  = Number::invoke_After
     Number::assert_Bigger_Than    = (value   )-> (@ > value).assert_Is_True()
     Number::assert_Smaller_Than   = (value   )-> (@ < value).assert_Is_True()
     Number::assert_In_Between     = (min,max )->  @.in_Between(min,max).assert_Is_True()

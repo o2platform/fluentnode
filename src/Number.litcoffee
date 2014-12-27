@@ -23,7 +23,8 @@ Invokes the **callback** function after @ miliseconds
         if callback instanceof Function
             setTimeout callback, @
 
-
+    Number::wait = Number::invoke_After
+    
 Number#**log** ()
 
 Logs @ to the console
