@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>assert_Boolean.litcoffee</title>
+  <title>http.test.coffee</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -211,7 +211,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>assert_Boolean.litcoffee</h1>
+                  <h1>http.test.coffee</h1>
               </div>
           </li>
         
@@ -223,103 +223,90 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p>dependencies</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">'assert'</span>)</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-2">
-            <div class="annotation">
               
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-2">&#182;</a>
-              </div>
-              <p>@.<strong>assert_False</strong> ([message])</p>
-
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Boolean</span>::assert_False = <span class="hljs-function">-&gt;</span>
-  message = <span class="hljs-string">"[assert_Is_False]"</span>
-  assert.equal(@, <span class="hljs-literal">false</span>, message)
-  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-3">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-3">&#182;</a>
-              </div>
-              <p>@.<strong>assert_Is_False</strong> ([message])</p>
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/http'</span>)
+<span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/Number'</span>)
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Boolean</span>::assert_Is_False = <span class="hljs-attribute">Boolean</span>::assert_False</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-4">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
-              </div>
-              <p>@.<strong>assert_Is_True</strong> ([message])</p>
+http = <span class="hljs-built_in">require</span> <span class="hljs-string">'http'</span>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Boolean</span>::assert_Is_True = <span class="hljs-function"><span class="hljs-params">(message)</span>-&gt;</span>
-  message = message|| <span class="hljs-string">"[assert_Is_True]"</span>
-  assert.equal(@, <span class="hljs-literal">true</span>, message)
-  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-5">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
-              </div>
-              <p>@.<strong>assert_True</strong> ([message])</p>
+describe <span class="hljs-string">'http'</span>,<span class="hljs-function">-&gt;</span>
+  test_Port = <span class="hljs-number">45566</span> + Math.floor((Math.random() * <span class="hljs-number">100</span>) + <span class="hljs-number">1</span>)
+  test_Ip   = <span class="hljs-string">'127.0.0.1'</span>
+  test_Data = <span class="hljs-string">'hello from web'</span>
+  url       = <span class="hljs-string">"http://<span class="hljs-subst">#{test_Ip}</span>:<span class="hljs-subst">#{test_Port}</span>"</span>
+  server    = <span class="hljs-literal">null</span>
+  
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Boolean</span>::assert_True = <span class="hljs-attribute">Boolean</span>::assert_Is_True</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-6">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
-              </div>
-              <hr>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-7">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
-              </div>
-              <p>back to <a href="index.html">index</a></p>
-
-            </div>
+  before (done)-&gt;
+    url.assert_Contains(test_Ip).assert_Contains(test_Port)
+    server = http.createServer(<span class="hljs-literal">null</span>)
+    server.listen_OnPort_Saying test_Port, test_Data, <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>
+      done()
+      
+  after (done)-&gt;
+    server.close_And_Destroy_Sockets ()-&gt;
+      assert_Is_Null(server._handle)
+      assert_Is_Null(server.address())
+      server._sockets.keys().assert_Is_Array().assert_Size_Is(<span class="hljs-number">0</span>)
+      done()
+      
+  it <span class="hljs-string">'createServer_OnPort_Saying'</span>,<span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
+      server.listen_OnPort_Saying.assert_Is_Function()
+      server                  .assert_Instance_Of(http.Server)
+      server._handle          .assert_Is_Not_Null()
+      server.address().port   .assert_Is test_Port
+      server.address().address.assert_Is test_Ip
+      server._sockets         .assert_Is_Object()
+      server._sockets.keys()  .assert_Is_Array().assert_Size_Is(<span class="hljs-number">0</span>)
+      server._socket_Count    .assert_Is(<span class="hljs-number">0</span>)
+  
+  
+  it <span class="hljs-string">'respond_With_Object_As_Json'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    server.respond_With_Object_As_Json.assert_Is_Function()
+    test_Object = { a : <span class="hljs-number">123</span> , b : <span class="hljs-number">456</span>}
+    server.respond_With_Object_As_Json(test_Object)
+    url.GET (json) -&gt;
+      json.assert_Is(JSON.stringify(test_Object))
+      test_Object.a=<span class="hljs-string">'abc'</span>
+      url.GET_Json (value) -&gt; 
+        value.a.assert_Is(<span class="hljs-string">'abc'</span>)
+        value.b.assert_Is(<span class="hljs-number">456</span>)
+        done()
+    
+  it <span class="hljs-string">'respond_With_String_As_Text'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    text = (<span class="hljs-number">20</span>).random_Letters()
+    server.respond_With_String_As_Text(text)
+    url.GET (value) -&gt;
+      value.assert_Is(text)
+      server.respond_With_String_As_Text(test_Data)
+      url.GET (value) -&gt;
+        value.assert_Is(test_Data)   
+        done()
+      
+  it <span class="hljs-string">'http_Status'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    <span class="hljs-string">''</span>.http_Status.assert_Is_Function()
+    url.http_Status (status)-&gt;
+      status.assert_Is(<span class="hljs-number">200</span>)
+      done()
+  
+  it <span class="hljs-string">'http_GET'</span> , <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    <span class="hljs-string">''</span>.http_Status.assert_Is_Function()
+    req = url.http_GET (err, data, res)-&gt;
+      assert_Is_Null(err)
+      data.assert_Is_String()
+      req.assert_Instance_Of(http.ClientRequest)
+      res.assert_Instance_Of(http.IncomingMessage)
+      data.assert_Is(test_Data)
+      done()
+  
+  it <span class="hljs-string">'http_GET bad port)'</span> , <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>  
+    url.append(<span class="hljs-number">1</span>).http_GET (err, data, res)-&gt;
+      assert_Is_Not_Null(err).code.assert_Is(<span class="hljs-string">'ECONNREFUSED'</span>)
+      assert_Is_Null(data)
+      assert_Is_Null(res)
+      done()</pre></div></div>
             
         </li>
         

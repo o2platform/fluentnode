@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>process.litcoffee</title>
+  <title>path.test.coffee</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -211,7 +211,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>process.litcoffee</h1>
+                  <h1>path.test.coffee</h1>
               </div>
           </li>
         
@@ -223,99 +223,69 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p>dependencies</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>child_process = <span class="hljs-built_in">require</span>(<span class="hljs-string">'child_process'</span>)</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-2">
-            <div class="annotation">
               
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-2">&#182;</a>
-              </div>
-              <p><strong>String::start_Process</strong> args…</p>
-
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::start_Process = <span class="hljs-function"><span class="hljs-params">(args...)</span>-&gt;</span>
-  args ?= []
-  <span class="hljs-keyword">if</span> args.first() <span class="hljs-keyword">instanceof</span> Array
-    args = args.first()
-  <span class="hljs-keyword">return</span> child_process.spawn(@.str(),args)</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-3">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-3">&#182;</a>
-              </div>
-              <p><strong>String::start_Process_Redirect_Console</strong> args…</p>
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/path'</span>)
+expect     = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chai'</span>).expect
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::start_Process_Redirect_Console = <span class="hljs-function"><span class="hljs-params">(args...)</span>-&gt;</span>
-  args ?= []
-  childProcess = @.start_Process(args)
-  childProcess.stdout.<span class="hljs-literal">on</span> <span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-params">(data)</span>-&gt;</span><span class="hljs-built_in">console</span>.log(data.str().trim())
-  childProcess.stderr.<span class="hljs-literal">on</span> <span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-params">(data)</span>-&gt;</span><span class="hljs-built_in">console</span>.log(data.str().trim())
-  <span class="hljs-keyword">return</span> childProcess</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-4">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
-              </div>
-              <p><strong>String::start_Process_Capture_Console_Out</strong> args…, callback</p>
+describe <span class="hljs-string">'path'</span>,<span class="hljs-function">-&gt;</span>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::start_Process_Capture_Console_Out =  <span class="hljs-function"><span class="hljs-params">(args..., callback)</span>-&gt;</span>
-    consoleData = <span class="hljs-string">""</span>
-    childProcess = @.start_Process(args)
-    childProcess.stdout.<span class="hljs-literal">on</span> <span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-params">(data)</span>-&gt;</span>consoleData+=data
-    childProcess.stderr.<span class="hljs-literal">on</span> <span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-params">(data)</span>-&gt;</span>consoleData+=data
-    childProcess.<span class="hljs-literal">on</span> <span class="hljs-string">'exit'</span>, <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
-      process.nextTick ()-&gt;
-        callback(consoleData)
-    <span class="hljs-keyword">return</span> childProcess</pre></div></div>
-            
-        </li>
+    it <span class="hljs-string">'path_Combine'</span>, <span class="hljs-function">-&gt;</span>
+        expect(<span class="hljs-string">""</span>.path_Combine  ).to.be.an(<span class="hljs-string">'function'</span>)
+        expect(<span class="hljs-string">""</span>.path_Combine()).to.be.an(<span class="hljs-string">'string'</span>)
         
-        
-        <li id="section-5">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
-              </div>
-              <hr>
+        expect(<span class="hljs-string">""</span>   .path_Combine()).to.equal(<span class="hljs-string">''</span>)
+        expect(<span class="hljs-string">"abc"</span>.path_Combine()).to.equal(<span class="hljs-string">'abc'</span>)
+        expect(<span class="hljs-string">"abc"</span>.path_Combine(<span class="hljs-string">'def'</span>)).to.equal(<span class="hljs-string">'abc/def'</span>)
 
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-6">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
-              </div>
-              <p>back to <a href="index.html">index</a></p>
+    it <span class="hljs-string">'path_Combine , file_Parent_Folder'</span>, <span class="hljs-function">-&gt;</span>
+        <span class="hljs-string">''</span>.file_Dir_Name.assert_Is_Function()
+        <span class="hljs-string">'.'</span>.fullPath().path_Combine(<span class="hljs-string">'aaaa'</span>)
+                     .file_Dir_Name().assert_Is(<span class="hljs-string">"."</span>.fullPath())
+        <span class="hljs-string">'/abc/def/123.txt'</span>.file_Parent_Folder().assert_Is(<span class="hljs-string">'/abc/def'</span>)
 
-            </div>
+    it <span class="hljs-string">'append_To_Process_Cwd_Path'</span>, <span class="hljs-function">-&gt;</span>
+        expect(<span class="hljs-string">""</span>           .append_To_Process_Cwd_Path  ).to.be.an(<span class="hljs-string">'function'</span>)
+        expect(<span class="hljs-string">""</span>           .append_To_Process_Cwd_Path()).to.equal(process.cwd())
+        expect(<span class="hljs-string">"abc"</span>        .append_To_Process_Cwd_Path()).to.equal(process.cwd() + <span class="hljs-string">'/abc'</span>        )
+        expect(<span class="hljs-string">"abc.txt"</span>    .append_To_Process_Cwd_Path()).to.equal(process.cwd() + <span class="hljs-string">'/abc.txt'</span>    )
+        expect(<span class="hljs-string">"abc/aaa.txt"</span>.append_To_Process_Cwd_Path()).to.equal(process.cwd() + <span class="hljs-string">'/abc/aaa.txt'</span>)
+
+    it <span class="hljs-string">'file_Extension'</span>, <span class="hljs-function">-&gt;</span>
+        expect(<span class="hljs-string">""</span>.file_Extension  ).to.be.an(<span class="hljs-string">'function'</span>)
+        expect(<span class="hljs-string">""</span>.file_Extension()).to.be.an(<span class="hljs-string">'string'</span>)
+
+        expect(<span class="hljs-string">"index.html"</span>    .file_Extension()).to.equal(<span class="hljs-string">'.html'</span>)
+        expect(<span class="hljs-string">"index.abc.html"</span>.file_Extension()).to.equal(<span class="hljs-string">'.html'</span>)
+        expect(<span class="hljs-string">"index."</span>        .file_Extension()).to.equal(<span class="hljs-string">'.'</span>)
+        expect(<span class="hljs-string">"index"</span>         .file_Extension()).to.equal(<span class="hljs-string">''</span>)
+
+    it <span class="hljs-string">'file_Name'</span>, <span class="hljs-function">-&gt;</span>
+        expect(<span class="hljs-string">''</span>        .file_Name  ).to.be.an(<span class="hljs-string">'function'</span>)
+        expect(<span class="hljs-string">''</span>        .file_Name()).to.equal(<span class="hljs-string">''</span>)
+        expect(<span class="hljs-string">'/a/b'</span>    .file_Name()).to.equal(<span class="hljs-string">'b'</span>)
+        expect(<span class="hljs-string">'/a/b/c'</span>  .file_Name()).to.equal(<span class="hljs-string">'c'</span>)
+        expect(<span class="hljs-string">'/a/b.txt'</span>.file_Name()).to.equal(<span class="hljs-string">'b.txt'</span>)
+
+    it <span class="hljs-string">'file_Name_Without_Extension'</span>, <span class="hljs-function">-&gt;</span>
+        expect(<span class="hljs-string">''</span>        .file_Name_Without_Extension  ).to.be.an(<span class="hljs-string">'function'</span>)
+        expect(<span class="hljs-string">''</span>        .file_Name_Without_Extension()).to.equal(<span class="hljs-string">''</span>  )
+        expect(<span class="hljs-string">'/a/b'</span>    .file_Name_Without_Extension()).to.equal(<span class="hljs-string">'b'</span> )
+        expect(<span class="hljs-string">'/a/b..c'</span> .file_Name_Without_Extension()).to.equal(<span class="hljs-string">'b.'</span>)
+        expect(<span class="hljs-string">'/a/b.txt'</span>.file_Name_Without_Extension()).to.equal(<span class="hljs-string">'b'</span> )
+
+    it <span class="hljs-string">'file_Names'</span>, <span class="hljs-function">-&gt;</span>
+        source = [<span class="hljs-string">'/a/b'</span>,<span class="hljs-string">'/a/b/'</span>, <span class="hljs-string">'/a/b/c'</span>, <span class="hljs-string">'/a/d/f.txt'</span>]
+        result = [<span class="hljs-string">'b'</span>   ,<span class="hljs-string">'b'</span>    , <span class="hljs-string">'c'</span>     , <span class="hljs-string">'f.txt'</span>     ]
+        expect(source.file_Names  ).to.be.an(<span class="hljs-string">'function'</span>)
+        expect(source.file_Names()).to.deep.equal(result)
+
+    it <span class="hljs-string">'file_Names_Without_Extension'</span>, <span class="hljs-function">-&gt;</span>
+        source = [<span class="hljs-string">'/a/b'</span>,<span class="hljs-string">'/a/b/'</span>, <span class="hljs-string">'/a/b/c'</span>, <span class="hljs-string">'/a/d/f.txt'</span>]
+        result = [<span class="hljs-string">'b'</span>   ,<span class="hljs-string">'b'</span>    , <span class="hljs-string">'c'</span>     , <span class="hljs-string">'f'</span>     ]
+        expect(source.file_Names_Without_Extension  ).to.be.an(<span class="hljs-string">'function'</span>)
+        expect(source.file_Names_Without_Extension()).to.deep.equal(result)</pre></div></div>
             
         </li>
         

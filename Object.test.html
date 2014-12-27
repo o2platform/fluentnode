@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>assert_Boolean.litcoffee</title>
+  <title>Object.test.coffee</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -211,7 +211,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>assert_Boolean.litcoffee</h1>
+                  <h1>Object.test.coffee</h1>
               </div>
           </li>
         
@@ -223,103 +223,66 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p>dependencies</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">'assert'</span>)</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-2">
-            <div class="annotation">
               
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-2">&#182;</a>
-              </div>
-              <p>@.<strong>assert_False</strong> ([message])</p>
-
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Boolean</span>::assert_False = <span class="hljs-function">-&gt;</span>
-  message = <span class="hljs-string">"[assert_Is_False]"</span>
-  assert.equal(@, <span class="hljs-literal">false</span>, message)
-  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-3">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-3">&#182;</a>
-              </div>
-              <p>@.<strong>assert_Is_False</strong> ([message])</p>
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/assert/assert_Object'</span>)
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Boolean</span>::assert_Is_False = <span class="hljs-attribute">Boolean</span>::assert_False</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-4">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
-              </div>
-              <p>@.<strong>assert_Is_True</strong> ([message])</p>
+describe <span class="hljs-string">'Assert | Object'</span>, <span class="hljs-function">-&gt;</span>
+  it <span class="hljs-string">'assert_Is_Equal_To, assert_Is'</span>, <span class="hljs-function">-&gt;</span>
+    <span class="hljs-string">''</span>.assert_Is_Equal_To.assert_Is_Function()
+    <span class="hljs-string">'{}'</span>.assert_Is_Equal_To(<span class="hljs-string">'{}'</span>)
+    {}.assert_Is_Equal_To({})
+    {<span class="hljs-string">'a'</span>}.assert_Is_Equal_To({<span class="hljs-string">'a'</span>})
+    <span class="hljs-string">'12'</span>.assert_Is_Equal_To(<span class="hljs-string">'12'</span>)
+    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Is(<span class="hljs-string">'12'</span>)).assert_Not_Throws()
+    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Is(<span class="hljs-string">'42'</span>)).assert_Throws()
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Boolean</span>::assert_Is_True = <span class="hljs-function"><span class="hljs-params">(message)</span>-&gt;</span>
-  message = message|| <span class="hljs-string">"[assert_Is_True]"</span>
-  assert.equal(@, <span class="hljs-literal">true</span>, message)
-  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-5">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
-              </div>
-              <p>@.<strong>assert_True</strong> ([message])</p>
+  it <span class="hljs-string">'assert_Is_Instance_Of, assert_Instance_Of'</span>, <span class="hljs-function">-&gt;</span>
+    <span class="hljs-string">''</span>.assert_Is_Instance_Of.assert_Is_Function()
+    <span class="hljs-string">''</span>.assert_Is_Instance_Of(String)
+    (<span class="hljs-number">12</span>).assert_Is_Instance_Of(Number)
+    (<span class="hljs-keyword">new</span> Error()).assert_Is_Instance_Of(Error)
+    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Instance_Of(String)).assert_Not_Throws()
+    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Instance_Of(Number)).assert_Throws()
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Boolean</span>::assert_True = <span class="hljs-attribute">Boolean</span>::assert_Is_True</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-6">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
-              </div>
-              <hr>
+  it <span class="hljs-string">'assert_Is_Not_Equal_To, assert_Is_Not'</span>, <span class="hljs-function">-&gt;</span>
+    <span class="hljs-string">''</span>.assert_Is_Not_Equal_To.assert_Is_Function()
+    <span class="hljs-string">'{}'</span>.assert_Is_Not_Equal_To(<span class="hljs-string">'12'</span>)
+    <span class="hljs-string">'12'</span>.assert_Is_Not_Equal_To(<span class="hljs-string">'42'</span>)
+    {<span class="hljs-string">'a'</span>}.assert_Is_Not_Equal_To({<span class="hljs-string">'b'</span>})
+    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Is_Not(<span class="hljs-string">'42'</span>)).assert_Not_Throws()
+    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Is_Not(<span class="hljs-string">'12'</span>)).assert_Throws()
 
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-7">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
-              </div>
-              <p>back to <a href="index.html">index</a></p>
+  it <span class="hljs-string">'assert_Is_Null'</span>, <span class="hljs-function">-&gt;</span>
+    assert_Is_Null.assert_Is_Function();
+    assert_Is_Null(<span class="hljs-literal">null</span>)
+    (<span class="hljs-function">-&gt;</span> assert_Is_Null(<span class="hljs-literal">null</span>)).assert_Not_Throws()
+    (<span class="hljs-function">-&gt;</span> assert_Is_Null(<span class="hljs-string">'123'</span>)).assert_Throws()
 
-            </div>
+  it <span class="hljs-string">'assert_Is_Not_Null'</span>, <span class="hljs-function">-&gt;</span>
+    assert_Is_Not_Null.assert_Is_Function();
+    assert_Is_Not_Null(<span class="hljs-string">'123'</span>)
+    (<span class="hljs-function">-&gt;</span> assert_Is_Not_Null(<span class="hljs-string">'123'</span>)).assert_Not_Throws()
+    (<span class="hljs-function">-&gt;</span> assert_Is_Not_Null(<span class="hljs-literal">null</span>)).assert_Throws()
+
+  it <span class="hljs-string">'assert_Is_Object'</span>, <span class="hljs-function">-&gt;</span>
+    {}.assert_Is_Object.assert_Is_Function()
+    {}.assert_Is_Object().assert_Is_Equal_To({})
+
+  it <span class="hljs-string">'assert_Is_Undefined'</span>, <span class="hljs-function">-&gt;</span>
+    assert_Is_Undefined.assert_Is_Function();
+    assert_Is_Undefined(<span class="hljs-literal">undefined</span>)
+    aaaa = <span class="hljs-literal">undefined</span>
+    assert_Is_Undefined(aaaa)
+    (<span class="hljs-function">-&gt;</span> assert_Is_Undefined(<span class="hljs-literal">undefined</span>)).assert_Not_Throws()
+    (<span class="hljs-function">-&gt;</span> assert_Is_Undefined(<span class="hljs-string">'123'</span>)).assert_Throws()
+
+  it <span class="hljs-string">'assert_Is_Not_Undefined'</span>, <span class="hljs-function">-&gt;</span>
+    assert_Is_Not_Undefined.assert_Is_Function();
+    assert_Is_Not_Undefined(<span class="hljs-string">'123'</span>)
+    (<span class="hljs-function">-&gt;</span> assert_Is_Not_Undefined(<span class="hljs-string">'123'</span>)).assert_Not_Throws()
+    (<span class="hljs-function">-&gt;</span> assert_Is_Not_Undefined(<span class="hljs-literal">undefined</span>)).assert_Throws()</pre></div></div>
             
         </li>
         
