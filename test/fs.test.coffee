@@ -12,11 +12,11 @@ describe 'fs',->
     "".folder_Create.assert_Is_Function()                 # checks if String::folder_Create exists
     "".folder_Delete.assert_Is_Function()                 # checks if String::folder_Delete exists
     tmpDir = "./".temp_Name_In_Folder()                   # get a temp folder name in the folder provided as string
-    tmpDir.folder_Exists().assert_Is_False()              # checks if the folder exists (expects it to be false)
-    tmpDir.folder_Create().assert_Is tmpDir.realPath()    # creates folder and confirms that the return value is the full path to the folder
-    tmpDir.folder_Exists().assert_Is_True()               # confirms that folders exists
-    tmpDir.folder_Delete().assert_Is_True()               # deletes folder (confirming OK result from delete action)
-    tmpDir.folder_Exists().assert_Is_False()              # confirms that doesn't exists
+    tmpDir.assert_Folder_Not_Exists()                     # asserts that folder doesn't exist
+          .folder_Create().assert_Is tmpDir.realPath()    # creates folder and confirms that the return value is the full path to the folder
+    tmpDir.assert_Folder_Exists()                         # assert that folders exists
+          .folder_Delete().assert_Is_True()               # deletes folder (confirming OK result from delete action)
+    tmpDir.assert_Folder_Not_Exists()                     # asserts that folder doesn't exist
 
   it 'folder_Delete_Recursive' , ->
     tmpDir = "./"   .temp_Name_In_Folder().folder_Create()
@@ -31,14 +31,14 @@ describe 'fs',->
     expect(tmpName.exists()     ).to.be.false
 
   it 'file_Contents' , ->
-    expect(''.file_Contents).to.be.an('function')
+    ''.file_Contents.assert_Is_Function()
     file_Name     = '_temp_name_'.add_Random_String(5)
     file_Contents = 'value_'.add_Random_String(5)
-    expect(file_Name.file_Exists()).to.be.false
+    (file_Name.file_Exists().assert_Is_False())
     file_Contents.saveAs(file_Name)
-    expect(file_Name.file_Exists()).to.be.true
-    expect(file_Name.file_Contents()).to.equal(file_Contents)
-    expect(file_Name.file_Delete()).to.be.true
+    file_Name.file_Exists().assert_Is_True()
+    file_Name.file_Contents().assert_Is(file_Contents)
+    file_Name.file_Delete().assert_Is_True()
 
   it 'file_Exists' , ->
     ''.file_Exists.assert_Is_Function()
@@ -61,12 +61,12 @@ describe 'fs',->
     tmpFile.file_Delete().assert_Is_True()
     
   it 'files' , ->
-    expect(''.files).to.be.an('function')
+    ''.files.assert_Is_Function()
     files = './'.files().filter (file) -> file isnt '.DS_Store'.realPath()
     expectedFiles = (file.realPath() for file in '.gitignore,.travis.yml,LICENSE,README.md,package.json'.split(','))
     files.assert_Contains(expectedFiles)
-    expect('./'.files('.yml' )).to.deep.equal(['.travis.yml'.realPath()])
-    expect('./'.files('.json')).to.deep.equal(['package.json'.realPath()])
+    './'.files('.yml' ).assert_Is(['.travis.yml'.realPath()])
+    './'.files('.json').assert_Is(['package.json'.realPath()])
 
   it 'files_Recursive' , ->
     ''.files_Recursive.assert_Is_Function()

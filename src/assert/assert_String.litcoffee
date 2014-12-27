@@ -80,13 +80,15 @@ dependencies
       assert(test, message)
       folder
 
-    String::assert_Is              = String::assert_Is_Equal_To
-    String::assert_Is_Not          = String::assert_Is_Not_Equal_To
-    String::assert_Equals          = String::assert_Is_Equal_To
-    String::assert_File_Exists     = String::assert_That_File_Exists
-    String::assert_File_Not_Exists = String::assert_That_File_Not_Exists
-    String::assert_Size_Is         = String::assert_Length_Is
-    String::assert_Size_Is_Not     = String::assert_Length_Is_Not
+    String::assert_Is                = String::assert_Is_Equal_To
+    String::assert_Is_Not            = String::assert_Is_Not_Equal_To
+    String::assert_Equals            = String::assert_Is_Equal_To
+    String::assert_File_Exists       = String::assert_That_File_Exists
+    String::assert_File_Not_Exists   = String::assert_That_File_Not_Exists
+    String::assert_Folder_Exists     = String::assert_That_Folder_Exists
+    String::assert_Folder_Not_Exists = String::assert_That_Folder_Not_Exists
+    String::assert_Size_Is           = String::assert_Length_Is
+    String::assert_Size_Is_Not       = String::assert_Length_Is_Not
 
 ---
 back to [index](index.html)
