@@ -24,7 +24,7 @@ Invokes the **callback** function after @ miliseconds
             setTimeout callback, @
 
     Number::wait = Number::invoke_After
-    
+
 Number#**log** ()
 
 Logs @ to the console

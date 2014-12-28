@@ -1,10 +1,7 @@
 These are working methods that need to be added to respective source code file (with a unit test)
 
-    Function::invoke_In           = (value   )-> setTimeout @, value
-    Function::sourceCode          = (        )-> @ + ""
 
-    Number::assert_Bigger_Than    = (value   )-> (@ > value).assert_Is_True()
-    Number::assert_Smaller_Than   = (value   )-> (@ < value).assert_Is_True()
+
     Number::assert_In_Between     = (min,max )->  @.in_Between(min,max).assert_Is_True()
     String::json_Parse            = (        )->  JSON.parse(@)
     String::remove                = (value   )->  @.replace(value,'')
