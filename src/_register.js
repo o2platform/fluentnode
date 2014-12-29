@@ -29,9 +29,10 @@ require('./String'   );
 
 require('./http'     );
 require('./fs'       );
-
 require('./path'     );
 require('./process'  );
 
+//global
+require('./globals'  );
 
 require('./_to_map_and_write_Tests');
