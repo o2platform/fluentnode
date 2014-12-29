@@ -31,10 +31,20 @@ describe 'fs',->
 
   it 'file_Create and file_Delete',->
     tmpName = '.'.temp_Name_In_Folder()
-    expect(tmpName.file_Create()).to.equal(tmpName)
-    expect(tmpName.exists()     ).to.be.true
-    expect(tmpName.file_Delete()).to.be.true
-    expect(tmpName.exists()     ).to.be.false
+    tmpName.file_Create().assert_Is(tmpName)
+    tmpName.exists()     .assert_True()
+    tmpName.file_Delete().assert_True()
+    tmpName.exists()     .assert_False()
+
+  it 'file_Copy' , ->
+    file1 = '.'.temp_Name_In_Folder()
+    file2 = '.'.temp_Name_In_Folder()
+    file1.file_Create().assert_Is(file1)
+    file1.assert_File_Exists()
+    file1.file_Copy(file2)
+    file2.assert_File_Exists()
+    file1.file_Delete().assert_True()
+    file2.file_Delete().assert_True()
 
   it 'file_Contents' , ->
     ''.file_Contents.assert_Is_Function()

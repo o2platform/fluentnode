@@ -32,6 +32,31 @@ Creates a folder on @, with checks to create parent folders recusively (i.e. it 
                                       folder.folder_Delete()
                                     return folder.not_Exists()
 
+@.**file_Copy** target
+
+Copy ```@``` file to ```target```
+
+if target is an existing folder, the file will be copied into that folder with the filename of ```@```
+
+returns ```target``` path
+
+    String::file_Copy = (target)->
+      if (@.valueOf().file_Not_Exists())
+        return null;
+
+      if target.folder_Exists()
+        target = target.path_Combine(@.valueOf().file_Name())
+      else
+        target.parent_Folder().folder_Create()
+
+      content = fs.readFileSync(@.valueOf());
+      fs.writeFileSync(target, content)
+
+      target
+
+@.**file_Create**
+
+Creates and empty file at @
 
     String::file_Create         = ->
                                       path = @.toString()
