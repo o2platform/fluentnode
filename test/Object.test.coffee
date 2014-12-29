@@ -52,11 +52,20 @@ describe 'Object',->
             'd'
         {'a'}.call_Function.assert_Is_Function()
         {'a'}.call_Function(check_Call_Param, 'b', 'c').assert_Is('d')
-        
+
+    it 'save_Json , load_Json', ->
+        target = '__tmp_'.add_5_Random_Letters().append_To_Process_Cwd_Path()
+        source = { a: '123', b: '42'}
+        target.assert_File_Not_Exists()
+        source.save_Json(target)
+        target.assert_File_Exists()
+        target.load_Json().assert_Is(source)
+        target.file_Delete().assert_True()
+
     it 'repl_Me',(done)->
         anObject = {a : 'an value' , b :2}
         anObject.repl_Me.assert_Is_Function()
-        
+
         replMe = anObject.repl_Me done
         replMe.assert_Is_Object()
         replMe.context.that.assert_Is(anObject)
