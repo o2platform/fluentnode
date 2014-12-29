@@ -3,14 +3,19 @@ dependencies
     require './path'
     fs = require('fs')
 
-**String::folder_Create**
+@.**folder_Create**
+
+Creates a folder on @, with checks to create parent folders recusively (i.e. it will also create all parents up until it finds a valid directory)
 
     String::folder_Create    = ->
-                                  folder = @.toString()
-                                  if fs.existsSync(folder)
-                                    return folder
-                                  fs.mkdirSync(folder)
-                                  return folder.realPath()
+      target = @.valueOf()
+      if target.folder_Not_Exists()           # only do anyhing id the folder doesn't exist
+        target.parent_Folder()                # check if the parent folder exists
+              .folder_Create()
+        fs.mkdirSync(target)                  # use node fs.mkdirSync to creat the folder
+      return target.realPath()                # return full normalized path to target folder
+
+@.**folder_Delete**
 
     String::folder_Delete       = ->
                                     folder = @.toString()
@@ -80,7 +85,23 @@ dependencies
 
     String::folders             = ->  item for item in @.files_and_Folders() when item.is_Folder()
 
-    String::is_Folder           = ->  try fs.lstatSync(@.toString()).isDirectory() catch then false
+@.**is_Folder**
+
+Returns true is @ is a folder
+
+    String::is_Folder = ->
+      try
+        fs.lstatSync(@.toString()).isDirectory()
+      catch
+        false
+
+@.**is_Not_Folder**
+
+Returns true if @ is not a folder
+
+    String::is_Not_Folder = ->
+      @.is_Folder() is false
+
     String::is_File             = ->  try fs.lstatSync(@.toString()).isFile()      catch then false
 
     String::realPath            = ->  try fs.realpathSync @.toString() catch then null
@@ -102,6 +123,7 @@ dependencies
     String::delete_File         = String::file_Delete
     String::delete_Folder       = String::folder_Delete
     String::folder_Exists       = String::is_Folder
+    String::folder_Not_Exists   = String::is_Not_Folder
     String::fullPath            = String::realPath
     String::is_Directory        = String::is_Folder
     String::touch               = String::file_Create

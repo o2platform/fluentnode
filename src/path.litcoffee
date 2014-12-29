@@ -11,6 +11,7 @@
     Array:: file_Names_Without_Extension  = ()    -> file.file_Name_Without_Extension() for file in @
 
     String::file_Parent_Folder = String::file_Dir_Name
+    String::parent_Folder      = String::file_Dir_Name
 
 ---
 back to [index](index.html)

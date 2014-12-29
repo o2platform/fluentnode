@@ -28,8 +28,8 @@ describe 'Assert | Number', ->
     (0).assert_Is_Number().assert_Is(0)
     (0).assert_Is_Number().assert_Is_Not(10)
 
-it 'assert_Smaller_Than',->
-  (0).assert_Smaller_Than(1)
-  (5).assert_Smaller_Than(9)
-  (-> (-1).assert_Smaller_Than(0)).assert_Not_Throws()
-  (-> (1).assert_Smaller_Than( 0)).assert_Throws()
+  it 'assert_Smaller_Than',->
+    (0).assert_Smaller_Than(1)
+    (5).assert_Smaller_Than(9)
+    (-> (-1).assert_Smaller_Than(0)).assert_Not_Throws()
+    (-> (1).assert_Smaller_Than( 0)).assert_Throws()

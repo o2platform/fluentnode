@@ -18,10 +18,16 @@ describe 'fs',->
           .folder_Delete().assert_Is_True()               # deletes folder (confirming OK result from delete action)
     tmpDir.assert_Folder_Not_Exists()                     # asserts that folder doesn't exist
 
+  it 'folder_Create (and its parent)', ->
+    tmpDir  = "./".temp_Name_In_Folder()
+    tmpDir2 = tmpDir.path_Combine('aaa')
+    tmpDir2.create_Dir().assert_That_Folder_Exists()
+    tmpDir.folder_Delete_Recursive().assert_Is_True()
+
   it 'folder_Delete_Recursive' , ->
     tmpDir = "./"   .temp_Name_In_Folder().folder_Create()
     tmpFile = tmpDir.temp_Name_In_Folder().file_Create()
-    expect(tmpDir.folder_Delete_Recursive()).to.be.true
+    tmpDir.folder_Delete_Recursive().assert_Is_True()
 
   it 'file_Create and file_Delete',->
     tmpName = '.'.temp_Name_In_Folder()
@@ -88,6 +94,9 @@ describe 'fs',->
     expect('.git'      .is_Folder()).to.be.true
     expect('.gitignore'.is_Folder()).to.be.false
     expect('.gitAAA'   .is_Folder()).to.be.false
+
+  it 'is_Not_Folder',->
+    "".add_5_Random_Letters().is_Not_Folder().assert_Is_True()
 
   it 'is_File', ->
     expect(''.is_Folder).to.be.an('function')
