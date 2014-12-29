@@ -33,11 +33,6 @@ These are working methods that need to be added to respective source code file (
 
 
 
-Extra helpers which are not prototypes
-
-    global.using = (ob,fn)-> fn.apply(ob)
-    global.log   = console.log
-
 Static singleton retriever/loader
 
     class Singleton

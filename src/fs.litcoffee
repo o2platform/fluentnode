@@ -129,6 +129,5 @@ Returns true if @ is not a folder
     String::touch               = String::file_Create
     String::not_Exists          = String::file_Not_Exists
 
-
 ---
 back to [index](index.html)

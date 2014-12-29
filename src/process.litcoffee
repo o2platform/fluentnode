@@ -22,13 +22,27 @@ dependencies
 **String::start_Process_Capture_Console_Out** args..., callback
 
     String::start_Process_Capture_Console_Out =  (args..., callback)->
+        closed = false                  # these values are used by call_Callback
+        exited = false                  # to ensure that both exit and close been called
+
+        call_Callback = ()->
+          if closed and exited
+            process.nextTick ()->
+              callback(consoleData)
+
         consoleData = ""
         childProcess = @.start_Process(args)
         childProcess.stdout.on 'data', (data)->consoleData+=data
         childProcess.stderr.on 'data', (data)->consoleData+=data
+
+        childProcess.on 'close', ()->          # there where a couple issues when exit was called without all data being available on consoleData
+          closed = true
+          call_Callback()
+
         childProcess.on 'exit', ()->
-          process.nextTick ()->
-            callback(consoleData)
+          exited = true
+          call_Callback()
+
         return childProcess
 
 ---
