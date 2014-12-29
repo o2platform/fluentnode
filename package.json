@@ -1,6 +1,6 @@
 {
   "name": "fluentnode",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Fluent apis for node (based on the concepts used in C#'s FluentSharp",
   "main": "src/_register.js",
   "scripts": {
