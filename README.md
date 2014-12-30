@@ -1,4 +1,4 @@
-FluentNode &nbsp;&nbsp;&nbsp;[![Build Status](https://travis-ci.org/o2platform/fluentnode.svg?branch=master)](https://travis-ci.org/o2platform/fluentnode) ![](http://img.shields.io/npm/dm/fluentnode.svg?style=flat) ![](http://img.shields.io/npm/v/fluentnode.svg?style=flat)
+FluentNode &nbsp;&nbsp;&nbsp; [![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![MIT License][license-image]][license-url] [![Build Status][travis-image]][travis-url]
 ==========
 
 [![NPM](https://nodei.co/npm/fluentnode.png)](https://nodei.co/npm/fluentnode/)
@@ -150,3 +150,14 @@ If you need a function that is currently missing, please fork this repo and send
 
 ##Projects using FluentNode
 * TeamMentor 4.0 GraphDB - https://github.com/TeamMentor/TM_4_0_GraphDB
+
+
+[license-image]: http://img.shields.io/badge/Apache-MIT-blue.svg?style=flat
+[license-url]: LICENSE
+
+[npm-url]: https://npmjs.org/package/fluentnode
+[npm-version-image]: http://img.shields.io/npm/v/fluentnode.svg?style=flat
+[npm-downloads-image]: http://img.shields.io/npm/dm/fluentnode.svg?style=flat
+
+[travis-url]: http://travis-ci.org/o2platform/fluentnode
+[travis-image]: https://travis-ci.org/o2platform/fluentnode.svg?branch=master
