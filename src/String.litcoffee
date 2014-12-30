@@ -1,7 +1,18 @@
+Methods that extend the native Javascript String class
+
+dependencies
 
     crypto = require('crypto')
 
-    String::append               = (value)-> @ + if value then value else ''
+methods
+
+@.**append** value
+
+    String::append = (value)->
+        @ + if value then value else ''
+
+@.**add_Random_Chars** size
+
     String::add_Random_Chars     = (size )-> @ + crypto.randomBytes(size || 10)
     String::add_Random_String    = (size )-> @ + crypto.randomBytes(size || 10).toString('hex').slice(0,size|| 10)
     String::add_Random_Letters   = (size )->
@@ -15,7 +26,22 @@
     String::after_Last           = (value)-> if ((index = @.lastIndexOf(value)) == -1 ) then '' else @.substr(index + value.size())
     String::before               = (value)-> @.substring(0,@.indexOf(value))
     String::before_Last          = (value)-> @.substring(0,@.lastIndexOf(value))
-    String::contains             = (value)-> @.indexOf(value) > -1
+
+@.**contains** value
+
+Checks that ```value``` is inside @. If ```value``` is an Array, then all elements are expected to be found inside @
+
+
+    String::contains = (value)->
+        if value instanceof Array
+            for item in value
+                if @.indexOf(item) == -1
+                    return false
+            return true
+        else
+            @.indexOf(value) > -1
+
+
     String::ends_With            = (value)-> if not value then false else @.toString().slice(-value.length)==value
     String::lower                = (     )-> @.toLowerCase()
     String::not_Contains         = (value)-> @.indexOf(value) == -1

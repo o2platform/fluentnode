@@ -115,7 +115,14 @@ describe 'String',->
         value.contains('123'       ).assert_Is_True()
         value.contains(value       ).assert_Is_True()
         value.contains(value + '1' ).assert_Is_False()
-        value.contains('1' + value).assert_Is_False()
+        value.contains('1' + value ).assert_Is_False()
+
+        value.contains(['1']       ).assert_Is_True()
+        value.contains(['1','2']   ).assert_Is_True()
+        value.contains(['1','abc1']).assert_Is_True()
+        value.contains(['d','abc1']).assert_Is_False()
+
+
 
     it 'ends_With',->
         value.ends_With.assert_Is_Function()
