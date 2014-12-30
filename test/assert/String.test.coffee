@@ -6,8 +6,11 @@ describe 'Assert | String', ->
     ''.assert_Contains(''          ).assert_Is_Equal_To('')
     '123'.assert_Contains('1'      ).assert_Is_Equal_To('123')
     '123'.assert_Contains('123'    ).assert_Is_Equal_To('123')
+    '123'.assert_Contains(['1']    ).assert_Is_Equal_To('123')
+    '123'.assert_Contains(['1','2']).assert_Is_Equal_To('123')
     (->'123'.assert_Contains('1'  )).assert_Not_Throws()
     (->'123'.assert_Contains('0'  )).assert_Throws()
+    (->'123'.assert_Contains(['0'])).assert_Throws()
 
   it 'assert_Not_Contains', ->
     ''.assert_Not_Contains.assert_Is_Function()

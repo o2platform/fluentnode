@@ -8,8 +8,8 @@ dependencies
 
     String::assert_Contains             = (target)->
       source    = @.toString()
-      message   = "expected string '#{source}' to contain the string '#{target}'"
-      assert(source.indexOf(target)> -1, message)
+      message   = "expected string '#{source}' to contain the string/array '#{target}'"
+      assert(source.contains(target), message)
       @
 
 **String::assert_Not_Contains(target)**
