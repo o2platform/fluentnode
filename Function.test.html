@@ -99,6 +99,11 @@
               </a>
             
               
+              <a class="source" href="globals.html">
+                globals.litcoffee
+              </a>
+            
+              
               <a class="source" href="http.html">
                 http.litcoffee
               </a>
@@ -189,6 +194,11 @@
               </a>
             
               
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
+              </a>
+            
+              
               <a class="source" href="http.test.html">
                 http.test.coffee
               </a>
@@ -229,21 +239,21 @@
             <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/assert/assert_Function'</span>)
 
 describe <span class="hljs-string">'Assert | Function'</span>, <span class="hljs-function">-&gt;</span>
-  it <span class="hljs-string">'assert_Throws'</span>, <span class="hljs-function">-&gt;</span>
+  it <span class="hljs-string">'assert_Throws'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
     (<span class="hljs-function">-&gt;</span> throws <span class="hljs-string">'fail'</span>)  .assert_Throws()
     <span class="hljs-keyword">try</span>
       (<span class="hljs-function">-&gt;</span> <span class="hljs-number">42</span> == <span class="hljs-number">42</span>)     .assert_Throws()
-      <span class="hljs-keyword">throw</span> <span class="hljs-string">'fail'</span>
     <span class="hljs-keyword">catch</span> error
       (error == <span class="hljs-string">'fail'</span>) .assert_Is_False()
+      done()
 
-  it <span class="hljs-string">'assert_Not_Throws'</span>, <span class="hljs-function">-&gt;</span>
+  it <span class="hljs-string">'assert_Not_Throws'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
     (<span class="hljs-function">-&gt;</span> <span class="hljs-number">42</span> == <span class="hljs-number">42</span>)       .assert_Not_Throws()
     <span class="hljs-keyword">try</span>
       (<span class="hljs-function">-&gt;</span> throws <span class="hljs-string">'fail'</span>).assert_Not_Throws()
-      <span class="hljs-keyword">throw</span> <span class="hljs-string">'fail'</span>
     <span class="hljs-keyword">catch</span> error
       (error == <span class="hljs-string">'fail'</span>) .assert_Is_False()
+      done()
 
   it <span class="hljs-string">'assert_Is_Function'</span>, <span class="hljs-function">-&gt;</span>
     (<span class="hljs-function">-&gt;</span>).assert_Is_Function()

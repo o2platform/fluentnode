@@ -99,6 +99,11 @@
               </a>
             
               
+              <a class="source" href="globals.html">
+                globals.litcoffee
+              </a>
+            
+              
               <a class="source" href="http.html">
                 http.litcoffee
               </a>
@@ -189,6 +194,11 @@
               </a>
             
               
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
+              </a>
+            
+              
               <a class="source" href="http.test.html">
                 http.test.coffee
               </a>
@@ -238,14 +248,14 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p><strong>Number::assert_Is_Equal_To(target)</strong></p>
+              <p>Note: the @ represents this</p>
+<p>@.<strong>assert_Bigger_Than</strong> value</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::assert_Is_Equal_To          = <span class="hljs-function"><span class="hljs-params">(target)</span>-&gt;</span>
-  source    = @
-  assert.equal(source, target)
-  @</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::assert_Bigger_Than = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+  value.assert_Is_Number()
+  (@ &gt; value).assert_Is_True(<span class="hljs-string">"<span class="hljs-subst">#{@}</span> was not bigger than <span class="hljs-subst">#{value}</span>"</span>)</pre></div></div>
             
         </li>
         
@@ -256,13 +266,13 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p><strong>Number::assert_Is_Not_Equal_To(target)</strong></p>
+              <p>@.<strong>assert_Is_Equal_To</strong> target</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::assert_Is_Not_Equal_To      = <span class="hljs-function"><span class="hljs-params">(target)</span>-&gt;</span>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::assert_Is_Equal_To   = <span class="hljs-function"><span class="hljs-params">(target)</span>-&gt;</span>
   source    = @
-  assert.notEqual(source, target)
+  assert.equal(source, target)
   @</pre></div></div>
             
         </li>
@@ -274,11 +284,13 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p><strong>Number::assert_Is_Number()</strong></p>
+              <p>@.<strong>assert_Is_Not_Equal_To</strong> target</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::assert_Is_Number            = <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::assert_Is_Not_Equal_To = <span class="hljs-function"><span class="hljs-params">(target)</span>-&gt;</span>
+  source    = @
+  assert.notEqual(source, target)
   @</pre></div></div>
             
         </li>
@@ -290,11 +302,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p><strong>Number::assert_Is(target)</strong></p>
+              <p>@.<strong>assert_Is_Number</strong></p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::assert_Is                   = <span class="hljs-attribute">Number</span>::assert_Is_Equal_To</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::assert_Is_Number = <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
+  @</pre></div></div>
             
         </li>
         
@@ -305,11 +318,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p><strong>Number::assert_Is_Not(target)</strong></p>
+              <p>@.<strong>assert_Is</strong> target</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::assert_Is_Not               = <span class="hljs-attribute">Number</span>::assert_Is_Not_Equal_To</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::assert_Is = <span class="hljs-attribute">Number</span>::assert_Is_Equal_To</pre></div></div>
             
         </li>
         
@@ -320,9 +333,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <hr>
+              <p>@.<strong>assert_Is_Not</strong> target</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::assert_Is_Not = <span class="hljs-attribute">Number</span>::assert_Is_Not_Equal_To</pre></div></div>
             
         </li>
         
@@ -332,6 +347,35 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p><strong>assert_Smaller_Than</strong> value</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::assert_Smaller_Than = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+  (@ &lt; value).assert_Is_True()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <hr>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <p>back to <a href="index.html">index</a></p>
 

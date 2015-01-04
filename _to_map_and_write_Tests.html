@@ -99,6 +99,11 @@
               </a>
             
               
+              <a class="source" href="globals.html">
+                globals.litcoffee
+              </a>
+            
+              
               <a class="source" href="http.html">
                 http.litcoffee
               </a>
@@ -189,6 +194,11 @@
               </a>
             
               
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
+              </a>
+            
+              
               <a class="source" href="http.test.html">
                 http.test.coffee
               </a>
@@ -227,16 +237,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Function</span>::invoke_In           = <span class="hljs-function"><span class="hljs-params">(value   )</span>-&gt;</span> setTimeout @, value
-<span class="hljs-attribute">Function</span>::sourceCode          = <span class="hljs-function"><span class="hljs-params">(        )</span>-&gt;</span> @ + <span class="hljs-string">""</span>
-
-<span class="hljs-attribute">Number</span>::in_Between     = <span class="hljs-function"><span class="hljs-params">(min,max )</span>-&gt;</span> (min &lt; @ &lt; max)
-<span class="hljs-attribute">Number</span>::log                   = <span class="hljs-function">-&gt;</span> <span class="hljs-built_in">console</span>.log @.toString()
-<span class="hljs-attribute">Number</span>::invoke_After          = <span class="hljs-function"><span class="hljs-params">(callback)</span>-&gt;</span> setTimeout callback, @
-<span class="hljs-attribute">Number</span>::wait                  = <span class="hljs-attribute">Number</span>::invoke_After
-<span class="hljs-attribute">Number</span>::assert_Bigger_Than    = <span class="hljs-function"><span class="hljs-params">(value   )</span>-&gt;</span> (@ &gt; value).assert_Is_True()
-<span class="hljs-attribute">Number</span>::assert_Smaller_Than   = <span class="hljs-function"><span class="hljs-params">(value   )</span>-&gt;</span> (@ &lt; value).assert_Is_True()
-<span class="hljs-attribute">Number</span>::assert_In_Between     = <span class="hljs-function"><span class="hljs-params">(min,max )</span>-&gt;</span>  @.in_Between(min,max).assert_Is_True()
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::assert_In_Between     = <span class="hljs-function"><span class="hljs-params">(min,max )</span>-&gt;</span>  @.in_Between(min,max).assert_Is_True()
 <span class="hljs-attribute">String</span>::json_Parse            = <span class="hljs-function"><span class="hljs-params">(        )</span>-&gt;</span>  JSON.parse(@)
 <span class="hljs-attribute">String</span>::remove                = <span class="hljs-function"><span class="hljs-params">(value   )</span>-&gt;</span>  @.replace(value,<span class="hljs-string">''</span>)
 
@@ -273,22 +274,6 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
-              </div>
-              <p>Extra helpers which are not prototypes</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">global</span>.using = <span class="hljs-function"><span class="hljs-params">(ob,fn)</span>-&gt;</span> fn.apply(ob)
-<span class="hljs-built_in">global</span>.log   = <span class="hljs-built_in">console</span>.log</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-3">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
               <p>Static singleton retriever/loader</p>
 

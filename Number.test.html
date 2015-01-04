@@ -99,6 +99,11 @@
               </a>
             
               
+              <a class="source" href="globals.html">
+                globals.litcoffee
+              </a>
+            
+              
               <a class="source" href="http.html">
                 http.litcoffee
               </a>
@@ -189,6 +194,11 @@
               </a>
             
               
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
+              </a>
+            
+              
               <a class="source" href="http.test.html">
                 http.test.coffee
               </a>
@@ -231,6 +241,12 @@
 assert = <span class="hljs-built_in">require</span> <span class="hljs-string">'assert'</span>
 
 describe <span class="hljs-string">'Assert | Number'</span>, <span class="hljs-function">-&gt;</span>
+  it <span class="hljs-string">'assert_Bigger_Than'</span>,<span class="hljs-function">-&gt;</span>
+    (<span class="hljs-number">1</span>).assert_Bigger_Than(<span class="hljs-number">0</span>)
+    (<span class="hljs-number">9</span>).assert_Bigger_Than(<span class="hljs-number">5</span>)
+    (<span class="hljs-function">-&gt;</span> (<span class="hljs-number">0</span>).assert_Bigger_Than(-<span class="hljs-number">1</span>)).assert_Not_Throws()
+    (<span class="hljs-function">-&gt;</span> (<span class="hljs-number">0</span>).assert_Bigger_Than( <span class="hljs-number">1</span>)).assert_Throws()
+
   it <span class="hljs-string">'assert_Is_Equal_To, assert_Is'</span>,<span class="hljs-function">-&gt;</span>
     (<span class="hljs-number">0</span>).assert_Is_Equal_To.assert_Is_Function()
     (<span class="hljs-number">0</span>).assert_Is_Equal_To(<span class="hljs-number">0</span>)
@@ -248,7 +264,13 @@ describe <span class="hljs-string">'Assert | Number'</span>, <span class="hljs-f
   it <span class="hljs-string">'assert_Is_Number'</span>, <span class="hljs-function">-&gt;</span>
     (<span class="hljs-number">0</span>).assert_Is_Number.assert_Is_Function()
     (<span class="hljs-number">0</span>).assert_Is_Number().assert_Is(<span class="hljs-number">0</span>)
-    (<span class="hljs-number">0</span>).assert_Is_Number().assert_Is_Not(<span class="hljs-number">10</span>)</pre></div></div>
+    (<span class="hljs-number">0</span>).assert_Is_Number().assert_Is_Not(<span class="hljs-number">10</span>)
+
+  it <span class="hljs-string">'assert_Smaller_Than'</span>,<span class="hljs-function">-&gt;</span>
+    (<span class="hljs-number">0</span>).assert_Smaller_Than(<span class="hljs-number">1</span>)
+    (<span class="hljs-number">5</span>).assert_Smaller_Than(<span class="hljs-number">9</span>)
+    (<span class="hljs-function">-&gt;</span> (-<span class="hljs-number">1</span>).assert_Smaller_Than(<span class="hljs-number">0</span>)).assert_Not_Throws()
+    (<span class="hljs-function">-&gt;</span> (<span class="hljs-number">1</span>).assert_Smaller_Than( <span class="hljs-number">0</span>)).assert_Throws()</pre></div></div>
             
         </li>
         

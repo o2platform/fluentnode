@@ -99,6 +99,11 @@
               </a>
             
               
+              <a class="source" href="globals.html">
+                globals.litcoffee
+              </a>
+            
+              
               <a class="source" href="http.html">
                 http.litcoffee
               </a>
@@ -189,6 +194,11 @@
               </a>
             
               
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
+              </a>
+            
+              
               <a class="source" href="http.test.html">
                 http.test.coffee
               </a>
@@ -266,7 +276,11 @@ describe <span class="hljs-string">'process'</span>,<span class="hljs-function">
                 runTest testsData.pop(), <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span> runTests(testsData, next)
         
         testsData = [
-                        {<span class="hljs-attribute">process_Name</span>: <span class="hljs-string">'echo'</span> , <span class="hljs-attribute">process_Parameter</span>: <span class="hljs-string">'hello'</span>       , <span class="hljs-attribute">expected_Data</span>:<span class="hljs-string">'hello\n'</span> }</pre></div></div>
+                        {<span class="hljs-attribute">process_Name</span>: <span class="hljs-string">'echo'</span> , <span class="hljs-attribute">process_Parameter</span>: <span class="hljs-string">'hello'</span>       , <span class="hljs-attribute">expected_Data</span>:<span class="hljs-string">'hello\n'</span> }
+                        {<span class="hljs-attribute">process_Name</span>: <span class="hljs-string">'echo'</span> , <span class="hljs-attribute">process_Parameter</span>: [<span class="hljs-string">'hello'</span>,<span class="hljs-string">'me'</span>], <span class="hljs-attribute">expected_Data</span>:<span class="hljs-string">'hello,me\n'</span> }
+                        {<span class="hljs-attribute">process_Name</span>: <span class="hljs-string">'echo'</span> , <span class="hljs-attribute">process_Parameter</span>: []            , <span class="hljs-attribute">expected_Data</span>:<span class="hljs-string">'\n'</span> }
+                        {<span class="hljs-attribute">process_Name</span>: <span class="hljs-string">'echo'</span> , <span class="hljs-attribute">process_Parameter</span>: [<span class="hljs-literal">null</span>]        , <span class="hljs-attribute">expected_Data</span>:<span class="hljs-string">'\n'</span> }
+                        {<span class="hljs-attribute">process_Name</span>: <span class="hljs-string">'git'</span>  , <span class="hljs-attribute">process_Parameter</span>: [<span class="hljs-string">'xyz'</span>       ], <span class="hljs-attribute">expected_Data</span>:<span class="hljs-string">'git: \'xyz\' is not a git command. See \'git --help\'.\n'</span> }</pre></div></div>
             
         </li>
         
@@ -281,12 +295,8 @@ describe <span class="hljs-string">'process'</span>,<span class="hljs-function">
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                        <span class="hljs-comment">#{process_Name: 'echo' , process_Parameter: ['hello','me'], expected_Data:'hello,me\n' }</span>
-                        <span class="hljs-comment">#{process_Name: 'echo' , process_Parameter: []            , expected_Data:'\n' }</span>
-                        <span class="hljs-comment">#{process_Name: 'echo' , process_Parameter: [null]        , expected_Data:'\n' }</span>
-                        <span class="hljs-comment">#{process_Name: 'git'  , process_Parameter: ['xyz'       ], expected_Data:'git: \'xyz\' is not a git command. See \'git --help\'.\n' }</span>
-                        <span class="hljs-comment">#{process_Name: 'ls'   , process_Parameter: '.'           , expected_Data:'LICENSE\nREADME.md\nindex.js\nnode_modules\npackage.json\nsrc\ntest\n' }</span>
-                        <span class="hljs-comment">#{process_Name: 'ls'   , process_Parameter: null          , expected_Data:'ls: cannot access : No such file or directory\n' }</span>
+            <div class="content"><div class='highlight'><pre>                        <span class="hljs-comment">#{process_Name: 'ls'   , process_Parameter: '.'           , expected_Data:'Cakefile\nLICENSE\nREADME.md\ndocs\npackage.json\nsrc\ntest\n' }</span>
+                        <span class="hljs-comment">#{process_Name: 'ls'   , process_Parameter: null          , expected_Data:'ls: null: No such file or directory\n' }</span>
                     ]    
         
         runTests(testsData, done)</pre></div></div>

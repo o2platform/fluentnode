@@ -99,6 +99,11 @@
               </a>
             
               
+              <a class="source" href="globals.html">
+                globals.litcoffee
+              </a>
+            
+              
               <a class="source" href="http.html">
                 http.litcoffee
               </a>
@@ -189,6 +194,11 @@
               </a>
             
               
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
+              </a>
+            
+              
               <a class="source" href="http.test.html">
                 http.test.coffee
               </a>
@@ -246,17 +256,42 @@ describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;
           .folder_Delete().assert_Is_True()               <span class="hljs-comment"># deletes folder (confirming OK result from delete action)</span>
     tmpDir.assert_Folder_Not_Exists()                     <span class="hljs-comment"># asserts that folder doesn't exist</span>
 
+  it <span class="hljs-string">'folder_Create (and its parent)'</span>, <span class="hljs-function">-&gt;</span>
+    tmpDir  = <span class="hljs-string">"./"</span>.temp_Name_In_Folder()
+    tmpDir2 = tmpDir.path_Combine(<span class="hljs-string">'aaa'</span>)
+    tmpDir2.create_Dir().assert_That_Folder_Exists()
+    tmpDir.folder_Delete_Recursive().assert_Is_True()
+
   it <span class="hljs-string">'folder_Delete_Recursive'</span> , <span class="hljs-function">-&gt;</span>
     tmpDir = <span class="hljs-string">"./"</span>   .temp_Name_In_Folder().folder_Create()
     tmpFile = tmpDir.temp_Name_In_Folder().file_Create()
-    expect(tmpDir.folder_Delete_Recursive()).to.be.<span class="hljs-literal">true</span>
+    tmpDir.folder_Delete_Recursive().assert_Is_True()
 
   it <span class="hljs-string">'file_Create and file_Delete'</span>,<span class="hljs-function">-&gt;</span>
     tmpName = <span class="hljs-string">'.'</span>.temp_Name_In_Folder()
-    expect(tmpName.file_Create()).to.equal(tmpName)
-    expect(tmpName.exists()     ).to.be.<span class="hljs-literal">true</span>
-    expect(tmpName.file_Delete()).to.be.<span class="hljs-literal">true</span>
-    expect(tmpName.exists()     ).to.be.<span class="hljs-literal">false</span>
+    tmpName.file_Create().assert_Is(tmpName)
+    tmpName.exists()     .assert_True()
+    tmpName.file_Delete().assert_True()
+    tmpName.exists()     .assert_False()
+
+  it <span class="hljs-string">'file_Copy'</span> , <span class="hljs-function">-&gt;</span>
+    file1 = <span class="hljs-string">'.'</span>.temp_Name_In_Folder()
+    file2 = <span class="hljs-string">'.'</span>.temp_Name_In_Folder()
+    file1.file_Create().assert_Is(file1)
+    file1.assert_File_Exists()
+    file1.file_Copy(file2)
+    file2.assert_File_Exists()
+
+    folder         = <span class="hljs-string">'_tmp_file_Copy'</span>.folder_Create()
+    file_In_Folder = file1.file_Copy(folder)
+    file_In_Folder.assert_File_Exists()
+
+    assert_Is_Null(<span class="hljs-string">'aaa'</span>.file_Copy(<span class="hljs-string">'bbb'</span>))
+    assert_Is_Null(file1.file_Copy(<span class="hljs-literal">null</span>))
+
+    folder.folder_Delete_Recursive().assert_True()
+    file1.file_Delete().assert_True()
+    file2.file_Delete().assert_True()
 
   it <span class="hljs-string">'file_Contents'</span> , <span class="hljs-function">-&gt;</span>
     <span class="hljs-string">''</span>.file_Contents.assert_Is_Function()
@@ -273,6 +308,8 @@ describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;
     <span class="hljs-string">'.git'</span>          .file_Exists().assert_Is_True()
     <span class="hljs-string">'./src/_register.js'</span>.file_Exists().assert_Is_True()
     <span class="hljs-string">'./aaa.js'</span>      .file_Exists().assert_Is_False()
+    <span class="hljs-string">'./aaa.js'</span>      .file_Exists().assert_Is_False()
+
 
   it <span class="hljs-string">'file_Not_Exists'</span> , <span class="hljs-function">-&gt;</span>
     <span class="hljs-string">''</span>.file_Not_Exists.assert_Is_Function()
@@ -287,7 +324,16 @@ describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;
     tmpFile.assert_File_Exists()
            .file_Contents().assert_Is(content)
     tmpFile.file_Delete().assert_Is_True()
-    
+
+  it <span class="hljs-string">'files_And_Folders'</span>,<span class="hljs-function">-&gt;</span>
+    <span class="hljs-string">''</span>.files_And_Folders.assert_Is_Function()
+    files = <span class="hljs-string">'./'</span>.files_And_Folders();
+    files.assert_Contains <span class="hljs-string">'.git'</span>      .realPath()
+         .assert_Contains <span class="hljs-string">'.gitignore'</span>.realPath()
+         .assert_Not_Contains <span class="hljs-string">'.aaaaa'</span>.realPath()
+
+    <span class="hljs-string">'aaaa'</span>.files_And_Folders().assert_Is([])
+
   it <span class="hljs-string">'files'</span> , <span class="hljs-function">-&gt;</span>
     <span class="hljs-string">''</span>.files.assert_Is_Function()
     files = <span class="hljs-string">'./'</span>.files().filter (file) -&gt; file <span class="hljs-keyword">isnt</span> <span class="hljs-string">'.DS_Store'</span>.realPath()
@@ -317,6 +363,9 @@ describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;
     expect(<span class="hljs-string">'.gitignore'</span>.is_Folder()).to.be.<span class="hljs-literal">false</span>
     expect(<span class="hljs-string">'.gitAAA'</span>   .is_Folder()).to.be.<span class="hljs-literal">false</span>
 
+  it <span class="hljs-string">'is_Not_Folder'</span>,<span class="hljs-function">-&gt;</span>
+    <span class="hljs-string">""</span>.add_5_Random_Letters().is_Not_Folder().assert_Is_True()
+
   it <span class="hljs-string">'is_File'</span>, <span class="hljs-function">-&gt;</span>
     expect(<span class="hljs-string">''</span>.is_Folder).to.be.an(<span class="hljs-string">'function'</span>)
     expect(<span class="hljs-string">'.git'</span>      .is_File()).to.be.<span class="hljs-literal">false</span>
@@ -331,12 +380,22 @@ describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;
 
   it <span class="hljs-string">'saveAs'</span>, <span class="hljs-function">-&gt;</span>
     file_Name  = <span class="hljs-string">'_tmp_file_'</span>  .add_Random_String(<span class="hljs-number">5</span>)
-    file_Value = <span class="hljs-string">'value'</span>.add_Random_String(<span class="hljs-number">5</span>)
+    file_Value1 = <span class="hljs-string">'value'</span>.add_Random_String(<span class="hljs-number">5</span>)
+    file_Value2 = <span class="hljs-string">'value'</span>.add_Random_String(<span class="hljs-number">5</span>)
 
-    expect(file_Name.exists()          ).to.be.<span class="hljs-literal">false</span>
-    expect(file_Value.saveAs(file_Name)).to.be.<span class="hljs-literal">true</span>
-    expect(file_Name.exists()          ).to.be.<span class="hljs-literal">true</span>
-    expect(file_Name.file_Delete()     ).to.be.<span class="hljs-literal">true</span>
+    file_Name.exists().assert_Is_False()
+
+    file_Value1.saveAs(file_Name).assert_Is_True()
+    file_Name.exists()          .assert_Is_True()
+    file_Name.file_Contents()   .assert_Is    (file_Value1)
+    file_Name.file_Contents()   .assert_Is_Not(file_Value2)
+
+    file_Value2.saveAs(file_Name).assert_Is_True()
+    file_Name.exists()          .assert_Is_True()
+    file_Name.file_Contents()   .assert_Is_Not(file_Value1)
+    file_Name.file_Contents()   .assert_Is    (file_Value2)
+
+    file_Name.file_Delete()     .assert_Is_True()
 
   it <span class="hljs-string">'temp_Name_In_Folder'</span>, <span class="hljs-function">-&gt;</span>
     tmpName = <span class="hljs-string">'./'</span>.temp_Name_In_Folder()

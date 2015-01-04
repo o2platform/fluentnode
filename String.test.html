@@ -99,6 +99,11 @@
               </a>
             
               
+              <a class="source" href="globals.html">
+                globals.litcoffee
+              </a>
+            
+              
               <a class="source" href="http.html">
                 http.litcoffee
               </a>
@@ -189,6 +194,11 @@
               </a>
             
               
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
+              </a>
+            
+              
               <a class="source" href="http.test.html">
                 http.test.coffee
               </a>
@@ -234,8 +244,11 @@ describe <span class="hljs-string">'Assert | String'</span>, <span class="hljs-f
     <span class="hljs-string">''</span>.assert_Contains(<span class="hljs-string">''</span>          ).assert_Is_Equal_To(<span class="hljs-string">''</span>)
     <span class="hljs-string">'123'</span>.assert_Contains(<span class="hljs-string">'1'</span>      ).assert_Is_Equal_To(<span class="hljs-string">'123'</span>)
     <span class="hljs-string">'123'</span>.assert_Contains(<span class="hljs-string">'123'</span>    ).assert_Is_Equal_To(<span class="hljs-string">'123'</span>)
+    <span class="hljs-string">'123'</span>.assert_Contains([<span class="hljs-string">'1'</span>]    ).assert_Is_Equal_To(<span class="hljs-string">'123'</span>)
+    <span class="hljs-string">'123'</span>.assert_Contains([<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>]).assert_Is_Equal_To(<span class="hljs-string">'123'</span>)
     (<span class="hljs-function">-&gt;</span><span class="hljs-string">'123'</span>.assert_Contains(<span class="hljs-string">'1'</span>  )).assert_Not_Throws()
     (<span class="hljs-function">-&gt;</span><span class="hljs-string">'123'</span>.assert_Contains(<span class="hljs-string">'0'</span>  )).assert_Throws()
+    (<span class="hljs-function">-&gt;</span><span class="hljs-string">'123'</span>.assert_Contains([<span class="hljs-string">'0'</span>])).assert_Throws()
 
   it <span class="hljs-string">'assert_Not_Contains'</span>, <span class="hljs-function">-&gt;</span>
     <span class="hljs-string">''</span>.assert_Not_Contains.assert_Is_Function()
@@ -255,6 +268,8 @@ describe <span class="hljs-string">'Assert | String'</span>, <span class="hljs-f
     <span class="hljs-string">''</span>.assert_Is_Json.assert_Is_Function()
     <span class="hljs-string">'{}'</span>.assert_Is_Json().assert_Is_Equal_To({})
     <span class="hljs-string">'{"a":"b"}'</span>.assert_Is_Json().assert_Is_Equal_To({<span class="hljs-attribute">a</span>: <span class="hljs-string">'b'</span>})
+    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'{}'</span>     .assert_Is_Json()).assert_Not_Throws()
+    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'aaa.aaa'</span>.assert_Is_Json()).assert_Throws()
 
   it <span class="hljs-string">'assert_Is_String'</span>, <span class="hljs-function">-&gt;</span>
     <span class="hljs-string">''</span>.assert_Is_String.assert_Is_Function()

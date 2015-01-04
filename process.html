@@ -99,6 +99,11 @@
               </a>
             
               
+              <a class="source" href="globals.html">
+                globals.litcoffee
+              </a>
+            
+              
               <a class="source" href="http.html">
                 http.litcoffee
               </a>
@@ -186,6 +191,11 @@
               
               <a class="source" href="fs.test.html">
                 fs.test.coffee
+              </a>
+            
+              
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
               </a>
             
               
@@ -282,13 +292,27 @@
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::start_Process_Capture_Console_Out =  <span class="hljs-function"><span class="hljs-params">(args..., callback)</span>-&gt;</span>
+    closed = <span class="hljs-literal">false</span>                  <span class="hljs-comment"># these values are used by call_Callback</span>
+    exited = <span class="hljs-literal">false</span>                  <span class="hljs-comment"># to ensure that both exit and close been called</span>
+<span class="hljs-function">
+    <span class="hljs-title">call_Callback</span> = <span class="hljs-params">()</span>-&gt;</span>
+      <span class="hljs-keyword">if</span> closed <span class="hljs-keyword">and</span> exited
+        process.nextTick ()-&gt;
+          callback(consoleData)
+
     consoleData = <span class="hljs-string">""</span>
     childProcess = @.start_Process(args)
     childProcess.stdout.<span class="hljs-literal">on</span> <span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-params">(data)</span>-&gt;</span>consoleData+=data
     childProcess.stderr.<span class="hljs-literal">on</span> <span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-params">(data)</span>-&gt;</span>consoleData+=data
+
+    childProcess.<span class="hljs-literal">on</span> <span class="hljs-string">'close'</span>, <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>          <span class="hljs-comment"># there where a couple issues when exit was called without all data being available on consoleData</span>
+      closed = <span class="hljs-literal">true</span>
+      call_Callback()
+
     childProcess.<span class="hljs-literal">on</span> <span class="hljs-string">'exit'</span>, <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
-      process.nextTick ()-&gt;
-        callback(consoleData)
+      exited = <span class="hljs-literal">true</span>
+      call_Callback()
+
     <span class="hljs-keyword">return</span> childProcess</pre></div></div>
             
         </li>

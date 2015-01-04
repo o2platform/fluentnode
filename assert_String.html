@@ -99,6 +99,11 @@
               </a>
             
               
+              <a class="source" href="globals.html">
+                globals.litcoffee
+              </a>
+            
+              
               <a class="source" href="http.html">
                 http.litcoffee
               </a>
@@ -189,6 +194,11 @@
               </a>
             
               
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
+              </a>
+            
+              
               <a class="source" href="http.test.html">
                 http.test.coffee
               </a>
@@ -246,8 +256,8 @@
             
             <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::assert_Contains             = <span class="hljs-function"><span class="hljs-params">(target)</span>-&gt;</span>
   source    = @.toString()
-  message   = <span class="hljs-string">"expected string '<span class="hljs-subst">#{source}</span>' to contain the string '<span class="hljs-subst">#{target}</span>'"</span>
-  assert(source.indexOf(target)&gt; -<span class="hljs-number">1</span>, message)
+  message   = <span class="hljs-string">"expected string '<span class="hljs-subst">#{source}</span>' to contain the string/array '<span class="hljs-subst">#{target}</span>'"</span>
+  assert(source.contains(target), message)
   @</pre></div></div>
             
         </li>

@@ -99,6 +99,11 @@
               </a>
             
               
+              <a class="source" href="globals.html">
+                globals.litcoffee
+              </a>
+            
+              
               <a class="source" href="http.html">
                 http.litcoffee
               </a>
@@ -189,6 +194,11 @@
               </a>
             
               
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
+              </a>
+            
+              
               <a class="source" href="http.test.html">
                 http.test.coffee
               </a>
@@ -223,13 +233,44 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              
+              <p>Methods that extend the native Javascript String class</p>
+<p>dependencies</p>
+
             </div>
             
-            <div class="content"><div class='highlight'><pre>crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>)
+            <div class="content"><div class='highlight'><pre>crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>methods</p>
+<p>@.<strong>append</strong> value</p>
 
-<span class="hljs-attribute">String</span>::append               = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> @ + <span class="hljs-keyword">if</span> value <span class="hljs-keyword">then</span> value <span class="hljs-keyword">else</span> <span class="hljs-string">''</span>
-<span class="hljs-attribute">String</span>::add_Random_Chars     = <span class="hljs-function"><span class="hljs-params">(size )</span>-&gt;</span> @ + crypto.randomBytes(size || <span class="hljs-number">10</span>)
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::append = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+    @ + <span class="hljs-keyword">if</span> value <span class="hljs-keyword">then</span> value <span class="hljs-keyword">else</span> <span class="hljs-string">''</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>@.<strong>add_Random_Chars</strong> size</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::add_Random_Chars     = <span class="hljs-function"><span class="hljs-params">(size )</span>-&gt;</span> @ + crypto.randomBytes(size || <span class="hljs-number">10</span>)
 <span class="hljs-attribute">String</span>::add_Random_String    = <span class="hljs-function"><span class="hljs-params">(size )</span>-&gt;</span> @ + crypto.randomBytes(size || <span class="hljs-number">10</span>).toString(<span class="hljs-string">'hex'</span>).slice(<span class="hljs-number">0</span>,size|| <span class="hljs-number">10</span>)
 <span class="hljs-attribute">String</span>::add_Random_Letters   = <span class="hljs-function"><span class="hljs-params">(size )</span>-&gt;</span>
                                          charSet = <span class="hljs-string">'abcdefghijklmnopqrstuvwxyz'</span>
@@ -241,8 +282,32 @@
 <span class="hljs-attribute">String</span>::after                = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> <span class="hljs-keyword">if</span> ((index = @.indexOf(    value)) == -<span class="hljs-number">1</span> ) <span class="hljs-keyword">then</span> <span class="hljs-string">''</span> <span class="hljs-keyword">else</span> @.substr(index + value.size())
 <span class="hljs-attribute">String</span>::after_Last           = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> <span class="hljs-keyword">if</span> ((index = @.lastIndexOf(value)) == -<span class="hljs-number">1</span> ) <span class="hljs-keyword">then</span> <span class="hljs-string">''</span> <span class="hljs-keyword">else</span> @.substr(index + value.size())
 <span class="hljs-attribute">String</span>::before               = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> @.substring(<span class="hljs-number">0</span>,@.indexOf(value))
-<span class="hljs-attribute">String</span>::before_Last          = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> @.substring(<span class="hljs-number">0</span>,@.lastIndexOf(value))
-<span class="hljs-attribute">String</span>::contains             = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> @.indexOf(value) &gt; -<span class="hljs-number">1</span>
+<span class="hljs-attribute">String</span>::before_Last          = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> @.substring(<span class="hljs-number">0</span>,@.lastIndexOf(value))</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>@.<strong>contains</strong> value</p>
+<p>Checks that <code>value</code> is inside @. If <code>value</code> is an Array, then all elements are expected to be found inside @</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::contains = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+    <span class="hljs-keyword">if</span> value <span class="hljs-keyword">instanceof</span> Array
+        <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> value
+            <span class="hljs-keyword">if</span> @.indexOf(item) == -<span class="hljs-number">1</span>
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+    <span class="hljs-keyword">else</span>
+        @.indexOf(value) &gt; -<span class="hljs-number">1</span>
+
+
 <span class="hljs-attribute">String</span>::ends_With            = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> value <span class="hljs-keyword">then</span> <span class="hljs-literal">false</span> <span class="hljs-keyword">else</span> @.toString().slice(-value.length)==value
 <span class="hljs-attribute">String</span>::lower                = <span class="hljs-function"><span class="hljs-params">(     )</span>-&gt;</span> @.toLowerCase()
 <span class="hljs-attribute">String</span>::not_Contains         = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> @.indexOf(value) == -<span class="hljs-number">1</span>
@@ -254,11 +319,11 @@
         </li>
         
         
-        <li id="section-2">
+        <li id="section-5">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-2">&#182;</a>
+                <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
               <hr>
 
@@ -267,11 +332,11 @@
         </li>
         
         
-        <li id="section-3">
+        <li id="section-6">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-3">&#182;</a>
+                <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
               <p>back to <a href="index.html">index</a></p>
 
