@@ -12,6 +12,7 @@ FluentNode &nbsp;&nbsp;&nbsp;
 * represents a continuous effort of simplifying complex actions, in order to allow the easy
 development and testing of readable code
 * written in Literate [Coffee-Script](https://github.com/jashkenas/coffeescript) (using TDD)
+* 100% code coverage (on both code and tests)
 * based on fluent APIs
 * an Javascript implementation of [FluentSharp](https://github.com/o2platform/FluentSharp) (part of OWASP [O2 Platform](http://blog.diniscruz.com/p/owasp-o2-platform.html))
 
