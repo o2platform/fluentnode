@@ -1,12 +1,11 @@
 {
   "name": "fluentnode",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "description": "Fluent apis for node (based on the concepts used in C#'s FluentSharp",
   "main": "src/_register.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script/register ./test --recursive",
-    "watch": "./node_modules/.bin/mocha -w --compilers coffee:coffee-script/register ./test -R list --recursive",
-
+    "watch": "npm run test -- -w",
     "docs": "cake -v -l classic doc",
     "docs-dev": "cake -w -l classic doc",
     "docs-publish": "cake -p -l classic doc"
