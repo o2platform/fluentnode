@@ -5,5 +5,5 @@ git:
   submodules: false
 
 after_script:
-   - "ls"
+   - "echo 'Since tests passed: instrument files, rerun tests and publish results to coveralls' "
    - "sh -e ./bin/publish-code-coverage.sh"
