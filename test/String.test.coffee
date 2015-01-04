@@ -122,6 +122,11 @@ describe 'String',->
         value.contains(['1','abc1']).assert_Is_True()
         value.contains(['d','abc1']).assert_Is_False()
 
+        value.contains(/a.c/ ).assert_Is_True()
+        value.contains(/1.3/ ).assert_Is_True()
+        value.contains(/a.*3/).assert_Is_True()
+        value.contains(/ab.1/).assert_Is_True()
+        value.contains(/ac.2/).assert_Is_False()
 
 
     it 'ends_With',->

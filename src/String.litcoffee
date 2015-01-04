@@ -29,17 +29,23 @@ methods
 
 @.**contains** value
 
-Checks that ```value``` is inside @. If ```value``` is an Array, then all elements are expected to be found inside @
+Checks that ```value``` is inside @.
+
+If ```value``` is an Array, then all elements are expected to be found inside @
+
+If ```value``` is an RegExp then checks if it matches @
 
 
     String::contains = (value)->
+        if value instanceof RegExp
+            regex = new RegExp(value)
+            return regex.exec(@) isnt null
         if value instanceof Array
             for item in value
                 if @.indexOf(item) == -1
                     return false
             return true
-        else
-            @.indexOf(value) > -1
+        @.indexOf(value) > -1
 
 
     String::ends_With            = (value)-> if not value then false else @.toString().slice(-value.length)==value
