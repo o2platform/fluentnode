@@ -1,5 +1,6 @@
-FluentNode &nbsp;&nbsp;&nbsp; [![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![MIT License][license-image]][license-url] [![Build Status][travis-image]][travis-url]
+FluentNode &nbsp;&nbsp;&nbsp;
 ==========
+[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![MIT License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url]
 
 [![NPM](https://nodei.co/npm/fluentnode.png)](https://nodei.co/npm/fluentnode/)
 
@@ -161,3 +162,6 @@ If you need a function that is currently missing, please fork this repo and send
 
 [travis-url]: http://travis-ci.org/o2platform/fluentnode
 [travis-image]: https://travis-ci.org/o2platform/fluentnode.svg?branch=master
+
+[coveralls-url]: http://travis-ci.org/o2platform/fluentnode
+[coveralls-img]: https://travis-ci.org/o2platform/fluentnode.svg?branch=master
