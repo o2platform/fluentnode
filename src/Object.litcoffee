@@ -5,8 +5,8 @@ dependencies
 
     require './fs'
 
-todo: add check for already mapped methods.
-      once that is done we should be able to add this method safely
+todo: add check for already mapped methods. once that is done we should be able to add this method safely
+
 ```
 Object.defineProperty Object.prototype, 'json',
     enumerable  : false,

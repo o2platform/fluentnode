@@ -23,6 +23,12 @@ describe 'Array',->
         a.add(4).add(5,6)
         a.assert_Is(['1','2','3',4, 5, 6])
 
+        [].add( null,    ).assert_Is([null])
+          .add( undefined).assert_Is([null,undefined            ])
+          .add( 1        ).assert_Is([null,undefined,1          ])
+          .add( 'a'      ).assert_Is([null,undefined,1,'a'      ])
+          .add( [1,2]    ).assert_Is([null,undefined,1,'a',[1,2]])
+
     it 'contains',->
         [].contains.assert_Is_Function()
         [            ].contains(   ).assert_Is_False()

@@ -41,6 +41,8 @@ if target is an existing folder, the file will be copied into that folder with t
 returns ```target``` path
 
     String::file_Copy = (target)->
+      if not (target)
+        return null
       if (@.valueOf().file_Not_Exists())
         return null;
 
@@ -71,36 +73,52 @@ Creates and empty file at @
                                       return file.file_Not_Exists()
 
     String::file_Contents        = ->
-                                      file = @.toString().realPath()
+                                      file = @.valueOf().realPath()
                                       return null if not file
                                       return fs.readFileSync(file,"utf8")
 
+@.**file_Exists**
 
-    String::file_Exists         = ->
-                                      file = @.toString()
-                                      if(file)
-                                        return fs.existsSync  file
-                                      return false
+Returns true if @ is a file and it exists
+
+    String::file_Exists = ->
+      return fs.existsSync  @.valueOf()
+
+@.**file_Write** content
+
+Writes ```content``` as file @
+
     String::file_Write  = (content)->
-                                      content.saveAs(@.str())
-                                      @
+      content.saveAs(@.str())
+      @
 
-    String::file_Not_Exists     = ->  (fs.existsSync @.toString()) == false
-    String::files_and_Folders   = ->
-                                      path = @.toString()
+@.**file_Not_Exists**
+
+Returns true if @ is not a file
+
+    String::file_Not_Exists     = ->
+      (fs.existsSync @.valueOf()) == false
+
+
+@.**files_and_Folders**
+
+returns a list of files and folders from the folder @
+
+    String::files_And_Folders   = ->
+                                      path = @.valueOf()
                                       try
                                         path.path_Combine(item).realPath() for item in fs.readdirSync path
                                       catch
                                         []
 
     String::files               = (extension)->
-                                      files = (item for item in @.files_and_Folders() when item.is_File())
+                                      files = (item for item in @.files_And_Folders() when item.is_File())
                                       if extension
                                         return (file for file in files when file.file_Extension() is extension)
                                       return files
     String::files_Recursive     = (extension)->
                                       files = []
-                                      for item in @.str().files_and_Folders()
+                                      for item in @.str().files_And_Folders()
                                         if (item.is_Folder())
                                           files = files.concat(item.files_Recursive(extension))
                                         else
@@ -108,7 +126,7 @@ Creates and empty file at @
                                             files.push(item)
                                       return files
 
-    String::folders             = ->  item for item in @.files_and_Folders() when item.is_Folder()
+    String::folders             = ->  item for item in @.files_And_Folders() when item.is_Folder()
 
 @.**is_Folder**
 
@@ -116,7 +134,7 @@ Returns true is @ is a folder
 
     String::is_Folder = ->
       try
-        fs.lstatSync(@.toString()).isDirectory()
+        fs.lstatSync(@.valueOf()).isDirectory()
       catch
         false
 
@@ -127,14 +145,14 @@ Returns true if @ is not a folder
     String::is_Not_Folder = ->
       @.is_Folder() is false
 
-    String::is_File             = ->  try fs.lstatSync(@.toString()).isFile()      catch then false
+    String::is_File             = ->  try fs.lstatSync(@.valueOf()).isFile()      catch then false
 
-    String::realPath            = ->  try fs.realpathSync @.toString() catch then null
-    String::temp_Name_In_Folder = ->  @.toString().realPath().path_Combine("_tmp_".add_Random_String(10))
+    String::realPath            = ->  try fs.realpathSync @.valueOf() catch then null
+    String::temp_Name_In_Folder = ->  @.valueOf().realPath().path_Combine("_tmp_".add_Random_String(10))
 
     String::saveAs              = (targetFile) ->
                                       return false if targetFile is null
-                                      contents = @.toString()
+                                      contents = @.valueOf()
                                       if (targetFile.exists())
                                         targetFile.file_Delete()
                                       fs.writeFileSync(targetFile,contents)

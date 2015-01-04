@@ -3,3 +3,7 @@ node_js:
   - 0.10
 git:
   submodules: false
+  
+after_script:
+   - "ls"
+   - "sh -e ./bin/publish-code-coverage.sh"

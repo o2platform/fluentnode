@@ -6,11 +6,8 @@
 adds a value to the current array
 
     Array::add = (value...)->
-      if (value instanceof Array)
-          for item in value
-              @.push(item)
-      else
-          @.push([value])
+      for item in value
+        @.push(item)
       @
 
 @.**contains** (value)

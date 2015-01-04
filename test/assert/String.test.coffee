@@ -30,6 +30,8 @@ describe 'Assert | String', ->
     ''.assert_Is_Json.assert_Is_Function()
     '{}'.assert_Is_Json().assert_Is_Equal_To({})
     '{"a":"b"}'.assert_Is_Json().assert_Is_Equal_To({a: 'b'})
+    (-> '{}'     .assert_Is_Json()).assert_Not_Throws()
+    (-> 'aaa.aaa'.assert_Is_Json()).assert_Throws()
 
   it 'assert_Is_String', ->
     ''.assert_Is_String.assert_Is_Function()

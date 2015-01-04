@@ -43,6 +43,15 @@ describe 'fs',->
     file1.assert_File_Exists()
     file1.file_Copy(file2)
     file2.assert_File_Exists()
+
+    folder         = '_tmp_file_Copy'.folder_Create()
+    file_In_Folder = file1.file_Copy(folder)
+    file_In_Folder.assert_File_Exists()
+
+    assert_Is_Null('aaa'.file_Copy('bbb'))
+    assert_Is_Null(file1.file_Copy(null))
+
+    folder.folder_Delete_Recursive().assert_True()
     file1.file_Delete().assert_True()
     file2.file_Delete().assert_True()
 
@@ -61,6 +70,8 @@ describe 'fs',->
     '.git'          .file_Exists().assert_Is_True()
     './src/_register.js'.file_Exists().assert_Is_True()
     './aaa.js'      .file_Exists().assert_Is_False()
+    './aaa.js'      .file_Exists().assert_Is_False()
+
 
   it 'file_Not_Exists' , ->
     ''.file_Not_Exists.assert_Is_Function()
@@ -75,7 +86,16 @@ describe 'fs',->
     tmpFile.assert_File_Exists()
            .file_Contents().assert_Is(content)
     tmpFile.file_Delete().assert_Is_True()
-    
+
+  it 'files_And_Folders',->
+    ''.files_And_Folders.assert_Is_Function()
+    files = './'.files_And_Folders();
+    files.assert_Contains '.git'      .realPath()
+         .assert_Contains '.gitignore'.realPath()
+         .assert_Not_Contains '.aaaaa'.realPath()
+
+    'aaaa'.files_And_Folders().assert_Is([])
+
   it 'files' , ->
     ''.files.assert_Is_Function()
     files = './'.files().filter (file) -> file isnt '.DS_Store'.realPath()
@@ -122,12 +142,22 @@ describe 'fs',->
 
   it 'saveAs', ->
     file_Name  = '_tmp_file_'  .add_Random_String(5)
-    file_Value = 'value'.add_Random_String(5)
+    file_Value1 = 'value'.add_Random_String(5)
+    file_Value2 = 'value'.add_Random_String(5)
 
-    expect(file_Name.exists()          ).to.be.false
-    expect(file_Value.saveAs(file_Name)).to.be.true
-    expect(file_Name.exists()          ).to.be.true
-    expect(file_Name.file_Delete()     ).to.be.true
+    file_Name.exists().assert_Is_False()
+
+    file_Value1.saveAs(file_Name).assert_Is_True()
+    file_Name.exists()          .assert_Is_True()
+    file_Name.file_Contents()   .assert_Is    (file_Value1)
+    file_Name.file_Contents()   .assert_Is_Not(file_Value2)
+
+    file_Value2.saveAs(file_Name).assert_Is_True()
+    file_Name.exists()          .assert_Is_True()
+    file_Name.file_Contents()   .assert_Is_Not(file_Value1)
+    file_Name.file_Contents()   .assert_Is    (file_Value2)
+
+    file_Name.file_Delete()     .assert_Is_True()
 
   it 'temp_Name_In_Folder', ->
     tmpName = './'.temp_Name_In_Folder()
