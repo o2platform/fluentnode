@@ -163,5 +163,5 @@ If you need a function that is currently missing, please fork this repo and send
 [travis-url]: http://travis-ci.org/o2platform/fluentnode
 [travis-image]: https://travis-ci.org/o2platform/fluentnode.svg?branch=master
 
-[coveralls-url]: http://travis-ci.org/o2platform/fluentnode
-[coveralls-img]: https://travis-ci.org/o2platform/fluentnode.svg?branch=master
+[coveralls-url]: https://coveralls.io/r/o2platform/fluentnode?branch=master
+[coveralls-img]: https://coveralls.io/repos/o2platform/fluentnode/badge.png?branch=master
