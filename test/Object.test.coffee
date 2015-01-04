@@ -1,11 +1,11 @@
-#For some weird reason these tests are breaking the ./node_modules/coveralls/bin/coveralls.js so ignoring them for now
-return
 require('../src/Object')
 require('../src/console')
 expect     = require('chai').expect
 
+
 describe 'Object',->
-    
+
+
     it 'str',->
         expect(""    .str).to.be.an('Function')
         expect(""    .str()).to.equal(""   .toString() )
@@ -13,7 +13,7 @@ describe 'Object',->
         expect([]    .str()).to.equal([]   .toString() )
         expect({}    .str()).to.equal({}   .toString() )
         expect({a:'1'}.str()).to.equal("[object Object]")
-    
+
 #    it 'json',->
 #        expect(""   .json).to.be.an('Function')
 #        expect(""   .json()).to.equal("\"\"")
@@ -24,7 +24,7 @@ describe 'Object',->
     it 'json_pretty', ->
         expect({a:1}        .json_pretty()).to.equal('{\n  \"a\": 1\n}')
         expect([{a:1},{b:1}].json_pretty()).to.equal('[\n  {\n    \"a\": 1\n  },\n  {\n    \"b\": 1\n  }\n]')
-    
+
     it 'json_inspect',->
         expect(""   .json_inspect).to.be.an('Function')
         o = {}
@@ -72,5 +72,6 @@ describe 'Object',->
         replMe.assert_Is_Object()
         replMe.context.that.assert_Is(anObject)
         replMe.rli.close()
-        
+        "done".log()                    # with this extra line here, coveralls fails to publish
+
         
