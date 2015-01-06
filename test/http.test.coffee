@@ -81,6 +81,10 @@ describe 'http',->
       server = http.createServer(null)
       server.listen_OnPort_Saying test_Port, test_Data, ()=>
 
+    after (done)->
+      server.close_And_Destroy_Sockets ()->
+        done()
+
     it 'http_Status', (done)->
       ''.http_Status.assert_Is_Function()
       url.http_Status (status)->
@@ -107,11 +111,13 @@ describe 'http',->
     it 'http_With_Options', (done)->
       server.respond_With_Request_Headers()
       options = {
-                  headers: { 'name' : 'value_'.add_5_Random_Letters()}
+                  headers: { 'name' : 'value_'.add_5_Random_Letters() , 'cookie':'abc=123;'}
                 }
       url.http_With_Options options, (err, data)->
+        log data
         json = JSON.parse(data)
         json.name.assert_Is(options.headers.name)
+        json.cookie.assert_Is('abc=123;')
         done()
 
     it 'http_With_Options (bad data)', (done)->
@@ -120,15 +126,3 @@ describe 'http',->
         assert_Is_Null(data)
         assert_Is_Null(res)
         done()
-
-    xit 'http GET (with headers)', (done)->
-      server.respond_With_Request_Headers()
-      options = {
-                  headers: { 'name' : 'value'}
-                }
-      url.GET_Json options, (data)->
-        log data
-        done()
-  
-  
-      
