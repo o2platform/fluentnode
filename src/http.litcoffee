@@ -34,6 +34,14 @@ dependencies
        .listen port, ip, ->
           callback()
 
+    Server::respond_With_Request_Headers = (value)->
+      delete @._events.request
+      simple_Response = (req, res) ->
+        res.writeHead(200, {'Content-Type': 'application/json'})
+        res.end(JSON.stringify(req.headers))
+      @.addListener('request', simple_Response)
+      @
+
     Server::respond_With_String_As_Text = (value)->
       delete @._events.request                                # removes previous listeners
       simple_Response = (req, res) ->
@@ -47,6 +55,14 @@ dependencies
       json_Response = (req, res) ->
         res.writeHead(200, {'Content-Type': 'application/json'})
         res.end(JSON.stringify(value))
+      @.addListener('request', json_Response)
+      @
+
+    Server::respond_With_Request_Object = ()->
+      delete @._events.request
+      json_Response = (req, res) ->
+        res.writeHead(200, {'Content-Type': 'application/json'})
+        res.end(req.json_inspect())                           # unfortunatly there doesn't seem to be a way to create a JSON parseable object from req
       @.addListener('request', json_Response)
       @
 
@@ -72,6 +88,23 @@ dependencies
     String::GET_Json = (callback) ->
       @.http_GET (error, data, res)-> callback(JSON.parse(data))
 
+
+    String::http_With_Options = (options, callback) ->
+      url = url.parse(@.str())
+      engine = if url.protocol is 'https:' then https else http
+      options.hostname = options.hostname || url.hostname
+      options.port     = options.port     || url.port
+      options.path     = options.path     || url.path
+      options.method   = options.method   || 'GET'
+
+      req = engine.get options, (res) ->
+        data = '';
+        res.on 'data', (chunk) -> data += chunk
+        res.on 'end' , (     ) -> callback null, data, res
+
+      req.on   'error',(err  ) ->
+        callback err, null, null
+      req
 
 
     ###options =

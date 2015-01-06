@@ -72,6 +72,6 @@ describe 'Object',->
         replMe.assert_Is_Object()
         replMe.context.that.assert_Is(anObject)
         replMe.rli.close()
-        "done".log()                    # with this extra line here, coveralls fails to publish
+        "".log()                    # without this extra line here, coveralls fails to publish
 
         
