@@ -14,17 +14,41 @@ methods
 @.**add_Random_Chars** size
 
     String::add_Random_Chars     = (size )-> @ + crypto.randomBytes(size || 10)
+
+@.**add_Random_String** size
+    
     String::add_Random_String    = (size )-> @ + crypto.randomBytes(size || 10).toString('hex').slice(0,size|| 10)
+
+@.**add_Random_Letters** size    
+    
     String::add_Random_Letters   = (size )->
                                              charSet = 'abcdefghijklmnopqrstuvwxyz'
                                              @ + (charSet[Math.floor(Math.random() * charSet.length)]  for i in [1..size]).join('')
+
+@.**add_5_Random_Letters** 
+                                             
     String::add_5_Random_Letters = (     )-> @.add_Random_Letters(5)
+
+@.**add_Random_Numbers** size     
+    
     String::add_Random_Numbers   = (size )->
                                              charSet = '0123456789'
                                              @ + (charSet[Math.floor(Math.random() * charSet.length)]  for i in [1..size]).join('')
+
+@.**after** value
+                                             
     String::after                = (value)-> if ((index = @.indexOf(    value)) == -1 ) then '' else @.substr(index + value.size())
+    
+@.**after_Last** value  
+    
     String::after_Last           = (value)-> if ((index = @.lastIndexOf(value)) == -1 ) then '' else @.substr(index + value.size())
+    
+@.**before** value
+    
     String::before               = (value)-> @.substring(0,@.indexOf(value))
+
+@.**before_Last** value
+
     String::before_Last          = (value)-> @.substring(0,@.lastIndexOf(value))
 
 @.**contains** value
