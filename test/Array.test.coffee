@@ -6,7 +6,7 @@ require('../src/Array')
 expect     = require('chai').expect
 
 describe 'Array',->
-    
+
     it 'add',->
         [       ].add.assert_Is_Function()
         [       ].add( 'a'     ).assert_Is(['a'])
@@ -14,7 +14,7 @@ describe 'Array',->
         ['a'    ].add( 'b','c' ).assert_Is(['a','b','c'])
         ['a','b'].add( 'c','d' ).assert_Is(['a','b','c','d'])
         ['1','1'].add( 1,2,3,4 ).assert_Is(['1','1',1,2,3,4])
-        
+
         a = []
         a.add('1')
         a.assert_Is(['1'])
@@ -49,7 +49,7 @@ describe 'Array',->
         ['1','2'     ].contains(['2','1']).assert_Is_True()
 
     it 'empty',->
-        expect([            ].empty).to.be.an('Function')        
+        expect([            ].empty).to.be.an('Function')
         expect([            ].empty()).to.be.true
         expect([''          ].empty()).to.be.false
         expect([null        ].empty()).to.be.false

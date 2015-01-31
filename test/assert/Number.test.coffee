@@ -9,6 +9,14 @@ describe 'Assert | Number', ->
     (-> (0).assert_Bigger_Than(-1)).assert_Not_Throws()
     (-> (0).assert_Bigger_Than( 1)).assert_Throws()
 
+  it 'assert_In_Between',->
+    (1).assert_In_Between(0,10)
+    (10).assert_In_Between(2,11)
+    (-1).assert_In_Between(-2,0)
+    (-> (0).assert_In_Between(-1,1)).assert_Not_Throws()
+    (-> (0).assert_In_Between( 1,2)).assert_Throws (error)->
+        error.message.assert_Is('Expected 0 to be between 1 and 2')        
+
   it 'assert_Is_Equal_To, assert_Is',->
     (0).assert_Is_Equal_To.assert_Is_Function()
     (0).assert_Is_Equal_To(0)

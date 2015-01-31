@@ -8,9 +8,8 @@
     "watch": "npm run test -- -w",
     "docs": "cake -v -l classic doc",
     "docs-dev": "cake -w -l classic doc",
-    "docs-publish": "cake -p -l classic doc"
-
-
+    "docs-publish": "cake -p -l classic doc",
+    "coverage-local": "onchange 'src/**/*.litcoffee' 'test/**/*.coffee' -- ./bin/lcov-code-coverage.sh"
   },
   "repository": {
     "type": "git",
@@ -28,7 +27,8 @@
   "devDependencies": {
     "chai": "^1.9.1",
     "docco": "^0.6.3",
-    "mocha": "^1.21.4"
+    "mocha": "^1.21.4",
+    "onchange": "0.0.2"
   },
   "dependencies": {
     "coffee-script": "^1.8.0"

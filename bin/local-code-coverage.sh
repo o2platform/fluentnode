@@ -12,12 +12,12 @@ fi
 
 mocha -R html-file-cov ./.coverage/test  --recursive
 
-echo 'Removing instrumented node files'
-rm -R .coverage
+#echo 'Removing instrumented node files'
+#rm -R .coverage
 
 echo 'Opening browser with coverage.html'
-mv coverage.html bin/coverage.html
-open bin/coverage.html
+mv coverage.html .coverage/coverage.html
+open .coverage/coverage.html
 
 #echo Uninstalling dependencies
 #npm uninstall coffee-coverage

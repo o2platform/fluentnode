@@ -10,6 +10,15 @@ Note: the @ represents this
       value.assert_Is_Number()
       (@ > value).assert_Is_True("#{@} was not bigger than #{value}")
 
+@.**assert_In_Between**
+
+asserts that @ is in between **min** and **max**
+
+    Number::assert_In_Between = (min,max )->
+      message = "Expected #{@} to be between #{min} and #{max}"
+      @.in_Between(min,max).assert_Is_True(message)
+      @
+
 @.**assert_Is_Equal_To** target
 
     Number::assert_Is_Equal_To   = (target)->

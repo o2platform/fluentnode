@@ -85,9 +85,46 @@ dependencies
     String::GET = (callback) ->
       @.http_GET (error, data, res)-> callback(data)
 
+
+@.**GET_Json**
+@.**json_GET**
+
+Makes a GET request to @ and JSON parses the html data
+
+Will throw an error if the returned data is not a valid JSON objec
+
+Twin methods: json_GET
+
     String::GET_Json = (callback) ->
       @.http_GET (error, data, res)-> callback(JSON.parse(data))
 
+    String::json_GET = String::GET_Json
+
+
+@.**http_GET_Wait_For_Null**
+
+Waits until a GET request to @ results null (or empty)
+
+This is a good util method to check when servers go offline
+
+    String::http_GET_Wait_For_Null = (callback, attempts)->
+      timeout  = timeout || 500
+      delay    = delay || 10
+      attempts = attempts || ~~(timeout/delay)
+      try_Http_Get = (next) =>
+        @.GET (data)  =>
+          if data
+            next.invoke_In(delay)
+          else
+            callback(null)
+      run_Tests = (count)=>        
+        if count
+          try_Http_Get ()->
+            run_Tests(count-1)
+        else
+          callback new Error("[http_GET_Wait_For_Null] never got a null from server #{@} after #{attempts} attempts")
+
+      run_Tests(attempts)
 
     String::http_With_Options = (options, callback) ->
       url = url.parse(@.str())

@@ -85,14 +85,22 @@ describe 'http',->
       server.close_And_Destroy_Sockets ()->
         done()
 
+    it 'GET_Json, json_GET', (done)->
+      ''.json_GET.assert_Is ''.GET_Json
+      data = { a : 42}
+      server.respond_With_Object_As_Json data
+      url.json_GET (json)->
+        json  .assert_Is data
+        json.a.assert_Is 42
+        done()
+
     it 'http_Status', (done)->
-      ''.http_Status.assert_Is_Function()
       url.http_Status (status)->
         status.assert_Is(200)
         done()
 
     it 'http_GET' , (done)->
-      ''.http_Status.assert_Is_Function()
+      server.respond_With_String_As_Text test_Data
       req = url.http_GET (err, data, res)->
         assert_Is_Null(err)
         data.assert_Is_String()
@@ -114,11 +122,27 @@ describe 'http',->
                   headers: { 'name' : 'value_'.add_5_Random_Letters() , 'cookie':'abc=123;'}
                 }
       url.http_With_Options options, (err, data)->
-        log data
         json = JSON.parse(data)
         json.name.assert_Is(options.headers.name)
         json.cookie.assert_Is('abc=123;')
         done()
+
+    it 'http_GET_Wait_For_Null', (done)->
+      url.http_GET_Wait_For_Null (err)->
+        assert_Is_Null err
+        done()
+      20.wait ->
+        server.respond_With_String_As_Text null
+
+    it 'http_GET_Wait_For_Null (no null is returned from server)', (done)->
+      server.respond_With_String_As_Text '123'
+      attempts = 3
+      check = (err)->
+        err.message.assert_Is "[http_GET_Wait_For_Null] never got a null from server #{url} after #{attempts} attempts"
+        done()
+      url.http_GET_Wait_For_Null check, attempts
+
+
 
     it 'http_With_Options (bad data)', (done)->
       url.http_With_Options { port: 81 }, (err, data,res)->

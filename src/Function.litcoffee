@@ -8,7 +8,6 @@ Creates a new object from the parent function
     Function::ctor   = (params...)->
         new @(params...)
 
-
 **Function::invoke** params...
 
 Invokes the function with the provided params. Note that the this object is set to null

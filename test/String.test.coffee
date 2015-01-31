@@ -2,9 +2,9 @@ require('../src/String')
 expect = require('chai').expect
 
 describe 'String',->
-    value = "abc123"  
-    
-    it 'append', ->              
+    value = "abc123"
+
+    it 'append', ->
         expect(value.append).to.be.an('Function')
         expect(value.append(        )).to.equal(value)
         expect(value.append(''      )).to.equal(value)
@@ -12,7 +12,7 @@ describe 'String',->
         expect(value.append('a'     )).to.equal(value + 'a')
         expect(value.append('abc'   )).to.equal(value + 'abc')
         expect(value.append('abc123')).to.equal(value + 'abc123')
-        
+
     it 'add_Random_Chars', ->
         expect(value.add_Random_Chars            ).to.be.an   ('Function')
         expect(value.add_Random_Chars(1)  .size()).to.equal   (value.size() + 1 )
@@ -63,8 +63,8 @@ describe 'String',->
         'abb'.after('b'  ).assert_Is('b'     )
         'a.b'.after('.'  ).assert_Is('b'     )
         'a.b.c'.after('.').assert_Is('b.c'   )
-    
-        
+
+
     it 'after_Last',->
         value.after_Last.assert_Is_Function()
         value.after_Last('3'  ).assert_Is(''     )
@@ -78,7 +78,7 @@ describe 'String',->
         'abb'.after_Last('b'  ).assert_Is(''     )
         'a.b'.after_Last('.'  ).assert_Is('b'    )
         'a.b.c'.after_Last('.').assert_Is('c'    )
-        
+
     it 'before',->
         value.before.assert_Is_Function()
         value.before('3'  ).assert_Is('abc12')
@@ -92,8 +92,8 @@ describe 'String',->
         'abb'.before('b'  ).assert_Is('a'    )
         'a.b'.before('.'  ).assert_Is('a'    )
         'a.b.c'.before('.').assert_Is('a'    )
-    
-        
+
+
     it 'before_Last',->
         value.before_Last.assert_Is_Function()
         value.before_Last('3'  ).assert_Is('abc12' )
@@ -107,7 +107,7 @@ describe 'String',->
         'abb'.before_Last('b'  ).assert_Is('ab'    )
         'a.b'.before_Last('.'  ).assert_Is('a'     )
         'a.b.c'.before_Last('.').assert_Is('a.b'   )
-        
+
     it 'contains',->
         value.contains.assert_Is_Function()
         value.contains('3'         ).assert_Is_True()
@@ -130,14 +130,18 @@ describe 'String',->
 
 
     it 'ends_With',->
-        value.ends_With.assert_Is_Function()
-        value.ends_With('3'         ).assert_Is_True()
-        value.ends_With('2'         ).assert_Is_False()
-        value.ends_With('123'       ).assert_Is_True()
-        value.ends_With(value       ).assert_Is_True()
-        value.ends_With(value + '1' ).assert_Is_False()
-        value.ends_With('1' + value).assert_Is_False()
-        value.assert_Is(value)
+      using value, ->
+        @.ends_With.assert_Is_Function()
+        @.ends_With('3'         ).assert_Is_True()
+        @.ends_With('2'         ).assert_Is_False()
+        @.ends_With('123'       ).assert_Is_True()
+        @.ends_With(value       ).assert_Is_True()
+        @.ends_With(value + '1' ).assert_Is_False()
+        @.ends_With('1' + value ).assert_Is_False()
+        @.ends_With(''          ).assert_Is_False()
+        @.ends_With(null        ).assert_Is_False()
+        @.ends_With(undefined   ).assert_Is_False()
+        @.assert_Is(value)
 
     it 'lower', ->
         expect(value.lower).to.be.an('Function')
@@ -153,16 +157,32 @@ describe 'String',->
         value.not_Contains(value + '1' ).assert_Is_True()
         value.not_Contains('1' + value ).assert_Is_True()
 
-    it 'size', ->              
+    it 'remove', ->
+      using value,->
+        @.remove('a'  ).assert_Is 'bc123'
+        @.remove('b'  ).assert_Is 'ac123'
+        @.remove('abc').assert_Is '123'
+        @.remove('123').assert_Is 'abc'
+        (@+@).remove('a'   ).assert_Is 'bc123'.twice()
+        (@+@).remove('bc12').assert_Is 'a3'   .twice()
+
+    it 'size', ->
         expect(value.size).to.be.an('Function')
-        expect(''.size()                 ).to.equal(0)        
+        expect(''.size()                 ).to.equal(0)
         expect(value.size()              ).to.equal(6)
         expect(value.append('abc').size()).to.equal(9)
 
-    it 'lower', ->
-        expect(value.upper          ).to.be.an('Function')
-        expect(value.upper()        ).to.equal(value.toUpperCase())
-        expect(value.upper().lower()).to.equal(value.toLowerCase())
+    it 'starts_With',->
+      using value,->
+        @.starts_With.assert_Is_Function()
+        @.starts_With('a'     ).assert_Is_True()
+        @.starts_With('b'     ).assert_Is_False()
+        @.starts_With('abc'   ).assert_Is_True()
+        @.starts_With(value   ).assert_Is_True()
+        @.starts_With(@ + 'a' ).assert_Is_False()
+        @.starts_With( 'a' + @).assert_Is_False()
+        @.starts_With(''      ).assert_Is_False()
+        @.assert_Is(@)
 
     it 'trim', ->
         value.trim.assert_Is_Function()
@@ -175,14 +195,18 @@ describe 'String',->
         ' 1 '.trim().assert_Is_Not('a 1')
         '   '.trim().assert_Is_Not('a 1')
 
+    it 'twice', ->
+      using value,->
+        @  .twice().assert_Is @ + @
+        'a'.twice().assert_Is 'aa'
+        '' .twice().assert_Is ''
 
-    it 'starts_With',->
-        value.starts_With.assert_Is_Function()
-        value.starts_With('a'         ).assert_Is_True()
-        value.starts_With('b'         ).assert_Is_False()
-        value.starts_With('abc'       ).assert_Is_True()
-        value.starts_With(value       ).assert_Is_True()
-        value.starts_With(value + 'a' ).assert_Is_False()
-        value.starts_With( 'a' + value).assert_Is_False()
-        value.assert_Is(value)
 
+    it 'json_Parse',->
+      '{ "a" : 42 }'.json_Parse().assert_Is { a : '42' }
+      "{}"         .json_Parse({})
+      (-> ''.json_Parse()).assert_Throws (error)->
+          error.message.assert_Is 'Unexpected end of input'
+
+      #console.log  '{ }'.json_Parse()
+      # {}""          .json_Parse().assert_Is { }
