@@ -8,6 +8,10 @@ expect     = require('chai').expect
 
 describe 'fs',->
 
+  it 'create_Parent_Folder', ->
+    './aaa/abc.txt'.create_Parent_Folder().assert_Is './aaa/abc.txt'
+    './aaa'.assert_Folder_Exists()
+    "./aaa".delete_Folder().assert_True()
   it 'folder_Create and folder_Delete' , ->               # tests the String's folder_Create and folder_Delete methods
     "".folder_Create.assert_Is_Function()                 # checks if String::folder_Create exists
     "".folder_Delete.assert_Is_Function()                 # checks if String::folder_Delete exists

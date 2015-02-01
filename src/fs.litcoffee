@@ -3,6 +3,21 @@ dependencies
     require './path'
     fs = require('fs')
 
+
+@.**create_Parent_Folder**
+
+Creates the parent folder of the current @
+
+Useful when creating a file in a folder that might not exist
+
+Note that ```folder_Create()``` will create multiple parent folders (if needed)
+
+Returns @
+
+    String::create_Parent_Folder = ->
+      @.valueOf().parent_Folder()
+                 .folder_Create()
+      @
 @.**folder_Create**
 
 Creates a folder on @, with checks to create parent folders recusively (i.e. it will also create all parents up until it finds a valid directory)
