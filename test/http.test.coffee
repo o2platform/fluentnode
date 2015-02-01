@@ -26,6 +26,12 @@ describe 'http',->
         server._sockets.keys().assert_Is_Array().assert_Size_Is(0)
         done()
 
+    it 'global.__fluentnode.settings.http',->
+        using global.__fluentnode.http,->
+            @.assert_Is_Object()
+            @.HTTP_GET_TIMEOUT.assert_Is 500
+            @.HTTP_GET_DELAY.assert_Is 10
+
     it 'createServer_OnPort_Saying',()->
         server.listen_OnPort_Saying.assert_Is_Function()
         server                  .assert_Instance_Of(http.Server)
@@ -77,12 +83,15 @@ describe 'http',->
 
     server = null
 
-    before ->
+    before (done)->
       server = http.createServer(null)
       server.listen_OnPort_Saying test_Port, test_Data, ()=>
+        global.__fluentnode.http.HTTP_GET_TIMEOUT = 30
+        done()
 
     after (done)->
       server.close_And_Destroy_Sockets ()->
+        global.__fluentnode.http.HTTP_GET_TIMEOUT = 500
         done()
 
     it 'GET_Json, json_GET', (done)->
@@ -92,6 +101,13 @@ describe 'http',->
       url.json_GET (json)->
         json  .assert_Is data
         json.a.assert_Is 42
+        done()
+
+    it 'json_GET_With_Timeout', (done)->
+      data = { a : 42}
+      server.respond_With_Object_As_Json data
+      url.json_GET_With_Timeout (data)->
+        data.assert_Is data
         done()
 
     it 'http_Status', (done)->
@@ -136,12 +152,28 @@ describe 'http',->
 
     it 'http_GET_Wait_For_Null (no null is returned from server)', (done)->
       server.respond_With_String_As_Text '123'
-      attempts = 3
+
+      attempts = ~~(global.__fluentnode.http.HTTP_GET_TIMEOUT / global.__fluentnode.http.HTTP_GET_DELAY)
+
       check = (err)->
         err.message.assert_Is "[http_GET_Wait_For_Null] never got a null from server #{url} after #{attempts} attempts"
         done()
       url.http_GET_Wait_For_Null check, attempts
 
+    it 'http_GET_With_Timeout', (done)->
+      value = 'asd'.add_5_Random_Letters()
+      server.respond_With_String_As_Text null
+      url.http_GET_With_Timeout (data)->
+        data.assert_Is value
+        done()
+      20.wait ->
+        server.respond_With_String_As_Text value
+
+    it 'http_GET_With_Timeout (null is always returned from server)', (done)->
+      server.respond_With_String_As_Text null
+      url.http_GET_With_Timeout (data)->
+        assert_Is_Null data
+        done()
 
 
     it 'http_With_Options (bad data)', (done)->

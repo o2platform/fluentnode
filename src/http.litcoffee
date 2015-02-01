@@ -5,6 +5,14 @@ dependencies
     url   = require('url')
     Server = http.Server
 
+settings
+
+    global.__fluentnode ?= {}
+    global.__fluentnode.http ?= {}
+    using global.__fluentnode.http, ->
+      @.HTTP_GET_TIMEOUT = 500
+      @.HTTP_GET_DELAY   = 10
+
 **Server::add_Sockets_Close_Suport**
 
     Server::add_Sockets_Close_Suport = ()->
@@ -89,7 +97,7 @@ dependencies
 @.**GET_Json**
 @.**json_GET**
 
-Makes a GET request to @ and JSON parses the html data
+Makes a GET request to @ and JSON parses the html data received
 
 Will throw an error if the returned data is not a valid JSON objec
 
@@ -100,6 +108,15 @@ Twin methods: json_GET
 
     String::json_GET = String::GET_Json
 
+@.**json_GET_With_Timeout**
+
+Makes a GET request (with a 500ms wait for valid data),
+and JSON parses the html data received
+
+    String::json_GET_With_Timeout = (callback)->
+      @.http_GET_With_Timeout (data)->
+        callback data.json_Parse()
+
 
 @.**http_GET_Wait_For_Null**
 
@@ -107,17 +124,17 @@ Waits until a GET request to @ results null (or empty)
 
 This is a good util method to check when servers go offline
 
-    String::http_GET_Wait_For_Null = (callback, attempts)->
-      timeout  = timeout || 500
-      delay    = delay || 10
-      attempts = attempts || ~~(timeout/delay)
+    String::http_GET_Wait_For_Null = (callback)->
+      timeout  = global.__fluentnode.http.HTTP_GET_TIMEOUT
+      delay    = global.__fluentnode.http.HTTP_GET_DELAY
+      attempts = ~~(timeout/delay)
       try_Http_Get = (next) =>
         @.GET (data)  =>
           if data
             next.invoke_In(delay)
           else
             callback(null)
-      run_Tests = (count)=>        
+      run_Tests = (count)=>
         if count
           try_Http_Get ()->
             run_Tests(count-1)
@@ -125,6 +142,31 @@ This is a good util method to check when servers go offline
           callback new Error("[http_GET_Wait_For_Null] never got a null from server #{@} after #{attempts} attempts")
 
       run_Tests(attempts)
+
+
+@.**http_GET_With_Timeout**
+
+Makes a GET request (with a 500ms wait for valid data)
+
+    String::http_GET_With_Timeout = (callback)->
+      timeout = global.__fluentnode.http.HTTP_GET_TIMEOUT
+      delay   = global.__fluentnode.http.HTTP_GET_DELAY
+      attempts = ~~(timeout/delay)
+      try_Http_Get = (next) =>
+        @.GET (data) =>
+          if data
+            callback(data)
+          else
+            (delay).invoke_After(next)
+      run_Tests = (count)=>
+        if count
+          try_Http_Get ()->
+            run_Tests(count-1)
+        else
+          callback null
+
+      run_Tests attempts
+
 
     String::http_With_Options = (options, callback) ->
       url = url.parse(@.str())

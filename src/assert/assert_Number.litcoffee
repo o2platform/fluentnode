@@ -28,9 +28,9 @@ asserts that @ is in between **min** and **max**
 
 @.**assert_Is_Not_Equal_To** target
 
-    Number::assert_Is_Not_Equal_To = (target)->
+    Number::assert_Is_Not_Equal_To = (target, message)->
       source    = @
-      assert.notEqual(source, target)
+      assert.notEqual(source, target, message)
       @
 
 @.**assert_Is_Number**

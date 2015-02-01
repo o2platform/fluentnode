@@ -25,8 +25,8 @@ dependencies
       assert.equal(source, target)
       @
 
-    String::assert_Is_Not_Equal_To       = (target)->
-      assert.notDeepEqual(@.toString(), target.toString())
+    String::assert_Is_Not_Equal_To       = (target, message)->
+      assert.notDeepEqual(@.valueOf(), target.valueOf(), message)
       @
 
     String::assert_Is_Json              = ->

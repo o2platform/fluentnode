@@ -6,7 +6,7 @@ if [ ! -f ./node_modules/mocha-lcov-reporter/package.json ]; then
   npm install mocha-lcov-reporter
 fi
 
-#set -o errexit # Exit on error
+# set -o errexit # Exit on error
 #echo 'Removing cache files'
 #rm -f -R .tmCache
 

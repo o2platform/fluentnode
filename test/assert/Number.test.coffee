@@ -15,7 +15,7 @@ describe 'Assert | Number', ->
     (-1).assert_In_Between(-2,0)
     (-> (0).assert_In_Between(-1,1)).assert_Not_Throws()
     (-> (0).assert_In_Between( 1,2)).assert_Throws (error)->
-        error.message.assert_Is('Expected 0 to be between 1 and 2')        
+        error.message.assert_Is('Expected 0 to be between 1 and 2')
 
   it 'assert_Is_Equal_To, assert_Is',->
     (0).assert_Is_Equal_To.assert_Is_Function()

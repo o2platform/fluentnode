@@ -5,7 +5,7 @@
   "main": "src/_register.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script/register ./test --recursive",
-    "watch": "npm run test -- -w",
+    "watch": "npm run test -- -R dot -w",
     "docs": "cake -v -l classic doc",
     "docs-dev": "cake -w -l classic doc",
     "docs-publish": "cake -p -l classic doc",
