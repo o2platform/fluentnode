@@ -36,6 +36,20 @@ describe 'Assert | Number', ->
     (0).assert_Is_Number().assert_Is(0)
     (0).assert_Is_Number().assert_Is_Not(10)
 
+    new Number(12).assert_Is_Number().assert_Is 12
+    Number(12    ).assert_Is_Number().assert_Is 12
+    Number(''    ).assert_Is_Number().assert_Is 0    # weird edge case, since Number('') is 0
+
+    #check for Nan (see issue https://github.com/o2platform/fluentnode/issues/57 )
+    nan_Error_Message = 'The provided number was a NaN (Not an Number)'
+    (-> NaN              .assert_Is_Number()).assert_Throws (error)-> error.message.assert_Is nan_Error_Message
+    (-> Number('aaa')    .assert_Is_Number()).assert_Throws (error)-> error.message.assert_Is nan_Error_Message
+    (-> new Number('aaa').assert_Is_Number()).assert_Throws (error)-> error.message.assert_Is nan_Error_Message
+
+
+
+
+
   it 'assert_Smaller_Than',->
     (0).assert_Smaller_Than(1)
     (5).assert_Smaller_Than(9)

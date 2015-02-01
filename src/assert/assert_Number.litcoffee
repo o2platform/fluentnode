@@ -35,7 +35,15 @@ asserts that @ is in between **min** and **max**
 
 @.**assert_Is_Number**
 
+When checking if is @ is a number, it seems that the only thing we can do
+it to check if @ is NaN (which should not be accepetd)
+
+See see issue https://github.com/o2platform/fluentnode/issues/57
+
+note that ```Number('').assert_Is_Number().assert_Is 0```
+
     Number::assert_Is_Number = ()->
+      @.str().assert_Is_Not 'NaN' , 'The provided number was a NaN (Not an Number)'
       @
 
 @.**assert_Is** target
