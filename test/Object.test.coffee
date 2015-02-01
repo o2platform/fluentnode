@@ -14,21 +14,24 @@ describe 'Object',->
         expect({}    .str()).to.equal({}   .toString() )
         expect({a:'1'}.str()).to.equal("[object Object]")
 
-#    it 'json',->
-#        expect(""   .json).to.be.an('Function')
-#        expect(""   .json()).to.equal("\"\"")
-#        expect("123".json()).to.equal("\"123\"")
-#        expect({}   .json()).to.equal("{}")
-#        expect({a:1}.json()).to.equal("{\"a\":1}")
-    
-    it 'json_pretty', ->
+    it 'json_Str',->
+        expect(""   .json_Str).to.be.an('Function')
+        expect(""   .json_Str()).to.equal("\"\"")
+        expect("123".json_Str()).to.equal("\"123\"")
+        expect({}   .json_Str()).to.equal("{}")
+        expect({a:1}.json_Str()).to.equal("{\"a\":1}")
+
+    it 'json_Pretty', ->
+        expect({a:1}        .json_Pretty()).to.equal('{\n  \"a\": 1\n}')
+        expect([{a:1},{b:1}].json_Pretty()).to.equal('[\n  {\n    \"a\": 1\n  },\n  {\n    \"b\": 1\n  }\n]')
+
         expect({a:1}        .json_pretty()).to.equal('{\n  \"a\": 1\n}')
-        expect([{a:1},{b:1}].json_pretty()).to.equal('[\n  {\n    \"a\": 1\n  },\n  {\n    \"b\": 1\n  }\n]')
 
     it 'json_inspect',->
-        expect(""   .json_inspect).to.be.an('Function')
+        expect("".json_Inspect).to.be.an('Function')
         o = {}
         o.o = o
+        expect(o.json_Inspect()).to.equal("{ o: [Circular] }")
         expect(o.json_inspect()).to.equal("{ o: [Circular] }")
 
     it 'keys', ->
@@ -45,6 +48,10 @@ describe 'Object',->
 
         new abc().keys()    .assert_Is_Equal_To(['key1', 'key2'])
         new abc().keys_All().assert_Is_Equal_To(['key1', 'key2', 'key1_All', 'key2_All'])
+
+    it 'values', ->
+        abc = { key1:'aaa', key2:'bbb'}
+        abc.values().assert_Is_Equal_To(['aaa', 'bbb'])
 
     it 'call_Function',()->
         check_Call_Param = (source, param1, param2)->
@@ -73,5 +80,3 @@ describe 'Object',->
         replMe.context.that.assert_Is(anObject)
         replMe.rli.close()
         "".log()                    # without this extra line here, coveralls fails to publish
-
-        

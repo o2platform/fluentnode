@@ -7,16 +7,10 @@ dependencies
 
 todo: add check for already mapped methods. once that is done we should be able to add this method safely
 
-```
-Object.defineProperty Object.prototype, 'json',
-    enumerable  : false,
-    writable    : true,
-    value: ->
-        return JSON.stringify(@)
-```
 
+@.**str**
 
-**str**
+Returns the ```toString``` result of the @ object
 
     Object.defineProperty Object.prototype, 'str',
         enumerable  : false,
@@ -25,21 +19,43 @@ Object.defineProperty Object.prototype, 'json',
             return @.toString()
 
 
-**json_pretty**
+@.**json_Str**
 
-    Object.defineProperty Object.prototype, 'json_pretty',
+Returns the JSON.stringify of the @ object
+
+    Object.defineProperty Object.prototype, 'json_Str',
+        enumerable  : false,
+        writable    : true,
+        value: ->
+            return JSON.stringify(@)
+
+
+@.**json_Pretty**
+
+twin method: json_pretty (legacy)
+
+    Object.defineProperty Object.prototype, 'json_Pretty',
         enumerable  : false,
         writable    : true,
         value: ->
             return JSON.stringify(@,null,'  ')
 
-**json_inspect**
+    Object.defineProperty Object.prototype, 'json_pretty',enumerable  : false, writable    : true, value: Object::json_Pretty
 
-    Object.defineProperty Object.prototype, 'json_inspect',
+
+**json_Inspect**
+
+Returns a json representation of @ (using require('util').inspect which supports recursive objects)
+
+twin method: json_pretty (legacy)
+
+    Object.defineProperty Object.prototype, 'json_Inspect',
         enumerable  : false,
         writable    : true,
         value: ->
             return require('util').inspect(@)
+
+    Object.defineProperty Object.prototype, 'json_inspect',enumerable  : false, writable    : true, value: Object::json_Inspect
 
 **keys**
 
@@ -48,6 +64,7 @@ Object.defineProperty Object.prototype, 'json',
         writable    : true,
         value: ->
             return (key for own key of @)
+
 **keys_All**
 
     Object.defineProperty Object.prototype, 'keys_All',
@@ -55,6 +72,15 @@ Object.defineProperty Object.prototype, 'json',
         writable    : true,
         value: ->
             return (key for key of @)
+
+
+**values**
+
+    Object.defineProperty Object.prototype, 'values',
+        enumerable  : false,
+        writable    : true,
+        value: ->
+            return (@[key] for own key of @)
 
 **call_Function**
 
