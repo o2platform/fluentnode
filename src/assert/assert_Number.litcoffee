@@ -6,9 +6,14 @@ Note: the @ represents this
 
 @.**assert_Bigger_Than** value
 
+twin methods: assert_Above, assert_Is_Bigger
+
     Number::assert_Bigger_Than = (value)->
       value.assert_Is_Number()
       (@ > value).assert_Is_True("#{@} was not bigger than #{value}")
+
+    Number::assert_Above          = Number::assert_Bigger_Than
+    Number::assert_Is_Bigger_Than = Number::assert_Bigger_Than
 
 @.**assert_In_Between**
 

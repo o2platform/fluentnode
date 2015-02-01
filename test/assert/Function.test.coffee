@@ -1,6 +1,6 @@
 require('../../src/assert/assert_Function')
 
-describe 'Assert | Function', ->
+describe 'Assert | Function |', ->
   it 'assert_Throws', (done)->
     (-> throws 'fail')  .assert_Throws()
     try

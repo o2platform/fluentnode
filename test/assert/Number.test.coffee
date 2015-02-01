@@ -2,12 +2,15 @@ require('../../src/assert/assert_Number')
 
 assert = require 'assert'
 
-describe 'Assert | Number', ->
+describe 'Assert | Number |', ->
   it 'assert_Bigger_Than',->
     (1).assert_Bigger_Than(0)
     (9).assert_Bigger_Than(5)
     (-> (0).assert_Bigger_Than(-1)).assert_Not_Throws()
     (-> (0).assert_Bigger_Than( 1)).assert_Throws()
+
+    (0).assert_Bigger_Than.assert_Is (0).assert_Above
+    (0).assert_Bigger_Than.assert_Is (0).assert_Is_Bigger_Than
 
   it 'assert_In_Between',->
     (1).assert_In_Between(0,10)

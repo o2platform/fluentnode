@@ -1,6 +1,6 @@
 require('../../src/assert/assert_String')
 
-describe 'Assert | String', ->
+describe 'Assert | String |', ->
   it 'assert_Contains', ->
     ''.assert_Contains.assert_Is_Function()
     ''.assert_Contains(''          ).assert_Is_Equal_To('')

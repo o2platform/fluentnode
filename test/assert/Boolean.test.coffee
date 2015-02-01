@@ -1,6 +1,6 @@
 require('../../src/assert/assert_Boolean')
 
-describe 'Assert | Boolean.test',->
+describe 'Assert | Boolean.test |',->
 
   it 'assert_False', ->
     true.assert_Is_False.assert_Is_Function()

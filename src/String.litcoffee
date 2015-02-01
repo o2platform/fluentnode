@@ -1,42 +1,20 @@
 Methods that extend the native Javascript String class
 
-dependencies
+Here is the list of 'default' String global objects:
+[Global_Objects/String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
-    crypto = require('crypto')
+Note that there are more String Extension Methods (they exist inside their main dependency: crypto, path, fs)
 
 methods
+
+twin methods: add
 
 @.**append** value
 
     String::append = (value)->
         @ + if value then value else ''
 
-@.**add_Random_Chars** size
-
-    String::add_Random_Chars = (size )->
-      @ + crypto.randomBytes(size || 10)
-
-@.**add_Random_String** size
-
-    String::add_Random_String = (size )->
-      @ + crypto.randomBytes(size || 10).toString('hex').slice(0,size|| 10)
-
-@.**add_Random_Letters** size
-
-    String::add_Random_Letters   = (size )->
-      charSet = 'abcdefghijklmnopqrstuvwxyz'
-      @ + (charSet[Math.floor(Math.random() * charSet.length)]  for i in [1..size]).join('')
-
-@.**add_5_Random_Letters**
-
-    String::add_5_Random_Letters = ()->
-      @.add_Random_Letters(5)
-
-@.**add_Random_Numbers** size
-
-    String::add_Random_Numbers = (size)->
-      charSet = '0123456789'
-      @ + (charSet[Math.floor(Math.random() * charSet.length)]  for i in [1..size]).join('')
+    String::add = String::append
 
 @.**after** value
 
@@ -91,6 +69,25 @@ If ```value``` is an RegExp then checks if it matches @
       else
         @.valueOf().slice(-value.length) is value
 
+
+@.**is** value
+
+Returns true if ```@``` is equal to ```value```
+
+    String::is = (value)->
+      @.valueOf() is value
+
+@.**is_Not** value
+
+Returns true if ```@``` is NOT equal to ```value```
+
+twin methods: isnt
+
+    String::is_Not = (value)->
+      @.valueOf() isnt value
+
+    String::isnt = String::is_Not
+
 @.**lower**
 
 returns @ in lowercase
@@ -102,6 +99,8 @@ returns @ in lowercase
 
     String::not_Contains  = (value)->
       @.indexOf(value) == -1
+
+
 
 @.**remove** value
 
@@ -117,6 +116,21 @@ only removes the first occurance
         result = result.replace(value,'')
       result
 
+@.**repeat** value
+
+Repeats @ ```value``` times
+
+Note: the implementation uses a while loop in order to handle ok cases when
+value is negative or weird
+
+    String::repeat = (value)->
+      result = ''
+      if typeof(value) is 'number'
+        while value > 0
+          result += @
+          value--
+      return result
+
 @.**size**
 
     String::size = ()->
@@ -129,6 +143,14 @@ only removes the first occurance
         false
       else
         @.valueOf().slice(0,value.length) is value
+
+@.**to_Safe_String**
+
+Returns a string where all chars that are dont match the regex are replaced
+with a - (dash)
+
+    String::to_Safe_String = ()->
+      @.replace(/[^a-z0-9.\-_]/gi, '-').lower()
 
 @.**trim**
 

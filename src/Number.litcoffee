@@ -1,9 +1,34 @@
 Adds helper methods to the native javascript Number class
 
+@.**add** value
 
-Number#**in_Between** (min, max)
+Returns ```@``` incremented by ```value```
 
-Returns true if @ is between min and max for example
+If value is not a number the original value is returned unmodifed
+
+Note that the original ```@``` value is not modified
+
+    Number::add = (value)->
+      if is_Number(value)
+        @ + value
+      else
+        @
+
+@.**dec** [value]
+
+Returns ```@``` decremented by 1 or by ```[value]``` (if provided)
+
+Note that the original ```@``` value is not modified
+
+    Number::dec = (value)->
+      if is_Number(value)
+        @ - value
+      else
+        @ - 1
+
+@.**in_Between**  min, max
+
+Returns true if @ is between ```min``` and ```max``` for example
 
 ```coffee
 (10).in_Between(5,15)  # returns true
@@ -15,9 +40,23 @@ Returns true if @ is between min and max for example
         (min < @ < max)
 
 
-Number#**invoke_After** (callback)
+@.**inc** [value]
 
-Invokes the **callback** function after @ miliseconds
+Returns ```@``` incremented by 1 or by ```[value]``` (if provided)
+
+Note that the original ```@``` value is not modified
+
+    Number::inc = (value)->
+      if is_Number(value)
+        @ + value
+      else
+        @ + 1
+
+
+
+@.**invoke_After** callback
+
+Invokes the **callback** function after ```@``` miliseconds
 
     Number::invoke_After = (callback)->
         if callback instanceof Function
@@ -25,32 +64,23 @@ Invokes the **callback** function after @ miliseconds
 
     Number::wait = Number::invoke_After
 
-Number#**log** ()
+@.**is_Number**
+
+Returns true if ```@``` is a number
+
+Returns false if ```@``` is NaN (i.e. Not a Number)
+
+    Number::is_Number = ->
+      return @ instanceof Number and @.str().is_Not('NaN')
+
+@.**log** ()
 
 Logs @ to the console
 
     Number::log =
       -> console.log @.toString()
 
-
-Number#**random_String** ()
-
-Returns a random string of size @ made of ascii chars
-
-    Number::random_String = ->
-        "".add_Random_String(@ + 0)
-
-
-Number#**random_Letters** ()
-
-Returns a random string of size @ made of only letters
-
-    Number::random_Letters = ->
-
-        "".add_Random_Letters(@ + 0)
-
-
-Number#**str** ()
+@.**str** ()
 
 Short version of ```toString```
 

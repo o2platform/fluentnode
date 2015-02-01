@@ -19,6 +19,15 @@ describe 'global',->
     file_Exists(undefined   ).assert_False()
     file_Exists({}.notHere  ).assert_False()
 
+  it 'is_Number',->
+    is_Number(0   ).assert_True()
+    is_Number(-1  ).assert_True()
+    is_Number(9999).assert_True()
+    is_Number(NaN ).assert_False()
+    is_Number(''  ).assert_False()
+    is_Number('ab').assert_False()
+    is_Number(null).assert_False()
+
   it 'is_Null',->
     is_Null(null     ).assert_True()
     is_Null(undefined).assert_False()

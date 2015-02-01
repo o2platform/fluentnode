@@ -55,7 +55,7 @@ note: Ideally we could do something like ```assert.equal(typeof(@), 'array', mes
 
 **Array::assert_Size_Is** size,[message]
 
-    Array::assert_Size_Is               = (size, message)->
+    Array::assert_Size_Is = (size, message)->
       message = message || "[assert_Size_Is] expected #{@.length} and it was #{size}"
       assert.equal(@.length, size, message)
       @
@@ -64,8 +64,8 @@ note: Ideally we could do something like ```assert.equal(typeof(@), 'array', mes
 
 Asserts that the size of the @ array is bigger than ```size```
 
-twin methods: assert_Size_Is_Greater_Than , assert_Is_Greater_Than , assert_Is_Bigger_Than
-              assert_Greater_Than, assert_Bigger_Than
+twin methods: assert_Size_Is_Greater_Than , assert_Size_Is_Above, assert_Is_Greater_Than ,
+assert_Is_Bigger_Than, assert_Greater_Than, assert_Bigger_Than
 
     Array::assert_Size_Is_Bigger_Than   = (size, message)->
       message = message || "[assert_Size_Is_Bigger_Than] expected bigger than #{size}, but it was #{@.length} "
@@ -73,10 +73,12 @@ twin methods: assert_Size_Is_Greater_Than , assert_Is_Greater_Than , assert_Is_B
       @
 
     Array::assert_Size_Is_Greater_Than = Array::assert_Size_Is_Bigger_Than
+    Array::assert_Size_Is_Above        = Array::assert_Size_Is_Bigger_Than
     Array::assert_Is_Greater_Than      = Array::assert_Size_Is_Bigger_Than
     Array::assert_Is_Bigger_Than       = Array::assert_Size_Is_Bigger_Than
     Array::assert_Greater_Than         = Array::assert_Size_Is_Bigger_Than
     Array::assert_Bigger_Than          = Array::assert_Size_Is_Bigger_Than
+
 
 **Array::assert_Size_Is_Not** size,[message]
 

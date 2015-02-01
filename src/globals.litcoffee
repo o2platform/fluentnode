@@ -12,6 +12,14 @@ confirms that a ```value``` exists (i.e. is not null or undefined)
 
     global.not_Null = global.existy
 
+**is_Number**
+
+returns true if ```value``` is an number or not NaN
+
+    global.is_Number = (value)->
+      (typeof value is 'number') and value.is_Number()
+
+
 **is_Null**
 
 returns true if ```value``` is null

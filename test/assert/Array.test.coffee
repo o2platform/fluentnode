@@ -4,7 +4,7 @@ require('../../src/assert/assert_Object')
 
 assert = require 'assert'
 
-describe 'Assert | Array',->
+describe 'Assert | Array |',->
 
   it 'assert_Is_Array', ->
     [].assert_Is_Array.assert_Is_Function()
@@ -27,11 +27,13 @@ describe 'Assert | Array',->
     (-> ['' ].assert_Size_Is_Bigger_Than(-1)).assert_Not_Throws()
     (-> ['' ].assert_Size_Is_Bigger_Than(1)).assert_Throws()
 
-    [].assert_Size_Is_Bigger_Than.assert_Is [].assert_Size_Is_Greater_Than
-    [].assert_Size_Is_Bigger_Than.assert_Is [].assert_Is_Greater_Than
-    [].assert_Size_Is_Bigger_Than.assert_Is [].assert_Is_Bigger_Than
-    [].assert_Size_Is_Bigger_Than.assert_Is [].assert_Greater_Than
-    [].assert_Size_Is_Bigger_Than.assert_Is [].assert_Bigger_Than
+    using [].assert_Size_Is_Bigger_Than, ->
+      @.assert_Is [].assert_Size_Is_Greater_Than
+      @.assert_Is [].assert_Size_Is_Above
+      @.assert_Is [].assert_Is_Greater_Than
+      @.assert_Is [].assert_Is_Bigger_Than
+      @.assert_Is [].assert_Greater_Than
+      @.assert_Is [].assert_Bigger_Than
 
 
   it 'assert_Size_Is_Not', ->
