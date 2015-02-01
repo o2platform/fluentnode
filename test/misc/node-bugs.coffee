@@ -1,0 +1,34 @@
+require '../../src/assert/assert_Function'
+
+assert = require 'assert'
+
+describe '| misc | node-bugs',->
+
+  it 'Issue 9127 - assert.notEqual does not work for NaN',->  # https://github.com/joyent/node/issues/9127
+
+    # there are all fine
+    (-> assert.notEqual 1, 1         ).assert_Throws (error)-> error.message.assert_Is '1 != 1'
+    (-> assert.notEqual 2, 2         ).assert_Throws (error)-> error.message.assert_Is '2 != 2'
+    (-> assert.notEqual 'a','a'      ).assert_Throws (error)-> error.message.assert_Is '"a" != "a"'
+    (-> assert.notEqual 1,1,'abc'    ).assert_Throws (error)-> error.message.assert_Is 'abc'
+    (-> assert.notEqual 'a','a','abc').assert_Throws (error)-> error.message.assert_Is 'abc'
+    assert.notEqual 1,2
+    assert.notEqual 'a','b'
+
+    #these are the ones that are not working as expected
+    nan = NaN
+    assert.notEqual NaN,NaN
+    assert.notEqual nan,NaN
+    assert.notEqual NaN,nan
+    assert.notEqual Number('aaa'),Number('aaa')     # Number('aaa') is NaN
+    assert.notEqual new Number('aaa').valueOf(),    # new Number('aaa') is NaN
+                    new Number('aaa').valueOf()
+    assert.notEqual Number('aaa'),NaN
+    assert.notEqual NaN, null
+
+
+    #confiming that multiple ways to get NaN are indeed 'NaN'
+    assert.ok(Number('aaa').toString() is new Number('aaa').valueOf().toString())
+    assert.ok(Number('aaa').toString() is NaN.toString())
+    assert.ok(Number('aaa').toString() is 'NaN')
+    assert.ok(NaN.toString()           is 'NaN')
