@@ -27,6 +27,12 @@ describe 'Assert | Array',->
     (-> ['' ].assert_Size_Is_Bigger_Than(-1)).assert_Not_Throws()
     (-> ['' ].assert_Size_Is_Bigger_Than(1)).assert_Throws()
 
+    [].assert_Size_Is_Bigger_Than.assert_Is [].assert_Size_Is_Greater_Than
+    [].assert_Size_Is_Bigger_Than.assert_Is [].assert_Is_Greater_Than
+    [].assert_Size_Is_Bigger_Than.assert_Is [].assert_Is_Bigger_Than
+    [].assert_Size_Is_Bigger_Than.assert_Is [].assert_Greater_Than
+    [].assert_Size_Is_Bigger_Than.assert_Is [].assert_Bigger_Than
+
 
   it 'assert_Size_Is_Not', ->
     [       ].assert_Size_Is_Not.  assert_Is_Function()
