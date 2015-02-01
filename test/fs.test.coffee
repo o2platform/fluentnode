@@ -14,14 +14,16 @@ describe 'fs',->
     "./aaa".delete_Folder().assert_True()
 
   it 'folder_Create and folder_Delete' , ->               # tests the String's folder_Create and folder_Delete methods
-    "".folder_Create.assert_Is_Function()                 # checks if String::folder_Create exists
-    "".folder_Delete.assert_Is_Function()                 # checks if String::folder_Delete exists
+    ''.folder_Create.assert_Is_Function()                 # checks if String::folder_Create exists
+    ''.folder_Delete.assert_Is_Function()                 # checks if String::folder_Delete exists
     tmpDir = "./".temp_Name_In_Folder()                   # get a temp folder name in the folder provided as string
     tmpDir.assert_Folder_Not_Exists()                     # asserts that folder doesn't exist
           .folder_Create().assert_Is tmpDir.realPath()    # creates folder and confirms that the return value is the full path to the folder
     tmpDir.assert_Folder_Exists()                         # assert that folders exists
           .folder_Delete().assert_Is_True()               # deletes folder (confirming OK result from delete action)
     tmpDir.assert_Folder_Not_Exists()                     # asserts that folder doesn't exist
+
+    ''.folder_Delete.assert_Is ''.delete_Folder
 
   it 'folder_Create (and its parent)', ->
     tmpDir  = "./".temp_Name_In_Folder()

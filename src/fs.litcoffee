@@ -24,7 +24,7 @@ Returns @
 Creates a folder on @, with checks to create parent folders recusively (i.e. it will also create all parents up until it finds a valid directory)
 
     String::folder_Create = ->
-      target = @.valueOf()      
+      target = @.valueOf()
       if target.folder_Not_Exists()           # only do anyhing id the folder doesn't exist
         target.parent_Folder()                # check if the parent folder exists
               .folder_Create()
@@ -43,7 +43,7 @@ twin methods: delete_Folder
         fs.rmdirSync(folder)
       return folder.not_Exists()
 
-      String::delete_Folder = String::folder_Delete
+    String::delete_Folder = String::folder_Delete
 
 @.**folder_Delete_Recursive**
 
@@ -191,7 +191,6 @@ Returns true if @ is not a folder
     String::exists              = String::file_Exists
     String::create_Dir          = String::folder_Create
     String::delete_File         = String::file_Delete
-    String::delete_Folder       = String::folder_Delete
     String::folder_Exists       = String::is_Folder
     String::folder_Not_Exists   = String::is_Not_Folder
     String::fullPath            = String::realPath
