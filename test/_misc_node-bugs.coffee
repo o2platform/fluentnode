@@ -1,4 +1,4 @@
-require '../../src/assert/assert_Function'
+require '../src/assert/assert_Function'
 
 assert = require 'assert'
 
