@@ -12,6 +12,7 @@ describe 'fs',->
     './aaa/abc.txt'.create_Parent_Folder().assert_Is './aaa/abc.txt'
     './aaa'.assert_Folder_Exists()
     "./aaa".delete_Folder().assert_True()
+
   it 'folder_Create and folder_Delete' , ->               # tests the String's folder_Create and folder_Delete methods
     "".folder_Create.assert_Is_Function()                 # checks if String::folder_Create exists
     "".folder_Delete.assert_Is_Function()                 # checks if String::folder_Delete exists
@@ -119,7 +120,7 @@ describe 'fs',->
 
   it 'folders' , ->
     expect(''.folders).to.be.an('function')
-    folders = (folder for folder in './'.folders() when folder.not_Contains('.c9'))             #handle scenario when we coded inside Cloud9 IDE 
+    folders = (folder for folder in './'.folders() when folder.not_Contains('.c9'))             #handle scenario when we coded inside Cloud9 IDE
     expectedFolders = (folder.realPath() for folder in '.git,src,test'.split(','))
     folders.assert_Contains(expectedFolders)
 
@@ -179,4 +180,3 @@ describe 'fs',->
   it 'create_Dir'   , -> expect('.git'.create_Dir   ).to.equal(".git".folder_Create)
   it 'folder_Exists', -> expect('.git'.folder_Exists).to.equal(".git".is_Folder)
   it 'is_Directory' , -> expect('.git'.is_Directory ).to.equal(".git".is_Folder)
-        

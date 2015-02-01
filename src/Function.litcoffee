@@ -34,9 +34,12 @@ Invokes the function in ```value``` miliseconds
 Returns the source code of the current function. This done using an easy trick which is usually not that obvious.
 All we have to do is to call the .toString() method of the function (another option is to append the function to a string ```@ + ""```)
 
-    Function::sourceCode = ()->
+twin methods: sourceCode
+
+    Function::source_Code = ()->
         @.toString()
 
+    Function::sourceCode = Function::source_Code
 
 ---
 back to [index](index.html)

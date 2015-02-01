@@ -18,12 +18,13 @@ Returns @
       @.valueOf().parent_Folder()
                  .folder_Create()
       @
+
 @.**folder_Create**
 
 Creates a folder on @, with checks to create parent folders recusively (i.e. it will also create all parents up until it finds a valid directory)
 
-    String::folder_Create    = ->
-      target = @.valueOf()
+    String::folder_Create = ->
+      target = @.valueOf()      
       if target.folder_Not_Exists()           # only do anyhing id the folder doesn't exist
         target.parent_Folder()                # check if the parent folder exists
               .folder_Create()
@@ -32,10 +33,21 @@ Creates a folder on @, with checks to create parent folders recusively (i.e. it 
 
 @.**folder_Delete**
 
+Deletes the @ folder
+
+twin methods: delete_Folder
+
     String::folder_Delete       = ->
-                                    folder = @.toString()
-                                    if fs.existsSync(folder) then fs.rmdirSync(folder)
-                                    return folder.not_Exists()
+      folder = @.toString()
+      if fs.existsSync(folder)
+        fs.rmdirSync(folder)
+      return folder.not_Exists()
+
+      String::delete_Folder = String::folder_Delete
+
+@.**folder_Delete_Recursive**
+
+Deletes the folder @ recursively (ie. all files and all folders inside it)
 
     String::folder_Delete_Recursive = ->
                                     folder = @.toString()

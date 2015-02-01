@@ -39,8 +39,9 @@ describe 'Function',->
     done.invoke_In.assert_Is_Function()
     done.invoke_In(0)
 
-  it 'sourceCode', () ->
+  it 'source_Code', () ->
     test = ()-> return 12
     test.assert_Is_Function()
-    test.sourceCode.assert_Is_Function()
-    test.sourceCode().assert_Is("function () {\n        return 12;\n      }")
+    test.source_Code.assert_Is_Function()
+    test.source_Code().assert_Is("function () {\n        return 12;\n      }")
+    test.source_Code.assert_Is test.sourceCode    
