@@ -35,5 +35,3 @@ require('./http'     );
 require('./fs'       );
 require('./path'     );
 require('./process'  );
-
-require('./_to_map_and_write_Tests');
