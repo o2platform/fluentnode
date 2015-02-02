@@ -6,6 +6,9 @@
 // adding coffee-script support, after this line we can import *.coffee files
 require('coffee-script/register');
 
+//global
+require('./globals'  );
+
 //asserts
 
 require('./assert/assert_Array'   );
@@ -27,12 +30,10 @@ require('./String'   );
 
 //code NodeJS classes
 
+require('./crypto'  );
 require('./http'     );
 require('./fs'       );
 require('./path'     );
 require('./process'  );
-
-//global
-require('./globals'  );
 
 require('./_to_map_and_write_Tests');
