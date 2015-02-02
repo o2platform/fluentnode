@@ -100,7 +100,23 @@ returns @ in lowercase
     String::not_Contains  = (value)->
       @.indexOf(value) == -1
 
+@.**only_Letters**
 
+Returns a string where all chars that are not an letter (uppper or lower case) are replaced
+with a - (dash)
+
+The letters capitalization is not modified
+
+    String::only_Letters =
+      ()-> @.replace(/[^a-zA-Z]/gi, '-')
+
+@.**only_Numbers**
+
+Returns a string where all chars that are not an number are replaced
+with a - (dash)
+
+    String::only_Numbers = ()->
+      @.replace(/[^0-9]/gi, '-').lower()
 
 @.**remove** value
 
@@ -149,8 +165,17 @@ value is negative or weird
 Returns a string where all chars that are dont match the regex are replaced
 with a - (dash)
 
+The current regex allows
+- lowercase letters
+- uppercase letters
+- numbers
+- the chars: , - _  (comma, dash and underscore)
+
+The letters capitalization is modified, with the returned string being converted
+into lowercase
+
     String::to_Safe_String = ()->
-      @.replace(/[^a-z0-9.\-_]/gi, '-').lower()
+      @.replace(/[^a-zA-Z0-9.\-_]/gi, '-').lower()
 
 @.**trim**
 

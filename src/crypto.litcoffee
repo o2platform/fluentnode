@@ -22,8 +22,15 @@ dependencies
 
 @.**add_5_Random_Letters**
 
+Adds 5 random letters to ```@```
+
+twin methods: add_5_Letters
+
     String::add_5_Random_Letters = ()->
       @.add_Random_Letters(5)
+
+
+    String::add_5_Letters = String::add_5_Random_Letters
 
 @.**add_Random_Numbers** size
 
@@ -45,3 +52,4 @@ Returns a random string of size @ made of only letters
 
     Number::random_Letters = ->
       "".add_Random_Letters(@ + 0)
+

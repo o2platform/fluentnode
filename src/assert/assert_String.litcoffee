@@ -4,15 +4,44 @@ dependencies
     require '../Boolean'
     require '../fs'
 
-**String::assert_Contains(target)**
+@.**String::assert_Contains** target
 
-    String::assert_Contains             = (target)->
+    String::assert_Contains = (target, message)->
       source    = @.toString()
-      message   = "expected string '#{source}' to contain the string/array '#{target}'"
+      message   = message || "expected string '#{source}' to contain the string/array '#{target}'"
       assert(source.contains(target), message)
       @
 
-**String::assert_Not_Contains(target)**
+@.**String::assert_File_Contents_Contains** value
+
+Asserts that file ```@``` contents contains the string ```value```
+
+twin method: assert_File_Contains
+
+    String::assert_File_Contents_Contains = (value)->
+      message   = "expected file '#{@}' to contain '#{value}'"
+      @.file_Contents().assert_Contains value, message
+      @.valueOf()
+
+    String::assert_File_Contains = String::assert_File_Contents_Contains
+
+@.**String::assert_File_Contents_Is** value
+
+Asserts that file ```@``` contents is the string ```value```
+
+    String::assert_File_Contents = (value)->
+      message   = "expected file '#{@}' to be '#{value}'"
+      @.file_Contents().assert_Is value, message
+      @.valueOf()
+
+@.**String::assert_File_Deleted** value
+
+    String::assert_File_Deleted = ()->
+      message   = "expected file '#{@}' have been deleted'"
+      @.file_Delete().assert_Is_True message
+      @.valueOf()
+
+@.**String::assert_Not_Contains** target
 
     String::assert_Not_Contains         = (target)->
       source    = @.toString()
@@ -20,9 +49,11 @@ dependencies
       assert(source.indexOf(target) == -1, message)
       @
 
-    String::assert_Is_Equal_To          = (target)->
+@.**assert_Is_Equal_To** target
+
+    String::assert_Is_Equal_To          = (target, message)->
       source    = @.toString()
-      assert.equal(source, target)
+      assert.equal(source, target, message)
       @
 
     String::assert_Is_Not_Equal_To       = (target, message)->
@@ -66,12 +97,21 @@ dependencies
       assert(test, message)
       file
 
+@.**assert_That_Folder_Exists**
+
+Assert that ```@``` is a folder and that is exists
+
+twin methods: assert_Is_Folder
+
     String::assert_That_Folder_Exists   = ->
-      folder    = @.toString()
-      test    = folder.folder_Exists()
-      message = "[assert_That_Folder_Exists]: #{folder}"
-      assert(test, message)
+      folder  = @.toString()
+      test    =
+      message = "Expected #{folder} to exist"
+      folder.folder_Exists().assert_Is_True message
       folder
+
+    String::assert_Is_Folder = String::assert_That_Folder_Exists
+
 
     String::assert_That_Folder_Not_Exists = ->
       folder    = @.toString()

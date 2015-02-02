@@ -166,6 +166,14 @@ describe 'fs',->
 
     file_Name.file_Delete()     .assert_Is_True()
 
+  it 'temp_File',->
+    value = "abc".add_5_Letters()
+    './'.temp_File(value).assert_File_Exists()
+                         .assert_File_Contents(value)
+                         .assert_File_Deleted()
+
+    assert_Is_Null 'aaaaaa'.temp_File()
+
   it 'temp_Name_In_Folder', ->
     tmpName = './'.temp_Name_In_Folder()
     expect(tmpName       ).to.contain('./'.realPath())

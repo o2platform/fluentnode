@@ -20,6 +20,25 @@ describe 'Assert | String |', ->
     (->'123'.assert_Not_Contains('a'  )).assert_Not_Throws()
     (->'123'.assert_Not_Contains('2'  )).assert_Throws()
 
+  it 'assert_File_Contains', ->
+    '.'.temp_File('aaa123').assert_File_Contains('aaa')
+                           .assert_File_Contains('123')
+                           .assert_File_Contains('aaa123')
+                           .assert_File_Deleted()
+
+    '.'.assert_File_Contains.assert_Is ''.assert_File_Contents_Contains
+
+
+    (-> './package.json'.assert_File_Contains('-----****----')).assert_Throws (error)->
+      error.message.assert_Contains  "to contain '-----****----'"
+
+  it 'assert_File_Contents', ->
+    '.'.temp_File('aaa123').assert_File_Contents('aaa123')
+                           .assert_File_Deleted()
+
+    (-> './package.json'.assert_File_Contents('-----****----')).assert_Throws (error)->
+      error.message.assert_Contains  "to be '-----****----'"
+
   it 'assert_Is_Equal_To', ->
     ''.assert_Is_Equal_To.assert_Is_Function()
     'a'.assert_Is_Equal_To('a')
@@ -74,6 +93,10 @@ describe 'Assert | String |', ->
     '.git'.assert_That_Folder_Exists().assert_Is_Equal_To('.git')
     (-> '.git'.assert_That_Folder_Exists()).assert_Not_Throws()
     (-> '.aaa'.assert_That_Folder_Exists()).assert_Throws()
+    (-> 'aaa'.assert_Is_Folder()).assert_Throws (error)->
+      error.message.assert_Is 'Expected aaa to exist'
+
+    ''.assert_That_Folder_Exists.assert_Is ''.assert_Is_Folder
 
   it 'assert_That_Folder_Not_Exists',->
     ''.assert_That_Folder_Not_Exists.assert_Is_Function()

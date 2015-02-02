@@ -137,6 +137,27 @@ describe 'String',->
       value.not_Contains(value + '1' ).assert_Is_True()
       value.not_Contains('1' + value ).assert_Is_True()
 
+  it 'only_Letters', ->
+    'aaa'.only_Letters().assert_Is 'aaa'
+    'aAa'.only_Letters().assert_Is 'aAa'
+    'aaa'.only_Letters().assert_Is_Not 'bbb'
+    'a 1'.only_Letters().assert_Is 'a--'
+    'A!"'.only_Letters().assert_Is 'A--'
+    '/<>'.only_Letters().assert_Is '---'
+    'abcd-ABCD_1234.<h1>*!@{}[]'.only_Letters().assert_Is 'abcd-ABCD-------h---------'
+    '!@£$%^&*(){}:"|<>?[];\'\,/'.only_Letters().assert_Is '-'.repeat(24)
+
+  it 'only_Numbers', ->
+    '1aa'.only_Numbers().assert_Is '1--'
+    '2Aa'.only_Numbers().assert_Is '2--'
+    '123'.only_Numbers().assert_Is '123'
+    'aaa'.only_Numbers().assert_Is_Not 'bbb'
+    '1  '.only_Numbers().assert_Is '1--'
+    'A1"'.only_Numbers().assert_Is '-1-'
+    '/<>'.only_Numbers().assert_Is '---'
+    'abcd-ABCD_1234.<h1>*!@{}[]'.only_Numbers().assert_Is '----------1234---1--------'
+    '!@£$%^&*(){}:"|<>?[];\'\,/'.only_Numbers().assert_Is '-'.repeat(24)
+
   it 'remove', ->
     using value,->
       @.remove('a'  ).assert_Is 'bc123'
@@ -181,6 +202,7 @@ describe 'String',->
     'a  '.to_Safe_String().assert_Is 'a--'
     'a!"'.to_Safe_String().assert_Is 'a--'
     '/<>'.to_Safe_String().assert_Is '---'
+    'abcd-ABCD_1234.<h1>*!@{}[]'.to_Safe_String().assert_Is 'abcd-abcd_1234.-h1--------'
     '!@£$%^&*(){}:"|<>?[];\'\,/'.to_Safe_String().assert_Is '-'.repeat(24)
 
   it 'trim', ->

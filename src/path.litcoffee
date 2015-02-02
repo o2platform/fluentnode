@@ -47,7 +47,14 @@ twin methods: file_Parent_Folder, parent_Folder
     Array:: file_Names_Without_Extension  = () ->
       file.file_Name_Without_Extension() for file in @
 
-@.****
+@.**folder_Name**
+
+Returns the name of the current folder (which is the right-most segment of a path)
+
+If you want the full path, use the **parent_Folder** method
+
+    String::folder_Name = ()->
+      @.valueOf().file_Name()
 
 ---
 back to [index](index.html)

@@ -175,6 +175,24 @@ Returns true if @ is not a folder
     String::is_File             = ->  try fs.lstatSync(@.valueOf()).isFile()      catch then false
 
     String::realPath            = ->  try fs.realpathSync @.valueOf() catch then null
+
+@.**temp_File** contents
+
+Creates a file in ```@``` folder with a temp name and with ```contents```
+
+If ```contents``` is empty, the file will be created with ''
+If ```@``` is not a folder, no file will be created and null is returned
+
+If all goes well, the retuned value is the full path to the temp file created
+
+    String::temp_File = (contents)->
+      if @.is_Folder()
+        @.temp_Name_In_Folder()
+         .file_Write(contents || '')
+         .valueOf()
+      else
+        return null
+
     String::temp_Name_In_Folder = ->  @.valueOf().realPath().path_Combine("_tmp_".add_Random_String(10))
 
     String::saveAs              = (targetFile) ->

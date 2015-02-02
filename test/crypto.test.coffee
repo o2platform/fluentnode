@@ -26,9 +26,10 @@ describe 'crypo |',->
           (-> charSet_Numbers.assert_Contains(char)).assert_Throws()
           (-> charSet_Letters.assert_Contains(char)).assert_Not_Throws()
 
-
   it 'add_5_Random_Letters', ->
       value.add_5_Random_Letters().size().assert_Is value.size().add 5
+      value.add_5_Letters().size().assert_Is value.size().add 5
+      ''.add_5_Random_Letters.assert_Is ''.add_5_Letters
 
   it 'add_Random_Numbers', ->
       value.add_Random_Numbers(5  ).size().assert_Is value.size() + 5
