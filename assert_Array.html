@@ -54,11 +54,6 @@
               </a>
             
               
-              <a class="source" href="_to_map_and_write_Tests.html">
-                _to_map_and_write_Tests.litcoffee
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -91,6 +86,11 @@
               
               <a class="source" href="console.html">
                 console.litcoffee
+              </a>
+            
+              
+              <a class="source" href="crypto.html">
+                crypto.litcoffee
               </a>
             
               
@@ -186,6 +186,11 @@
               
               <a class="source" href="console.test.html">
                 console.test.coffee
+              </a>
+            
+              
+              <a class="source" href="crypto.test.html">
+                crypto.test.coffee
               </a>
             
               
@@ -356,7 +361,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::assert_Size_Is               = <span class="hljs-function"><span class="hljs-params">(size, message)</span>-&gt;</span>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::assert_Size_Is = <span class="hljs-function"><span class="hljs-params">(size, message)</span>-&gt;</span>
   message = message || <span class="hljs-string">"[assert_Size_Is] expected <span class="hljs-subst">#{@.length}</span> and it was <span class="hljs-subst">#{size}</span>"</span>
   assert.equal(@.length, size, message)
   @</pre></div></div>
@@ -371,13 +376,23 @@
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p><strong>Array::assert_Size_Is_Bigger_Than</strong> size,[message]</p>
+<p>Asserts that the size of the @ array is bigger than <code>size</code></p>
+<p>twin methods: assert_Size_Is_Greater_Than , assert_Size_Is_Above, assert_Is_Greater_Than ,
+assert_Is_Bigger_Than, assert_Greater_Than, assert_Bigger_Than</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::assert_Size_Is_Bigger_Than   = <span class="hljs-function"><span class="hljs-params">(size, message)</span>-&gt;</span>
   message = message || <span class="hljs-string">"[assert_Size_Is_Bigger_Than] expected bigger than <span class="hljs-subst">#{size}</span>, but it was <span class="hljs-subst">#{@.length}</span> "</span>
   (@.length &gt; size).assert_Is_True(message)
-  @</pre></div></div>
+  @
+
+<span class="hljs-attribute">Array</span>::assert_Size_Is_Greater_Than = <span class="hljs-attribute">Array</span>::assert_Size_Is_Bigger_Than
+<span class="hljs-attribute">Array</span>::assert_Size_Is_Above        = <span class="hljs-attribute">Array</span>::assert_Size_Is_Bigger_Than
+<span class="hljs-attribute">Array</span>::assert_Is_Greater_Than      = <span class="hljs-attribute">Array</span>::assert_Size_Is_Bigger_Than
+<span class="hljs-attribute">Array</span>::assert_Is_Bigger_Than       = <span class="hljs-attribute">Array</span>::assert_Size_Is_Bigger_Than
+<span class="hljs-attribute">Array</span>::assert_Greater_Than         = <span class="hljs-attribute">Array</span>::assert_Size_Is_Bigger_Than
+<span class="hljs-attribute">Array</span>::assert_Bigger_Than          = <span class="hljs-attribute">Array</span>::assert_Size_Is_Bigger_Than</pre></div></div>
             
         </li>
         

@@ -54,11 +54,6 @@
               </a>
             
               
-              <a class="source" href="_to_map_and_write_Tests.html">
-                _to_map_and_write_Tests.litcoffee
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -91,6 +86,11 @@
               
               <a class="source" href="console.html">
                 console.litcoffee
+              </a>
+            
+              
+              <a class="source" href="crypto.html">
+                crypto.litcoffee
               </a>
             
               
@@ -189,6 +189,11 @@
               </a>
             
               
+              <a class="source" href="crypto.test.html">
+                crypto.test.coffee
+              </a>
+            
+              
               <a class="source" href="fs.test.html">
                 fs.test.coffee
               </a>
@@ -240,12 +245,23 @@
 
 assert = <span class="hljs-built_in">require</span> <span class="hljs-string">'assert'</span>
 
-describe <span class="hljs-string">'Assert | Number'</span>, <span class="hljs-function">-&gt;</span>
+describe <span class="hljs-string">'Assert | Number |'</span>, <span class="hljs-function">-&gt;</span>
   it <span class="hljs-string">'assert_Bigger_Than'</span>,<span class="hljs-function">-&gt;</span>
     (<span class="hljs-number">1</span>).assert_Bigger_Than(<span class="hljs-number">0</span>)
     (<span class="hljs-number">9</span>).assert_Bigger_Than(<span class="hljs-number">5</span>)
     (<span class="hljs-function">-&gt;</span> (<span class="hljs-number">0</span>).assert_Bigger_Than(-<span class="hljs-number">1</span>)).assert_Not_Throws()
     (<span class="hljs-function">-&gt;</span> (<span class="hljs-number">0</span>).assert_Bigger_Than( <span class="hljs-number">1</span>)).assert_Throws()
+
+    (<span class="hljs-number">0</span>).assert_Bigger_Than.assert_Is (<span class="hljs-number">0</span>).assert_Above
+    (<span class="hljs-number">0</span>).assert_Bigger_Than.assert_Is (<span class="hljs-number">0</span>).assert_Is_Bigger_Than
+
+  it <span class="hljs-string">'assert_In_Between'</span>,<span class="hljs-function">-&gt;</span>
+    (<span class="hljs-number">1</span>).assert_In_Between(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>)
+    (<span class="hljs-number">10</span>).assert_In_Between(<span class="hljs-number">2</span>,<span class="hljs-number">11</span>)
+    (-<span class="hljs-number">1</span>).assert_In_Between(-<span class="hljs-number">2</span>,<span class="hljs-number">0</span>)
+    (<span class="hljs-function">-&gt;</span> (<span class="hljs-number">0</span>).assert_In_Between(-<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)).assert_Not_Throws()
+    (<span class="hljs-function">-&gt;</span> (<span class="hljs-number">0</span>).assert_In_Between( <span class="hljs-number">1</span>,<span class="hljs-number">2</span>)).assert_Throws (error)-&gt;
+        error.message.assert_Is(<span class="hljs-string">'Expected 0 to be between 1 and 2'</span>)
 
   it <span class="hljs-string">'assert_Is_Equal_To, assert_Is'</span>,<span class="hljs-function">-&gt;</span>
     (<span class="hljs-number">0</span>).assert_Is_Equal_To.assert_Is_Function()
@@ -265,6 +281,32 @@ describe <span class="hljs-string">'Assert | Number'</span>, <span class="hljs-f
     (<span class="hljs-number">0</span>).assert_Is_Number.assert_Is_Function()
     (<span class="hljs-number">0</span>).assert_Is_Number().assert_Is(<span class="hljs-number">0</span>)
     (<span class="hljs-number">0</span>).assert_Is_Number().assert_Is_Not(<span class="hljs-number">10</span>)
+
+    <span class="hljs-keyword">new</span> Number(<span class="hljs-number">12</span>).assert_Is_Number().assert_Is <span class="hljs-number">12</span>
+    Number(<span class="hljs-number">12</span>    ).assert_Is_Number().assert_Is <span class="hljs-number">12</span>
+    Number(<span class="hljs-string">''</span>    ).assert_Is_Number().assert_Is <span class="hljs-number">0</span>    <span class="hljs-comment"># weird edge case, since Number('') is 0</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>check for Nan (see issue <a href="https://github.com/o2platform/fluentnode/issues/57">https://github.com/o2platform/fluentnode/issues/57</a> )</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    nan_Error_Message = <span class="hljs-string">'The provided number was a NaN (Not an Number)'</span>
+    (<span class="hljs-function">-&gt;</span> NaN              .assert_Is_Number()).assert_Throws (error)-&gt; error.message.assert_Is nan_Error_Message
+    (<span class="hljs-function">-&gt;</span> Number(<span class="hljs-string">'aaa'</span>)    .assert_Is_Number()).assert_Throws (error)-&gt; error.message.assert_Is nan_Error_Message
+    (<span class="hljs-function">-&gt;</span> <span class="hljs-keyword">new</span> Number(<span class="hljs-string">'aaa'</span>).assert_Is_Number()).assert_Throws (error)-&gt; error.message.assert_Is nan_Error_Message
+
+
+
+
 
   it <span class="hljs-string">'assert_Smaller_Than'</span>,<span class="hljs-function">-&gt;</span>
     (<span class="hljs-number">0</span>).assert_Smaller_Than(<span class="hljs-number">1</span>)

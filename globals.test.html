@@ -54,11 +54,6 @@
               </a>
             
               
-              <a class="source" href="_to_map_and_write_Tests.html">
-                _to_map_and_write_Tests.litcoffee
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -91,6 +86,11 @@
               
               <a class="source" href="console.html">
                 console.litcoffee
+              </a>
+            
+              
+              <a class="source" href="crypto.html">
+                crypto.litcoffee
               </a>
             
               
@@ -189,6 +189,11 @@
               </a>
             
               
+              <a class="source" href="crypto.test.html">
+                crypto.test.coffee
+              </a>
+            
+              
               <a class="source" href="fs.test.html">
                 fs.test.coffee
               </a>
@@ -256,6 +261,15 @@ describe <span class="hljs-string">'global'</span>,<span class="hljs-function">-
     file_Exists(<span class="hljs-literal">null</span>        ).assert_False()
     file_Exists(<span class="hljs-literal">undefined</span>   ).assert_False()
     file_Exists({}.notHere  ).assert_False()
+
+  it <span class="hljs-string">'is_Number'</span>,<span class="hljs-function">-&gt;</span>
+    is_Number(<span class="hljs-number">0</span>   ).assert_True()
+    is_Number(-<span class="hljs-number">1</span>  ).assert_True()
+    is_Number(<span class="hljs-number">9999</span>).assert_True()
+    is_Number(NaN ).assert_False()
+    is_Number(<span class="hljs-string">''</span>  ).assert_False()
+    is_Number(<span class="hljs-string">'ab'</span>).assert_False()
+    is_Number(<span class="hljs-literal">null</span>).assert_False()
 
   it <span class="hljs-string">'is_Null'</span>,<span class="hljs-function">-&gt;</span>
     is_Null(<span class="hljs-literal">null</span>     ).assert_True()

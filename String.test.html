@@ -54,11 +54,6 @@
               </a>
             
               
-              <a class="source" href="_to_map_and_write_Tests.html">
-                _to_map_and_write_Tests.litcoffee
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -91,6 +86,11 @@
               
               <a class="source" href="console.html">
                 console.litcoffee
+              </a>
+            
+              
+              <a class="source" href="crypto.html">
+                crypto.litcoffee
               </a>
             
               
@@ -189,6 +189,11 @@
               </a>
             
               
+              <a class="source" href="crypto.test.html">
+                crypto.test.coffee
+              </a>
+            
+              
               <a class="source" href="fs.test.html">
                 fs.test.coffee
               </a>
@@ -238,7 +243,7 @@
             
             <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/assert/assert_String'</span>)
 
-describe <span class="hljs-string">'Assert | String'</span>, <span class="hljs-function">-&gt;</span>
+describe <span class="hljs-string">'Assert | String |'</span>, <span class="hljs-function">-&gt;</span>
   it <span class="hljs-string">'assert_Contains'</span>, <span class="hljs-function">-&gt;</span>
     <span class="hljs-string">''</span>.assert_Contains.assert_Is_Function()
     <span class="hljs-string">''</span>.assert_Contains(<span class="hljs-string">''</span>          ).assert_Is_Equal_To(<span class="hljs-string">''</span>)
@@ -257,6 +262,25 @@ describe <span class="hljs-string">'Assert | String'</span>, <span class="hljs-f
     <span class="hljs-string">'123'</span>.assert_Not_Contains(<span class="hljs-string">'aaa'</span>    ).assert_Is_Equal_To(<span class="hljs-string">'123'</span>)
     (<span class="hljs-function">-&gt;</span><span class="hljs-string">'123'</span>.assert_Not_Contains(<span class="hljs-string">'a'</span>  )).assert_Not_Throws()
     (<span class="hljs-function">-&gt;</span><span class="hljs-string">'123'</span>.assert_Not_Contains(<span class="hljs-string">'2'</span>  )).assert_Throws()
+
+  it <span class="hljs-string">'assert_File_Contains'</span>, <span class="hljs-function">-&gt;</span>
+    <span class="hljs-string">'.'</span>.temp_File(<span class="hljs-string">'aaa123'</span>).assert_File_Contains(<span class="hljs-string">'aaa'</span>)
+                           .assert_File_Contains(<span class="hljs-string">'123'</span>)
+                           .assert_File_Contains(<span class="hljs-string">'aaa123'</span>)
+                           .assert_File_Deleted()
+
+    <span class="hljs-string">'.'</span>.assert_File_Contains.assert_Is <span class="hljs-string">''</span>.assert_File_Contents_Contains
+
+
+    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'./package.json'</span>.assert_File_Contains(<span class="hljs-string">'-----****----'</span>)).assert_Throws (error)-&gt;
+      error.message.assert_Contains  <span class="hljs-string">"to contain '-----****----'"</span>
+
+  it <span class="hljs-string">'assert_File_Contents'</span>, <span class="hljs-function">-&gt;</span>
+    <span class="hljs-string">'.'</span>.temp_File(<span class="hljs-string">'aaa123'</span>).assert_File_Contents(<span class="hljs-string">'aaa123'</span>)
+                           .assert_File_Deleted()
+
+    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'./package.json'</span>.assert_File_Contents(<span class="hljs-string">'-----****----'</span>)).assert_Throws (error)-&gt;
+      error.message.assert_Contains  <span class="hljs-string">"to be '-----****----'"</span>
 
   it <span class="hljs-string">'assert_Is_Equal_To'</span>, <span class="hljs-function">-&gt;</span>
     <span class="hljs-string">''</span>.assert_Is_Equal_To.assert_Is_Function()
@@ -325,6 +349,10 @@ describe <span class="hljs-string">'Assert | String'</span>, <span class="hljs-f
     <span class="hljs-string">'.git'</span>.assert_That_Folder_Exists().assert_Is_Equal_To(<span class="hljs-string">'.git'</span>)
     (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'.git'</span>.assert_That_Folder_Exists()).assert_Not_Throws()
     (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'.aaa'</span>.assert_That_Folder_Exists()).assert_Throws()
+    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'aaa'</span>.assert_Is_Folder()).assert_Throws (error)-&gt;
+      error.message.assert_Is <span class="hljs-string">'Expected aaa to exist'</span>
+
+    <span class="hljs-string">''</span>.assert_That_Folder_Exists.assert_Is <span class="hljs-string">''</span>.assert_Is_Folder
 
   it <span class="hljs-string">'assert_That_Folder_Not_Exists'</span>,<span class="hljs-function">-&gt;</span>
     <span class="hljs-string">''</span>.assert_That_Folder_Not_Exists.assert_Is_Function()

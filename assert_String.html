@@ -54,11 +54,6 @@
               </a>
             
               
-              <a class="source" href="_to_map_and_write_Tests.html">
-                _to_map_and_write_Tests.litcoffee
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -91,6 +86,11 @@
               
               <a class="source" href="console.html">
                 console.litcoffee
+              </a>
+            
+              
+              <a class="source" href="crypto.html">
+                crypto.litcoffee
               </a>
             
               
@@ -189,6 +189,11 @@
               </a>
             
               
+              <a class="source" href="crypto.test.html">
+                crypto.test.coffee
+              </a>
+            
+              
               <a class="source" href="fs.test.html">
                 fs.test.coffee
               </a>
@@ -250,13 +255,13 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p><strong>String::assert_Contains(target)</strong></p>
+              <p>@.<strong>String::assert_Contains</strong> target</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::assert_Contains             = <span class="hljs-function"><span class="hljs-params">(target)</span>-&gt;</span>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::assert_Contains = <span class="hljs-function"><span class="hljs-params">(target, message)</span>-&gt;</span>
   source    = @.toString()
-  message   = <span class="hljs-string">"expected string '<span class="hljs-subst">#{source}</span>' to contain the string/array '<span class="hljs-subst">#{target}</span>'"</span>
+  message   = message || <span class="hljs-string">"expected string '<span class="hljs-subst">#{source}</span>' to contain the string/array '<span class="hljs-subst">#{target}</span>'"</span>
   assert(source.contains(target), message)
   @</pre></div></div>
             
@@ -269,7 +274,66 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p><strong>String::assert_Not_Contains(target)</strong></p>
+              <p>@.<strong>String::assert_File_Contents_Contains</strong> value</p>
+<p>Asserts that file <code>@</code> contents contains the string <code>value</code></p>
+<p>twin method: assert_File_Contains</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::assert_File_Contents_Contains = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+  message   = <span class="hljs-string">"expected file '<span class="hljs-subst">#{@}</span>' to contain '<span class="hljs-subst">#{value}</span>'"</span>
+  @.file_Contents().assert_Contains value, message
+  @.valueOf()
+
+<span class="hljs-attribute">String</span>::assert_File_Contains = <span class="hljs-attribute">String</span>::assert_File_Contents_Contains</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>@.<strong>String::assert_File_Contents_Is</strong> value</p>
+<p>Asserts that file <code>@</code> contents is the string <code>value</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::assert_File_Contents = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+  message   = <span class="hljs-string">"expected file '<span class="hljs-subst">#{@}</span>' to be '<span class="hljs-subst">#{value}</span>'"</span>
+  @.file_Contents().assert_Is value, message
+  @.valueOf()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>@.<strong>String::assert_File_Deleted</strong> value</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::assert_File_Deleted = <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
+  message   = <span class="hljs-string">"expected file '<span class="hljs-subst">#{@}</span>' have been deleted'"</span>
+  @.file_Delete().assert_Is_True message
+  @.valueOf()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>@.<strong>String::assert_Not_Contains</strong> target</p>
 
             </div>
             
@@ -277,15 +341,28 @@
   source    = @.toString()
   message   = <span class="hljs-string">"expected string '<span class="hljs-subst">#{source}</span>' to not contain the string '<span class="hljs-subst">#{target}</span>'"</span>
   assert(source.indexOf(target) == -<span class="hljs-number">1</span>, message)
-  @
+  @</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>@.<strong>assert_Is_Equal_To</strong> target</p>
 
-<span class="hljs-attribute">String</span>::assert_Is_Equal_To          = <span class="hljs-function"><span class="hljs-params">(target)</span>-&gt;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::assert_Is_Equal_To          = <span class="hljs-function"><span class="hljs-params">(target, message)</span>-&gt;</span>
   source    = @.toString()
-  assert.equal(source, target)
+  assert.equal(source, target, message)
   @
 
-<span class="hljs-attribute">String</span>::assert_Is_Not_Equal_To       = <span class="hljs-function"><span class="hljs-params">(target)</span>-&gt;</span>
-  assert.notDeepEqual(@.toString(), target.toString())
+<span class="hljs-attribute">String</span>::assert_Is_Not_Equal_To       = <span class="hljs-function"><span class="hljs-params">(target, message)</span>-&gt;</span>
+  assert.notDeepEqual(@.valueOf(), target.valueOf(), message)
   @
 
 <span class="hljs-attribute">String</span>::assert_Is_Json              = <span class="hljs-function">-&gt;</span>
@@ -302,11 +379,11 @@
         </li>
         
         
-        <li id="section-4">
+        <li id="section-8">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
+                <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p>assert.equal(typeof(@), ‘array’, message)     # this doesn’t work</p>
 
@@ -336,14 +413,32 @@
   test    = file.file_Not_Exists()
   message = <span class="hljs-string">"[assert_That_File_Not_Exists]: <span class="hljs-subst">#{file}</span>"</span>
   assert(test, message)
-  file
+  file</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>@.<strong>assert_That_Folder_Exists</strong></p>
+<p>Assert that <code>@</code> is a folder and that is exists</p>
+<p>twin methods: assert_Is_Folder</p>
 
-<span class="hljs-attribute">String</span>::assert_That_Folder_Exists   = <span class="hljs-function">-&gt;</span>
-  folder    = @.toString()
-  test    = folder.folder_Exists()
-  message = <span class="hljs-string">"[assert_That_Folder_Exists]: <span class="hljs-subst">#{folder}</span>"</span>
-  assert(test, message)
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::assert_That_Folder_Exists   = <span class="hljs-function">-&gt;</span>
+  folder  = @.toString()
+  test    =
+  message = <span class="hljs-string">"Expected <span class="hljs-subst">#{folder}</span> to exist"</span>
+  folder.folder_Exists().assert_Is_True message
   folder
+
+<span class="hljs-attribute">String</span>::assert_Is_Folder = <span class="hljs-attribute">String</span>::assert_That_Folder_Exists
+
 
 <span class="hljs-attribute">String</span>::assert_That_Folder_Not_Exists = <span class="hljs-function">-&gt;</span>
   folder    = @.toString()
@@ -365,11 +460,11 @@
         </li>
         
         
-        <li id="section-5">
+        <li id="section-10">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
+                <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <hr>
 
@@ -378,11 +473,11 @@
         </li>
         
         
-        <li id="section-6">
+        <li id="section-11">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
+                <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
               <p>back to <a href="index.html">index</a></p>
 

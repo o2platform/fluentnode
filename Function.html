@@ -54,11 +54,6 @@
               </a>
             
               
-              <a class="source" href="_to_map_and_write_Tests.html">
-                _to_map_and_write_Tests.litcoffee
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -91,6 +86,11 @@
               
               <a class="source" href="console.html">
                 console.litcoffee
+              </a>
+            
+              
+              <a class="source" href="crypto.html">
+                crypto.litcoffee
               </a>
             
               
@@ -186,6 +186,11 @@
               
               <a class="source" href="console.test.html">
                 console.test.coffee
+              </a>
+            
+              
+              <a class="source" href="crypto.test.html">
+                crypto.test.coffee
               </a>
             
               
@@ -303,11 +308,14 @@
               <p><strong>Function::sourceCode</strong></p>
 <p>Returns the source code of the current function. This done using an easy trick which is usually not that obvious.
 All we have to do is to call the .toString() method of the function (another option is to append the function to a string <code>@ + &quot;&quot;</code>)</p>
+<p>twin methods: sourceCode</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Function</span>::sourceCode = <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
-    @.toString()</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Function</span>::source_Code = <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
+    @.toString()
+
+<span class="hljs-attribute">Function</span>::sourceCode = <span class="hljs-attribute">Function</span>::source_Code</pre></div></div>
             
         </li>
         

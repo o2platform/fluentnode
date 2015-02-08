@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>Object.test.coffee</title>
+  <title>crypto.litcoffee</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -226,7 +226,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>Object.test.coffee</h1>
+                  <h1>crypto.litcoffee</h1>
               </div>
           </li>
         
@@ -238,66 +238,133 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              
+              <p>Methods that use the node crypto API</p>
+<p>dependencies</p>
+
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/assert/assert_Object'</span>)
+            <div class="content"><div class='highlight'><pre>crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>@.<strong>add_Random_Chars</strong> size</p>
 
-describe <span class="hljs-string">'Assert | Object |'</span>, <span class="hljs-function">-&gt;</span>
-  it <span class="hljs-string">'assert_Is_Equal_To, assert_Is'</span>, <span class="hljs-function">-&gt;</span>
-    <span class="hljs-string">''</span>.assert_Is_Equal_To.assert_Is_Function()
-    <span class="hljs-string">'{}'</span>.assert_Is_Equal_To(<span class="hljs-string">'{}'</span>)
-    {}.assert_Is_Equal_To({})
-    {<span class="hljs-string">'a'</span>}.assert_Is_Equal_To({<span class="hljs-string">'a'</span>})
-    <span class="hljs-string">'12'</span>.assert_Is_Equal_To(<span class="hljs-string">'12'</span>)
-    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Is(<span class="hljs-string">'12'</span>)).assert_Not_Throws()
-    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Is(<span class="hljs-string">'42'</span>)).assert_Throws()
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::add_Random_Chars = <span class="hljs-function"><span class="hljs-params">(size )</span>-&gt;</span>
+  @ + crypto.randomBytes(size || <span class="hljs-number">10</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>@.<strong>add_Random_String</strong> size</p>
 
-  it <span class="hljs-string">'assert_Is_Instance_Of, assert_Instance_Of'</span>, <span class="hljs-function">-&gt;</span>
-    <span class="hljs-string">''</span>.assert_Is_Instance_Of.assert_Is_Function()
-    <span class="hljs-string">''</span>.assert_Is_Instance_Of(String)
-    (<span class="hljs-number">12</span>).assert_Is_Instance_Of(Number)
-    (<span class="hljs-keyword">new</span> Error()).assert_Is_Instance_Of(Error)
-    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Instance_Of(String)).assert_Not_Throws()
-    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Instance_Of(Number)).assert_Throws()
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::add_Random_String = <span class="hljs-function"><span class="hljs-params">(size )</span>-&gt;</span>
+  @ + crypto.randomBytes(size || <span class="hljs-number">10</span>).toString(<span class="hljs-string">'hex'</span>).slice(<span class="hljs-number">0</span>,size|| <span class="hljs-number">10</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>@.<strong>add_Random_Letters</strong> size</p>
 
-  it <span class="hljs-string">'assert_Is_Not_Equal_To, assert_Is_Not'</span>, <span class="hljs-function">-&gt;</span>
-    <span class="hljs-string">''</span>.assert_Is_Not_Equal_To.assert_Is_Function()
-    <span class="hljs-string">'{}'</span>.assert_Is_Not_Equal_To(<span class="hljs-string">'12'</span>)
-    <span class="hljs-string">'12'</span>.assert_Is_Not_Equal_To(<span class="hljs-string">'42'</span>)
-    {<span class="hljs-string">'a'</span>}.assert_Is_Not_Equal_To({<span class="hljs-string">'b'</span>})
-    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Is_Not(<span class="hljs-string">'42'</span>)).assert_Not_Throws()
-    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Is_Not(<span class="hljs-string">'12'</span>)).assert_Throws()
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::add_Random_Letters   = <span class="hljs-function"><span class="hljs-params">(size )</span>-&gt;</span>
+  charSet = <span class="hljs-string">'abcdefghijklmnopqrstuvwxyz'</span>
+  @ + (charSet[Math.floor(Math.random() * charSet.length)]  <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> [<span class="hljs-number">1.</span>.size]).join(<span class="hljs-string">''</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>@.<strong>add_5_Random_Letters</strong></p>
+<p>Adds 5 random letters to <code>@</code></p>
+<p>twin methods: add_5_Letters</p>
 
-  it <span class="hljs-string">'assert_Is_Null'</span>, <span class="hljs-function">-&gt;</span>
-    assert_Is_Null.assert_Is_Function();
-    assert_Is_Null(<span class="hljs-literal">null</span>)
-    (<span class="hljs-function">-&gt;</span> assert_Is_Null(<span class="hljs-literal">null</span>)).assert_Not_Throws()
-    (<span class="hljs-function">-&gt;</span> assert_Is_Null(<span class="hljs-string">'123'</span>)).assert_Throws()
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::add_5_Random_Letters = <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
+  @.add_Random_Letters(<span class="hljs-number">5</span>)
 
-  it <span class="hljs-string">'assert_Is_Not_Null'</span>, <span class="hljs-function">-&gt;</span>
-    assert_Is_Not_Null.assert_Is_Function();
-    assert_Is_Not_Null(<span class="hljs-string">'123'</span>)
-    (<span class="hljs-function">-&gt;</span> assert_Is_Not_Null(<span class="hljs-string">'123'</span>)).assert_Not_Throws()
-    (<span class="hljs-function">-&gt;</span> assert_Is_Not_Null(<span class="hljs-literal">null</span>)).assert_Throws()
 
-  it <span class="hljs-string">'assert_Is_Object'</span>, <span class="hljs-function">-&gt;</span>
-    {}.assert_Is_Object.assert_Is_Function()
-    {}.assert_Is_Object().assert_Is_Equal_To({})
+<span class="hljs-attribute">String</span>::add_5_Letters = <span class="hljs-attribute">String</span>::add_5_Random_Letters</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>@.<strong>add_Random_Numbers</strong> size</p>
 
-  it <span class="hljs-string">'assert_Is_Undefined'</span>, <span class="hljs-function">-&gt;</span>
-    assert_Is_Undefined.assert_Is_Function();
-    assert_Is_Undefined(<span class="hljs-literal">undefined</span>)
-    aaaa = <span class="hljs-literal">undefined</span>
-    assert_Is_Undefined(aaaa)
-    (<span class="hljs-function">-&gt;</span> assert_Is_Undefined(<span class="hljs-literal">undefined</span>)).assert_Not_Throws()
-    (<span class="hljs-function">-&gt;</span> assert_Is_Undefined(<span class="hljs-string">'123'</span>)).assert_Throws()
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::add_Random_Numbers = <span class="hljs-function"><span class="hljs-params">(size)</span>-&gt;</span>
+  charSet = <span class="hljs-string">'0123456789'</span>
+  @ + (charSet[Math.floor(Math.random() * charSet.length)]  <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> [<span class="hljs-number">1.</span>.size]).join(<span class="hljs-string">''</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>@.<strong>random_String</strong> ()</p>
+<p>Returns a random string of size @ made of ascii chars</p>
 
-  it <span class="hljs-string">'assert_Is_Not_Undefined'</span>, <span class="hljs-function">-&gt;</span>
-    assert_Is_Not_Undefined.assert_Is_Function();
-    assert_Is_Not_Undefined(<span class="hljs-string">'123'</span>)
-    (<span class="hljs-function">-&gt;</span> assert_Is_Not_Undefined(<span class="hljs-string">'123'</span>)).assert_Not_Throws()
-    (<span class="hljs-function">-&gt;</span> assert_Is_Not_Undefined(<span class="hljs-literal">undefined</span>)).assert_Throws()</pre></div></div>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::random_String = <span class="hljs-function">-&gt;</span>
+  <span class="hljs-string">""</span>.add_Random_String(@ + <span class="hljs-number">0</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>@.<strong>random_Letters</strong> ()</p>
+<p>Returns a random string of size @ made of only letters</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::random_Letters = <span class="hljs-function">-&gt;</span>
+  <span class="hljs-string">""</span>.add_Random_Letters(@ + <span class="hljs-number">0</span>)</pre></div></div>
             
         </li>
         

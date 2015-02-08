@@ -54,11 +54,6 @@
               </a>
             
               
-              <a class="source" href="_to_map_and_write_Tests.html">
-                _to_map_and_write_Tests.litcoffee
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -91,6 +86,11 @@
               
               <a class="source" href="console.html">
                 console.litcoffee
+              </a>
+            
+              
+              <a class="source" href="crypto.html">
+                crypto.litcoffee
               </a>
             
               
@@ -189,6 +189,11 @@
               </a>
             
               
+              <a class="source" href="crypto.test.html">
+                crypto.test.coffee
+              </a>
+            
+              
               <a class="source" href="fs.test.html">
                 fs.test.coffee
               </a>
@@ -234,8 +239,51 @@
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
               <p>Adds helper methods to the native javascript Number class</p>
-<p>Number#<strong>in_Between</strong> (min, max)</p>
-<p>Returns true if @ is between min and max for example</p>
+<p>@.<strong>add</strong> value</p>
+<p>Returns <code>@</code> incremented by <code>value</code></p>
+<p>If value is not a number the original value is returned unmodifed</p>
+<p>Note that the original <code>@</code> value is not modified</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::add = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+  <span class="hljs-keyword">if</span> is_Number(value)
+    @ + value
+  <span class="hljs-keyword">else</span>
+    @</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>@.<strong>dec</strong> [value]</p>
+<p>Returns <code>@</code> decremented by 1 or by <code>[value]</code> (if provided)</p>
+<p>Note that the original <code>@</code> value is not modified</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::dec = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+  <span class="hljs-keyword">if</span> is_Number(value)
+    @ - value
+  <span class="hljs-keyword">else</span>
+    @ - <span class="hljs-number">1</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>@.<strong>in_Between</strong>  min, max</p>
+<p>Returns true if @ is between <code>min</code> and <code>max</code> for example</p>
 <pre><code class="lang-coffee">(<span class="hljs-number">10</span>).in_Between(<span class="hljs-number">5</span>,<span class="hljs-number">15</span>)  <span class="hljs-comment"># returns true</span>
 (<span class="hljs-number">10</span>).in_Between(<span class="hljs-number">10</span>,<span class="hljs-number">15</span>) <span class="hljs-comment"># returns false</span>
 (<span class="hljs-number">10</span>).in_Between(<span class="hljs-number">50</span>,<span class="hljs-number">50</span>) <span class="hljs-comment"># returns false</span>
@@ -249,14 +297,35 @@
         </li>
         
         
-        <li id="section-2">
+        <li id="section-4">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-2">&#182;</a>
+                <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>Number#<strong>invoke_After</strong> (callback)</p>
-<p>Invokes the <strong>callback</strong> function after @ miliseconds</p>
+              <p>@.<strong>inc</strong> [value]</p>
+<p>Returns <code>@</code> incremented by 1 or by <code>[value]</code> (if provided)</p>
+<p>Note that the original <code>@</code> value is not modified</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::inc = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+  <span class="hljs-keyword">if</span> is_Number(value)
+    @ + value
+  <span class="hljs-keyword">else</span>
+    @ + <span class="hljs-number">1</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>@.<strong>invoke_After</strong> callback</p>
+<p>Invokes the <strong>callback</strong> function after <code>@</code> miliseconds</p>
 
             </div>
             
@@ -269,71 +338,20 @@
         </li>
         
         
-        <li id="section-3">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-3">&#182;</a>
-              </div>
-              <p>Number#<strong>log</strong> ()</p>
-<p>Logs @ to the console</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::log =
-  <span class="hljs-function">-&gt;</span> <span class="hljs-built_in">console</span>.log @.toString()</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-4">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
-              </div>
-              <p>Number#<strong>random_String</strong> ()</p>
-<p>Returns a random string of size @ made of ascii chars</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::random_String = <span class="hljs-function">-&gt;</span>
-    <span class="hljs-string">""</span>.add_Random_String(@ + <span class="hljs-number">0</span>)</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-5">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
-              </div>
-              <p>Number#<strong>random_Letters</strong> ()</p>
-<p>Returns a random string of size @ made of only letters</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::random_Letters = <span class="hljs-function">-&gt;</span>
-
-    <span class="hljs-string">""</span>.add_Random_Letters(@ + <span class="hljs-number">0</span>)</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-6">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>Number#<strong>str</strong> ()</p>
-<p>Short version of <code>toString</code></p>
+              <p>@.<strong>is_Number</strong></p>
+<p>Returns true if <code>@</code> is a number</p>
+<p>Returns false if <code>@</code> is NaN (i.e. Not a Number)</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::str =
-  <span class="hljs-function">-&gt;</span> @.toString()</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::is_Number = <span class="hljs-function">-&gt;</span>
+  <span class="hljs-keyword">return</span> @ <span class="hljs-keyword">instanceof</span> Number <span class="hljs-keyword">and</span> @.str().is_Not(<span class="hljs-string">'NaN'</span>)</pre></div></div>
             
         </li>
         
@@ -344,9 +362,13 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <hr>
+              <p>@.<strong>log</strong> ()</p>
+<p>Logs @ to the console</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::log =
+  <span class="hljs-function">-&gt;</span> <span class="hljs-built_in">console</span>.log @.toString()</pre></div></div>
             
         </li>
         
@@ -356,6 +378,36 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>@.<strong>str</strong> ()</p>
+<p>Short version of <code>toString</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Number</span>::str =
+  <span class="hljs-function">-&gt;</span> @.toString()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <hr>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <p>back to <a href="index.html">index</a></p>
 

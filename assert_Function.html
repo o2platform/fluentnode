@@ -54,11 +54,6 @@
               </a>
             
               
-              <a class="source" href="_to_map_and_write_Tests.html">
-                _to_map_and_write_Tests.litcoffee
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -91,6 +86,11 @@
               
               <a class="source" href="console.html">
                 console.litcoffee
+              </a>
+            
+              
+              <a class="source" href="crypto.html">
+                crypto.litcoffee
               </a>
             
               
@@ -189,6 +189,11 @@
               </a>
             
               
+              <a class="source" href="crypto.test.html">
+                crypto.test.coffee
+              </a>
+            
+              
               <a class="source" href="fs.test.html">
                 fs.test.coffee
               </a>
@@ -248,13 +253,18 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p><strong>Function::assert_Throws()</strong></p>
+              <p><strong>Function::assert_Throws()</strong> onError</p>
+<p>Asserts that a function throws an exception.</p>
+<p>If provided the <strong>callback</strong> method will be called with the Error object</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Function</span>::assert_Throws             = <span class="hljs-function">-&gt;</span>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Function</span>::assert_Throws=  <span class="hljs-function"><span class="hljs-params">(callback)</span> -&gt;</span>
   message = <span class="hljs-string">"[assert_Throws]"</span>
-  assert.throws(@, <span class="hljs-literal">null</span>, message)
+<span class="hljs-function">  <span class="hljs-title">onError</span> = <span class="hljs-params">(error)</span>=&gt;</span>
+    callback error <span class="hljs-keyword">if</span> callback
+    <span class="hljs-literal">true</span>
+  assert.throws(@, onError, message)
   <span class="hljs-keyword">return</span> @</pre></div></div>
             
         </li>
@@ -272,7 +282,7 @@
             
             <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Function</span>::assert_Not_Throws         = <span class="hljs-function">-&gt;</span>
   message = <span class="hljs-string">"[assert_Not_Throws]"</span>
-  assert.doesNotThrow(@, <span class="hljs-literal">null</span>, message)
+  assert.doesNotThrow(@, message)
   <span class="hljs-keyword">return</span> @</pre></div></div>
             
         </li>

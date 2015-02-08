@@ -54,11 +54,6 @@
               </a>
             
               
-              <a class="source" href="_to_map_and_write_Tests.html">
-                _to_map_and_write_Tests.litcoffee
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -91,6 +86,11 @@
               
               <a class="source" href="console.html">
                 console.litcoffee
+              </a>
+            
+              
+              <a class="source" href="crypto.html">
+                crypto.litcoffee
               </a>
             
               
@@ -189,6 +189,11 @@
               </a>
             
               
+              <a class="source" href="crypto.test.html">
+                crypto.test.coffee
+              </a>
+            
+              
               <a class="source" href="fs.test.html">
                 fs.test.coffee
               </a>
@@ -246,15 +251,22 @@ expect     = <span class="hljs-built_in">require</span>(<span class="hljs-string
 
 describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;</span>
 
+  it <span class="hljs-string">'create_Parent_Folder'</span>, <span class="hljs-function">-&gt;</span>
+    <span class="hljs-string">'./aaa/abc.txt'</span>.create_Parent_Folder().assert_Is <span class="hljs-string">'./aaa/abc.txt'</span>
+    <span class="hljs-string">'./aaa'</span>.assert_Folder_Exists()
+    <span class="hljs-string">"./aaa"</span>.delete_Folder().assert_True()
+
   it <span class="hljs-string">'folder_Create and folder_Delete'</span> , <span class="hljs-function">-&gt;</span>               <span class="hljs-comment"># tests the String's folder_Create and folder_Delete methods</span>
-    <span class="hljs-string">""</span>.folder_Create.assert_Is_Function()                 <span class="hljs-comment"># checks if String::folder_Create exists</span>
-    <span class="hljs-string">""</span>.folder_Delete.assert_Is_Function()                 <span class="hljs-comment"># checks if String::folder_Delete exists</span>
+    <span class="hljs-string">''</span>.folder_Create.assert_Is_Function()                 <span class="hljs-comment"># checks if String::folder_Create exists</span>
+    <span class="hljs-string">''</span>.folder_Delete.assert_Is_Function()                 <span class="hljs-comment"># checks if String::folder_Delete exists</span>
     tmpDir = <span class="hljs-string">"./"</span>.temp_Name_In_Folder()                   <span class="hljs-comment"># get a temp folder name in the folder provided as string</span>
     tmpDir.assert_Folder_Not_Exists()                     <span class="hljs-comment"># asserts that folder doesn't exist</span>
           .folder_Create().assert_Is tmpDir.realPath()    <span class="hljs-comment"># creates folder and confirms that the return value is the full path to the folder</span>
     tmpDir.assert_Folder_Exists()                         <span class="hljs-comment"># assert that folders exists</span>
           .folder_Delete().assert_Is_True()               <span class="hljs-comment"># deletes folder (confirming OK result from delete action)</span>
     tmpDir.assert_Folder_Not_Exists()                     <span class="hljs-comment"># asserts that folder doesn't exist</span>
+
+    <span class="hljs-string">''</span>.folder_Delete.assert_Is <span class="hljs-string">''</span>.delete_Folder
 
   it <span class="hljs-string">'folder_Create (and its parent)'</span>, <span class="hljs-function">-&gt;</span>
     tmpDir  = <span class="hljs-string">"./"</span>.temp_Name_In_Folder()
@@ -353,7 +365,7 @@ describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;
 
   it <span class="hljs-string">'folders'</span> , <span class="hljs-function">-&gt;</span>
     expect(<span class="hljs-string">''</span>.folders).to.be.an(<span class="hljs-string">'function'</span>)
-    folders = (folder <span class="hljs-keyword">for</span> folder <span class="hljs-keyword">in</span> <span class="hljs-string">'./'</span>.folders() <span class="hljs-keyword">when</span> folder.not_Contains(<span class="hljs-string">'.c9'</span>))             <span class="hljs-comment">#handle scenario when we coded inside Cloud9 IDE </span>
+    folders = (folder <span class="hljs-keyword">for</span> folder <span class="hljs-keyword">in</span> <span class="hljs-string">'./'</span>.folders() <span class="hljs-keyword">when</span> folder.not_Contains(<span class="hljs-string">'.c9'</span>))             <span class="hljs-comment">#handle scenario when we coded inside Cloud9 IDE</span>
     expectedFolders = (folder.realPath() <span class="hljs-keyword">for</span> folder <span class="hljs-keyword">in</span> <span class="hljs-string">'.git,src,test'</span>.split(<span class="hljs-string">','</span>))
     folders.assert_Contains(expectedFolders)
 
@@ -396,6 +408,14 @@ describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;
     file_Name.file_Contents()   .assert_Is    (file_Value2)
 
     file_Name.file_Delete()     .assert_Is_True()
+
+  it <span class="hljs-string">'temp_File'</span>,<span class="hljs-function">-&gt;</span>
+    value = <span class="hljs-string">"abc"</span>.add_5_Letters()
+    <span class="hljs-string">'./'</span>.temp_File(value).assert_File_Exists()
+                         .assert_File_Contents(value)
+                         .assert_File_Deleted()
+
+    assert_Is_Null <span class="hljs-string">'aaaaaa'</span>.temp_File()
 
   it <span class="hljs-string">'temp_Name_In_Folder'</span>, <span class="hljs-function">-&gt;</span>
     tmpName = <span class="hljs-string">'./'</span>.temp_Name_In_Folder()

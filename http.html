@@ -54,11 +54,6 @@
               </a>
             
               
-              <a class="source" href="_to_map_and_write_Tests.html">
-                _to_map_and_write_Tests.litcoffee
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -91,6 +86,11 @@
               
               <a class="source" href="console.html">
                 console.litcoffee
+              </a>
+            
+              
+              <a class="source" href="crypto.html">
+                crypto.litcoffee
               </a>
             
               
@@ -189,6 +189,11 @@
               </a>
             
               
+              <a class="source" href="crypto.test.html">
+                crypto.test.coffee
+              </a>
+            
+              
               <a class="source" href="fs.test.html">
                 fs.test.coffee
               </a>
@@ -251,11 +256,15 @@ Server = http.Server</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p><strong>Server::add_Sockets_Close_Suport</strong></p>
+              <p>settings</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Server</span>::add_Sockets_Close_Suport = <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">global</span>.__fluentnode ?= {}
+<span class="hljs-built_in">global</span>.__fluentnode.http ?= {}
+using <span class="hljs-built_in">global</span>.__fluentnode.http, <span class="hljs-function">-&gt;</span>
+  @.HTTP_GET_TIMEOUT = <span class="hljs-number">500</span>
+  @.HTTP_GET_DELAY   = <span class="hljs-number">10</span></pre></div></div>
             
         </li>
         
@@ -265,6 +274,21 @@ Server = http.Server</pre></div></div>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p><strong>Server::add_Sockets_Close_Suport</strong></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Server</span>::add_Sockets_Close_Suport = <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
               <p>add support for capturing and closing open sockets</p>
 
@@ -295,6 +319,14 @@ Server = http.Server</pre></div></div>
    .listen port, ip, <span class="hljs-function">-&gt;</span>
       callback()
 
+<span class="hljs-attribute">Server</span>::respond_With_Request_Headers = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+  <span class="hljs-keyword">delete</span> @._events.request
+<span class="hljs-function">  <span class="hljs-title">simple_Response</span> = <span class="hljs-params">(req, res)</span> -&gt;</span>
+    res.writeHead(<span class="hljs-number">200</span>, {<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>})
+    res.end(JSON.stringify(req.headers))
+  @.addListener(<span class="hljs-string">'request'</span>, simple_Response)
+  @
+
 <span class="hljs-attribute">Server</span>::respond_With_String_As_Text = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
   <span class="hljs-keyword">delete</span> @._events.request                                <span class="hljs-comment"># removes previous listeners</span>
 <span class="hljs-function">  <span class="hljs-title">simple_Response</span> = <span class="hljs-params">(req, res)</span> -&gt;</span>
@@ -308,6 +340,14 @@ Server = http.Server</pre></div></div>
 <span class="hljs-function">  <span class="hljs-title">json_Response</span> = <span class="hljs-params">(req, res)</span> -&gt;</span>
     res.writeHead(<span class="hljs-number">200</span>, {<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>})
     res.end(JSON.stringify(value))
+  @.addListener(<span class="hljs-string">'request'</span>, json_Response)
+  @
+
+<span class="hljs-attribute">Server</span>::respond_With_Request_Object = <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
+  <span class="hljs-keyword">delete</span> @._events.request
+<span class="hljs-function">  <span class="hljs-title">json_Response</span> = <span class="hljs-params">(req, res)</span> -&gt;</span>
+    res.writeHead(<span class="hljs-number">200</span>, {<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>})
+    res.end(req.json_inspect())                           <span class="hljs-comment"># unfortunatly there doesn't seem to be a way to create a JSON parseable object from req</span>
   @.addListener(<span class="hljs-string">'request'</span>, json_Response)
   @
 
@@ -328,19 +368,142 @@ Server = http.Server</pre></div></div>
   req
 
 <span class="hljs-attribute">String</span>::GET = <span class="hljs-function"><span class="hljs-params">(callback)</span> -&gt;</span>
-  @.http_GET (error, data, res)-&gt; callback(data)
-
-<span class="hljs-attribute">String</span>::GET_Json = <span class="hljs-function"><span class="hljs-params">(callback)</span> -&gt;</span>
-  @.http_GET (error, data, res)-&gt; callback(JSON.parse(data))</pre></div></div>
+  @.http_GET (error, data, res)-&gt; callback(data)</pre></div></div>
             
         </li>
         
         
-        <li id="section-4">
+        <li id="section-5">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>@.<strong>GET_Json</strong>
+@.<strong>json_GET</strong></p>
+<p>Makes a GET request to @ and JSON parses the html data received</p>
+<p>Will throw an error if the returned data is not a valid JSON objec</p>
+<p>Twin methods: json_GET</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::GET_Json = <span class="hljs-function"><span class="hljs-params">(callback)</span> -&gt;</span>
+  @.http_GET (error, data, res)-&gt; callback(JSON.parse(data))
+
+<span class="hljs-attribute">String</span>::json_GET = <span class="hljs-attribute">String</span>::GET_Json</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>@.<strong>json_GET_With_Timeout</strong></p>
+<p>Makes a GET request (with a 500ms wait for valid data),
+and JSON parses the html data received</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::json_GET_With_Timeout = <span class="hljs-function"><span class="hljs-params">(callback)</span>-&gt;</span>
+  @.http_GET_With_Timeout (data)-&gt;
+    callback data.json_Parse()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>@.<strong>http_GET_Wait_For_Null</strong></p>
+<p>Waits until a GET request to @ results null (or empty)</p>
+<p>This is a good util method to check when servers go offline</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::http_GET_Wait_For_Null = <span class="hljs-function"><span class="hljs-params">(callback)</span>-&gt;</span>
+  timeout  = <span class="hljs-built_in">global</span>.__fluentnode.http.HTTP_GET_TIMEOUT
+  delay    = <span class="hljs-built_in">global</span>.__fluentnode.http.HTTP_GET_DELAY
+  attempts = ~~(timeout/delay)
+<span class="hljs-function">  <span class="hljs-title">try_Http_Get</span> = <span class="hljs-params">(next)</span> =&gt;</span>
+    @.GET (data)  =&gt;
+      <span class="hljs-keyword">if</span> data
+        next.invoke_In(delay)
+      <span class="hljs-keyword">else</span>
+        callback(<span class="hljs-literal">null</span>)
+<span class="hljs-function">  <span class="hljs-title">run_Tests</span> = <span class="hljs-params">(count)</span>=&gt;</span>
+    <span class="hljs-keyword">if</span> count
+      try_Http_Get ()-&gt;
+        run_Tests(count-<span class="hljs-number">1</span>)
+    <span class="hljs-keyword">else</span>
+      callback <span class="hljs-keyword">new</span> Error(<span class="hljs-string">"[http_GET_Wait_For_Null] never got a null from server <span class="hljs-subst">#{@}</span> after <span class="hljs-subst">#{attempts}</span> attempts"</span>)
+
+  run_Tests(attempts)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>@.<strong>http_GET_With_Timeout</strong></p>
+<p>Makes a GET request (with a 500ms wait for valid data)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::http_GET_With_Timeout = <span class="hljs-function"><span class="hljs-params">(callback)</span>-&gt;</span>
+  timeout = <span class="hljs-built_in">global</span>.__fluentnode.http.HTTP_GET_TIMEOUT
+  delay   = <span class="hljs-built_in">global</span>.__fluentnode.http.HTTP_GET_DELAY
+  attempts = ~~(timeout/delay)
+<span class="hljs-function">  <span class="hljs-title">try_Http_Get</span> = <span class="hljs-params">(next)</span> =&gt;</span>
+    @.GET (data) =&gt;
+      <span class="hljs-keyword">if</span> data
+        callback(data)
+      <span class="hljs-keyword">else</span>
+        (delay).invoke_After(next)
+<span class="hljs-function">  <span class="hljs-title">run_Tests</span> = <span class="hljs-params">(count)</span>=&gt;</span>
+    <span class="hljs-keyword">if</span> count
+      try_Http_Get ()-&gt;
+        run_Tests(count-<span class="hljs-number">1</span>)
+    <span class="hljs-keyword">else</span>
+      callback <span class="hljs-literal">null</span>
+
+  run_Tests attempts
+
+
+<span class="hljs-attribute">String</span>::http_With_Options = <span class="hljs-function"><span class="hljs-params">(options, callback)</span> -&gt;</span>
+  url = url.parse(@.str())
+  engine = <span class="hljs-keyword">if</span> url.protocol <span class="hljs-keyword">is</span> <span class="hljs-string">'https:'</span> <span class="hljs-keyword">then</span> https <span class="hljs-keyword">else</span> http
+  options.hostname = options.hostname || url.hostname
+  options.port     = options.port     || url.port
+  options.path     = options.path     || url.path
+  options.method   = options.method   || <span class="hljs-string">'GET'</span>
+
+  req = engine.get options, <span class="hljs-function"><span class="hljs-params">(res)</span> -&gt;</span>
+    data = <span class="hljs-string">''</span>;
+    res.<span class="hljs-literal">on</span> <span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-params">(chunk)</span> -&gt;</span> data += chunk
+    res.<span class="hljs-literal">on</span> <span class="hljs-string">'end'</span> , <span class="hljs-function"><span class="hljs-params">(     )</span> -&gt;</span> callback <span class="hljs-literal">null</span>, data, res
+
+  req.<span class="hljs-literal">on</span>   <span class="hljs-string">'error'</span>,<span class="hljs-function"><span class="hljs-params">(err  )</span> -&gt;</span>
+    callback err, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>
+  req</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
               <h2 id="options-">options =</h2>
 
@@ -357,11 +520,11 @@ Server = http.Server</pre></div></div>
         </li>
         
         
-        <li id="section-5">
+        <li id="section-10">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
+                <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <hr>
 
@@ -370,11 +533,11 @@ Server = http.Server</pre></div></div>
         </li>
         
         
-        <li id="section-6">
+        <li id="section-11">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
+                <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
               <p>back to <a href="index.html">index</a></p>
 

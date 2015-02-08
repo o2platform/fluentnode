@@ -54,11 +54,6 @@
               </a>
             
               
-              <a class="source" href="_to_map_and_write_Tests.html">
-                _to_map_and_write_Tests.litcoffee
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -91,6 +86,11 @@
               
               <a class="source" href="console.html">
                 console.litcoffee
+              </a>
+            
+              
+              <a class="source" href="crypto.html">
+                crypto.litcoffee
               </a>
             
               
@@ -189,6 +189,11 @@
               </a>
             
               
+              <a class="source" href="crypto.test.html">
+                crypto.test.coffee
+              </a>
+            
+              
               <a class="source" href="fs.test.html">
                 fs.test.coffee
               </a>
@@ -236,20 +241,7 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre>path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>)
-
-<span class="hljs-attribute">String</span>::path_Combine         = <span class="hljs-function"><span class="hljs-params">(pathToAppend)</span> -&gt;</span> <span class="hljs-keyword">if</span> pathToAppend <span class="hljs-keyword">then</span> path.join(@.toString(), pathToAppend) <span class="hljs-keyword">else</span> @.toString()
-<span class="hljs-attribute">String</span>::file_Dir_Name        = <span class="hljs-function"><span class="hljs-params">()</span>             -&gt;</span> path.dirname @
-<span class="hljs-attribute">String</span>::file_Extension       = <span class="hljs-function"><span class="hljs-params">()</span>             -&gt;</span> path.extname(@.toString())
-<span class="hljs-attribute">String</span>::file_Name            = <span class="hljs-function"><span class="hljs-params">()</span>             -&gt;</span> path.basename @.toString()
-<span class="hljs-attribute">Array</span>::file_Names            = <span class="hljs-function"><span class="hljs-params">()</span>             -&gt;</span> file.file_Name() <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> @
-
-<span class="hljs-attribute">String</span>::append_To_Process_Cwd_Path    = <span class="hljs-function"><span class="hljs-params">()</span>    -&gt;</span> process.cwd().path_Combine(@.toString())
-<span class="hljs-attribute">String</span>::file_Name_Without_Extension   = <span class="hljs-function"><span class="hljs-params">()</span>    -&gt;</span> path.basename @.toString().replace(@.toString().file_Extension(), <span class="hljs-string">""</span>)
-<span class="hljs-attribute">Array</span>:: file_Names_Without_Extension  = <span class="hljs-function"><span class="hljs-params">()</span>    -&gt;</span> file.file_Name_Without_Extension() <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> @
-
-<span class="hljs-attribute">String</span>::file_Parent_Folder = <span class="hljs-attribute">String</span>::file_Dir_Name
-<span class="hljs-attribute">String</span>::parent_Folder      = <span class="hljs-attribute">String</span>::file_Dir_Name</pre></div></div>
+            <div class="content"><div class='highlight'><pre>path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>)</pre></div></div>
             
         </li>
         
@@ -260,9 +252,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <hr>
+              <p>@.<strong>path_Combine</strong></p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::path_Combine = <span class="hljs-function"><span class="hljs-params">(pathToAppend)</span> -&gt;</span>
+  <span class="hljs-keyword">if</span> pathToAppend <span class="hljs-keyword">then</span> path.join(@.toString(), pathToAppend) <span class="hljs-keyword">else</span> @.toString()</pre></div></div>
             
         </li>
         
@@ -272,6 +267,154 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>@.<strong>file_Dir_Name</strong></p>
+<p>twin methods: file_Parent_Folder, parent_Folder</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::file_Dir_Name  = <span class="hljs-function"><span class="hljs-params">()</span> -&gt;</span>
+  path.dirname @
+
+<span class="hljs-attribute">String</span>::file_Parent_Folder = <span class="hljs-attribute">String</span>::file_Dir_Name
+<span class="hljs-attribute">String</span>::parent_Folder      = <span class="hljs-attribute">String</span>::file_Dir_Name</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>@.<strong>file_Extension</strong></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::file_Extension = <span class="hljs-function"><span class="hljs-params">()</span> -&gt;</span>
+  path.extname(@.toString())</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>@.<strong>file_Name</strong></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::file_Name = <span class="hljs-function"><span class="hljs-params">()</span> -&gt;</span>
+  path.basename @.toString()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>@.<strong>file_Names</strong></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::file_Names = <span class="hljs-function"><span class="hljs-params">()</span> -&gt;</span>
+  file.file_Name() <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> @</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>@.<strong>append_To_Process_Cwd_Path</strong></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::append_To_Process_Cwd_Path  = <span class="hljs-function"><span class="hljs-params">()</span> -&gt;</span>
+  process.cwd().path_Combine(@.toString())</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>@.<strong>file_Name_Without_Extension</strong></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::file_Name_Without_Extension  = <span class="hljs-function"><span class="hljs-params">()</span> -&gt;</span>
+  path.basename @.toString()
+                 .replace(@.toString().file_Extension(), <span class="hljs-string">""</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>@.<strong>file_Names_Without_Extension</strong></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>:: file_Names_Without_Extension  = <span class="hljs-function"><span class="hljs-params">()</span> -&gt;</span>
+  file.file_Name_Without_Extension() <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> @</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>@.<strong>folder_Name</strong></p>
+<p>Returns the name of the current folder (which is the right-most segment of a path)</p>
+<p>If you want the full path, use the <strong>parent_Folder</strong> method</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::folder_Name = <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
+  @.valueOf().file_Name()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <hr>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <p>back to <a href="index.html">index</a></p>
 
