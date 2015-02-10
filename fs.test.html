@@ -310,7 +310,7 @@ describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;
     file_Name     = <span class="hljs-string">'_temp_name_'</span>.add_Random_String(<span class="hljs-number">5</span>)
     file_Contents = <span class="hljs-string">'value_'</span>.add_Random_String(<span class="hljs-number">5</span>)
     (file_Name.file_Exists().assert_Is_False())
-    file_Contents.saveAs(file_Name)
+    file_Contents.save_As(file_Name)
     file_Name.file_Exists().assert_Is_True()
     file_Name.file_Contents().assert_Is(file_Contents)
     file_Name.file_Delete().assert_Is_True()
@@ -322,6 +322,11 @@ describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;
     <span class="hljs-string">'./aaa.js'</span>      .file_Exists().assert_Is_False()
     <span class="hljs-string">'./aaa.js'</span>      .file_Exists().assert_Is_False()
 
+  it <span class="hljs-string">'file_Lines'</span>, <span class="hljs-function">-&gt;</span>
+    <span class="hljs-string">""</span>.file_Lines().assert_Is []
+    tmp_File = <span class="hljs-string">"aaaa\nbbbb"</span>.save_As(<span class="hljs-string">'_tmp_file_Lines'</span>)
+    tmp_File.file_Lines().assert_Is [<span class="hljs-string">'aaaa'</span>,<span class="hljs-string">'bbbb'</span>]
+    tmp_File.assert_File_Deleted()
 
   it <span class="hljs-string">'file_Not_Exists'</span> , <span class="hljs-function">-&gt;</span>
     <span class="hljs-string">''</span>.file_Not_Exists.assert_Is_Function()
@@ -390,24 +395,26 @@ describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;
     expect(<span class="hljs-string">'.gitignore'</span>  .realPath()).to.equal(process.cwd().path_Combine(<span class="hljs-string">'.gitignore'</span>))
     expect(<span class="hljs-string">'.gitignore2'</span> .realPath()).to.equal(<span class="hljs-literal">null</span>)
 
-  it <span class="hljs-string">'saveAs'</span>, <span class="hljs-function">-&gt;</span>
+  it <span class="hljs-string">'save_As'</span>, <span class="hljs-function">-&gt;</span>
     file_Name  = <span class="hljs-string">'_tmp_file_'</span>  .add_Random_String(<span class="hljs-number">5</span>)
     file_Value1 = <span class="hljs-string">'value'</span>.add_Random_String(<span class="hljs-number">5</span>)
     file_Value2 = <span class="hljs-string">'value'</span>.add_Random_String(<span class="hljs-number">5</span>)
 
     file_Name.exists().assert_Is_False()
 
-    file_Value1.saveAs(file_Name).assert_Is_True()
-    file_Name.exists()          .assert_Is_True()
-    file_Name.file_Contents()   .assert_Is    (file_Value1)
-    file_Name.file_Contents()   .assert_Is_Not(file_Value2)
+    file_Value1.save_As(file_Name).assert_Is(file_Name.real_Path()).assert_File_Exists()
+    file_Name.exists()            .assert_Is_True()
+    file_Name.file_Contents()     .assert_Is    (file_Value1)
+    file_Name.file_Contents()     .assert_Is_Not(file_Value2)
 
-    file_Value2.saveAs(file_Name).assert_Is_True()
-    file_Name.exists()          .assert_Is_True()
-    file_Name.file_Contents()   .assert_Is_Not(file_Value1)
-    file_Name.file_Contents()   .assert_Is    (file_Value2)
+    file_Value2.save_As(file_Name).assert_Is(file_Name.real_Path()).assert_File_Exists()
+    file_Name.exists()            .assert_Is_True()
+    file_Name.file_Contents()     .assert_Is_Not(file_Value1)
+    file_Name.file_Contents()     .assert_Is    (file_Value2)
 
-    file_Name.file_Delete()     .assert_Is_True()
+    file_Name.file_Delete()       .assert_Is_True()
+
+    <span class="hljs-string">''</span>.save_As.assert_Is <span class="hljs-string">''</span>.saveAs
 
   it <span class="hljs-string">'temp_File'</span>,<span class="hljs-function">-&gt;</span>
     value = <span class="hljs-string">"abc"</span>.add_5_Letters()

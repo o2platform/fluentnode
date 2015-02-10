@@ -323,7 +323,7 @@ using <span class="hljs-built_in">global</span>.__fluentnode.http, <span class="
   <span class="hljs-keyword">delete</span> @._events.request
 <span class="hljs-function">  <span class="hljs-title">simple_Response</span> = <span class="hljs-params">(req, res)</span> -&gt;</span>
     res.writeHead(<span class="hljs-number">200</span>, {<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>})
-    res.end(JSON.stringify(req.headers))
+    res.end(req.headers.json_Str())
   @.addListener(<span class="hljs-string">'request'</span>, simple_Response)
   @
 
@@ -339,7 +339,7 @@ using <span class="hljs-built_in">global</span>.__fluentnode.http, <span class="
   <span class="hljs-keyword">delete</span> @._events.request
 <span class="hljs-function">  <span class="hljs-title">json_Response</span> = <span class="hljs-params">(req, res)</span> -&gt;</span>
     res.writeHead(<span class="hljs-number">200</span>, {<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>})
-    res.end(JSON.stringify(value))
+    res.end(value.json_Str())
   @.addListener(<span class="hljs-string">'request'</span>, json_Response)
   @
 
@@ -347,7 +347,7 @@ using <span class="hljs-built_in">global</span>.__fluentnode.http, <span class="
   <span class="hljs-keyword">delete</span> @._events.request
 <span class="hljs-function">  <span class="hljs-title">json_Response</span> = <span class="hljs-params">(req, res)</span> -&gt;</span>
     res.writeHead(<span class="hljs-number">200</span>, {<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>})
-    res.end(req.json_inspect())                           <span class="hljs-comment"># unfortunatly there doesn't seem to be a way to create a JSON parseable object from req</span>
+    res.end(req.json_Inspect())                           <span class="hljs-comment"># unfortunatly there doesn't seem to be a way to create a JSON parseable object from req</span>
   @.addListener(<span class="hljs-string">'request'</span>, json_Response)
   @
 
@@ -388,7 +388,7 @@ using <span class="hljs-built_in">global</span>.__fluentnode.http, <span class="
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::GET_Json = <span class="hljs-function"><span class="hljs-params">(callback)</span> -&gt;</span>
-  @.http_GET (error, data, res)-&gt; callback(JSON.parse(data))
+  @.http_GET (error, data, res)-&gt; callback(data.json_Parse())
 
 <span class="hljs-attribute">String</span>::json_GET = <span class="hljs-attribute">String</span>::GET_Json</pre></div></div>
             

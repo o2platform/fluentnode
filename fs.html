@@ -386,18 +386,7 @@ fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</
                                   path = @.toString()
                                   <span class="hljs-keyword">if</span> path.not_Exists()
                                       fs.writeFileSync(path,<span class="hljs-string">''</span>)
-                                  <span class="hljs-keyword">return</span> path.realPath();
-
-<span class="hljs-attribute">String</span>::file_Delete         = <span class="hljs-function">-&gt;</span>
-                                  file = @.toString().realPath()
-                                  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> file
-                                  fs.unlinkSync file
-                                  <span class="hljs-keyword">return</span> file.file_Not_Exists()
-
-<span class="hljs-attribute">String</span>::file_Contents        = <span class="hljs-function">-&gt;</span>
-                                  file = @.valueOf().realPath()
-                                  <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> file
-                                  <span class="hljs-keyword">return</span> fs.readFileSync(file,<span class="hljs-string">"utf8"</span>)</pre></div></div>
+                                  <span class="hljs-keyword">return</span> path.realPath();</pre></div></div>
             
         </li>
         
@@ -408,13 +397,16 @@ fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <p>@.<strong>file_Exists</strong></p>
-<p>Returns true if @ is a file and it exists</p>
+              <p>@.<strong>File_Delete</strong></p>
+<p>Deletes @ file</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::file_Exists = <span class="hljs-function">-&gt;</span>
-  <span class="hljs-keyword">return</span> fs.existsSync  @.valueOf()</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::file_Delete = <span class="hljs-function">-&gt;</span>
+  file = @.toString().realPath()
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> file
+  fs.unlinkSync file
+  <span class="hljs-keyword">return</span> file.file_Not_Exists()</pre></div></div>
             
         </li>
         
@@ -424,6 +416,69 @@ fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>@.<strong>file_Contents</strong></p>
+<p>Returns the ascii contents (utf8) of the @ file or null if there is an error loading the file (for example if the file
+does not exist or is a directory</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::file_Contents = <span class="hljs-function">-&gt;</span>
+  file = @.valueOf().realPath()
+  <span class="hljs-keyword">try</span>
+    <span class="hljs-keyword">return</span> fs.readFileSync(file,<span class="hljs-string">"utf8"</span>)
+  <span class="hljs-keyword">catch</span>
+    <span class="hljs-literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>@.<strong>file_Exists</strong></p>
+<p>Returns true if @ is a file and it exists</p>
+<p>twin methods: exists</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::file_Exists = <span class="hljs-function">-&gt;</span>
+  <span class="hljs-keyword">return</span> fs.existsSync  @.valueOf()
+
+<span class="hljs-attribute">String</span>::exists = <span class="hljs-attribute">String</span>::file_Exists</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>@.<strong>file_Lines</strong></p>
+<p>Returns an array of the file contents splitted by lines (or empty if there was no content)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::file_Lines = <span class="hljs-function">-&gt;</span>
+  file_Contents = @.file_Contents()
+  <span class="hljs-keyword">if</span> file_Contents <span class="hljs-keyword">isnt</span> <span class="hljs-literal">null</span>
+    file_Contents.lines()
+  <span class="hljs-keyword">else</span>
+    []</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <p>@.<strong>file_Write</strong> content</p>
 <p>Writes <code>content</code> as file @</p>
@@ -437,11 +492,11 @@ fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</
         </li>
         
         
-        <li id="section-10">
+        <li id="section-13">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-10">&#182;</a>
+                <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
               <p>@.<strong>file_Not_Exists</strong></p>
 <p>Returns true if @ is not a file</p>
@@ -454,11 +509,11 @@ fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</
         </li>
         
         
-        <li id="section-11">
+        <li id="section-14">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
+                <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
               <p>@.<strong>files_and_Folders</strong></p>
 <p>returns a list of files and folders from the folder @</p>
@@ -492,11 +547,11 @@ fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</
         </li>
         
         
-        <li id="section-12">
+        <li id="section-15">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
+                <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
               <p>@.<strong>is_Folder</strong></p>
 <p>Returns true is @ is a folder</p>
@@ -512,11 +567,11 @@ fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</
         </li>
         
         
-        <li id="section-13">
+        <li id="section-16">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
+                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p>@.<strong>is_Not_Folder</strong></p>
 <p>Returns true if @ is not a folder</p>
@@ -533,11 +588,11 @@ fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</
         </li>
         
         
-        <li id="section-14">
+        <li id="section-17">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-14">&#182;</a>
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p>@.<strong>temp_File</strong> contents</p>
 <p>Creates a file in <code>@</code> folder with a temp name and with <code>contents</code></p>
@@ -555,36 +610,55 @@ If <code>@</code> is not a folder, no file will be created and null is returned<
   <span class="hljs-keyword">else</span>
     <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
 
-<span class="hljs-attribute">String</span>::temp_Name_In_Folder = <span class="hljs-function">-&gt;</span>  @.valueOf().realPath().path_Combine(<span class="hljs-string">"_tmp_"</span>.add_Random_String(<span class="hljs-number">10</span>))
+<span class="hljs-attribute">String</span>::temp_Name_In_Folder = <span class="hljs-function">-&gt;</span>  @.valueOf().realPath().path_Combine(<span class="hljs-string">"_tmp_"</span>.add_Random_String(<span class="hljs-number">10</span>))</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>@.<strong>save_As</strong> targetFile</p>
+<p>Sync saves @ into <code>targetFile</code>. If <code>targetFile</code> exists, it is deleted first, before save is done</p>
+<p>Returns full path to saved file</p>
+<p>twin method: saveAs (legacy)</p>
 
-<span class="hljs-attribute">String</span>::saveAs              = <span class="hljs-function"><span class="hljs-params">(targetFile)</span> -&gt;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::save_As              = <span class="hljs-function"><span class="hljs-params">(targetFile)</span> -&gt;</span>
                                   <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span> <span class="hljs-keyword">if</span> targetFile <span class="hljs-keyword">is</span> <span class="hljs-literal">null</span>
                                   contents = @.valueOf()
                                   <span class="hljs-keyword">if</span> (targetFile.exists())
                                     targetFile.file_Delete()
                                   fs.writeFileSync(targetFile,contents)
-                                  <span class="hljs-keyword">return</span> targetFile.exists()</pre></div></div>
+                                  <span class="hljs-keyword">if</span> targetFile.real_Path().exists()
+                                    <span class="hljs-keyword">return</span> targetFile.real_Path()
+
+
+<span class="hljs-attribute">String</span>::saveAs = <span class="hljs-attribute">String</span>::save_As</pre></div></div>
             
         </li>
         
         
-        <li id="section-15">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-15">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
-              <p>String::saveAs</p>
+              <p>Other twin methods to add to correct location</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>
-<span class="hljs-attribute">String</span>::exists              = <span class="hljs-attribute">String</span>::file_Exists
-<span class="hljs-attribute">String</span>::create_Dir          = <span class="hljs-attribute">String</span>::folder_Create
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">String</span>::create_Dir          = <span class="hljs-attribute">String</span>::folder_Create
 <span class="hljs-attribute">String</span>::delete_File         = <span class="hljs-attribute">String</span>::file_Delete
 <span class="hljs-attribute">String</span>::folder_Exists       = <span class="hljs-attribute">String</span>::is_Folder
 <span class="hljs-attribute">String</span>::folder_Not_Exists   = <span class="hljs-attribute">String</span>::is_Not_Folder
 <span class="hljs-attribute">String</span>::fullPath            = <span class="hljs-attribute">String</span>::realPath
+<span class="hljs-attribute">String</span>::real_Path           = <span class="hljs-attribute">String</span>::realPath
 <span class="hljs-attribute">String</span>::is_Directory        = <span class="hljs-attribute">String</span>::is_Folder
 <span class="hljs-attribute">String</span>::touch               = <span class="hljs-attribute">String</span>::file_Create
 <span class="hljs-attribute">String</span>::not_Exists          = <span class="hljs-attribute">String</span>::file_Not_Exists</pre></div></div>
@@ -592,11 +666,11 @@ If <code>@</code> is not a folder, no file will be created and null is returned<
         </li>
         
         
-        <li id="section-16">
+        <li id="section-20">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
               <hr>
 
@@ -605,11 +679,11 @@ If <code>@</code> is not a folder, no file will be created and null is returned<
         </li>
         
         
-        <li id="section-17">
+        <li id="section-21">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
               <p>back to <a href="index.html">index</a></p>
 

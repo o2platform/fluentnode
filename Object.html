@@ -278,6 +278,7 @@ enumerable value to false (otherwise ‘for item of xyz’ would include these m
               </div>
               <p>@.<strong>json_Str</strong></p>
 <p>Returns the JSON.stringify of the @ object</p>
+<p>Note: Returns ‘’ if there is a error stringifying @</p>
 
             </div>
             
@@ -285,7 +286,10 @@ enumerable value to false (otherwise ‘for item of xyz’ would include these m
     enumerable  : <span class="hljs-literal">false</span>,
     writable    : <span class="hljs-literal">true</span>,
     <span class="hljs-attribute">value</span>: <span class="hljs-function">-&gt;</span>
-        <span class="hljs-keyword">return</span> JSON.stringify(@)</pre></div></div>
+        <span class="hljs-keyword">try</span>
+          JSON.stringify(@)
+        <span class="hljs-keyword">catch</span>
+          <span class="hljs-string">''</span></pre></div></div>
             
         </li>
         
@@ -305,7 +309,10 @@ enumerable value to false (otherwise ‘for item of xyz’ would include these m
     enumerable  : <span class="hljs-literal">false</span>,
     writable    : <span class="hljs-literal">true</span>,
     <span class="hljs-attribute">value</span>: <span class="hljs-function">-&gt;</span>
-        <span class="hljs-keyword">return</span> JSON.stringify(@,<span class="hljs-literal">null</span>,<span class="hljs-string">'  '</span>)
+        <span class="hljs-keyword">try</span>
+          JSON.stringify(@,<span class="hljs-literal">null</span>,<span class="hljs-string">'  '</span>)
+        <span class="hljs-keyword">catch</span>
+          <span class="hljs-string">''</span>
 
 Object.defineProperty Object.prototype, <span class="hljs-string">'json_pretty'</span>,enumerable  : <span class="hljs-literal">false</span>, writable    : <span class="hljs-literal">true</span>, <span class="hljs-attribute">value</span>: <span class="hljs-attribute">Object</span>::json_Pretty</pre></div></div>
             
@@ -320,7 +327,8 @@ Object.defineProperty Object.prototype, <span class="hljs-string">'json_pretty'<
               </div>
               <p><strong>json_Inspect</strong></p>
 <p>Returns a json representation of @ (using require(‘util’).inspect which supports recursive objects)</p>
-<p>twin method: json_pretty (legacy)</p>
+<p>Note: Returns ‘’ if there is a error processing @</p>
+<p>twin method: json_inspect (legacy)</p>
 
             </div>
             
@@ -328,7 +336,7 @@ Object.defineProperty Object.prototype, <span class="hljs-string">'json_pretty'<
     enumerable  : <span class="hljs-literal">false</span>,
     writable    : <span class="hljs-literal">true</span>,
     <span class="hljs-attribute">value</span>: <span class="hljs-function">-&gt;</span>
-        <span class="hljs-keyword">return</span> <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>).inspect(@)
+        <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>).inspect(@)            
 
 Object.defineProperty Object.prototype, <span class="hljs-string">'json_inspect'</span>,enumerable  : <span class="hljs-literal">false</span>, writable    : <span class="hljs-literal">true</span>, <span class="hljs-attribute">value</span>: <span class="hljs-attribute">Object</span>::json_Inspect</pre></div></div>
             
@@ -398,7 +406,7 @@ Object.defineProperty Object.prototype, <span class="hljs-string">'json_inspect'
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <p><strong>call_Function</strong></p>
+              <p>@.<strong>call_Function</strong></p>
 
             </div>
             
@@ -419,7 +427,9 @@ Object.defineProperty Object.prototype, <span class="hljs-string">'json_inspect'
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <p>@.load_Json target</p>
+              <p>@.<strong>load_Json</strong> target</p>
+<p>Note: returns {} if there is an error parsing @.file_Contents().
+Use <strong>json_Valid</strong> to check for valid json content</p>
 
             </div>
             
@@ -427,7 +437,10 @@ Object.defineProperty Object.prototype, <span class="hljs-string">'json_inspect'
     enumerable  : <span class="hljs-literal">false</span>,
     writable    : <span class="hljs-literal">true</span>,
     <span class="hljs-attribute">value</span>: <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
-        JSON.parse(@.file_Contents())</pre></div></div>
+        <span class="hljs-keyword">try</span>
+          JSON.parse(@.file_Contents())
+        <span class="hljs-keyword">catch</span>
+          {}</pre></div></div>
             
         </li>
         
@@ -439,6 +452,7 @@ Object.defineProperty Object.prototype, <span class="hljs-string">'json_inspect'
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
               <p>@.save_Json target</p>
+<p>Note: thows exception if there is a problem parsing json</p>
 
             </div>
             

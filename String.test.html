@@ -255,6 +255,12 @@ describe <span class="hljs-string">'Assert | String |'</span>, <span class="hljs
     (<span class="hljs-function">-&gt;</span><span class="hljs-string">'123'</span>.assert_Contains(<span class="hljs-string">'0'</span>  )).assert_Throws()
     (<span class="hljs-function">-&gt;</span><span class="hljs-string">'123'</span>.assert_Contains([<span class="hljs-string">'0'</span>])).assert_Throws()
 
+  it <span class="hljs-string">'assert_Empty'</span>, <span class="hljs-function">-&gt;</span>
+    (<span class="hljs-function">-&gt;</span><span class="hljs-string">''</span>.assert_Empty()).assert_Not_Throws()
+    (<span class="hljs-function">-&gt;</span><span class="hljs-string">'123'</span>.assert_Empty()).assert_Throws (error)-&gt;
+      error.message.assert_Is <span class="hljs-string">'Expected empty string but it was 123'</span>
+
+
   it <span class="hljs-string">'assert_Not_Contains'</span>, <span class="hljs-function">-&gt;</span>
     <span class="hljs-string">''</span>.assert_Not_Contains.assert_Is_Function()
     <span class="hljs-string">''</span>.assert_Not_Contains(<span class="hljs-string">'a'</span>         ).assert_Is_Equal_To(<span class="hljs-string">''</span>)
@@ -331,6 +337,11 @@ describe <span class="hljs-string">'Assert | String |'</span>, <span class="hljs
     <span class="hljs-string">"ab"</span>.assert_Length_Is_Not(<span class="hljs-number">3</span>).assert_Is_Equal_To(<span class="hljs-string">"ab"</span>)
     (<span class="hljs-function">-&gt;</span><span class="hljs-string">"a"</span>.assert_Length_Is_Not(<span class="hljs-number">2</span>)).assert_Not_Throws()
     (<span class="hljs-function">-&gt;</span><span class="hljs-string">"a"</span>.assert_Length_Is_Not(<span class="hljs-number">1</span>)).assert_Throws()
+
+  it <span class="hljs-string">'assert_Not_Empty'</span>, <span class="hljs-function">-&gt;</span>
+    (<span class="hljs-function">-&gt;</span><span class="hljs-string">'123'</span>.assert_Not_Empty()).assert_Not_Throws()
+    (<span class="hljs-function">-&gt;</span><span class="hljs-string">''</span>.assert_Not_Empty()).assert_Throws (error)-&gt;
+      error.message.assert_Is <span class="hljs-string">"Expected non empty string but it was ''"</span>
 
   it <span class="hljs-string">'assert_That_File_Exists'</span>,<span class="hljs-function">-&gt;</span>
     <span class="hljs-string">''</span>.assert_That_File_Exists.assert_Is_Function()
