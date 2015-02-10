@@ -5,34 +5,37 @@ expect     = require('chai').expect
 
 describe 'Object',->
 
+    o = {}          # recursive json object (should not stringify ok)
+    o.o = o
 
     it 'str',->
-        expect(""    .str).to.be.an('Function')
-        expect(""    .str()).to.equal(""   .toString() )
-        expect("123" .str()).to.equal("123".toString() )
-        expect([]    .str()).to.equal([]   .toString() )
-        expect({}    .str()).to.equal({}   .toString() )
-        expect({a:'1'}.str()).to.equal("[object Object]")
+        ""     .str().assert_Is ""
+        "123"  .str().assert_Is "123"
+        []     .str().assert_Is [].toString()
+        {}     .str().assert_Is {}.toString()
+        {a:'1'}.str().assert_Is "[object Object]"
 
     it 'json_Str',->
-        expect(""   .json_Str).to.be.an('Function')
-        expect(""   .json_Str()).to.equal("\"\"")
-        expect("123".json_Str()).to.equal("\"123\"")
-        expect({}   .json_Str()).to.equal("{}")
-        expect({a:1}.json_Str()).to.equal("{\"a\":1}")
+        ""   .json_Str().assert_Is "\"\""
+        "123".json_Str().assert_Is "\"123\""
+        {}   .json_Str().assert_Is "{}"
+        {a:1}.json_Str().assert_Is "{\"a\":1}"
+        o    .json_Str().assert_Is ''
 
     it 'json_Pretty', ->
-        expect({a:1}        .json_Pretty()).to.equal('{\n  \"a\": 1\n}')
-        expect([{a:1},{b:1}].json_Pretty()).to.equal('[\n  {\n    \"a\": 1\n  },\n  {\n    \"b\": 1\n  }\n]')
+        {a:1}        .json_Pretty().assert_Is '{\n  \"a\": 1\n}'
+        [{a:1},{b:1}].json_Pretty().assert_Is '[\n  {\n    \"a\": 1\n  },\n  {\n    \"b\": 1\n  }\n]'
+        {a:1}        .json_Pretty().assert_Is '{\n  \"a\": 1\n}'
+        {null:null}  .json_Pretty().assert_Is '{\n  "null": null\n}'
+        o            .json_Pretty().assert_Is ''
 
-        expect({a:1}        .json_pretty()).to.equal('{\n  \"a\": 1\n}')
+        {}.json_pretty.assert_Is {}.json_Pretty
 
     it 'json_inspect',->
-        expect("".json_Inspect).to.be.an('Function')
-        o = {}
-        o.o = o
-        expect(o.json_Inspect()).to.equal("{ o: [Circular] }")
-        expect(o.json_inspect()).to.equal("{ o: [Circular] }")
+        a = null
+        {null:null}.json_Inspect().assert_Is '{ null: null }'
+        o          .json_Inspect().assert_Is "{ o: [Circular] }"
+        o          .json_inspect().assert_Is "{ o: [Circular] }"
 
     it 'keys', ->
         abc = { key1:'', key2:''}
@@ -68,8 +71,12 @@ describe 'Object',->
         target.assert_File_Not_Exists()
         source.save_Json(target)
         target.assert_File_Exists()
-        target.load_Json().assert_Is(source)
+        target.load_Json().assert_Is source
+        'aaaa'.save_As target
+        target.load_Json().assert_Is {}
         target.file_Delete().assert_True()
+
+
 
     it 'repl_Me',(done)->
         anObject = {a : 'an value' , b :2}

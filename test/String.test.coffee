@@ -225,9 +225,15 @@ describe 'String',->
 
   it 'json_Parse',->
     '{ "a" : 42 }'.json_Parse().assert_Is { a : '42' }
-    "{}"         .json_Parse({})
-    (-> ''.json_Parse()).assert_Throws (error)->
-        error.message.assert_Is 'Unexpected end of input'
+    "{}"          .json_Parse().assert_Is {}
+    ''            .json_Parse().assert_Is {}
+    'aaaa'        .json_Parse().assert_Is {}
+    '{a:12}'      .json_Parse().assert_Is {}
 
-    #console.log  '{ }'.json_Parse()
-    # {}""          .json_Parse().assert_Is { }
+
+  it 'json_Valid',->
+    '{ "a" : 42 }'.json_Valid().assert_True
+    "{}"          .json_Valid().assert_True
+    ''            .json_Valid().assert_False
+    'aaaa'        .json_Valid().assert_False
+    '{a:12}'      .json_Valid().assert_False

@@ -23,11 +23,16 @@ Returns the ```toString``` result of the @ object
 
 Returns the JSON.stringify of the @ object
 
+Note: Returns '' if there is a error stringifying @
+
     Object.defineProperty Object.prototype, 'json_Str',
         enumerable  : false,
         writable    : true,
         value: ->
-            return JSON.stringify(@)
+            try
+              JSON.stringify(@)
+            catch
+              ''
 
 
 @.**json_Pretty**
@@ -38,7 +43,10 @@ twin method: json_pretty (legacy)
         enumerable  : false,
         writable    : true,
         value: ->
-            return JSON.stringify(@,null,'  ')
+            try
+              JSON.stringify(@,null,'  ')
+            catch
+              ''
 
     Object.defineProperty Object.prototype, 'json_pretty',enumerable  : false, writable    : true, value: Object::json_Pretty
 
@@ -47,13 +55,15 @@ twin method: json_pretty (legacy)
 
 Returns a json representation of @ (using require('util').inspect which supports recursive objects)
 
-twin method: json_pretty (legacy)
+Note: Returns '' if there is a error processing @
+
+twin method: json_inspect (legacy)
 
     Object.defineProperty Object.prototype, 'json_Inspect',
         enumerable  : false,
         writable    : true,
         value: ->
-            return require('util').inspect(@)
+            require('util').inspect(@)            
 
     Object.defineProperty Object.prototype, 'json_inspect',enumerable  : false, writable    : true, value: Object::json_Inspect
 
@@ -82,7 +92,7 @@ twin method: json_pretty (legacy)
         value: ->
             return (@[key] for own key of @)
 
-**call_Function**
+@.**call_Function**
 
     Object.defineProperty Object.prototype, 'call_Function',
         enumerable  : false,
@@ -93,16 +103,24 @@ twin method: json_pretty (legacy)
             return method.apply(null,callParams)
 
 
-@.load_Json target
+@.**load_Json** target
+
+Note: returns {} if there is an error parsing @.file_Contents().
+Use **json_Valid** to check for valid json content
 
     Object.defineProperty Object.prototype, 'load_Json',
         enumerable  : false,
         writable    : true,
         value: ()->
-            JSON.parse(@.file_Contents())
+            try
+              JSON.parse(@.file_Contents())
+            catch
+              {}
 
 
 @.save_Json target
+
+Note: thows exception if there is a problem parsing json
 
     Object.defineProperty Object.prototype, 'save_Json',
         enumerable  : false,
@@ -110,6 +128,7 @@ twin method: json_pretty (legacy)
         value: (target)->
             data = JSON.stringify(@,null,'  ')
             return data.saveAs(target)
+
 **repl_Me**
 
     Object.defineProperty Object.prototype, 'repl_Me',

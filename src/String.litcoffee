@@ -196,8 +196,24 @@ into lowercase
 
 returns the object representation of the the json string @
 
+Note: if there is a prob parsing the json an empty object will be returned (use **json_Valid** to check for well formed json)
+
     String::json_Parse = ()->
-      JSON.parse(@)
+      try
+        JSON.parse(@)
+      catch
+        {}
+
+@.**json_Valid**
+
+Returns true if @ can be deserialised ok into a json object
+
+    String::json_Valid = ()->
+      try
+        JSON.parse(@)
+        true
+      catch
+        false
 
 ---
 back to [index](index.html)

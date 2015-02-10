@@ -67,7 +67,7 @@ describe 'fs',->
     file_Name     = '_temp_name_'.add_Random_String(5)
     file_Contents = 'value_'.add_Random_String(5)
     (file_Name.file_Exists().assert_Is_False())
-    file_Contents.saveAs(file_Name)
+    file_Contents.save_As(file_Name)
     file_Name.file_Exists().assert_Is_True()
     file_Name.file_Contents().assert_Is(file_Contents)
     file_Name.file_Delete().assert_Is_True()
@@ -147,24 +147,26 @@ describe 'fs',->
     expect('.gitignore'  .realPath()).to.equal(process.cwd().path_Combine('.gitignore'))
     expect('.gitignore2' .realPath()).to.equal(null)
 
-  it 'saveAs', ->
+  it 'save_As', ->
     file_Name  = '_tmp_file_'  .add_Random_String(5)
     file_Value1 = 'value'.add_Random_String(5)
     file_Value2 = 'value'.add_Random_String(5)
 
     file_Name.exists().assert_Is_False()
 
-    file_Value1.saveAs(file_Name).assert_Is_True()
+    file_Value1.save_As(file_Name).assert_Is_True()
     file_Name.exists()          .assert_Is_True()
     file_Name.file_Contents()   .assert_Is    (file_Value1)
     file_Name.file_Contents()   .assert_Is_Not(file_Value2)
 
-    file_Value2.saveAs(file_Name).assert_Is_True()
+    file_Value2.save_As(file_Name).assert_Is_True()
     file_Name.exists()          .assert_Is_True()
     file_Name.file_Contents()   .assert_Is_Not(file_Value1)
     file_Name.file_Contents()   .assert_Is    (file_Value2)
 
     file_Name.file_Delete()     .assert_Is_True()
+
+    ''.save_As.assert_Is ''.saveAs
 
   it 'temp_File',->
     value = "abc".add_5_Letters()

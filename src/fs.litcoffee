@@ -108,12 +108,18 @@ Creates and empty file at @
 
 Returns true if @ is a file and it exists
 
+twin methods: exists
+
     String::file_Exists = ->
       return fs.existsSync  @.valueOf()
+
+    String::exists = String::file_Exists
+
 
 @.**file_Write** content
 
 Writes ```content``` as file @
+
 
     String::file_Write  = (content)->
       content.saveAs(@.str())
@@ -195,7 +201,13 @@ If all goes well, the retuned value is the full path to the temp file created
 
     String::temp_Name_In_Folder = ->  @.valueOf().realPath().path_Combine("_tmp_".add_Random_String(10))
 
-    String::saveAs              = (targetFile) ->
+@.**save_As** targetFile
+
+Sync saves @ into ```targetFile```. If ```targetFile``` exists, it is deleted first, before save is done
+
+twin method: saveAs (legacy)
+
+    String::save_As              = (targetFile) ->
                                       return false if targetFile is null
                                       contents = @.valueOf()
                                       if (targetFile.exists())
@@ -204,9 +216,12 @@ If all goes well, the retuned value is the full path to the temp file created
                                       return targetFile.exists()
 
 
-    #String::saveAs
+    String::saveAs = String::save_As
 
-    String::exists              = String::file_Exists
+
+Other twin methods to add to correct location
+
+
     String::create_Dir          = String::folder_Create
     String::delete_File         = String::file_Delete
     String::folder_Exists       = String::is_Folder
