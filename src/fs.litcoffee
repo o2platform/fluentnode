@@ -93,16 +93,28 @@ Creates and empty file at @
                                           fs.writeFileSync(path,'')
                                       return path.realPath();
 
-    String::file_Delete         = ->
-                                      file = @.toString().realPath()
-                                      return true if not file
-                                      fs.unlinkSync file
-                                      return file.file_Not_Exists()
+@.**File_Delete**
 
-    String::file_Contents        = ->
-                                      file = @.valueOf().realPath()
-                                      return null if not file
-                                      return fs.readFileSync(file,"utf8")
+Deletes @ file
+
+    String::file_Delete = ->
+      file = @.toString().realPath()
+      return true if not file
+      fs.unlinkSync file
+      return file.file_Not_Exists()
+
+
+@.**file_Contents**
+
+Returns the ascii contents (utf8) of the @ file or null if there is an error loading the file (for example if the file
+does not exist or is a directory
+
+    String::file_Contents = ->
+      file = @.valueOf().realPath()
+      try
+        return fs.readFileSync(file,"utf8")
+      catch
+        null
 
 @.**file_Exists**
 
@@ -115,6 +127,16 @@ twin methods: exists
 
     String::exists = String::file_Exists
 
+@.**file_Lines**
+
+Returns an array of the file contents splitted by lines (or empty if there was no content)
+
+    String::file_Lines = ->
+      file_Contents = @.file_Contents()
+      if file_Contents isnt null
+        file_Contents.lines()
+      else
+        []
 
 @.**file_Write** content
 
@@ -205,6 +227,8 @@ If all goes well, the retuned value is the full path to the temp file created
 
 Sync saves @ into ```targetFile```. If ```targetFile``` exists, it is deleted first, before save is done
 
+Returns full path to saved file
+
 twin method: saveAs (legacy)
 
     String::save_As              = (targetFile) ->
@@ -213,7 +237,8 @@ twin method: saveAs (legacy)
                                       if (targetFile.exists())
                                         targetFile.file_Delete()
                                       fs.writeFileSync(targetFile,contents)
-                                      return targetFile.exists()
+                                      if targetFile.real_Path().exists()
+                                        return targetFile.real_Path()
 
 
     String::saveAs = String::save_As
@@ -227,6 +252,7 @@ Other twin methods to add to correct location
     String::folder_Exists       = String::is_Folder
     String::folder_Not_Exists   = String::is_Not_Folder
     String::fullPath            = String::realPath
+    String::real_Path           = String::realPath
     String::is_Directory        = String::is_Folder
     String::touch               = String::file_Create
     String::not_Exists          = String::file_Not_Exists

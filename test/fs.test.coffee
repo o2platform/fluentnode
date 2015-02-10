@@ -79,6 +79,11 @@ describe 'fs',->
     './aaa.js'      .file_Exists().assert_Is_False()
     './aaa.js'      .file_Exists().assert_Is_False()
 
+  it 'file_Lines', ->
+    "".file_Lines().assert_Is []
+    tmp_File = "aaaa\nbbbb".save_As('_tmp_file_Lines')
+    tmp_File.file_Lines().assert_Is ['aaaa','bbbb']
+    tmp_File.assert_File_Deleted()
 
   it 'file_Not_Exists' , ->
     ''.file_Not_Exists.assert_Is_Function()
@@ -154,17 +159,17 @@ describe 'fs',->
 
     file_Name.exists().assert_Is_False()
 
-    file_Value1.save_As(file_Name).assert_Is_True()
-    file_Name.exists()          .assert_Is_True()
-    file_Name.file_Contents()   .assert_Is    (file_Value1)
-    file_Name.file_Contents()   .assert_Is_Not(file_Value2)
+    file_Value1.save_As(file_Name).assert_Is(file_Name.real_Path()).assert_File_Exists()
+    file_Name.exists()            .assert_Is_True()
+    file_Name.file_Contents()     .assert_Is    (file_Value1)
+    file_Name.file_Contents()     .assert_Is_Not(file_Value2)
 
-    file_Value2.save_As(file_Name).assert_Is_True()
-    file_Name.exists()          .assert_Is_True()
-    file_Name.file_Contents()   .assert_Is_Not(file_Value1)
-    file_Name.file_Contents()   .assert_Is    (file_Value2)
+    file_Value2.save_As(file_Name).assert_Is(file_Name.real_Path()).assert_File_Exists()
+    file_Name.exists()            .assert_Is_True()
+    file_Name.file_Contents()     .assert_Is_Not(file_Value1)
+    file_Name.file_Contents()     .assert_Is    (file_Value2)
 
-    file_Name.file_Delete()     .assert_Is_True()
+    file_Name.file_Delete()       .assert_Is_True()
 
     ''.save_As.assert_Is ''.saveAs
 

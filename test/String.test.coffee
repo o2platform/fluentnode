@@ -123,6 +123,18 @@ describe 'String',->
     '' .is_Not('a').assert_True()
     '' .is_Not.assert_Is ''.isnt
 
+  it 'lines', ->
+    "abcdefgf".lines().assert_Is ['abcdefgf']
+    "a\nd\ngf".lines().assert_Is ['a','d','gf']
+    "a\r\n_gf".lines().assert_Is ['a','_gf']
+    "a\n\r_gf".lines().assert_Is ['a','','_gf']
+    "a\u2028f".lines().assert_Is ['a','f']
+    "a\u2029f".lines().assert_Is ['a','f']
+    ""        .lines().assert_Is ['']
+
+    "\r\n\n\r\u2028\u2029".lines().assert_Is ['','','','','','']
+    "1\r\n2\n3\r4\u20285\u20296".lines().assert_Is ['1','2','3','4','5','6']
+
   it 'lower', ->
       expect(value.lower).to.be.an('Function')
       expect(value.lower()        ).to.equal(value.toLowerCase())

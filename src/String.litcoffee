@@ -88,6 +88,13 @@ twin methods: isnt
 
     String::isnt = String::is_Not
 
+@.**lines**
+
+returns @ split by '/n'
+
+    String::lines = ()->
+      @.split(/\r\n|[\n\r\u0085\u2028\u2029]/g)
+
 @.**lower**
 
 returns @ in lowercase
