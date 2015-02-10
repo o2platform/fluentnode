@@ -12,6 +12,14 @@ dependencies
       assert(source.contains(target), message)
       @
 
+@.**assert_Empty**
+
+Throws assert exception if @ is not ''
+
+    String::assert_Empty = ->
+      throw new Error("Expected empty string but it was #{@}") if @.valueOf() isnt ''
+      @
+
 @.**String::assert_File_Contents_Contains** value
 
 Asserts that file ```@``` contents contains the string ```value```
@@ -47,6 +55,14 @@ Asserts that file ```@``` contents is the string ```value```
       source    = @.toString()
       message   = "expected string '#{source}' to not contain the string '#{target}'"
       assert(source.indexOf(target) == -1, message)
+      @
+
+@.**assert_Not_Empty**
+
+Throws assert exception if @ is not ''
+
+    String::assert_Not_Empty = ->
+      throw new Error("Expected non empty string but it was ''") if @.valueOf() is ''
       @
 
 @.**assert_Is_Equal_To** target

@@ -12,6 +12,12 @@ describe 'Assert | String |', ->
     (->'123'.assert_Contains('0'  )).assert_Throws()
     (->'123'.assert_Contains(['0'])).assert_Throws()
 
+  it 'assert_Empty', ->
+    (->''.assert_Empty()).assert_Not_Throws()
+    (->'123'.assert_Empty()).assert_Throws (error)->
+      error.message.assert_Is 'Expected empty string but it was 123'
+
+
   it 'assert_Not_Contains', ->
     ''.assert_Not_Contains.assert_Is_Function()
     ''.assert_Not_Contains('a'         ).assert_Is_Equal_To('')
@@ -75,6 +81,11 @@ describe 'Assert | String |', ->
     "ab".assert_Length_Is_Not(3).assert_Is_Equal_To("ab")
     (->"a".assert_Length_Is_Not(2)).assert_Not_Throws()
     (->"a".assert_Length_Is_Not(1)).assert_Throws()
+
+  it 'assert_Not_Empty', ->
+    (->'123'.assert_Not_Empty()).assert_Not_Throws()
+    (->''.assert_Not_Empty()).assert_Throws (error)->
+      error.message.assert_Is "Expected non empty string but it was ''"
 
   it 'assert_That_File_Exists',->
     ''.assert_That_File_Exists.assert_Is_Function()
