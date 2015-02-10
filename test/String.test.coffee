@@ -135,6 +135,8 @@ describe 'String',->
     "\r\n\n\r\u2028\u2029".lines().assert_Is ['','','','','','']
     "1\r\n2\n3\r4\u20285\u20296".lines().assert_Is ['1','2','3','4','5','6']
 
+    ''.lines.assert_Is ''.split_Lines
+
   it 'lower', ->
       expect(value.lower).to.be.an('Function')
       expect(value.lower()        ).to.equal(value.toLowerCase())

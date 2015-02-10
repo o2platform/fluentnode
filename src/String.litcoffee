@@ -92,8 +92,12 @@ twin methods: isnt
 
 returns @ split by '/n'
 
+twin methods: split_Lines
+
     String::lines = ()->
       @.split(/\r\n|[\n\r\u0085\u2028\u2029]/g)
+
+    String::split_Lines = String::lines
 
 @.**lower**
 
