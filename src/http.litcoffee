@@ -46,7 +46,7 @@ settings
       delete @._events.request
       simple_Response = (req, res) ->
         res.writeHead(200, {'Content-Type': 'application/json'})
-        res.end(JSON.stringify(req.headers))
+        res.end(req.headers.json_Str())
       @.addListener('request', simple_Response)
       @
 
@@ -62,7 +62,7 @@ settings
       delete @._events.request
       json_Response = (req, res) ->
         res.writeHead(200, {'Content-Type': 'application/json'})
-        res.end(JSON.stringify(value))
+        res.end(value.json_Str())
       @.addListener('request', json_Response)
       @
 
@@ -70,7 +70,7 @@ settings
       delete @._events.request
       json_Response = (req, res) ->
         res.writeHead(200, {'Content-Type': 'application/json'})
-        res.end(req.json_inspect())                           # unfortunatly there doesn't seem to be a way to create a JSON parseable object from req
+        res.end(req.json_Inspect())                           # unfortunatly there doesn't seem to be a way to create a JSON parseable object from req
       @.addListener('request', json_Response)
       @
 
@@ -104,7 +104,7 @@ Will throw an error if the returned data is not a valid JSON objec
 Twin methods: json_GET
 
     String::GET_Json = (callback) ->
-      @.http_GET (error, data, res)-> callback(JSON.parse(data))
+      @.http_GET (error, data, res)-> callback(data.json_Parse())
 
     String::json_GET = String::GET_Json
 
