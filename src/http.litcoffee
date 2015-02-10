@@ -104,7 +104,11 @@ Will throw an error if the returned data is not a valid JSON objec
 Twin methods: json_GET
 
     String::GET_Json = (callback) ->
-      @.http_GET (error, data, res)-> callback(data.json_Parse())
+      @.http_GET (error, data, res)->
+        if data
+          callback(data.json_Parse())
+        else
+          callback {}
 
     String::json_GET = String::GET_Json
 
@@ -115,7 +119,10 @@ and JSON parses the html data received
 
     String::json_GET_With_Timeout = (callback)->
       @.http_GET_With_Timeout (data)->
-        callback data.json_Parse()
+        if data
+          callback data.json_Parse()
+        else
+          callback {}
 
 
 @.**http_GET_Wait_For_Null**
