@@ -71,8 +71,14 @@ describe 'Number',->
   it 'invoke_After', (done)->
     (0).invoke_After(done)
 
+  it.only 'random', ->
+    10   .random().assert_In_Between(0,10)
+    100  .random().assert_In_Between(0,100)
+    1000 .random().assert_In_Between(0,1000)
+    10000.random().assert_In_Between(0,10000)
+
   it 'str',->
     (0).str.assert_Is_Function()
     (0).str().assert_Is('0')
     (9).str().assert_Is('9')
-    
+

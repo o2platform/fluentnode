@@ -73,20 +73,25 @@ Returns false if ```@``` is NaN (i.e. Not a Number)
     Number::is_Number = ->
       return @ instanceof Number and @.str().is_Not('NaN')
 
-@.**log** ()
+@.**log**
 
 Logs @ to the console
 
     Number::log =
       -> console.log @.toString()
 
-@.**str** ()
+@.**random**
+
+returns a random number between 0 and @
+
+    Number::random = -> ~~(Math.random()*@)
+
+@.**str**
 
 Short version of ```toString```
 
-    Number::str =
-      -> @.toString()
-
+  Number::str =
+    -> @.toString()
 
 ---
 back to [index](index.html)
