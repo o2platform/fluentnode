@@ -1,6 +1,4 @@
-require('../src/assert/assert_Boolean')
-require('../src/Object')
-require('../src/Function')
+require('../../src/fluentnode')
 
 class Abc
   constructor: ->

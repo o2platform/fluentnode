@@ -1,4 +1,4 @@
-require('../../src/assert/assert_Number')
+require('../../src/fluentnode')
 
 assert = require 'assert'
 

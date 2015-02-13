@@ -1,4 +1,4 @@
-require('../src/globals')
+require('../../src/fluentnode')
 
 describe 'global',->
 

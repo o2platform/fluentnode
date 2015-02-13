@@ -1,4 +1,4 @@
-require('../../src/assert/assert_Object')
+require('../../src/fluentnode')
 
 describe 'Assert | Object |', ->
   it 'assert_Is_Equal_To, assert_Is', ->

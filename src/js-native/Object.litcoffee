@@ -1,10 +1,6 @@
 These Object prototypes have to be written using Object.defineProperty so that we can set the
 enumerable value to false (otherwise 'for item of xyz' would include these methods)
 
-dependencies
-
-    require './fs'
-
 todo: add check for already mapped methods. once that is done we should be able to add this method safely
 
 
@@ -63,7 +59,7 @@ twin method: json_inspect (legacy)
         enumerable  : false,
         writable    : true,
         value: ->
-            require('util').inspect(@)            
+            require('util').inspect(@)
 
     Object.defineProperty Object.prototype, 'json_inspect',enumerable  : false, writable    : true, value: Object::json_Inspect
 

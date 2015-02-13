@@ -6,9 +6,12 @@ if [ ! -f ./node_modules/coffee-coverage/package.json ]; then
   npm install html-file-cov
 fi
 
+rm -R .coverage
+
 # echo 'Creating instrumented node files'
 ./node_modules/.bin/coffeeCoverage --path relative ./src ./.coverage/src
 ./node_modules/.bin/coffeeCoverage --path relative ./test ./.coverage/test
+cp ./src/fluentnode.js ./.coverage/src/fluentnode.js
 
 mocha -R html-file-cov ./.coverage/test  --recursive
 

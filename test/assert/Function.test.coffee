@@ -1,4 +1,4 @@
-require('../../src/assert/assert_Function')
+require('../../src/fluentnode')
 
 describe 'Assert | Function |', ->
   it 'assert_Throws', (done)->

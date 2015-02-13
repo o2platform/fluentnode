@@ -1,5 +1,5 @@
-require('../src/console')
-require('../src/Array')
+require('../../src/fluentnode')
+
 expect     = require('chai').expect
 
 describe 'console',->

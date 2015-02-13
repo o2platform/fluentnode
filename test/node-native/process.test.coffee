@@ -1,5 +1,4 @@
-require('../src/process')
-require('../src/Array')
+require('../../src/fluentnode')
 
 describe 'process',->
     it 'start_Process', ->

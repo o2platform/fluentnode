@@ -1,6 +1,4 @@
-require('../../src/assert/assert_Array')
-require('../../src/assert/assert_Function')
-require('../../src/assert/assert_Object')
+require('../../src/fluentnode')
 
 assert = require 'assert'
 

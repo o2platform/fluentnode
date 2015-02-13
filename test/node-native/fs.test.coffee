@@ -1,9 +1,7 @@
 #back to [main](fluent.html)
 
-require('../src/assert/assert_Array')
-require('../src/String')
-require('../src/path')
-require('../src/fs')
+require('../../src/fluentnode')
+
 expect     = require('chai').expect
 
 describe 'fs',->
@@ -74,10 +72,10 @@ describe 'fs',->
 
   it 'file_Exists' , ->
     ''.file_Exists.assert_Is_Function()
-    '.git'          .file_Exists().assert_Is_True()
-    './src/_register.js'.file_Exists().assert_Is_True()
-    './aaa.js'      .file_Exists().assert_Is_False()
-    './aaa.js'      .file_Exists().assert_Is_False()
+    '.git'               .file_Exists().assert_Is_True()
+    './src/fluentnode.js'.file_Exists().assert_Is_True()
+    './aaa.js'           .file_Exists().assert_Is_False()
+    './aaa.js'           .file_Exists().assert_Is_False()
 
   it 'file_Lines', ->
     "".file_Lines().assert_Is []
@@ -119,7 +117,7 @@ describe 'fs',->
   it 'files_Recursive' , ->
     ''.files_Recursive.assert_Is_Function()
     './src'.files_Recursive().assert_Size_Is_Bigger_Than(9)
-                             .assert_Contains('./src/fs.litcoffee'.fullPath())
+                             .assert_Contains('./src/node-native/fs.litcoffee'.fullPath())
     tmpFile = './src'.fullPath().path_Combine('_temp_file.abcd').file_Write((20).random_Letters())
     './src'.files_Recursive('.abcd').assert_Size_Is(1)
                                     .first().assert_Is(tmpFile)

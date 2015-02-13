@@ -1,5 +1,4 @@
-require('../src/http')
-require('../src/Number')
+require('../../src/fluentnode')
 
 http = require 'http'
 

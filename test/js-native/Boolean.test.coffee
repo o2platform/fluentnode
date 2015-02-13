@@ -1,4 +1,5 @@
-require('../src/Boolean')
+require('../../src/fluentnode')
+
 expect     = require('chai').expect
 
 describe 'Boolean',->

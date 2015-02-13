@@ -7,7 +7,8 @@
 require('coffee-script/register');
 
 //global
-require('./globals'  );
+require('./utils/globals');
+require('./utils/encoding');
 
 //asserts
 
@@ -20,18 +21,17 @@ require('./assert/assert_String'  );
 
 //core Javascript classes
 
-require('./Array'    );
-require('./Boolean'  );
-require('./console'  );
-require('./Function' );
-require('./Number'   );
-require('./Object'   );
-require('./String'   );
+require('./js-native/Array'    );
+require('./js-native/Boolean'  );
+require('./js-native/Function' );
+require('./js-native/Number'   );
+require('./js-native/Object'   );
+require('./js-native/String'   );
 
 //code NodeJS classes
-
-require('./crypto'  );
-require('./http'     );
-require('./fs'       );
-require('./path'     );
-require('./process'  );
+require('./node-native/console'  );
+require('./node-native/crypto' );
+require('./node-native/http'   );
+require('./node-native/fs'     );
+require('./node-native/path'   );
+require('./node-native/process');

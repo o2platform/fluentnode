@@ -1,12 +1,6 @@
 dependencies
 
     assert = require('assert')
-    require './assert_Boolean'
-    require './assert_Function'
-    require './assert_Number'
-    require './assert_String'
-    require '../Array'
-    require '../String'
 
 **Array::assert_Is_Array** [message]
 

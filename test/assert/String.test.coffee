@@ -1,4 +1,4 @@
-require('../../src/assert/assert_String')
+require('../../src/fluentnode')
 
 describe 'Assert | String |', ->
   it 'assert_Contains', ->

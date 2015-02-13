@@ -1,4 +1,4 @@
-require('../src/crypto')
+require('../../src/fluentnode')
 
 describe 'crypo |',->
   value = "abc123"

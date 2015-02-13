@@ -1,4 +1,5 @@
-require('../src/String')
+require('../../src/fluentnode')
+
 expect = require('chai').expect
 
 describe 'String',->

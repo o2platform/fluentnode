@@ -1,6 +1,5 @@
 **fluent-array** are methods that extend the Javascript's Array object
 
-
 @.**add** (value...)
 
 adds a value to the current array
@@ -77,15 +76,37 @@ Helper functions for the nornally requested Array elements
     Array::not_Empty = ->
       @.length != 0
 
+@.**remove_At** index
 
+    Array::remove_At = (index)->
+      @.splice(index,1)
+      @
 
-    Array::size           =        -> @.length
-    Array::starts_With    = (value)-> (item for item in @ when value && item.starts_With(value))
-    Array::take           = (value)-> if value is -1 then @ else @.slice(0,value)
-    Array::unique         = ()     ->
-                                      output = {}
-                                      output[@[key]] = @[key] for key in [0...@length]
-                                      output.keys()
+@.**remove_First**
+
+    Array::remove_First = ()->
+      @.remove_At 0
+
+@.**size**
+
+    Array::size = -> @.length
+
+@.**starts_With** value
+
+    Array::starts_With = (value)->
+      (item for item in @ when value && item.starts_With(value))
+
+@.**take** value
+
+    Array::take = (size)->
+      if size is -1 then @ else @.slice(0,size)
+
+@.**unique**
+
+    Array::unique  = () ->
+      output = {}
+      output[@[key]] = @[key] for key in [0...@length]
+      output.keys()
 
 
 ---

@@ -1,4 +1,4 @@
-require('../../src/assert/assert_Boolean')
+require('../../src/fluentnode')
 
 describe 'Assert | Boolean.test |',->
 

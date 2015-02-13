@@ -1,4 +1,4 @@
-require('../src/Number')
+require('../../src/fluentnode')
 
 describe 'Number',->
 
