@@ -71,11 +71,11 @@ describe 'Number',->
   it 'invoke_After', (done)->
     (0).invoke_After(done)
 
-  it.only 'random', ->
-    10   .random().assert_In_Between(0,10)
-    100  .random().assert_In_Between(0,100)
-    1000 .random().assert_In_Between(0,1000)
-    10000.random().assert_In_Between(0,10000)
+  it 'random', ->
+    10   .random().assert_In_Between(-1,10)
+    100  .random().assert_In_Between(-1,100)
+    1000 .random().assert_In_Between(-1,1000)
+    10000.random().assert_In_Between(-1,10000)
 
   it 'str',->
     (0).str.assert_Is_Function()

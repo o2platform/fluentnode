@@ -50,6 +50,15 @@ settings
       @.addListener('request', simple_Response)
       @
 
+    Server::respond_With_Request_Url = (value)->
+      delete @._events.request
+      simple_Response = (req, res) ->
+        res.writeHead(200, {'Content-Type': 'application/json'})
+        data = { url: req.url}
+        res.end(data.json_Str())
+      @.addListener('request', simple_Response)
+      @
+
     Server::respond_With_String_As_Text = (value)->
       delete @._events.request                                # removes previous listeners
       simple_Response = (req, res) ->

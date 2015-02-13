@@ -49,6 +49,12 @@ describe 'http',->
         headers.assert_Is({"host":"127.0.0.1:#{port}","connection":"keep-alive"})
         done()
 
+    it 'respond_With_Request_Url', (done)->
+      server.respond_With_Request_Url()
+      url.append('/aaa/bbbb').GET_Json (url) ->
+        url.assert_Is({"url":"/aaa/bbbb"} )
+        done()
+
     it 'respond_With_Object_As_Json', (done)->
       server.respond_With_Object_As_Json.assert_Is_Function()
       test_Object = { a : 123 , b : 456}
