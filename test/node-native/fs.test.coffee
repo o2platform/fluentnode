@@ -4,7 +4,7 @@ require('../../src/fluentnode')
 
 expect     = require('chai').expect
 
-describe 'fs',->
+describe '| fs |',->
 
   it 'create_Parent_Folder', ->
     './aaa/abc.txt'.create_Parent_Folder().assert_Is './aaa/abc.txt'
@@ -111,7 +111,7 @@ describe 'fs',->
     files = './'.files().filter (file) -> file isnt '.DS_Store'.realPath()
     expectedFiles = (file.realPath() for file in '.gitignore,.travis.yml,LICENSE,README.md,package.json'.split(','))
     files.assert_Contains(expectedFiles)
-    './'.files('.yml' ).assert_Is(['.travis.yml'.realPath()])
+    './'.files('.yml' ).assert_Is(['.travis.yml'.realPath(), 'appveyor.yml'.realPath()])
     './'.files('.json').assert_Is(['package.json'.realPath()])
 
   it 'files_Recursive' , ->

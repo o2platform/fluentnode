@@ -1,8 +1,10 @@
+
 require('../../src/fluentnode')
 
-expect     = require('chai').expect
+expect  = require('chai').expect
+path    = require('path')
 
-describe 'path',->
+describe.only '| path |',->
 
   it 'path_Combine', ->
     expect("".path_Combine  ).to.be.an('function')
@@ -10,7 +12,7 @@ describe 'path',->
 
     expect(""   .path_Combine()).to.equal('')
     expect("abc".path_Combine()).to.equal('abc')
-    expect("abc".path_Combine('def')).to.equal('abc/def')
+    expect("abc".path_Combine('def')).to.equal("abc#{path.sep}def")
 
   it 'path_Combine , file_Parent_Folder', ->
     ''.file_Dir_Name.assert_Is_Function()
