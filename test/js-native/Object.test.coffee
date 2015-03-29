@@ -3,7 +3,7 @@ require('../../src/fluentnode')
 expect     = require('chai').expect
 
 
-describe 'Object',->
+describe '| Object |',->
 
     o = {}          # recursive json object (should not stringify ok)
     o.o = o

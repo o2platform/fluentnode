@@ -4,7 +4,7 @@ require('../../src/fluentnode')
 expect  = require('chai').expect
 path    = require('path')
 
-describe.only '| path |',->
+describe '| path |',->
 
   it 'path_Combine', ->
     expect("".path_Combine  ).to.be.an('function')
@@ -23,9 +23,9 @@ describe.only '| path |',->
   it 'append_To_Process_Cwd_Path', ->
     expect(""           .append_To_Process_Cwd_Path  ).to.be.an('function')
     expect(""           .append_To_Process_Cwd_Path()).to.equal(process.cwd())
-    expect("abc"        .append_To_Process_Cwd_Path()).to.equal(process.cwd() + '/abc'        )
-    expect("abc.txt"    .append_To_Process_Cwd_Path()).to.equal(process.cwd() + '/abc.txt'    )
-    expect("abc/aaa.txt".append_To_Process_Cwd_Path()).to.equal(process.cwd() + '/abc/aaa.txt')
+    expect("abc"        .append_To_Process_Cwd_Path()).to.equal(process.cwd() + "#{path.sep}abc"        )
+    expect("abc.txt"    .append_To_Process_Cwd_Path()).to.equal(process.cwd() + "#{path.sep}abc.txt"    )
+    expect("abc/aaa.txt".append_To_Process_Cwd_Path()).to.equal(process.cwd() + "#{path.sep}abc#{path.sep}aaa.txt")
 
   it 'file_Extension', ->
     expect("".file_Extension  ).to.be.an('function')
