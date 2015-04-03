@@ -1,7 +1,7 @@
 require('../../src/fluentnode')
 os = require('os')
 
-describe '| process |',->
+xdescribe '| process |',->
 
     it 'start_Process', ->
       ''.start_Process.assert_Is_Function()
