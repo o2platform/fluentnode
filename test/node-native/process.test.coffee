@@ -1,7 +1,7 @@
 require('../../src/fluentnode')
 os = require('os')
 
-xdescribe '| process |',->
+describe '| process |',->
 
     it 'start_Process', ->
       ''.start_Process.assert_Is_Function()
@@ -14,7 +14,7 @@ xdescribe '| process |',->
                               .constructor.name.assert_Is('ChildProcess')
         'echo'.start_Process().pid.assert_Is_Number()
 
-    it 'start_Process_Redirect_Console', (done)->
+    xit 'start_Process_Redirect_Console', (done)->
         original_log = console.log
         log_Messages = []
         console.log  = (logMsg)-> log_Messages.push(logMsg)
