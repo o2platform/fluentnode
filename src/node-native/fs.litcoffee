@@ -232,7 +232,7 @@ Returns full path to saved file
 twin method: saveAs (legacy)
 
     String::save_As              = (targetFile) ->
-                                      return false if targetFile is null
+                                      return false if targetFile is null or targetFile.length > 255
                                       contents = @.valueOf()
                                       if (targetFile.exists())
                                         targetFile.file_Delete()
