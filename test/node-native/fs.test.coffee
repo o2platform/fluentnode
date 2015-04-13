@@ -178,6 +178,9 @@ describe '| fs |',->
     file_Name.length                .assert_Is(255);
     file_Content                    .save_As(file_Name)
     file_Name.exists()              .assert_Is_True()
+    #deleting just created temporary file
+    file_Name.delete_File()
+    file_Name.exists()              .assert_Is_False()
 
   it 'Save_As file path must be 255 characters max (file must not be created)', ->
     file_Name    = '_tmp_file_'.add_Random_String(1000)
