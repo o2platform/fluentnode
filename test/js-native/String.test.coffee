@@ -252,3 +252,18 @@ describe 'String',->
     ''            .json_Valid().assert_False
     'aaaa'        .json_Valid().assert_False
     '{a:12}'      .json_Valid().assert_False
+
+  it 'is_Local_Url',->
+    ''                              .is_Local_Url().assert_Is_False()
+    '//a/..'                        .is_Local_Url().assert_Is_False() #//a/..
+    '//a'                           .is_Local_Url().assert_Is_False() #//a
+    '/\\abc'                        .is_Local_Url().assert_Is_False() #/\abc
+    'https://foo/bar'               .is_Local_Url().assert_Is_False()
+    'http://foo/bar'                .is_Local_Url().assert_Is_False()
+    'foo/bar'                       .is_Local_Url().assert_Is_False()
+    'file:///c:/path/to/the%20f.txt'.is_Local_Url().assert_Is_False()
+    '////host/share/dir/file.txt'   .is_Local_Url().assert_Is_False()
+    'null'                          .is_Local_Url().assert_Is_False()
+    '%2fAccount%2fChangePassword%2f'.is_Local_Url().assert_Is_True()
+    '~/foo/bar'                     .is_Local_Url().assert_Is_True()
+    '/foo/bar'                      .is_Local_Url().assert_Is_True()
