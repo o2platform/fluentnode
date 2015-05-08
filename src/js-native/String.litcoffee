@@ -226,9 +226,9 @@ Returns true if @ can be deserialised ok into a json object
       catch
         false
 
-@.**isLocalUrl**
+@.**is_Local_Url**
 
-Returns a boolean indicating if the URL is local to Host or not. It helps to prevent Open redirects attacks. Back ported from http://www.asp.net/mvc/overview/security/preventing-open-redirection-attacks
+Returns a boolean indicating if the URL is local to Host or not. It helps to prevent Open redirects attacks. Backported from http://www.asp.net/mvc/overview/security/preventing-open-redirection-attacks
 
     String::is_Local_Url = ()->
       url = @.url_Decode()
