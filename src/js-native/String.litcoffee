@@ -226,5 +226,19 @@ Returns true if @ can be deserialised ok into a json object
       catch
         false
 
+@.**isLocalUrl**
+
+Returns a boolean indicating if the URL is local to Host or not. It helps to prevent Open redirects attacks. Back ported from http://www.asp.net/mvc/overview/security/preventing-open-redirection-attacks
+
+    String::is_Local_Url = ()->
+      url = @.url_Decode()
+      if(url? && url.length >0)
+        return  (
+                  (url[0] == '/' &&
+                  (url.length == 1 ||(url[1] != '/' && url[1] != '\\'))) || # validates "/" or "/foo" but not "//" or "/\"
+                  (url.length > 1 && url[0] == '~' && url[1] == '/')        # validates  "~/" or "~/foo"
+                );
+      else
+        return false
 ---
 back to [index](index.html)
