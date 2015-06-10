@@ -46,7 +46,7 @@ describe 'http',->
       server.respond_With_Request_Headers()
       port = url.split(':').last()
       url.GET_Json (headers) ->
-        headers.assert_Is({"host":"127.0.0.1:#{port}","connection":"keep-alive"})
+        headers.assert_Is({"host":"127.0.0.1:#{port}","connection":"close"})
         done()
 
     it 'respond_With_Request_Url', (done)->
@@ -141,10 +141,8 @@ describe 'http',->
         done()
 
     it 'http_GET bad port)' , (done)->
-      url.append(1).http_GET (err, data, res)->
-        assert_Is_Not_Null(err).code.assert_Is('ECONNREFUSED')
-        assert_Is_Null(data)
-        assert_Is_Null(res)
+      (-> url.append(1).http_GET()).assert_Throws  (error)->
+        error.message.assert_Contains "port should be >= 0 and < 65536: "
         done()
 
     it 'http_With_Options', (done)->

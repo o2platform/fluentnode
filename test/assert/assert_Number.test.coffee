@@ -1,7 +1,5 @@
 require('../../src/fluentnode')
 
-assert = require 'assert'
-
 describe 'Assert | Number |', ->
   it 'assert_Bigger_Than',->
     (1).assert_Bigger_Than(0)
@@ -48,10 +46,6 @@ describe 'Assert | Number |', ->
     (-> NaN              .assert_Is_Number()).assert_Throws (error)-> error.message.assert_Is nan_Error_Message
     (-> Number('aaa')    .assert_Is_Number()).assert_Throws (error)-> error.message.assert_Is nan_Error_Message
     (-> new Number('aaa').assert_Is_Number()).assert_Throws (error)-> error.message.assert_Is nan_Error_Message
-
-
-
-
 
   it 'assert_Smaller_Than',->
     (0).assert_Smaller_Than(1)

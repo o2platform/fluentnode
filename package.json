@@ -1,15 +1,16 @@
 {
   "name": "fluentnode",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Fluent apis for node (based on the concepts used in C#'s FluentSharp",
-  "main": "src/fluentnode.js",
+  "main": "target/src/fluentnode.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script/register ./test --recursive",
     "watch": "npm run test -- -R dot -w",
     "docs": "cake -v -l classic doc",
     "docs-dev": "cake -w -l classic doc",
     "docs-publish": "cake -p -l classic doc",
-    "coverage-local": "onchange 'src/**/*.litcoffee' 'test/**/*.coffee' -- ./bin/lcov-code-coverage.sh"
+    "coverage-local": "onchange 'src/**/*.litcoffee' 'test/**/*.coffee' -- ./bin/lcov-code-coverage.sh",
+    "compile": "coffee --output ./target/src --compile ./src &&  coffee --output ./target/test --compile ./test"
   },
   "repository": {
     "type": "git",

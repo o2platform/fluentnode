@@ -72,10 +72,10 @@ describe '| fs |',->
 
   it 'file_Exists' , ->
     ''.file_Exists.assert_Is_Function()
-    '.git'               .file_Exists().assert_Is_True()
-    './src/fluentnode.js'.file_Exists().assert_Is_True()
-    './aaa.js'           .file_Exists().assert_Is_False()
-    './aaa.js'           .file_Exists().assert_Is_False()
+    '.git'                   .file_Exists().assert_Is_True()
+    './src/fluentnode.coffee'.file_Exists().assert_Is_True()
+    './aaa.js'               .file_Exists().assert_Is_False()
+    './aaa.js'               .file_Exists().assert_Is_False()
 
   it 'file_Lines', ->
     "".file_Lines().assert_Is []

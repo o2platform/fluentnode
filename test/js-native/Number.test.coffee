@@ -66,7 +66,7 @@ describe 'Number',->
     (0).is_Number().assert_True()
     NaN.is_Number().assert_False()
     (-> 'a'.is_Number()).assert_Throws (error)->
-      error.message.assert_Is "Object a has no method 'is_Number'"
+      error.message.assert_Is "undefined is not a function"
 
   it 'invoke_After', (done)->
     (0).invoke_After(done)
@@ -81,4 +81,3 @@ describe 'Number',->
     (0).str.assert_Is_Function()
     (0).str().assert_Is('0')
     (9).str().assert_Is('9')
-
