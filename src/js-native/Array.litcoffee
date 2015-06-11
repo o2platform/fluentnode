@@ -42,7 +42,7 @@ Note: Double check behaviour of Array.length and check for possible edge cases
       null
 
 @.**nth** ()
-  
+
     Array::nth = Array::item
 
 @.**first** () @.**second** () @.**third** () @.**fourth** ()
@@ -69,6 +69,8 @@ Helper functions for the nornally requested Array elements
       @.str().log()
       @
 
+@.**not_Contains** ()
+
     Array::not_Contains   = (value)-> value not in @
 
 @.**not_Empty** ()
@@ -86,6 +88,16 @@ Helper functions for the nornally requested Array elements
 
     Array::remove_First = ()->
       @.remove_At 0
+
+@.**remove_If_Contains**
+
+Removes an element from an array if it contains a particular string
+Note that all elements (and match) will be converted into strings before comparison
+
+    Array::remove_If_Contains = (value)->
+      return @ if not value
+      @.filter (word) ->
+        word.str().not_Contains(value.str())
 
 @.**size**
 
