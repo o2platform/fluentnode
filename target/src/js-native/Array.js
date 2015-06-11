@@ -90,6 +90,15 @@
     return this.remove_At(0);
   };
 
+  Array.prototype.remove_If_Contains = function(value) {
+    if (!value) {
+      return this;
+    }
+    return this.filter(function(word) {
+      return word.str().not_Contains(value.str());
+    });
+  };
+
   Array.prototype.size = function() {
     return this.length;
   };

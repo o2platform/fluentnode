@@ -17,7 +17,10 @@
         return 'echo'.start_Process().pid.assert_Is_Number();
       }
     });
-    xit('start_Process_Redirect_Console', function(done) {
+    if (os.platform() === 'win32') {
+      return;
+    }
+    it('start_Process_Redirect_Console', function(done) {
       var childProcess, log_Messages, original_log;
       original_log = console.log;
       log_Messages = [];
@@ -33,7 +36,7 @@
         return done();
       });
     });
-    return xit('String::start_Process_Capture_Console_Out', function(done) {
+    return it('String::start_Process_Capture_Console_Out', function(done) {
       var runTest, runTests, testsData;
       runTest = function(testData, next) {
         var expected_Data, name, parameter;

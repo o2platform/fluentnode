@@ -112,6 +112,12 @@
       [2, 3, 4].remove_First().assert_Is([3, 4]);
       return [3, 4].remove_First().assert_Is([4]);
     });
+    it('remove_If_Contains', function() {
+      ['0', 0, 1, 2, 3, 4].remove_If_Contains('0').assert_Is([1, 2, 3, 4]);
+      ['0', 1, 2, 3, 4].remove_If_Contains(1).assert_Is(['0', 2, 3, 4]);
+      ['0', '12', '34'].remove_If_Contains('2').assert_Is(['0', '34']);
+      return ['0', '14', '34'].remove_If_Contains('4').assert_Is(['0']);
+    });
     it('second', function() {
       expect([].second).to.be.an('Function');
       expect([].second()).to.equal(null);
