@@ -4,7 +4,8 @@ module.exports = function (wallaby) {
   console.log('[in Wallaby]');
   return {
     files: [
-      'src/**/*.litcoffee',       // this is not being picked up
+      'src/**/*.coffee',
+      'src/**/*.litcoffee',
     ],
 
     tests: [
