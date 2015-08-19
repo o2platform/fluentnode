@@ -38,6 +38,17 @@ twin methods: add_5_Letters
       charSet = '0123456789'
       @ + (charSet[Math.floor(Math.random() * charSet.length)]  for i in [1..size]).join('')
 
+@.**checksum** [algorithm], [encoding]
+
+Returns a checksum for @ 
+
+Defaults to ```md5``` algorithm and ```hex``` encoding
+
+    String::checksum = (algorithm, encoding)->
+      crypto.createHash(algorithm || 'md5')
+            .update(@.toString(), 'utf8')
+            .digest(encoding || 'hex')
+
 @.**random_String** ()
 
 Returns a random string of size @ made of ascii chars
