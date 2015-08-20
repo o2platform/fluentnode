@@ -101,7 +101,10 @@ describe 'Assert | String |', ->
 
   it 'assert_That_Folder_Exists',->
     ''.assert_That_Folder_Exists.assert_Is_Function()
-    '.git'.assert_That_Folder_Exists().assert_Is_Equal_To('.git')
+    '_tmp_Folder'.folder_Create()
+    '_tmp_Folder'.assert_That_Folder_Exists().assert_Is_Equal_To('_tmp_Folder')
+    '_tmp_Folder'.folder_Delete()
+    '_tmp_Folder'.assert_That_Folder_Not_Exists().assert_Is_Equal_To('_tmp_Folder')
     (-> '.git'.assert_That_Folder_Exists()).assert_Not_Throws()
     (-> '.aaa'.assert_That_Folder_Exists()).assert_Throws()
     (-> 'aaa'.assert_Is_Folder()).assert_Throws (error)->
