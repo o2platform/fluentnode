@@ -45,6 +45,21 @@ describe '| fs',->
     tmpDir = "./"   .temp_Name_In_Folder().folder_Create()
     tmpFile = tmpDir.temp_Name_In_Folder().file_Create()
     tmpDir.folder_Delete_Recursive().assert_Is_True()
+    tmpFile.assert_File_Not_Exists()
+
+  it 'file_Append', (done)->
+    original_Contents = tmp_File.file_Contents()
+    extra_Contents_1    = "_bbbb".add_5_Letters()
+    extra_Contents_2    = "_aaaa_".add_5_Letters()
+
+    tmp_File.file_Append extra_Contents_1
+    tmp_File.file_Contents().assert_Is original_Contents + extra_Contents_1
+    tmp_File.file_Append extra_Contents_2, (fileName)->
+      fileName.assert_Is tmp_File.real_Path()
+      tmp_File.file_Contents().assert_Is original_Contents + extra_Contents_1 + extra_Contents_2
+      done()
+
+
 
   it 'file_Create and file_Delete',->
     tmpName = '.'.temp_Name_In_Folder()

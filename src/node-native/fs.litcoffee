@@ -59,6 +59,30 @@ Deletes the folder @ recursively (ie. all files and all folders inside it)
                                       folder.folder_Delete()
                                     return folder.not_Exists()
 
+@.**file_Append** target contents, callback
+
+Appends ```contents``` to the ```@``` file.
+
+If callback exists file_Append is async if it doesn't it is sync
+
+
+```@``` value (or error) is used for the return value and callback param
+
+    String::file_Append = (contents, callback)->
+      file_Path = @.real_Path()
+
+      if file_Path.file_Exists() and contents
+        if callback
+          fs.appendFile file_Path, contents,  (err)=>
+            callback err || file_Path
+        else
+          fs.appendFileSync file_Path, contents
+      return @
+
+
+
+
+
 @.**file_Copy** target
 
 Copy ```@``` file to ```target```
