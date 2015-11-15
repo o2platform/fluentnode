@@ -2,7 +2,7 @@ require('../../src/fluentnode')
 
 expect = require('chai').expect
 
-describe 'String',->
+describe '| js-native | String',->
   value = "abc123"
 
   it 'append', ->

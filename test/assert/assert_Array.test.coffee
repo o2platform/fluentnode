@@ -2,7 +2,7 @@ require('../../src/fluentnode')
 
 assert = require 'assert'
 
-describe 'Assert | Array |',->
+describe '| Assert | Array',->
 
   it 'assert_Is_Array', ->
     [].assert_Is_Array.assert_Is_Function()

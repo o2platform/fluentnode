@@ -2,7 +2,7 @@ require('../../src/fluentnode')
 
 http = require 'http'
 
-describe 'http',->
+describe '| http',->
   test_Port = 45566 + Math.floor((Math.random() * 100) + 1)
   test_Ip   = '127.0.0.1'
   test_Data = 'hello from web'

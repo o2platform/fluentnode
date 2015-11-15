@@ -2,7 +2,7 @@ require('../../src/fluentnode')
 
 expect     = require('chai').expect
 
-describe 'console',->
+describe '| node-native | console',->
     
     original_log = null
     log_Messages = null

@@ -2,7 +2,7 @@ require('../../src/fluentnode')
 
 expect     = require('chai').expect
 
-describe 'Boolean',->
+describe '| js-native | Boolean',->
 
   it 'is_True',->
     expect(true.is_True    ).to.be.an('Function')

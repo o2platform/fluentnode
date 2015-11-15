@@ -3,7 +3,7 @@ require('../../src/fluentnode')
 expect     = require('chai').expect
 
 
-describe '| Object |',->
+describe '| js-native | Object',->
 
     o = {}          # recursive json object (should not stringify ok)
     o.o = o
@@ -86,4 +86,4 @@ describe '| Object |',->
         replMe.assert_Is_Object()
         replMe.context.that.assert_Is(anObject)
         replMe.rli.close()
-        "".log()                    # without this extra line here, coveralls fails to publish
+        #"".log()                    # without this extra line here, coveralls fails to publish

@@ -1,6 +1,6 @@
 require('../../src/fluentnode')
 
-describe 'Number',->
+describe '| js-native | Number',->
 
   it 'add', ->
     (1 ).add().assert_Is(1 )
@@ -66,7 +66,7 @@ describe 'Number',->
     (0).is_Number().assert_True()
     NaN.is_Number().assert_False()
     (-> 'a'.is_Number()).assert_Throws (error)->
-      error.message.assert_Is "undefined is not a function"
+      error.message.assert_Is '"a\".is_Number is not a function'
 
   it 'invoke_After', (done)->
     (0).invoke_After(done)

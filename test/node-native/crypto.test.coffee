@@ -1,6 +1,6 @@
 require('../../src/fluentnode')
 
-describe 'crypo |',->
+describe '| crypo',->
   value = "abc123"
 
   it 'add_Random_Chars', ->

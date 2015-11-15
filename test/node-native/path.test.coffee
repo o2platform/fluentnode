@@ -4,7 +4,7 @@ require('../../src/fluentnode')
 expect  = require('chai').expect
 path    = require('path')
 
-describe '| path |',->
+describe '| path',->
 
   it 'path_Combine', ->
     expect("".path_Combine  ).to.be.an('function')
@@ -63,6 +63,8 @@ describe '| path |',->
     expect(source.file_Names_Without_Extension()).to.deep.equal(result)
 
   it 'folder_Name', ->
-    './node_modules'.assert_Folder_Exists()
-                    .folder_Name()
-                    .assert_Is 'node_modules'
+    temp_Dir = '_temp_Dir_'.add_5_Letters().folder_Create()
+    temp_Dir.assert_Folder_Exists()
+            .folder_Name()
+            .assert_Contains '_temp_Dir_'
+    temp_Dir.folder_Delete().assert_Is_True()

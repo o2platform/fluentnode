@@ -1,6 +1,6 @@
 require('../../src/fluentnode')
 
-describe 'Assert | Object |', ->
+describe '| Assert | Object', ->
   it 'assert_Is_Equal_To, assert_Is', ->
     ''.assert_Is_Equal_To.assert_Is_Function()
     '{}'.assert_Is_Equal_To('{}')

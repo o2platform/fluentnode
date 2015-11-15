@@ -1,6 +1,6 @@
 require('../../src/fluentnode')
 
-describe 'Assert | String |', ->
+describe '| Assert | String', ->
   it 'assert_Contains', ->
     ''.assert_Contains.assert_Is_Function()
     ''.assert_Contains(''          ).assert_Is_Equal_To('')
@@ -44,7 +44,7 @@ describe 'Assert | String |', ->
     '.'.temp_File('aaa123').assert_File_Contents('aaa123')
                            .assert_File_Deleted()
 
-    (-> './package.json'.assert_File_Contents('-----****----')).assert_Throws (error)->
+    (-> './aaaaa.json'.assert_File_Contents('-----****----')).assert_Throws (error)->
       error.message.assert_Is  "Cannot read property 'assert_Is' of null"
 
   it 'assert_Is_Equal_To', ->

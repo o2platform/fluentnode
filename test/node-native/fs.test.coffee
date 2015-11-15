@@ -4,7 +4,19 @@ require('../../src/fluentnode')
 
 expect     = require('chai').expect
 
-describe '| fs |',->
+describe '| fs',->
+  file_Contents = null
+  tmp_File      = null
+  tmp_Folder    = null
+
+  beforeEach ->
+    file_Contents = 'aaaa_'.add_5_Letters()
+    tmp_Folder = '_temp_Folder_'.add_5_Letters().folder_Create()           .folder_Name()
+    tmp_File   = '_temp_File_'  .add_5_Letters().file_Create(file_Contents).file_Name()
+
+  afterEach ->
+    tmp_File  .file_Delete()
+    tmp_Folder.folder_Delete()
 
   it 'create_Parent_Folder', ->
     './aaa/abc.txt'.create_Parent_Folder().assert_Is './aaa/abc.txt'
@@ -41,6 +53,10 @@ describe '| fs |',->
     tmpName.file_Delete().assert_True()
     tmpName.exists()     .assert_False()
 
+    tmpName.file_Create('abc123')
+    tmpName.assert_File_Contents('abc123')
+    tmpName.assert_File_Deleted()
+
   it 'file_Copy' , ->
     file1 = '.'.temp_Name_In_Folder()
     file2 = '.'.temp_Name_In_Folder()
@@ -72,10 +88,10 @@ describe '| fs |',->
 
   it 'file_Exists' , ->
     ''.file_Exists.assert_Is_Function()
-    '.git'                   .file_Exists().assert_Is_True()
-    './src/fluentnode.coffee'.file_Exists().assert_Is_True()
-    './aaa.js'               .file_Exists().assert_Is_False()
-    './aaa.js'               .file_Exists().assert_Is_False()
+    tmp_Folder  .file_Exists().assert_Is_True()
+    tmp_File    .file_Exists().assert_Is_True()
+    './aaa.js'  .file_Exists().assert_Is_False()
+    './aaa.js'  .file_Exists().assert_Is_False()
 
   it 'file_Lines', ->
     "".file_Lines().assert_Is []
@@ -85,7 +101,7 @@ describe '| fs |',->
 
   it 'file_Not_Exists' , ->
     ''.file_Not_Exists.assert_Is_Function()
-    '.git'      .file_Not_Exists().assert_Is_False()
+    tmp_Folder  .file_Not_Exists().assert_Is_False()
     './index.js'.file_Not_Exists().assert_Is_True()
     './aaa.js'  .file_Not_Exists().assert_Is_True()
 
@@ -100,60 +116,63 @@ describe '| fs |',->
   it 'files_And_Folders',->
     ''.files_And_Folders.assert_Is_Function()
     files = './'.files_And_Folders();
-    files.assert_Contains '.git'      .realPath()
-         .assert_Contains '.gitignore'.realPath()
+    files.assert_Contains tmp_File    .realPath()
+         .assert_Contains tmp_Folder  .realPath()
          .assert_Not_Contains '.aaaaa'.realPath()
 
     'aaaa'.files_And_Folders().assert_Is([])
 
   it 'files' , ->
     ''.files.assert_Is_Function()
-    files = './'.files().filter (file) -> file isnt '.DS_Store'.realPath()
-    expectedFiles = (file.realPath() for file in '.gitignore,.travis.yml,LICENSE,README.md,package.json'.split(','))
+    tmp_File_2   = '_temp_File_'  .add_5_Letters().file_Create(file_Contents).file_Name()
+    files = './'.files()
+    expectedFiles = [tmp_File.real_Path(), tmp_File_2.real_Path()]
     files.assert_Contains(expectedFiles)
-    './'.files('.yml' ).assert_Is(['.travis.yml'.realPath(), 'appveyor.yml'.realPath()])
-    './'.files('.json').assert_Is(['package.json'.realPath()])
+    tmp_File_2.assert_File_Deleted()
 
   it 'files_Recursive' , ->
+    extension = __filename.file_Extension().replace('coffee', 'litcoffee')
+    file_To_Find = "./src/node-native/fs#{extension}".fullPath()
+
     ''.files_Recursive.assert_Is_Function()
     './src'.files_Recursive().assert_Size_Is_Bigger_Than(9)
-                             .assert_Contains('./src/node-native/fs.litcoffee'.fullPath())
+                             .assert_Contains(file_To_Find)
     tmpFile = './src'.fullPath().path_Combine('_temp_file.abcd').file_Write((20).random_Letters())
     './src'.files_Recursive('.abcd').assert_Size_Is(1)
                                     .first().assert_Is(tmpFile)
     tmpFile.file_Delete().assert_Is_True()
 
   it 'folders' , ->
-    expect(''.folders).to.be.an('function')
-    folders = (folder for folder in './'.folders() when folder.not_Contains('.c9'))             #handle scenario when we coded inside Cloud9 IDE
-    expectedFolders = (folder.realPath() for folder in '.git,src,test'.split(','))
+    ''.folders.assert_Is_Function()
+    folders = '.'.folders()
+    console.log folders.file_Names()
+    expectedFolders = (folder.realPath() for folder in 'src,test'.split(','))
     folders.assert_Contains(expectedFolders)
 
   it 'is_Folder', ->
-    expect(''.is_Folder).to.be.an('function')
-    expect('.git'      .is_Folder()).to.be.true
-    expect('.gitignore'.is_Folder()).to.be.false
-    expect('.gitAAA'   .is_Folder()).to.be.false
+    ''          .is_Folder  .assert_Is_Function()
+    tmp_Folder  .is_Folder().assert_Is_True()
+    tmp_File    .is_Folder().assert_Is_False()
+    '.gitAAA'   .is_Folder().assert_Is_False()
 
   it 'is_Not_Folder',->
     "".add_5_Random_Letters().is_Not_Folder().assert_Is_True()
 
   it 'is_File', ->
-    expect(''.is_Folder).to.be.an('function')
-    expect('.git'      .is_File()).to.be.false
-    expect('.gitignore'.is_File()).to.be.true
-    expect('.gitAAA'   .is_File()).to.be.false
+    ''.is_File .assert_Is_Function()
+    tmp_Folder .is_File().assert_Is_False()
+    tmp_File   .is_File().assert_Is_True()
+    '.gitAAA'  .is_File().assert_Is_False()
 
   it 'realPath', ->
-    expect(''.realPath).to.be.an('function')
-    expect('.git'        .realPath()).to.equal(process.cwd().path_Combine('.git'      ))
-    expect('.gitignore'  .realPath()).to.equal(process.cwd().path_Combine('.gitignore'))
-    expect('.gitignore2' .realPath()).to.equal(null)
+    tmp_Folder.realPath().assert_Is process.cwd().path_Combine tmp_Folder
+    tmp_File  .realPath().assert_Is process.cwd().path_Combine tmp_File
+    assert_Is_Null '.gitignore2' .realPath()
 
   it 'save_As', ->
-    file_Name  = '_tmp_file_'  .add_Random_String(5)
-    file_Value1 = 'value'.add_Random_String(5)
-    file_Value2 = 'value'.add_Random_String(5)
+    file_Name  = '_tmp_file_'.add_Random_String(5)
+    file_Value1 = 'value'    .add_Random_String(5)
+    file_Value2 = 'value'    .add_Random_String(5)
 
     file_Name.exists().assert_Is_False()
 

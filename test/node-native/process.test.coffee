@@ -1,7 +1,7 @@
 require('../../src/fluentnode')
 os = require('os')
 
-describe '| process |',->
+describe '| node-native | process',->
 
     it 'start_Process', ->
       ''.start_Process.assert_Is_Function()
@@ -19,18 +19,20 @@ describe '| process |',->
       return
 
     it 'start_Process_Redirect_Console', (done)->
+      tmp_file       = '_tmp_File_'.add_5_Letters().touch()
+      second_Message = ' this is the 2nd message '.add_5_Letters()
+      original_log = console.log
+      log_Messages = []
+      console.log  = (logMsg)-> log_Messages.push(logMsg)
 
-        original_log = console.log
-        log_Messages = []
-        console.log  = (logMsg)-> log_Messages.push(logMsg)
-
-        childProcess = 'ls'.start_Process_Redirect_Console('.')
-        childProcess.on 'exit', ->
-            console.log 'process ended'
-            log_Messages.first() .assert_Contains('README.md')
-            log_Messages.second().assert_Is('process ended')
-            console.log = original_log
-            done()
+      childProcess = 'ls'.start_Process_Redirect_Console('.')
+      childProcess.on 'exit', ->
+        console.log second_Message
+        log_Messages.first() .assert_Contains(tmp_file.file_Name())
+        log_Messages.second().assert_Is second_Message
+        console.log = original_log
+        tmp_file.assert_File_Deleted()
+        done()
 
     # Fails in Appveyor
     it 'String::start_Process_Capture_Console_Out', (done)->

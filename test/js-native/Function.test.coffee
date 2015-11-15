@@ -12,7 +12,7 @@ class Abc
     @value
 
 
-describe 'Function',->
+describe '| js-native | Function',->
 
   it 'ctor',->
     Abc.assert_Is_Function().ctor().assert_Is_Object()
@@ -38,8 +38,8 @@ describe 'Function',->
     done.invoke_In(0)
 
   it 'source_Code', () ->
-    test = ()-> return 12
+    test = new Function('return 42;')
     test.assert_Is_Function()
     test.source_Code.assert_Is_Function()
-    test.source_Code().assert_Is("function () {\n        return 12;\n      }")
+    test.source_Code().assert_Is("function anonymous() {\nreturn 42;\n}")
     test.source_Code.assert_Is test.sourceCode    

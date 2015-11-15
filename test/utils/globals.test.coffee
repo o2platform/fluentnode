@@ -1,6 +1,6 @@
 require('../../src/fluentnode')
 
-describe 'global',->
+describe '| global',->
 
   it 'existy',->
     existy(null      ).assert_False()
@@ -13,11 +13,13 @@ describe 'global',->
     existy(false     ).assert_True()
 
   it 'file_Exists', ->
-    file_Exists('.gitignore').assert_True()
+    temp_File = '_temp_file_'.add_5_Letters().file_Create('abc')
+    file_Exists(temp_File   ).assert_True()
     file_Exists('.abc'      ).assert_False()
     file_Exists(null        ).assert_False()
     file_Exists(undefined   ).assert_False()
     file_Exists({}.notHere  ).assert_False()
+    temp_File.assert_File_Deleted()
 
   it 'is_Number',->
     is_Number(0   ).assert_True()

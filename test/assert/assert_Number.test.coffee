@@ -1,6 +1,6 @@
 require('../../src/fluentnode')
 
-describe 'Assert | Number |', ->
+describe '| Assert | Number' , ->
   it 'assert_Bigger_Than',->
     (1).assert_Bigger_Than(0)
     (9).assert_Bigger_Than(5)

@@ -85,13 +85,13 @@ returns ```target``` path
 
 @.**file_Create**
 
-Creates and empty file at @
+Creates an file at @ with contents
 
-    String::file_Create         = ->
-                                      path = @.toString()
-                                      if path.not_Exists()
-                                          fs.writeFileSync(path,'')
-                                      return path.realPath();
+    String::file_Create         = (contents)->
+      path = @.toString()
+      if path.not_Exists()
+          fs.writeFileSync(path,contents || '')
+      return path.realPath();
 
 @.**File_Delete**
 
