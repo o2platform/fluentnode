@@ -7,254 +7,86 @@
   http = require('http');
 
   describe('| http', function() {
-    var bad_Url, test_Data, test_Ip, test_Port, url;
+    var server, test_Data, test_Ip, test_Port, url;
     test_Port = 45566 + Math.floor((Math.random() * 100) + 1);
     test_Ip = '127.0.0.1';
     test_Data = 'hello from web';
     url = "http://" + test_Ip + ":" + test_Port;
-    bad_Url = 'http://aaaa.cccc.aaaa.dddd';
-    describe('helper HTTP server methods', function() {
-      var server;
-      server = null;
-      before(function(done) {
-        url.assert_Contains(test_Ip).assert_Contains(test_Port);
-        server = http.createServer(null);
-        return server.listen_OnPort_Saying(test_Port, test_Data, (function(_this) {
-          return function() {
-            return done();
-          };
-        })(this));
-      });
-      after(function(done) {
-        return server.close_And_Destroy_Sockets(function() {
-          assert_Is_Null(server._handle);
-          assert_Is_Null(server.address());
-          server._sockets.keys().assert_Is_Array().assert_Size_Is(0);
+    server = null;
+    before(function(done) {
+      server = http.createServer(null);
+      return server.listen_OnPort_Saying(test_Port, test_Data, (function(_this) {
+        return function() {
           return done();
-        });
-      });
-      it('global.__fluentnode.settings.http', function() {
-        return using(global.__fluentnode.http, function() {
-          this.assert_Is_Object();
-          this.HTTP_GET_TIMEOUT.assert_Is(500);
-          return this.HTTP_GET_DELAY.assert_Is(10);
-        });
-      });
-      it('createServer_OnPort_Saying', function() {
-        server.listen_OnPort_Saying.assert_Is_Function();
-        server.assert_Instance_Of(http.Server);
-        server._handle.assert_Is_Not_Null();
-        server.address().port.assert_Is(test_Port);
-        server.address().address.assert_Is(test_Ip);
-        server._sockets.assert_Is_Object();
-        server._sockets.keys().assert_Is_Array().assert_Size_Is(0);
-        return server._socket_Count.assert_Is(0);
-      });
-      it('respond_With_Request_Headers', function(done) {
-        var port;
-        server.respond_With_Request_Headers();
-        port = url.split(':').last();
-        return url.GET_Json(function(headers) {
-          headers.assert_Is({
-            "host": "127.0.0.1:" + port,
-            "connection": "close"
-          });
-          return done();
-        });
-      });
-      it('respond_With_Request_Url', function(done) {
-        server.respond_With_Request_Url();
-        return url.append('/aaa/bbbb').GET_Json(function(url) {
-          url.assert_Is({
-            "url": "/aaa/bbbb"
-          });
-          return done();
-        });
-      });
-      it('respond_With_Object_As_Json', function(done) {
-        var test_Object;
-        server.respond_With_Object_As_Json.assert_Is_Function();
-        test_Object = {
-          a: 123,
-          b: 456
         };
-        server.respond_With_Object_As_Json(test_Object);
-        return url.GET(function(json) {
-          json.assert_Is(JSON.stringify(test_Object));
-          test_Object.a = 'abc';
-          return url.GET_Json(function(value) {
-            value.a.assert_Is('abc');
-            value.b.assert_Is(456);
-            return done();
-          });
-        });
-      });
-      it('respond_With_String_As_Text', function(done) {
-        var text;
-        text = 20..random_Letters();
-        server.respond_With_String_As_Text(text);
-        return url.GET(function(value) {
-          value.assert_Is(text);
-          server.respond_With_String_As_Text(test_Data);
-          return url.GET(function(value) {
-            value.assert_Is(test_Data);
-            return done();
-          });
-        });
-      });
-      return it('respond_With_Request_Object', function(done) {
-        server.respond_With_Request_Object();
-        return url.GET(function(req_Data) {
-          req_Data.assert_Is_String();
-          req_Data.assert_Contains("headers: { host: '127.0.0.1:").assert_Contains(['socket:', 'connection:']);
-          return done();
-        });
+      })(this));
+    });
+    after(function(done) {
+      return server.close_And_Destroy_Sockets(function() {
+        return done();
       });
     });
-    return describe('Making HTTP requests', function() {
-      var server;
-      server = null;
-      before(function(done) {
-        server = http.createServer(null);
-        return server.listen_OnPort_Saying(test_Port, test_Data, (function(_this) {
-          return function() {
-            global.__fluentnode.http.HTTP_GET_TIMEOUT = 30;
-            return done();
-          };
-        })(this));
+    it('http_Status', function(done) {
+      return url.http_Status(function(status) {
+        status.assert_Is(200);
+        return done();
       });
-      after(function(done) {
-        return server.close_And_Destroy_Sockets(function() {
-          global.__fluentnode.http.HTTP_GET_TIMEOUT = 500;
-          return done();
-        });
+    });
+    it('http_With_Options', function(done) {
+      var options;
+      server.respond_With_Request_Headers();
+      options = {
+        headers: {
+          'name': 'value_'.add_5_Random_Letters(),
+          'cookie': 'abc=123;'
+        }
+      };
+      return url.http_With_Options(options, function(err, data) {
+        var json;
+        json = JSON.parse(data);
+        json.name.assert_Is(options.headers.name);
+        json.cookie.assert_Is('abc=123;');
+        return done();
       });
-      it('GET_Json, json_GET', function(done) {
-        var data;
-        ''.json_GET.assert_Is(''.GET_Json);
-        data = {
-          a: 42
+    });
+    it('http_With_Options (bad data)', function(done) {
+      return url.http_With_Options({
+        port: 81
+      }, function(err, data, res) {
+        assert_Is_Not_Null(err).code.assert_Is('ECONNREFUSED');
+        assert_Is_Null(data);
+        assert_Is_Null(res);
+        return done();
+      });
+    });
+    return it('http_With_Options', function(done) {
+      var options, req;
+      server.respond_With_Request_Headers();
+      options = {
+        headers: {
+          'name': 'value_'.add_5_Random_Letters(),
+          'cookie': 'abc=123;'
+        },
+        method: 'POST'
+      };
+      req = url.http_With_Options(options, function(err, data) {
+        var expected_Server_Req_Options, json;
+        json = JSON.parse(data);
+        expected_Server_Req_Options = {
+          name: options.headers.name,
+          host: test_Ip + ":" + test_Port,
+          connection: 'close',
+          cookie: 'abc=123;',
+          'content-length': '0'
         };
-        server.respond_With_Object_As_Json(data);
-        return url.json_GET(function(json) {
-          json.assert_Is(data);
-          json.a.assert_Is(42);
-          return done();
-        });
+        json.assert_Is(expected_Server_Req_Options);
+        return done();
       });
-      it('json_GET (bad url)', function() {
-        return bad_Url.GET_Json(function(json) {
-          return json.assert_Is({});
-        });
-      });
-      it('json_GET_With_Timeout', function(done) {
-        var data;
-        data = {
-          a: 42
-        };
-        server.respond_With_Object_As_Json(data);
-        return url.json_GET_With_Timeout(function(data) {
-          data.assert_Is(data);
-          return done();
-        });
-      });
-      it('json_GET_With_Timeout (bad url)', function(done) {
-        return bad_Url.json_GET_With_Timeout(function(data) {
-          data.assert_Is({});
-          return done();
-        });
-      });
-      it('http_Status', function(done) {
-        return url.http_Status(function(status) {
-          status.assert_Is(200);
-          return done();
-        });
-      });
-      it('http_GET', function(done) {
-        var req;
-        server.respond_With_String_As_Text(test_Data);
-        return req = url.http_GET(function(err, data, res) {
-          assert_Is_Null(err);
-          data.assert_Is_String();
-          req.assert_Instance_Of(http.ClientRequest);
-          res.assert_Instance_Of(http.IncomingMessage);
-          data.assert_Is(test_Data);
-          return done();
-        });
-      });
-      it('http_GET bad port)', function(done) {
-        return (function() {
-          return url.append(1).http_GET();
-        }).assert_Throws(function(error) {
-          error.message.assert_Contains("port should be >= 0 and < 65536: ");
-          return done();
-        });
-      });
-      it('http_With_Options', function(done) {
-        var options;
-        server.respond_With_Request_Headers();
-        options = {
-          headers: {
-            'name': 'value_'.add_5_Random_Letters(),
-            'cookie': 'abc=123;'
-          }
-        };
-        return url.http_With_Options(options, function(err, data) {
-          var json;
-          json = JSON.parse(data);
-          json.name.assert_Is(options.headers.name);
-          json.cookie.assert_Is('abc=123;');
-          return done();
-        });
-      });
-      it('http_GET_Wait_For_Null', function(done) {
-        url.http_GET_Wait_For_Null(function(err) {
-          assert_Is_Null(err);
-          return done();
-        });
-        return 20..wait(function() {
-          return server.respond_With_String_As_Text(null);
-        });
-      });
-      it('http_GET_Wait_For_Null (no null is returned from server)', function(done) {
-        var attempts, check;
-        server.respond_With_String_As_Text('123');
-        attempts = ~~(global.__fluentnode.http.HTTP_GET_TIMEOUT / global.__fluentnode.http.HTTP_GET_DELAY);
-        check = function(err) {
-          err.message.assert_Is("[http_GET_Wait_For_Null] never got a null from server " + url + " after " + attempts + " attempts");
-          return done();
-        };
-        return url.http_GET_Wait_For_Null(check, attempts);
-      });
-      it('http_GET_With_Timeout', function(done) {
-        var value;
-        value = 'asd'.add_5_Random_Letters();
-        server.respond_With_String_As_Text(null);
-        url.http_GET_With_Timeout(function(data) {
-          data.assert_Is(value);
-          return done();
-        });
-        return 20..wait(function() {
-          return server.respond_With_String_As_Text(value);
-        });
-      });
-      it('http_GET_With_Timeout (null is always returned from server)', function(done) {
-        server.respond_With_String_As_Text(null);
-        return url.http_GET_With_Timeout(function(data) {
-          assert_Is_Null(data);
-          return done();
-        });
-      });
-      return it('http_With_Options (bad data)', function(done) {
-        return url.http_With_Options({
-          port: 81
-        }, function(err, data, res) {
-          assert_Is_Not_Null(err).code.assert_Is('ECONNREFUSED');
-          assert_Is_Null(data);
-          assert_Is_Null(res);
-          return done();
-        });
-      });
+      req.method.assert_Is('POST');
+      req._headers.name.assert_Is(options.headers.name);
+      req._headers.cookie.assert_Is(options.headers.cookie);
+      req._headers.host.assert_Is(test_Ip + ":" + test_Port);
+      return req.path.assert_Is('/');
     });
   });
 

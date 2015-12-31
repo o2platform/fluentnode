@@ -34,6 +34,12 @@
 
   require('./node-native/http');
 
+  require('./node-native/http.GET');
+
+  require('./node-native/http.Server');
+
+  require('./node-native/http.POST');
+
   require('./node-native/fs');
 
   require('./node-native/path');

@@ -157,7 +157,6 @@
       var expectedFolders, folder, folders;
       ''.folders.assert_Is_Function();
       folders = '.'.folders();
-      console.log(folders.file_Names());
       expectedFolders = (function() {
         var i, len, ref, results;
         ref = 'src,test'.split(',');
