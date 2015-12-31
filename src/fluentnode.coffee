@@ -28,9 +28,12 @@ require('./js-native/Object'   );
 require('./js-native/String'   );
 
 # code NodeJS classes
-require('./node-native/console'  );
-require('./node-native/crypto' );
-require('./node-native/http'   );
-require('./node-native/fs'     );
-require('./node-native/path'   );
-require('./node-native/process');
+require './node-native/console'
+require './node-native/crypto'
+require './node-native/http'
+require './node-native/http.GET'
+require './node-native/http.Server'
+require './node-native/http.POST'
+require './node-native/fs'
+require './node-native/path'
+require './node-native/process'

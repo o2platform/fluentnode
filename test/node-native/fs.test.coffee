@@ -160,7 +160,6 @@ describe '| fs',->
   it 'folders' , ->
     ''.folders.assert_Is_Function()
     folders = '.'.folders()
-    console.log folders.file_Names()
     expectedFolders = (folder.realPath() for folder in 'src,test'.split(','))
     folders.assert_Contains(expectedFolders)
 
