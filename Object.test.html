@@ -19,41 +19,6 @@
           <div id="jump_page">
             
               
-              <a class="source" href="Array.html">
-                Array.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Boolean.html">
-                Boolean.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Function.html">
-                Function.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Number.html">
-                Number.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Object.html">
-                Object.litcoffee
-              </a>
-            
-              
-              <a class="source" href="String.html">
-                String.litcoffee
-              </a>
-            
-              
-              <a class="source" href="_register.html">
-                _register.js
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -84,6 +49,46 @@
               </a>
             
               
+              <a class="source" href="fluentnode.html">
+                fluentnode.coffee
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.md
+              </a>
+            
+              
+              <a class="source" href="Array.html">
+                Array.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Boolean.html">
+                Boolean.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Function.html">
+                Function.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Number.html">
+                Number.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Object.html">
+                Object.litcoffee
+              </a>
+            
+              
+              <a class="source" href="String.html">
+                String.litcoffee
+              </a>
+            
+              
               <a class="source" href="console.html">
                 console.litcoffee
               </a>
@@ -99,18 +104,23 @@
               </a>
             
               
-              <a class="source" href="globals.html">
-                globals.litcoffee
+              <a class="source" href="http.GET.html">
+                http.GET.litcoffee
+              </a>
+            
+              
+              <a class="source" href="http.POST.html">
+                http.POST.litcoffee
+              </a>
+            
+              
+              <a class="source" href="http.Server.html">
+                http.Server.litcoffee
               </a>
             
               
               <a class="source" href="http.html">
                 http.litcoffee
-              </a>
-            
-              
-              <a class="source" href="index.html">
-                index.md
               </a>
             
               
@@ -124,33 +134,48 @@
               </a>
             
               
-              <a class="source" href="Array.test.html">
-                Array.test.coffee
+              <a class="source" href="encoding.html">
+                encoding.litcoffee
               </a>
             
               
-              <a class="source" href="Boolean.test.html">
-                Boolean.test.coffee
+              <a class="source" href="globals.html">
+                globals.litcoffee
               </a>
             
               
-              <a class="source" href="Function.test.html">
-                Function.test.coffee
+              <a class="source" href="assert_Array.test.html">
+                assert_Array.test.coffee
               </a>
             
               
-              <a class="source" href="Number.test.html">
-                Number.test.coffee
+              <a class="source" href="assert_Boolean.test.html">
+                assert_Boolean.test.coffee
               </a>
             
               
-              <a class="source" href="Object.test.html">
-                Object.test.coffee
+              <a class="source" href="assert_Function.test.html">
+                assert_Function.test.coffee
               </a>
             
               
-              <a class="source" href="String.test.html">
-                String.test.coffee
+              <a class="source" href="assert_Number.test.html">
+                assert_Number.test.coffee
+              </a>
+            
+              
+              <a class="source" href="assert_Object.test.html">
+                assert_Object.test.coffee
+              </a>
+            
+              
+              <a class="source" href="assert_String.test.html">
+                assert_String.test.coffee
+              </a>
+            
+              
+              <a class="source" href="fluentnode.test.html">
+                fluentnode.test.coffee
               </a>
             
               
@@ -199,8 +224,18 @@
               </a>
             
               
-              <a class="source" href="globals.test.html">
-                globals.test.coffee
+              <a class="source" href="http.GET.test.html">
+                http.GET.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.POST.test.html">
+                http.POST.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.Server.test.html">
+                http.Server.test.coffee
               </a>
             
               
@@ -216,6 +251,16 @@
               
               <a class="source" href="process.test.html">
                 process.test.coffee
+              </a>
+            
+              
+              <a class="source" href="encoding.test.html">
+                encoding.test.coffee
+              </a>
+            
+              
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
               </a>
             
           </div>
@@ -241,63 +286,107 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/assert/assert_Object'</span>)
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/fluentnode'</span>)
 
-describe <span class="hljs-string">'Assert | Object |'</span>, <span class="hljs-function">-&gt;</span>
-  it <span class="hljs-string">'assert_Is_Equal_To, assert_Is'</span>, <span class="hljs-function">-&gt;</span>
-    <span class="hljs-string">''</span>.assert_Is_Equal_To.assert_Is_Function()
-    <span class="hljs-string">'{}'</span>.assert_Is_Equal_To(<span class="hljs-string">'{}'</span>)
-    {}.assert_Is_Equal_To({})
-    {<span class="hljs-string">'a'</span>}.assert_Is_Equal_To({<span class="hljs-string">'a'</span>})
-    <span class="hljs-string">'12'</span>.assert_Is_Equal_To(<span class="hljs-string">'12'</span>)
-    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Is(<span class="hljs-string">'12'</span>)).assert_Not_Throws()
-    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Is(<span class="hljs-string">'42'</span>)).assert_Throws()
+expect     = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chai'</span>).expect
 
-  it <span class="hljs-string">'assert_Is_Instance_Of, assert_Instance_Of'</span>, <span class="hljs-function">-&gt;</span>
-    <span class="hljs-string">''</span>.assert_Is_Instance_Of.assert_Is_Function()
-    <span class="hljs-string">''</span>.assert_Is_Instance_Of(String)
-    (<span class="hljs-number">12</span>).assert_Is_Instance_Of(Number)
-    (<span class="hljs-keyword">new</span> Error()).assert_Is_Instance_Of(Error)
-    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Instance_Of(String)).assert_Not_Throws()
-    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Instance_Of(Number)).assert_Throws()
 
-  it <span class="hljs-string">'assert_Is_Not_Equal_To, assert_Is_Not'</span>, <span class="hljs-function">-&gt;</span>
-    <span class="hljs-string">''</span>.assert_Is_Not_Equal_To.assert_Is_Function()
-    <span class="hljs-string">'{}'</span>.assert_Is_Not_Equal_To(<span class="hljs-string">'12'</span>)
-    <span class="hljs-string">'12'</span>.assert_Is_Not_Equal_To(<span class="hljs-string">'42'</span>)
-    {<span class="hljs-string">'a'</span>}.assert_Is_Not_Equal_To({<span class="hljs-string">'b'</span>})
-    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Is_Not(<span class="hljs-string">'42'</span>)).assert_Not_Throws()
-    (<span class="hljs-function">-&gt;</span> <span class="hljs-string">'12'</span>.assert_Is_Not(<span class="hljs-string">'12'</span>)).assert_Throws()
+describe <span class="hljs-string">'| js-native | Object'</span>,<span class="hljs-function">-&gt;</span>
 
-  it <span class="hljs-string">'assert_Is_Null'</span>, <span class="hljs-function">-&gt;</span>
-    assert_Is_Null.assert_Is_Function();
-    assert_Is_Null(<span class="hljs-literal">null</span>)
-    (<span class="hljs-function">-&gt;</span> assert_Is_Null(<span class="hljs-literal">null</span>)).assert_Not_Throws()
-    (<span class="hljs-function">-&gt;</span> assert_Is_Null(<span class="hljs-string">'123'</span>)).assert_Throws()
+    o = {}          <span class="hljs-comment"># recursive json object (should not stringify ok)</span>
+    o.o = o
 
-  it <span class="hljs-string">'assert_Is_Not_Null'</span>, <span class="hljs-function">-&gt;</span>
-    assert_Is_Not_Null.assert_Is_Function();
-    assert_Is_Not_Null(<span class="hljs-string">'123'</span>)
-    (<span class="hljs-function">-&gt;</span> assert_Is_Not_Null(<span class="hljs-string">'123'</span>)).assert_Not_Throws()
-    (<span class="hljs-function">-&gt;</span> assert_Is_Not_Null(<span class="hljs-literal">null</span>)).assert_Throws()
+    it <span class="hljs-string">'str'</span>,<span class="hljs-function">-&gt;</span>
+        <span class="hljs-string">""</span>     .str().assert_Is <span class="hljs-string">""</span>
+        <span class="hljs-string">"123"</span>  .str().assert_Is <span class="hljs-string">"123"</span>
+        []     .str().assert_Is [].toString()
+        {}     .str().assert_Is {}.toString()
+        {<span class="hljs-attribute">a</span>:<span class="hljs-string">'1'</span>}.str().assert_Is <span class="hljs-string">"[object Object]"</span>
 
-  it <span class="hljs-string">'assert_Is_Object'</span>, <span class="hljs-function">-&gt;</span>
-    {}.assert_Is_Object.assert_Is_Function()
-    {}.assert_Is_Object().assert_Is_Equal_To({})
+    it <span class="hljs-string">'json_Str'</span>,<span class="hljs-function">-&gt;</span>
+        <span class="hljs-string">""</span>   .json_Str().assert_Is <span class="hljs-string">"\"\""</span>
+        <span class="hljs-string">"123"</span>.json_Str().assert_Is <span class="hljs-string">"\"123\""</span>
+        {}   .json_Str().assert_Is <span class="hljs-string">"{}"</span>
+        {<span class="hljs-attribute">a</span>:<span class="hljs-number">1</span>}.json_Str().assert_Is <span class="hljs-string">"{\"a\":1}"</span>
+        o    .json_Str().assert_Is <span class="hljs-string">''</span>
 
-  it <span class="hljs-string">'assert_Is_Undefined'</span>, <span class="hljs-function">-&gt;</span>
-    assert_Is_Undefined.assert_Is_Function();
-    assert_Is_Undefined(<span class="hljs-literal">undefined</span>)
-    aaaa = <span class="hljs-literal">undefined</span>
-    assert_Is_Undefined(aaaa)
-    (<span class="hljs-function">-&gt;</span> assert_Is_Undefined(<span class="hljs-literal">undefined</span>)).assert_Not_Throws()
-    (<span class="hljs-function">-&gt;</span> assert_Is_Undefined(<span class="hljs-string">'123'</span>)).assert_Throws()
+    it <span class="hljs-string">'json_Pretty'</span>, <span class="hljs-function">-&gt;</span>
+        {<span class="hljs-attribute">a</span>:<span class="hljs-number">1</span>}        .json_Pretty().assert_Is <span class="hljs-string">'{\n  \"a\": 1\n}'</span>
+        [{<span class="hljs-attribute">a</span>:<span class="hljs-number">1</span>},{<span class="hljs-attribute">b</span>:<span class="hljs-number">1</span>}].json_Pretty().assert_Is <span class="hljs-string">'[\n  {\n    \"a\": 1\n  },\n  {\n    \"b\": 1\n  }\n]'</span>
+        {<span class="hljs-attribute">a</span>:<span class="hljs-number">1</span>}        .json_Pretty().assert_Is <span class="hljs-string">'{\n  \"a\": 1\n}'</span>
+        {<span class="hljs-attribute">null</span>:<span class="hljs-literal">null</span>}  .json_Pretty().assert_Is <span class="hljs-string">'{\n  "null": null\n}'</span>
+        o            .json_Pretty().assert_Is <span class="hljs-string">''</span>
 
-  it <span class="hljs-string">'assert_Is_Not_Undefined'</span>, <span class="hljs-function">-&gt;</span>
-    assert_Is_Not_Undefined.assert_Is_Function();
-    assert_Is_Not_Undefined(<span class="hljs-string">'123'</span>)
-    (<span class="hljs-function">-&gt;</span> assert_Is_Not_Undefined(<span class="hljs-string">'123'</span>)).assert_Not_Throws()
-    (<span class="hljs-function">-&gt;</span> assert_Is_Not_Undefined(<span class="hljs-literal">undefined</span>)).assert_Throws()</pre></div></div>
+        {}.json_pretty.assert_Is {}.json_Pretty
+
+    it <span class="hljs-string">'json_inspect'</span>,<span class="hljs-function">-&gt;</span>
+        a = <span class="hljs-literal">null</span>
+        {<span class="hljs-attribute">null</span>:<span class="hljs-literal">null</span>}.json_Inspect().assert_Is <span class="hljs-string">'{ null: null }'</span>
+        o          .json_Inspect().assert_Is <span class="hljs-string">"{ o: [Circular] }"</span>
+        o          .json_inspect().assert_Is <span class="hljs-string">"{ o: [Circular] }"</span>
+
+    it <span class="hljs-string">'keys'</span>, <span class="hljs-function">-&gt;</span>
+        abc = { <span class="hljs-attribute">key1</span>:<span class="hljs-string">''</span>, <span class="hljs-attribute">key2</span>:<span class="hljs-string">''</span>}
+        abc.keys().assert_Is_Equal_To([<span class="hljs-string">'key1'</span>, <span class="hljs-string">'key2'</span>])
+
+    it <span class="hljs-string">'keys_All'</span>, <span class="hljs-function">-&gt;</span>
+        <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">abc</span></span>
+            <span class="hljs-attribute">constructor</span>:<span class="hljs-function">-&gt;</span>
+                <span class="hljs-property">@key1</span> = <span class="hljs-string">''</span>
+                <span class="hljs-property">@key2</span> = <span class="hljs-string">''</span>
+            <span class="hljs-attribute">key1_All</span>:<span class="hljs-function">-&gt;</span>
+            <span class="hljs-attribute">key2_All</span>:<span class="hljs-function">-&gt;</span>
+
+        <span class="hljs-keyword">new</span> abc().keys()    .assert_Is_Equal_To([<span class="hljs-string">'key1'</span>, <span class="hljs-string">'key2'</span>])
+        <span class="hljs-keyword">new</span> abc().keys_All().assert_Is_Equal_To([<span class="hljs-string">'key1'</span>, <span class="hljs-string">'key2'</span>, <span class="hljs-string">'key1_All'</span>, <span class="hljs-string">'key2_All'</span>])
+
+    it <span class="hljs-string">'values'</span>, <span class="hljs-function">-&gt;</span>
+        abc = { <span class="hljs-attribute">key1</span>:<span class="hljs-string">'aaa'</span>, <span class="hljs-attribute">key2</span>:<span class="hljs-string">'bbb'</span>}
+        abc.values().assert_Is_Equal_To([<span class="hljs-string">'aaa'</span>, <span class="hljs-string">'bbb'</span>])
+
+    it <span class="hljs-string">'call_Function'</span>,<span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
+<span class="hljs-function">        <span class="hljs-title">check_Call_Param</span> = <span class="hljs-params">(source, param1, param2)</span>-&gt;</span>
+            source.assert_Is_Equal_To({<span class="hljs-string">'a'</span>})
+            param1 .assert_Is_Equal_To(<span class="hljs-string">'b'</span>)
+            param2 .assert_Is_Equal_To(<span class="hljs-string">'c'</span>)
+            <span class="hljs-string">'d'</span>
+        {<span class="hljs-string">'a'</span>}.call_Function.assert_Is_Function()
+        {<span class="hljs-string">'a'</span>}.call_Function(check_Call_Param, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>).assert_Is(<span class="hljs-string">'d'</span>)
+
+    it <span class="hljs-string">'save_Json , load_Json'</span>, <span class="hljs-function">-&gt;</span>
+        target = <span class="hljs-string">'__tmp_'</span>.add_5_Random_Letters().append_To_Process_Cwd_Path()
+        source = { <span class="hljs-attribute">a</span>: <span class="hljs-string">'123'</span>, <span class="hljs-attribute">b</span>: <span class="hljs-string">'42'</span>}
+        target.assert_File_Not_Exists()
+        source.save_Json(target)
+        target.assert_File_Exists()
+        target.load_Json().assert_Is source
+        <span class="hljs-string">'aaaa'</span>.save_As target
+        target.load_Json().assert_Is {}
+        target.file_Delete().assert_True()
+
+
+
+    it <span class="hljs-string">'repl_Me'</span>,<span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+        anObject = {a : <span class="hljs-string">'an value'</span> , b :<span class="hljs-number">2</span>}
+        anObject.repl_Me.assert_Is_Function()
+
+        replMe = anObject.repl_Me done
+        replMe.assert_Is_Object()
+        replMe.context.that.assert_Is(anObject)
+        replMe.rli.close()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>“”.log()                    # without this extra line here, coveralls fails to publish</p>
+
+            </div>
             
         </li>
         

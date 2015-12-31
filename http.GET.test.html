@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>index.md</title>
+  <title>http.GET.test.coffee</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -271,7 +271,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>index.md</h1>
+                  <h1>http.GET.test.coffee</h1>
               </div>
           </li>
         
@@ -283,53 +283,103 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <!--
-the style tag below will hide the default docco title which in the current page is
-index.md and doesn't make sense to show
--->
-<style type="text/css">
-#title      { display : none; }
-</style>
-
-<p>NodeJS’s <a href="https://github.com/o2platform/fluentnode">FluentNode</a> is a set of Fluent apis for node applications (based on the concepts used in O2 Platforms C#’s FluentSharp APIs) and
-similar to UnderscoreJS except that FluentNode actualy extends the target Javascript objects)</p>
-<h2 id="install">Install</h2>
-<p>To use clone the <a href="https://github.com/o2platform/fluentnode">GitHub repo</a> or install using</p>
-<pre><code>npm install fluentnode --save
-</code></pre><h2 id="annotated-source-code">Annotated source code</h2>
-<p>The  extensions/protototypes are included the following files (and tests):</p>
-<p>####Core Javascript classes</p>
-<ul>
-<li><a href="Array.html">Array</a> (<a href="Array.test.html">tests</a>)</li>
-<li><a href="Boolean.html">Boolean</a> (<a href="Boolean.test.html">tests</a>)</li>
-<li><a href="Function.html">Function</a> (<a href="Function.test.html">tests</a>)</li>
-<li><a href="Number.html">Number</a> (<a href="Number.test.html">tests</a>)</li>
-<li><a href="Object.html">Object</a> (<a href="Object.test.html">tests</a>)</li>
-<li><a href="String.html">String</a> (<a href="String.test.html">tests</a>)</li>
-</ul>
-<p>####Node classes</p>
-<ul>
-<li><a href="console.html">console</a> (<a href="console.test.html">tests</a>)</li>
-<li><a href="fs.html">fs</a> (<a href="fs.test.html">tests</a>)</li>
-<li><a href="http.html">http</a> (<a href="http.test.html">tests</a>)</li>
-<li><a href="path.html">path</a> (<a href="path.test.html">tests</a>)</li>
-<li><a href="process.html">process</a> (<a href="process.test.html">tests</a>)</li>
-</ul>
-<p>####Assert helpers</p>
-<ul>
-<li><a href="assert_Array.html">assert Array</a></li>
-<li><a href="assert_Boolean.html">assert Boolean</a></li>
-<li><a href="assert_Function.html">assert Function</a></li>
-<li><a href="assert_Number.html">assert Number</a></li>
-<li><a href="assert_Object.html">assert Object</a></li>
-<li><a href="assert_String.html">assert String</a></li>
-</ul>
-<h4 id="other-files">Other files</h4>
-<ul>
-<li><a href="_register.html">_register.js</a></li>
-</ul>
-
+              
             </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/fluentnode'</span>)
+
+http = <span class="hljs-built_in">require</span> <span class="hljs-string">'http'</span>
+
+describe <span class="hljs-string">'| http.GET'</span>,<span class="hljs-function">-&gt;</span>
+  test_Port = <span class="hljs-number">45566</span> + Math.floor((Math.random() * <span class="hljs-number">100</span>) + <span class="hljs-number">1</span>)
+  test_Ip   = <span class="hljs-string">'127.0.0.1'</span>
+  test_Data = <span class="hljs-string">'hello from web'</span>
+  url       = <span class="hljs-string">"http://<span class="hljs-subst">#{test_Ip}</span>:<span class="hljs-subst">#{test_Port}</span>"</span>
+  bad_Url   = <span class="hljs-string">'http://aaaa.cccc.aaaa.dddd'</span>
+  server    = <span class="hljs-literal">null</span>
+
+  before (done)-&gt;
+    server = http.createServer(<span class="hljs-literal">null</span>)
+    server.listen_OnPort_Saying test_Port, test_Data, <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>
+      <span class="hljs-built_in">global</span>.__fluentnode.http.HTTP_GET_TIMEOUT = <span class="hljs-number">30</span>
+      done()
+
+  after (done)-&gt;
+    server.close_And_Destroy_Sockets ()-&gt;
+      <span class="hljs-built_in">global</span>.__fluentnode.http.HTTP_GET_TIMEOUT = <span class="hljs-number">500</span>
+      done()
+
+  it <span class="hljs-string">'GET_Json, json_GET'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    <span class="hljs-string">''</span>.json_GET.assert_Is <span class="hljs-string">''</span>.GET_Json
+    data = { a : <span class="hljs-number">42</span>}
+    server.respond_With_Object_As_Json data
+    url.json_GET (json)-&gt;
+      json  .assert_Is data
+      json.a.assert_Is <span class="hljs-number">42</span>
+      done()
+
+  it <span class="hljs-string">'json_GET (bad url)'</span>, <span class="hljs-function">-&gt;</span>
+    bad_Url.GET_Json (json)-&gt;
+      json.assert_Is {}
+
+  it <span class="hljs-string">'json_GET_With_Timeout'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    data = { a : <span class="hljs-number">42</span>}
+    server.respond_With_Object_As_Json data
+    url.json_GET_With_Timeout (data)-&gt;
+      data.assert_Is data
+      done()
+
+  it <span class="hljs-string">'json_GET_With_Timeout (bad url)'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    bad_Url.json_GET_With_Timeout (data)-&gt;
+      data.assert_Is {}
+      done()
+
+  it <span class="hljs-string">'http_GET'</span> , <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    server.respond_With_String_As_Text test_Data
+    req = url.http_GET (err, data, res)-&gt;
+      assert_Is_Null(err)
+      data.assert_Is_String()
+      req.assert_Instance_Of(http.ClientRequest)
+      res.assert_Instance_Of(http.IncomingMessage)
+      data.assert_Is(test_Data)
+      done()
+
+  it <span class="hljs-string">'http_GET bad port)'</span> , <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    (<span class="hljs-function">-&gt;</span> url.append(<span class="hljs-number">1</span>).http_GET()).assert_Throws  (error)-&gt;
+      error.message.assert_Contains <span class="hljs-string">"port should be &gt;= 0 and &lt; 65536: "</span>
+      done()
+
+  it <span class="hljs-string">'http_GET_Wait_For_Null'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    url.http_GET_Wait_For_Null (err)-&gt;
+      assert_Is_Null err
+      done()
+    <span class="hljs-number">20.</span>wait -&gt;
+      server.respond_With_String_As_Text <span class="hljs-literal">null</span>
+
+  it <span class="hljs-string">'http_GET_Wait_For_Null (no null is returned from server)'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    server.respond_With_String_As_Text <span class="hljs-string">'123'</span>
+
+    attempts = ~~(<span class="hljs-built_in">global</span>.__fluentnode.http.HTTP_GET_TIMEOUT / <span class="hljs-built_in">global</span>.__fluentnode.http.HTTP_GET_DELAY)
+<span class="hljs-function">
+    <span class="hljs-title">check</span> = <span class="hljs-params">(err)</span>-&gt;</span>
+      err.message.assert_Is <span class="hljs-string">"[http_GET_Wait_For_Null] never got a null from server <span class="hljs-subst">#{url}</span> after <span class="hljs-subst">#{attempts}</span> attempts"</span>
+      done()
+    url.http_GET_Wait_For_Null check, attempts
+
+  it <span class="hljs-string">'http_GET_With_Timeout'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    value = <span class="hljs-string">'asd'</span>.add_5_Random_Letters()
+    server.respond_With_String_As_Text <span class="hljs-literal">null</span>
+    url.http_GET_With_Timeout (data)-&gt;
+      data.assert_Is value
+      done()
+    <span class="hljs-number">20.</span>wait -&gt;
+      server.respond_With_String_As_Text value
+
+  it <span class="hljs-string">'http_GET_With_Timeout (null is always returned from server)'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    server.respond_With_String_As_Text <span class="hljs-literal">null</span>
+    url.http_GET_With_Timeout (data)-&gt;
+      assert_Is_Null data
+      done()</pre></div></div>
             
         </li>
         

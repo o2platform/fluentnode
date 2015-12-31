@@ -19,41 +19,6 @@
           <div id="jump_page">
             
               
-              <a class="source" href="Array.html">
-                Array.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Boolean.html">
-                Boolean.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Function.html">
-                Function.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Number.html">
-                Number.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Object.html">
-                Object.litcoffee
-              </a>
-            
-              
-              <a class="source" href="String.html">
-                String.litcoffee
-              </a>
-            
-              
-              <a class="source" href="_register.html">
-                _register.js
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -84,6 +49,46 @@
               </a>
             
               
+              <a class="source" href="fluentnode.html">
+                fluentnode.coffee
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.md
+              </a>
+            
+              
+              <a class="source" href="Array.html">
+                Array.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Boolean.html">
+                Boolean.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Function.html">
+                Function.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Number.html">
+                Number.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Object.html">
+                Object.litcoffee
+              </a>
+            
+              
+              <a class="source" href="String.html">
+                String.litcoffee
+              </a>
+            
+              
               <a class="source" href="console.html">
                 console.litcoffee
               </a>
@@ -99,18 +104,23 @@
               </a>
             
               
-              <a class="source" href="globals.html">
-                globals.litcoffee
+              <a class="source" href="http.GET.html">
+                http.GET.litcoffee
+              </a>
+            
+              
+              <a class="source" href="http.POST.html">
+                http.POST.litcoffee
+              </a>
+            
+              
+              <a class="source" href="http.Server.html">
+                http.Server.litcoffee
               </a>
             
               
               <a class="source" href="http.html">
                 http.litcoffee
-              </a>
-            
-              
-              <a class="source" href="index.html">
-                index.md
               </a>
             
               
@@ -124,33 +134,48 @@
               </a>
             
               
-              <a class="source" href="Array.test.html">
-                Array.test.coffee
+              <a class="source" href="encoding.html">
+                encoding.litcoffee
               </a>
             
               
-              <a class="source" href="Boolean.test.html">
-                Boolean.test.coffee
+              <a class="source" href="globals.html">
+                globals.litcoffee
               </a>
             
               
-              <a class="source" href="Function.test.html">
-                Function.test.coffee
+              <a class="source" href="assert_Array.test.html">
+                assert_Array.test.coffee
               </a>
             
               
-              <a class="source" href="Number.test.html">
-                Number.test.coffee
+              <a class="source" href="assert_Boolean.test.html">
+                assert_Boolean.test.coffee
               </a>
             
               
-              <a class="source" href="Object.test.html">
-                Object.test.coffee
+              <a class="source" href="assert_Function.test.html">
+                assert_Function.test.coffee
               </a>
             
               
-              <a class="source" href="String.test.html">
-                String.test.coffee
+              <a class="source" href="assert_Number.test.html">
+                assert_Number.test.coffee
+              </a>
+            
+              
+              <a class="source" href="assert_Object.test.html">
+                assert_Object.test.coffee
+              </a>
+            
+              
+              <a class="source" href="assert_String.test.html">
+                assert_String.test.coffee
+              </a>
+            
+              
+              <a class="source" href="fluentnode.test.html">
+                fluentnode.test.coffee
               </a>
             
               
@@ -199,8 +224,18 @@
               </a>
             
               
-              <a class="source" href="globals.test.html">
-                globals.test.coffee
+              <a class="source" href="http.GET.test.html">
+                http.GET.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.POST.test.html">
+                http.POST.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.Server.test.html">
+                http.Server.test.coffee
               </a>
             
               
@@ -216,6 +251,16 @@
               
               <a class="source" href="process.test.html">
                 process.test.coffee
+              </a>
+            
+              
+              <a class="source" href="encoding.test.html">
+                encoding.test.coffee
+              </a>
+            
+              
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
               </a>
             
           </div>
@@ -241,10 +286,13 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/path'</span>)
-expect     = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chai'</span>).expect
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/fluentnode'</span>)
 
-describe <span class="hljs-string">'path'</span>,<span class="hljs-function">-&gt;</span>
+expect  = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chai'</span>).expect
+path    = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>)
+
+describe <span class="hljs-string">'| path'</span>,<span class="hljs-function">-&gt;</span>
 
   it <span class="hljs-string">'path_Combine'</span>, <span class="hljs-function">-&gt;</span>
     expect(<span class="hljs-string">""</span>.path_Combine  ).to.be.an(<span class="hljs-string">'function'</span>)
@@ -252,7 +300,7 @@ describe <span class="hljs-string">'path'</span>,<span class="hljs-function">-&g
 
     expect(<span class="hljs-string">""</span>   .path_Combine()).to.equal(<span class="hljs-string">''</span>)
     expect(<span class="hljs-string">"abc"</span>.path_Combine()).to.equal(<span class="hljs-string">'abc'</span>)
-    expect(<span class="hljs-string">"abc"</span>.path_Combine(<span class="hljs-string">'def'</span>)).to.equal(<span class="hljs-string">'abc/def'</span>)
+    expect(<span class="hljs-string">"abc"</span>.path_Combine(<span class="hljs-string">'def'</span>)).to.equal(<span class="hljs-string">"abc<span class="hljs-subst">#{path.sep}</span>def"</span>)
 
   it <span class="hljs-string">'path_Combine , file_Parent_Folder'</span>, <span class="hljs-function">-&gt;</span>
     <span class="hljs-string">''</span>.file_Dir_Name.assert_Is_Function()
@@ -263,9 +311,9 @@ describe <span class="hljs-string">'path'</span>,<span class="hljs-function">-&g
   it <span class="hljs-string">'append_To_Process_Cwd_Path'</span>, <span class="hljs-function">-&gt;</span>
     expect(<span class="hljs-string">""</span>           .append_To_Process_Cwd_Path  ).to.be.an(<span class="hljs-string">'function'</span>)
     expect(<span class="hljs-string">""</span>           .append_To_Process_Cwd_Path()).to.equal(process.cwd())
-    expect(<span class="hljs-string">"abc"</span>        .append_To_Process_Cwd_Path()).to.equal(process.cwd() + <span class="hljs-string">'/abc'</span>        )
-    expect(<span class="hljs-string">"abc.txt"</span>    .append_To_Process_Cwd_Path()).to.equal(process.cwd() + <span class="hljs-string">'/abc.txt'</span>    )
-    expect(<span class="hljs-string">"abc/aaa.txt"</span>.append_To_Process_Cwd_Path()).to.equal(process.cwd() + <span class="hljs-string">'/abc/aaa.txt'</span>)
+    expect(<span class="hljs-string">"abc"</span>        .append_To_Process_Cwd_Path()).to.equal(process.cwd() + <span class="hljs-string">"<span class="hljs-subst">#{path.sep}</span>abc"</span>        )
+    expect(<span class="hljs-string">"abc.txt"</span>    .append_To_Process_Cwd_Path()).to.equal(process.cwd() + <span class="hljs-string">"<span class="hljs-subst">#{path.sep}</span>abc.txt"</span>    )
+    expect(<span class="hljs-string">"abc/aaa.txt"</span>.append_To_Process_Cwd_Path()).to.equal(process.cwd() + <span class="hljs-string">"<span class="hljs-subst">#{path.sep}</span>abc<span class="hljs-subst">#{path.sep}</span>aaa.txt"</span>)
 
   it <span class="hljs-string">'file_Extension'</span>, <span class="hljs-function">-&gt;</span>
     expect(<span class="hljs-string">""</span>.file_Extension  ).to.be.an(<span class="hljs-string">'function'</span>)
@@ -303,9 +351,11 @@ describe <span class="hljs-string">'path'</span>,<span class="hljs-function">-&g
     expect(source.file_Names_Without_Extension()).to.deep.equal(result)
 
   it <span class="hljs-string">'folder_Name'</span>, <span class="hljs-function">-&gt;</span>
-    <span class="hljs-string">'./node_modules'</span>.assert_Folder_Exists()
-                    .folder_Name()
-                    .assert_Is <span class="hljs-string">'node_modules'</span></pre></div></div>
+    temp_Dir = <span class="hljs-string">'_temp_Dir_'</span>.add_5_Letters().folder_Create()
+    temp_Dir.assert_Folder_Exists()
+            .folder_Name()
+            .assert_Contains <span class="hljs-string">'_temp_Dir_'</span>
+    temp_Dir.folder_Delete().assert_Is_True()</pre></div></div>
             
         </li>
         

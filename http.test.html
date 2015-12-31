@@ -19,41 +19,6 @@
           <div id="jump_page">
             
               
-              <a class="source" href="Array.html">
-                Array.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Boolean.html">
-                Boolean.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Function.html">
-                Function.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Number.html">
-                Number.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Object.html">
-                Object.litcoffee
-              </a>
-            
-              
-              <a class="source" href="String.html">
-                String.litcoffee
-              </a>
-            
-              
-              <a class="source" href="_register.html">
-                _register.js
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -84,6 +49,46 @@
               </a>
             
               
+              <a class="source" href="fluentnode.html">
+                fluentnode.coffee
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.md
+              </a>
+            
+              
+              <a class="source" href="Array.html">
+                Array.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Boolean.html">
+                Boolean.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Function.html">
+                Function.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Number.html">
+                Number.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Object.html">
+                Object.litcoffee
+              </a>
+            
+              
+              <a class="source" href="String.html">
+                String.litcoffee
+              </a>
+            
+              
               <a class="source" href="console.html">
                 console.litcoffee
               </a>
@@ -99,18 +104,23 @@
               </a>
             
               
-              <a class="source" href="globals.html">
-                globals.litcoffee
+              <a class="source" href="http.GET.html">
+                http.GET.litcoffee
+              </a>
+            
+              
+              <a class="source" href="http.POST.html">
+                http.POST.litcoffee
+              </a>
+            
+              
+              <a class="source" href="http.Server.html">
+                http.Server.litcoffee
               </a>
             
               
               <a class="source" href="http.html">
                 http.litcoffee
-              </a>
-            
-              
-              <a class="source" href="index.html">
-                index.md
               </a>
             
               
@@ -124,33 +134,48 @@
               </a>
             
               
-              <a class="source" href="Array.test.html">
-                Array.test.coffee
+              <a class="source" href="encoding.html">
+                encoding.litcoffee
               </a>
             
               
-              <a class="source" href="Boolean.test.html">
-                Boolean.test.coffee
+              <a class="source" href="globals.html">
+                globals.litcoffee
               </a>
             
               
-              <a class="source" href="Function.test.html">
-                Function.test.coffee
+              <a class="source" href="assert_Array.test.html">
+                assert_Array.test.coffee
               </a>
             
               
-              <a class="source" href="Number.test.html">
-                Number.test.coffee
+              <a class="source" href="assert_Boolean.test.html">
+                assert_Boolean.test.coffee
               </a>
             
               
-              <a class="source" href="Object.test.html">
-                Object.test.coffee
+              <a class="source" href="assert_Function.test.html">
+                assert_Function.test.coffee
               </a>
             
               
-              <a class="source" href="String.test.html">
-                String.test.coffee
+              <a class="source" href="assert_Number.test.html">
+                assert_Number.test.coffee
+              </a>
+            
+              
+              <a class="source" href="assert_Object.test.html">
+                assert_Object.test.coffee
+              </a>
+            
+              
+              <a class="source" href="assert_String.test.html">
+                assert_String.test.coffee
+              </a>
+            
+              
+              <a class="source" href="fluentnode.test.html">
+                fluentnode.test.coffee
               </a>
             
               
@@ -199,8 +224,18 @@
               </a>
             
               
-              <a class="source" href="globals.test.html">
-                globals.test.coffee
+              <a class="source" href="http.GET.test.html">
+                http.GET.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.POST.test.html">
+                http.POST.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.Server.test.html">
+                http.Server.test.coffee
               </a>
             
               
@@ -216,6 +251,16 @@
               
               <a class="source" href="process.test.html">
                 process.test.coffee
+              </a>
+            
+              
+              <a class="source" href="encoding.test.html">
+                encoding.test.coffee
+              </a>
+            
+              
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
               </a>
             
           </div>
@@ -241,190 +286,74 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/http'</span>)
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/Number'</span>)
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/fluentnode'</span>)
 
 http = <span class="hljs-built_in">require</span> <span class="hljs-string">'http'</span>
 
-describe <span class="hljs-string">'http'</span>,<span class="hljs-function">-&gt;</span>
+describe <span class="hljs-string">'| http'</span>,<span class="hljs-function">-&gt;</span>
   test_Port = <span class="hljs-number">45566</span> + Math.floor((Math.random() * <span class="hljs-number">100</span>) + <span class="hljs-number">1</span>)
   test_Ip   = <span class="hljs-string">'127.0.0.1'</span>
   test_Data = <span class="hljs-string">'hello from web'</span>
   url       = <span class="hljs-string">"http://<span class="hljs-subst">#{test_Ip}</span>:<span class="hljs-subst">#{test_Port}</span>"</span>
+  server    = <span class="hljs-literal">null</span>
 
-  describe <span class="hljs-string">'helper HTTP server methods'</span>, <span class="hljs-function">-&gt;</span>
+  before (done)-&gt;
+    server = http.createServer(<span class="hljs-literal">null</span>)
+    server.listen_OnPort_Saying test_Port, test_Data, <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>
+      done()
 
-    server    = <span class="hljs-literal">null</span>
-
-    before (done)-&gt;
-      url.assert_Contains(test_Ip).assert_Contains(test_Port)
-      server = http.createServer(<span class="hljs-literal">null</span>)
-      server.listen_OnPort_Saying test_Port, test_Data, <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>
-        done()
-
-    after (done)-&gt;
-      server.close_And_Destroy_Sockets ()-&gt;
-        assert_Is_Null(server._handle)
-        assert_Is_Null(server.address())
-        server._sockets.keys().assert_Is_Array().assert_Size_Is(<span class="hljs-number">0</span>)
-        done()
-
-    it <span class="hljs-string">'global.__fluentnode.settings.http'</span>,<span class="hljs-function">-&gt;</span>
-        using <span class="hljs-built_in">global</span>.__fluentnode.http,<span class="hljs-function">-&gt;</span>
-            @.assert_Is_Object()
-            @.HTTP_GET_TIMEOUT.assert_Is <span class="hljs-number">500</span>
-            @.HTTP_GET_DELAY.assert_Is <span class="hljs-number">10</span>
-
-    it <span class="hljs-string">'createServer_OnPort_Saying'</span>,<span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
-        server.listen_OnPort_Saying.assert_Is_Function()
-        server                  .assert_Instance_Of(http.Server)
-        server._handle          .assert_Is_Not_Null()
-        server.address().port   .assert_Is test_Port
-        server.address().address.assert_Is test_Ip
-        server._sockets         .assert_Is_Object()
-        server._sockets.keys()  .assert_Is_Array().assert_Size_Is(<span class="hljs-number">0</span>)
-        server._socket_Count    .assert_Is(<span class="hljs-number">0</span>)
-
-    it <span class="hljs-string">'respond_With_Request_Headers'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-      server.respond_With_Request_Headers()
-      port = url.split(<span class="hljs-string">':'</span>).last()
-      url.GET_Json (headers) -&gt;
-        headers.assert_Is({<span class="hljs-string">"host"</span>:<span class="hljs-string">"127.0.0.1:<span class="hljs-subst">#{port}</span>"</span>,<span class="hljs-string">"connection"</span>:<span class="hljs-string">"keep-alive"</span>})
-        done()
-
-    it <span class="hljs-string">'respond_With_Object_As_Json'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-      server.respond_With_Object_As_Json.assert_Is_Function()
-      test_Object = { a : <span class="hljs-number">123</span> , b : <span class="hljs-number">456</span>}
-      server.respond_With_Object_As_Json(test_Object)
-      url.GET (json) -&gt;
-        json.assert_Is(JSON.stringify(test_Object))
-        test_Object.a=<span class="hljs-string">'abc'</span>
-        url.GET_Json (value) -&gt;
-          value.a.assert_Is(<span class="hljs-string">'abc'</span>)
-          value.b.assert_Is(<span class="hljs-number">456</span>)
-          done()
-
-    it <span class="hljs-string">'respond_With_String_As_Text'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-      text = (<span class="hljs-number">20</span>).random_Letters()
-      server.respond_With_String_As_Text(text)
-      url.GET (value) -&gt;
-        value.assert_Is(text)
-        server.respond_With_String_As_Text(test_Data)
-        url.GET (value) -&gt;
-          value.assert_Is(test_Data)
-          done()
-
-    it <span class="hljs-string">'respond_With_Request_Object'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-      server.respond_With_Request_Object()
-      url.GET (req_Data) -&gt;
-        req_Data.assert_Is_String()
-        req_Data.assert_Contains(<span class="hljs-string">"headers: { host: '127.0.0.1:"</span>)
-                .assert_Contains([<span class="hljs-string">'socket:'</span>,<span class="hljs-string">'connection:'</span>])
-        done()
-
-  describe <span class="hljs-string">'Making HTTP requests'</span>,<span class="hljs-function">-&gt;</span>
-
-    server = <span class="hljs-literal">null</span>
-
-    before (done)-&gt;
-      server = http.createServer(<span class="hljs-literal">null</span>)
-      server.listen_OnPort_Saying test_Port, test_Data, <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>
-        <span class="hljs-built_in">global</span>.__fluentnode.http.HTTP_GET_TIMEOUT = <span class="hljs-number">30</span>
-        done()
-
-    after (done)-&gt;
-      server.close_And_Destroy_Sockets ()-&gt;
-        <span class="hljs-built_in">global</span>.__fluentnode.http.HTTP_GET_TIMEOUT = <span class="hljs-number">500</span>
-        done()
-
-    it <span class="hljs-string">'GET_Json, json_GET'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-      <span class="hljs-string">''</span>.json_GET.assert_Is <span class="hljs-string">''</span>.GET_Json
-      data = { a : <span class="hljs-number">42</span>}
-      server.respond_With_Object_As_Json data
-      url.json_GET (json)-&gt;
-        json  .assert_Is data
-        json.a.assert_Is <span class="hljs-number">42</span>
-        done()
-
-    it <span class="hljs-string">'json_GET_With_Timeout'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-      data = { a : <span class="hljs-number">42</span>}
-      server.respond_With_Object_As_Json data
-      url.json_GET_With_Timeout (data)-&gt;
-        data.assert_Is data
-        done()
-
-    it <span class="hljs-string">'http_Status'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-      url.http_Status (status)-&gt;
-        status.assert_Is(<span class="hljs-number">200</span>)
-        done()
-
-    it <span class="hljs-string">'http_GET'</span> , <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-      server.respond_With_String_As_Text test_Data
-      req = url.http_GET (err, data, res)-&gt;
-        assert_Is_Null(err)
-        data.assert_Is_String()
-        req.assert_Instance_Of(http.ClientRequest)
-        res.assert_Instance_Of(http.IncomingMessage)
-        data.assert_Is(test_Data)
-        done()
-
-    it <span class="hljs-string">'http_GET bad port)'</span> , <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-      url.append(<span class="hljs-number">1</span>).http_GET (err, data, res)-&gt;
-        assert_Is_Not_Null(err).code.assert_Is(<span class="hljs-string">'ECONNREFUSED'</span>)
-        assert_Is_Null(data)
-        assert_Is_Null(res)
-        done()
-
-    it <span class="hljs-string">'http_With_Options'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-      server.respond_With_Request_Headers()
-      options = {
-                  <span class="hljs-attribute">headers</span>: { <span class="hljs-string">'name'</span> : <span class="hljs-string">'value_'</span>.add_5_Random_Letters() , <span class="hljs-string">'cookie'</span>:<span class="hljs-string">'abc=123;'</span>}
-                }
-      url.http_With_Options options, <span class="hljs-function"><span class="hljs-params">(err, data)</span>-&gt;</span>
-        json = JSON.parse(data)
-        json.name.assert_Is(options.headers.name)
-        json.cookie.assert_Is(<span class="hljs-string">'abc=123;'</span>)
-        done()
-
-    it <span class="hljs-string">'http_GET_Wait_For_Null'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-      url.http_GET_Wait_For_Null (err)-&gt;
-        assert_Is_Null err
-        done()
-      <span class="hljs-number">20.</span>wait -&gt;
-        server.respond_With_String_As_Text <span class="hljs-literal">null</span>
-
-    it <span class="hljs-string">'http_GET_Wait_For_Null (no null is returned from server)'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-      server.respond_With_String_As_Text <span class="hljs-string">'123'</span>
-
-      attempts = ~~(<span class="hljs-built_in">global</span>.__fluentnode.http.HTTP_GET_TIMEOUT / <span class="hljs-built_in">global</span>.__fluentnode.http.HTTP_GET_DELAY)
-<span class="hljs-function">
-      <span class="hljs-title">check</span> = <span class="hljs-params">(err)</span>-&gt;</span>
-        err.message.assert_Is <span class="hljs-string">"[http_GET_Wait_For_Null] never got a null from server <span class="hljs-subst">#{url}</span> after <span class="hljs-subst">#{attempts}</span> attempts"</span>
-        done()
-      url.http_GET_Wait_For_Null check, attempts
-
-    it <span class="hljs-string">'http_GET_With_Timeout'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-      value = <span class="hljs-string">'asd'</span>.add_5_Random_Letters()
-      server.respond_With_String_As_Text <span class="hljs-literal">null</span>
-      url.http_GET_With_Timeout (data)-&gt;
-        data.assert_Is value
-        done()
-      <span class="hljs-number">20.</span>wait -&gt;
-        server.respond_With_String_As_Text value
-
-    it <span class="hljs-string">'http_GET_With_Timeout (null is always returned from server)'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-      server.respond_With_String_As_Text <span class="hljs-literal">null</span>
-      url.http_GET_With_Timeout (data)-&gt;
-        assert_Is_Null data
-        done()
+  after (done)-&gt;
+    server.close_And_Destroy_Sockets ()-&gt;
+      done()
 
 
-    it <span class="hljs-string">'http_With_Options (bad data)'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-      url.http_With_Options { <span class="hljs-attribute">port</span>: <span class="hljs-number">81</span> }, <span class="hljs-function"><span class="hljs-params">(err, data,res)</span>-&gt;</span>
-        assert_Is_Not_Null(err).code.assert_Is(<span class="hljs-string">'ECONNREFUSED'</span>)
-        assert_Is_Null(data)
-        assert_Is_Null(res)
-        done()</pre></div></div>
+
+  it <span class="hljs-string">'http_Status'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    url.http_Status (status)-&gt;
+      status.assert_Is(<span class="hljs-number">200</span>)
+      done()
+
+
+
+  it <span class="hljs-string">'http_With_Options'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    server.respond_With_Request_Headers()
+    options = {
+                <span class="hljs-attribute">headers</span>: { <span class="hljs-string">'name'</span> : <span class="hljs-string">'value_'</span>.add_5_Random_Letters() , <span class="hljs-string">'cookie'</span>:<span class="hljs-string">'abc=123;'</span>}
+              }
+    url.http_With_Options options, <span class="hljs-function"><span class="hljs-params">(err, data)</span>-&gt;</span>
+      json = JSON.parse(data)
+      json.name.assert_Is(options.headers.name)
+      json.cookie.assert_Is(<span class="hljs-string">'abc=123;'</span>)
+      done()
+
+  it <span class="hljs-string">'http_With_Options (bad data)'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    url.http_With_Options { <span class="hljs-attribute">port</span>: <span class="hljs-number">81</span> }, <span class="hljs-function"><span class="hljs-params">(err, data,res)</span>-&gt;</span>
+      assert_Is_Not_Null(err).code.assert_Is(<span class="hljs-string">'ECONNREFUSED'</span>)
+      assert_Is_Null(data)
+      assert_Is_Null(res)
+      done()
+
+  it <span class="hljs-string">'http_With_Options'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    server.respond_With_Request_Headers()
+    options =
+      <span class="hljs-attribute">headers</span>: { <span class="hljs-string">'name'</span> : <span class="hljs-string">'value_'</span>.add_5_Random_Letters() , <span class="hljs-string">'cookie'</span>:<span class="hljs-string">'abc=123;'</span>}
+      <span class="hljs-attribute">method</span>: <span class="hljs-string">'POST'</span>
+    req = url.http_With_Options options, <span class="hljs-function"><span class="hljs-params">(err, data)</span>-&gt;</span>
+      json = JSON.parse(data)
+      expected_Server_Req_Options =
+        name            : options.headers.name
+        host            : <span class="hljs-string">"<span class="hljs-subst">#{test_Ip}</span>:<span class="hljs-subst">#{test_Port}</span>"</span>
+        connection      :<span class="hljs-string">'close'</span>
+        cookie          : <span class="hljs-string">'abc=123;'</span>
+        <span class="hljs-string">'content-length'</span>: <span class="hljs-string">'0'</span>
+
+      json.assert_Is expected_Server_Req_Options
+      done()
+    req.method.assert_Is <span class="hljs-string">'POST'</span>
+    req._headers.name.assert_Is options.headers.name
+    req._headers.cookie.assert_Is options.headers.cookie
+    req._headers.host.assert_Is <span class="hljs-string">"<span class="hljs-subst">#{test_Ip}</span>:<span class="hljs-subst">#{test_Port}</span>"</span>
+    req.path.assert_Is <span class="hljs-string">'/'</span></pre></div></div>
             
         </li>
         

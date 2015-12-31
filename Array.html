@@ -19,41 +19,6 @@
           <div id="jump_page">
             
               
-              <a class="source" href="Array.html">
-                Array.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Boolean.html">
-                Boolean.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Function.html">
-                Function.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Number.html">
-                Number.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Object.html">
-                Object.litcoffee
-              </a>
-            
-              
-              <a class="source" href="String.html">
-                String.litcoffee
-              </a>
-            
-              
-              <a class="source" href="_register.html">
-                _register.js
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -84,6 +49,46 @@
               </a>
             
               
+              <a class="source" href="fluentnode.html">
+                fluentnode.coffee
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.md
+              </a>
+            
+              
+              <a class="source" href="Array.html">
+                Array.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Boolean.html">
+                Boolean.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Function.html">
+                Function.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Number.html">
+                Number.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Object.html">
+                Object.litcoffee
+              </a>
+            
+              
+              <a class="source" href="String.html">
+                String.litcoffee
+              </a>
+            
+              
               <a class="source" href="console.html">
                 console.litcoffee
               </a>
@@ -99,18 +104,23 @@
               </a>
             
               
-              <a class="source" href="globals.html">
-                globals.litcoffee
+              <a class="source" href="http.GET.html">
+                http.GET.litcoffee
+              </a>
+            
+              
+              <a class="source" href="http.POST.html">
+                http.POST.litcoffee
+              </a>
+            
+              
+              <a class="source" href="http.Server.html">
+                http.Server.litcoffee
               </a>
             
               
               <a class="source" href="http.html">
                 http.litcoffee
-              </a>
-            
-              
-              <a class="source" href="index.html">
-                index.md
               </a>
             
               
@@ -124,33 +134,48 @@
               </a>
             
               
-              <a class="source" href="Array.test.html">
-                Array.test.coffee
+              <a class="source" href="encoding.html">
+                encoding.litcoffee
               </a>
             
               
-              <a class="source" href="Boolean.test.html">
-                Boolean.test.coffee
+              <a class="source" href="globals.html">
+                globals.litcoffee
               </a>
             
               
-              <a class="source" href="Function.test.html">
-                Function.test.coffee
+              <a class="source" href="assert_Array.test.html">
+                assert_Array.test.coffee
               </a>
             
               
-              <a class="source" href="Number.test.html">
-                Number.test.coffee
+              <a class="source" href="assert_Boolean.test.html">
+                assert_Boolean.test.coffee
               </a>
             
               
-              <a class="source" href="Object.test.html">
-                Object.test.coffee
+              <a class="source" href="assert_Function.test.html">
+                assert_Function.test.coffee
               </a>
             
               
-              <a class="source" href="String.test.html">
-                String.test.coffee
+              <a class="source" href="assert_Number.test.html">
+                assert_Number.test.coffee
+              </a>
+            
+              
+              <a class="source" href="assert_Object.test.html">
+                assert_Object.test.coffee
+              </a>
+            
+              
+              <a class="source" href="assert_String.test.html">
+                assert_String.test.coffee
+              </a>
+            
+              
+              <a class="source" href="fluentnode.test.html">
+                fluentnode.test.coffee
               </a>
             
               
@@ -199,8 +224,18 @@
               </a>
             
               
-              <a class="source" href="globals.test.html">
-                globals.test.coffee
+              <a class="source" href="http.GET.test.html">
+                http.GET.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.POST.test.html">
+                http.POST.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.Server.test.html">
+                http.Server.test.coffee
               </a>
             
               
@@ -216,6 +251,16 @@
               
               <a class="source" href="process.test.html">
                 process.test.coffee
+              </a>
+            
+              
+              <a class="source" href="encoding.test.html">
+                encoding.test.coffee
+              </a>
+            
+              
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
               </a>
             
           </div>
@@ -378,9 +423,7 @@
             
             <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::log = <span class="hljs-function">-&gt;</span>
   @.str().log()
-  @
-
-<span class="hljs-attribute">Array</span>::not_Contains   = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> value <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> @</pre></div></div>
+  @</pre></div></div>
             
         </li>
         
@@ -391,22 +434,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <p>@.<strong>not_Empty</strong> ()</p>
+              <p>@.<strong>not_Contains</strong> ()</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::not_Empty = <span class="hljs-function">-&gt;</span>
-  @.length != <span class="hljs-number">0</span>
-
-
-
-<span class="hljs-attribute">Array</span>::size           =        <span class="hljs-function">-&gt;</span> @.length
-<span class="hljs-attribute">Array</span>::starts_With    = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> (item <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> @ <span class="hljs-keyword">when</span> value &amp;&amp; item.starts_With(value))
-<span class="hljs-attribute">Array</span>::take           = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> <span class="hljs-keyword">if</span> value <span class="hljs-keyword">is</span> -<span class="hljs-number">1</span> <span class="hljs-keyword">then</span> @ <span class="hljs-keyword">else</span> @.slice(<span class="hljs-number">0</span>,value)
-<span class="hljs-attribute">Array</span>::unique         = <span class="hljs-function"><span class="hljs-params">()</span>     -&gt;</span>
-                                  output = {}
-                                  output[@[key]] = @[key] <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> [<span class="hljs-number">0.</span>..<span class="hljs-property">@length</span>]
-                                  output.keys()</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::not_Contains   = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span> value <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> @</pre></div></div>
             
         </li>
         
@@ -417,9 +449,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <hr>
+              <p>@.<strong>not_Empty</strong> ()</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::not_Empty = <span class="hljs-function">-&gt;</span>
+  @.length != <span class="hljs-number">0</span></pre></div></div>
             
         </li>
         
@@ -429,6 +464,137 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>@.<strong>remove_At</strong> index</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::remove_At = <span class="hljs-function"><span class="hljs-params">(index)</span>-&gt;</span>
+  @.splice(index,<span class="hljs-number">1</span>)
+  @</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>@.<strong>remove_First</strong></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::remove_First = <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
+  @.remove_At <span class="hljs-number">0</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>@.<strong>remove_If_Contains</strong></p>
+<p>Removes an element from an array if it contains a particular string
+Note that all elements (and match) will be converted into strings before comparison</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::remove_If_Contains = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+  <span class="hljs-keyword">return</span> @ <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> value
+  @.filter (word) -&gt;
+    word.str().not_Contains(value.str())</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>@.<strong>size</strong></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::size = <span class="hljs-function">-&gt;</span> @.length</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>@.<strong>starts_With</strong> value</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::starts_With = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+  (item <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> @ <span class="hljs-keyword">when</span> value &amp;&amp; item.starts_With(value))</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>@.<strong>take</strong> value</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::take = <span class="hljs-function"><span class="hljs-params">(size)</span>-&gt;</span>
+  <span class="hljs-keyword">if</span> size <span class="hljs-keyword">is</span> -<span class="hljs-number">1</span> <span class="hljs-keyword">then</span> @ <span class="hljs-keyword">else</span> @.slice(<span class="hljs-number">0</span>,size)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>@.<strong>unique</strong></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Array</span>::unique  = <span class="hljs-function"><span class="hljs-params">()</span> -&gt;</span>
+  output = {}
+  output[@[key]] = @[key] <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> [<span class="hljs-number">0.</span>..<span class="hljs-property">@length</span>]
+  output.keys()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <hr>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p>back to <a href="index.html">index</a></p>
 

@@ -19,41 +19,6 @@
           <div id="jump_page">
             
               
-              <a class="source" href="Array.html">
-                Array.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Boolean.html">
-                Boolean.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Function.html">
-                Function.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Number.html">
-                Number.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Object.html">
-                Object.litcoffee
-              </a>
-            
-              
-              <a class="source" href="String.html">
-                String.litcoffee
-              </a>
-            
-              
-              <a class="source" href="_register.html">
-                _register.js
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -84,6 +49,46 @@
               </a>
             
               
+              <a class="source" href="fluentnode.html">
+                fluentnode.coffee
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.md
+              </a>
+            
+              
+              <a class="source" href="Array.html">
+                Array.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Boolean.html">
+                Boolean.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Function.html">
+                Function.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Number.html">
+                Number.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Object.html">
+                Object.litcoffee
+              </a>
+            
+              
+              <a class="source" href="String.html">
+                String.litcoffee
+              </a>
+            
+              
               <a class="source" href="console.html">
                 console.litcoffee
               </a>
@@ -99,18 +104,23 @@
               </a>
             
               
-              <a class="source" href="globals.html">
-                globals.litcoffee
+              <a class="source" href="http.GET.html">
+                http.GET.litcoffee
+              </a>
+            
+              
+              <a class="source" href="http.POST.html">
+                http.POST.litcoffee
+              </a>
+            
+              
+              <a class="source" href="http.Server.html">
+                http.Server.litcoffee
               </a>
             
               
               <a class="source" href="http.html">
                 http.litcoffee
-              </a>
-            
-              
-              <a class="source" href="index.html">
-                index.md
               </a>
             
               
@@ -124,33 +134,48 @@
               </a>
             
               
-              <a class="source" href="Array.test.html">
-                Array.test.coffee
+              <a class="source" href="encoding.html">
+                encoding.litcoffee
               </a>
             
               
-              <a class="source" href="Boolean.test.html">
-                Boolean.test.coffee
+              <a class="source" href="globals.html">
+                globals.litcoffee
               </a>
             
               
-              <a class="source" href="Function.test.html">
-                Function.test.coffee
+              <a class="source" href="assert_Array.test.html">
+                assert_Array.test.coffee
               </a>
             
               
-              <a class="source" href="Number.test.html">
-                Number.test.coffee
+              <a class="source" href="assert_Boolean.test.html">
+                assert_Boolean.test.coffee
               </a>
             
               
-              <a class="source" href="Object.test.html">
-                Object.test.coffee
+              <a class="source" href="assert_Function.test.html">
+                assert_Function.test.coffee
               </a>
             
               
-              <a class="source" href="String.test.html">
-                String.test.coffee
+              <a class="source" href="assert_Number.test.html">
+                assert_Number.test.coffee
+              </a>
+            
+              
+              <a class="source" href="assert_Object.test.html">
+                assert_Object.test.coffee
+              </a>
+            
+              
+              <a class="source" href="assert_String.test.html">
+                assert_String.test.coffee
+              </a>
+            
+              
+              <a class="source" href="fluentnode.test.html">
+                fluentnode.test.coffee
               </a>
             
               
@@ -199,8 +224,18 @@
               </a>
             
               
-              <a class="source" href="globals.test.html">
-                globals.test.coffee
+              <a class="source" href="http.GET.test.html">
+                http.GET.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.POST.test.html">
+                http.POST.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.Server.test.html">
+                http.Server.test.coffee
               </a>
             
               
@@ -216,6 +251,16 @@
               
               <a class="source" href="process.test.html">
                 process.test.coffee
+              </a>
+            
+              
+              <a class="source" href="encoding.test.html">
+                encoding.test.coffee
+              </a>
+            
+              
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
               </a>
             
           </div>
@@ -243,13 +288,23 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/assert/assert_Array'</span>)
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/String'</span>)
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/path'</span>)
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/fs'</span>)
+<span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/fluentnode'</span>)
+
 expect     = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chai'</span>).expect
 
-describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;</span>
+describe <span class="hljs-string">'| fs'</span>,<span class="hljs-function">-&gt;</span>
+  file_Contents = <span class="hljs-literal">null</span>
+  tmp_File      = <span class="hljs-literal">null</span>
+  tmp_Folder    = <span class="hljs-literal">null</span>
+
+  beforeEach -&gt;
+    file_Contents = <span class="hljs-string">'aaaa_'</span>.add_5_Letters()
+    tmp_Folder = <span class="hljs-string">'_temp_Folder_'</span>.add_5_Letters().folder_Create()           .folder_Name()
+    tmp_File   = <span class="hljs-string">'_temp_File_'</span>  .add_5_Letters().file_Create(file_Contents).file_Name()
+
+  afterEach -&gt;
+    tmp_File  .file_Delete()
+    tmp_Folder.folder_Delete()
 
   it <span class="hljs-string">'create_Parent_Folder'</span>, <span class="hljs-function">-&gt;</span>
     <span class="hljs-string">'./aaa/abc.txt'</span>.create_Parent_Folder().assert_Is <span class="hljs-string">'./aaa/abc.txt'</span>
@@ -278,6 +333,21 @@ describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;
     tmpDir = <span class="hljs-string">"./"</span>   .temp_Name_In_Folder().folder_Create()
     tmpFile = tmpDir.temp_Name_In_Folder().file_Create()
     tmpDir.folder_Delete_Recursive().assert_Is_True()
+    tmpFile.assert_File_Not_Exists()
+
+  it <span class="hljs-string">'file_Append'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    original_Contents = tmp_File.file_Contents()
+    extra_Contents_1    = <span class="hljs-string">"_bbbb"</span>.add_5_Letters()
+    extra_Contents_2    = <span class="hljs-string">"_aaaa_"</span>.add_5_Letters()
+
+    tmp_File.file_Append extra_Contents_1
+    tmp_File.file_Contents().assert_Is original_Contents + extra_Contents_1
+    tmp_File.file_Append extra_Contents_2, <span class="hljs-function"><span class="hljs-params">(fileName)</span>-&gt;</span>
+      fileName.assert_Is tmp_File.real_Path()
+      tmp_File.file_Contents().assert_Is original_Contents + extra_Contents_1 + extra_Contents_2
+      done()
+
+
 
   it <span class="hljs-string">'file_Create and file_Delete'</span>,<span class="hljs-function">-&gt;</span>
     tmpName = <span class="hljs-string">'.'</span>.temp_Name_In_Folder()
@@ -285,6 +355,10 @@ describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;
     tmpName.exists()     .assert_True()
     tmpName.file_Delete().assert_True()
     tmpName.exists()     .assert_False()
+
+    tmpName.file_Create(<span class="hljs-string">'abc123'</span>)
+    tmpName.assert_File_Contents(<span class="hljs-string">'abc123'</span>)
+    tmpName.assert_File_Deleted()
 
   it <span class="hljs-string">'file_Copy'</span> , <span class="hljs-function">-&gt;</span>
     file1 = <span class="hljs-string">'.'</span>.temp_Name_In_Folder()
@@ -317,10 +391,10 @@ describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;
 
   it <span class="hljs-string">'file_Exists'</span> , <span class="hljs-function">-&gt;</span>
     <span class="hljs-string">''</span>.file_Exists.assert_Is_Function()
-    <span class="hljs-string">'.git'</span>          .file_Exists().assert_Is_True()
-    <span class="hljs-string">'./src/_register.js'</span>.file_Exists().assert_Is_True()
-    <span class="hljs-string">'./aaa.js'</span>      .file_Exists().assert_Is_False()
-    <span class="hljs-string">'./aaa.js'</span>      .file_Exists().assert_Is_False()
+    tmp_Folder  .file_Exists().assert_Is_True()
+    tmp_File    .file_Exists().assert_Is_True()
+    <span class="hljs-string">'./aaa.js'</span>  .file_Exists().assert_Is_False()
+    <span class="hljs-string">'./aaa.js'</span>  .file_Exists().assert_Is_False()
 
   it <span class="hljs-string">'file_Lines'</span>, <span class="hljs-function">-&gt;</span>
     <span class="hljs-string">""</span>.file_Lines().assert_Is []
@@ -330,7 +404,7 @@ describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;
 
   it <span class="hljs-string">'file_Not_Exists'</span> , <span class="hljs-function">-&gt;</span>
     <span class="hljs-string">''</span>.file_Not_Exists.assert_Is_Function()
-    <span class="hljs-string">'.git'</span>      .file_Not_Exists().assert_Is_False()
+    tmp_Folder  .file_Not_Exists().assert_Is_False()
     <span class="hljs-string">'./index.js'</span>.file_Not_Exists().assert_Is_True()
     <span class="hljs-string">'./aaa.js'</span>  .file_Not_Exists().assert_Is_True()
 
@@ -345,60 +419,62 @@ describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;
   it <span class="hljs-string">'files_And_Folders'</span>,<span class="hljs-function">-&gt;</span>
     <span class="hljs-string">''</span>.files_And_Folders.assert_Is_Function()
     files = <span class="hljs-string">'./'</span>.files_And_Folders();
-    files.assert_Contains <span class="hljs-string">'.git'</span>      .realPath()
-         .assert_Contains <span class="hljs-string">'.gitignore'</span>.realPath()
+    files.assert_Contains tmp_File    .realPath()
+         .assert_Contains tmp_Folder  .realPath()
          .assert_Not_Contains <span class="hljs-string">'.aaaaa'</span>.realPath()
 
     <span class="hljs-string">'aaaa'</span>.files_And_Folders().assert_Is([])
 
   it <span class="hljs-string">'files'</span> , <span class="hljs-function">-&gt;</span>
     <span class="hljs-string">''</span>.files.assert_Is_Function()
-    files = <span class="hljs-string">'./'</span>.files().filter (file) -&gt; file <span class="hljs-keyword">isnt</span> <span class="hljs-string">'.DS_Store'</span>.realPath()
-    expectedFiles = (file.realPath() <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> <span class="hljs-string">'.gitignore,.travis.yml,LICENSE,README.md,package.json'</span>.split(<span class="hljs-string">','</span>))
+    tmp_File_2   = <span class="hljs-string">'_temp_File_'</span>  .add_5_Letters().file_Create(file_Contents).file_Name()
+    files = <span class="hljs-string">'./'</span>.files()
+    expectedFiles = [tmp_File.real_Path(), tmp_File_2.real_Path()]
     files.assert_Contains(expectedFiles)
-    <span class="hljs-string">'./'</span>.files(<span class="hljs-string">'.yml'</span> ).assert_Is([<span class="hljs-string">'.travis.yml'</span>.realPath()])
-    <span class="hljs-string">'./'</span>.files(<span class="hljs-string">'.json'</span>).assert_Is([<span class="hljs-string">'package.json'</span>.realPath()])
+    tmp_File_2.assert_File_Deleted()
 
   it <span class="hljs-string">'files_Recursive'</span> , <span class="hljs-function">-&gt;</span>
+    extension = __filename.file_Extension().replace(<span class="hljs-string">'coffee'</span>, <span class="hljs-string">'litcoffee'</span>)
+    file_To_Find = <span class="hljs-string">"./src/node-native/fs<span class="hljs-subst">#{extension}</span>"</span>.fullPath()
+
     <span class="hljs-string">''</span>.files_Recursive.assert_Is_Function()
     <span class="hljs-string">'./src'</span>.files_Recursive().assert_Size_Is_Bigger_Than(<span class="hljs-number">9</span>)
-                             .assert_Contains(<span class="hljs-string">'./src/fs.litcoffee'</span>.fullPath())
+                             .assert_Contains(file_To_Find)
     tmpFile = <span class="hljs-string">'./src'</span>.fullPath().path_Combine(<span class="hljs-string">'_temp_file.abcd'</span>).file_Write((<span class="hljs-number">20</span>).random_Letters())
     <span class="hljs-string">'./src'</span>.files_Recursive(<span class="hljs-string">'.abcd'</span>).assert_Size_Is(<span class="hljs-number">1</span>)
                                     .first().assert_Is(tmpFile)
     tmpFile.file_Delete().assert_Is_True()
 
   it <span class="hljs-string">'folders'</span> , <span class="hljs-function">-&gt;</span>
-    expect(<span class="hljs-string">''</span>.folders).to.be.an(<span class="hljs-string">'function'</span>)
-    folders = (folder <span class="hljs-keyword">for</span> folder <span class="hljs-keyword">in</span> <span class="hljs-string">'./'</span>.folders() <span class="hljs-keyword">when</span> folder.not_Contains(<span class="hljs-string">'.c9'</span>))             <span class="hljs-comment">#handle scenario when we coded inside Cloud9 IDE</span>
-    expectedFolders = (folder.realPath() <span class="hljs-keyword">for</span> folder <span class="hljs-keyword">in</span> <span class="hljs-string">'.git,src,test'</span>.split(<span class="hljs-string">','</span>))
+    <span class="hljs-string">''</span>.folders.assert_Is_Function()
+    folders = <span class="hljs-string">'.'</span>.folders()
+    expectedFolders = (folder.realPath() <span class="hljs-keyword">for</span> folder <span class="hljs-keyword">in</span> <span class="hljs-string">'src,test'</span>.split(<span class="hljs-string">','</span>))
     folders.assert_Contains(expectedFolders)
 
   it <span class="hljs-string">'is_Folder'</span>, <span class="hljs-function">-&gt;</span>
-    expect(<span class="hljs-string">''</span>.is_Folder).to.be.an(<span class="hljs-string">'function'</span>)
-    expect(<span class="hljs-string">'.git'</span>      .is_Folder()).to.be.<span class="hljs-literal">true</span>
-    expect(<span class="hljs-string">'.gitignore'</span>.is_Folder()).to.be.<span class="hljs-literal">false</span>
-    expect(<span class="hljs-string">'.gitAAA'</span>   .is_Folder()).to.be.<span class="hljs-literal">false</span>
+    <span class="hljs-string">''</span>          .is_Folder  .assert_Is_Function()
+    tmp_Folder  .is_Folder().assert_Is_True()
+    tmp_File    .is_Folder().assert_Is_False()
+    <span class="hljs-string">'.gitAAA'</span>   .is_Folder().assert_Is_False()
 
   it <span class="hljs-string">'is_Not_Folder'</span>,<span class="hljs-function">-&gt;</span>
     <span class="hljs-string">""</span>.add_5_Random_Letters().is_Not_Folder().assert_Is_True()
 
   it <span class="hljs-string">'is_File'</span>, <span class="hljs-function">-&gt;</span>
-    expect(<span class="hljs-string">''</span>.is_Folder).to.be.an(<span class="hljs-string">'function'</span>)
-    expect(<span class="hljs-string">'.git'</span>      .is_File()).to.be.<span class="hljs-literal">false</span>
-    expect(<span class="hljs-string">'.gitignore'</span>.is_File()).to.be.<span class="hljs-literal">true</span>
-    expect(<span class="hljs-string">'.gitAAA'</span>   .is_File()).to.be.<span class="hljs-literal">false</span>
+    <span class="hljs-string">''</span>.is_File .assert_Is_Function()
+    tmp_Folder .is_File().assert_Is_False()
+    tmp_File   .is_File().assert_Is_True()
+    <span class="hljs-string">'.gitAAA'</span>  .is_File().assert_Is_False()
 
   it <span class="hljs-string">'realPath'</span>, <span class="hljs-function">-&gt;</span>
-    expect(<span class="hljs-string">''</span>.realPath).to.be.an(<span class="hljs-string">'function'</span>)
-    expect(<span class="hljs-string">'.git'</span>        .realPath()).to.equal(process.cwd().path_Combine(<span class="hljs-string">'.git'</span>      ))
-    expect(<span class="hljs-string">'.gitignore'</span>  .realPath()).to.equal(process.cwd().path_Combine(<span class="hljs-string">'.gitignore'</span>))
-    expect(<span class="hljs-string">'.gitignore2'</span> .realPath()).to.equal(<span class="hljs-literal">null</span>)
+    tmp_Folder.realPath().assert_Is process.cwd().path_Combine tmp_Folder
+    tmp_File  .realPath().assert_Is process.cwd().path_Combine tmp_File
+    assert_Is_Null <span class="hljs-string">'.gitignore2'</span> .realPath()
 
   it <span class="hljs-string">'save_As'</span>, <span class="hljs-function">-&gt;</span>
-    file_Name  = <span class="hljs-string">'_tmp_file_'</span>  .add_Random_String(<span class="hljs-number">5</span>)
-    file_Value1 = <span class="hljs-string">'value'</span>.add_Random_String(<span class="hljs-number">5</span>)
-    file_Value2 = <span class="hljs-string">'value'</span>.add_Random_String(<span class="hljs-number">5</span>)
+    file_Name  = <span class="hljs-string">'_tmp_file_'</span>.add_Random_String(<span class="hljs-number">5</span>)
+    file_Value1 = <span class="hljs-string">'value'</span>    .add_Random_String(<span class="hljs-number">5</span>)
+    file_Value2 = <span class="hljs-string">'value'</span>    .add_Random_String(<span class="hljs-number">5</span>)
 
     file_Name.exists().assert_Is_False()
 
@@ -415,6 +491,24 @@ describe <span class="hljs-string">'fs'</span>,<span class="hljs-function">-&gt;
     file_Name.file_Delete()       .assert_Is_True()
 
     <span class="hljs-string">''</span>.save_As.assert_Is <span class="hljs-string">''</span>.saveAs
+
+
+  it <span class="hljs-string">'Save_As file path must be 255 characters max'</span>, <span class="hljs-function">-&gt;</span>
+    file_Name    = <span class="hljs-string">'_tmp_file_'</span>.add_Random_String(<span class="hljs-number">245</span>)
+    file_Content = <span class="hljs-string">''</span>.add_Random_String(<span class="hljs-number">100</span>);
+    file_Name.length.assert_Is(<span class="hljs-number">255</span>);
+    file_Content.save_As(file_Name)           <span class="hljs-comment"># save_As returns full path to file created</span>
+                .assert_File_Exists()         <span class="hljs-comment"># confirms it exists</span>
+                .assert_File_Deleted()        <span class="hljs-comment"># deletes file and confirms deletion</span>
+
+  it <span class="hljs-string">'Save_As file path must be 255 characters max (file must not be created)'</span>, <span class="hljs-function">-&gt;</span>
+    file_Name    = <span class="hljs-string">'_tmp_file_'</span>.add_Random_String(<span class="hljs-number">1000</span>)
+    file_Content = <span class="hljs-string">''</span>.add_Random_String(<span class="hljs-number">100</span>);
+    file_Name.length                .assert_Is(<span class="hljs-number">1010</span>);
+    file_Content                    .save_As(file_Name)
+                                    .assert_Is_False()
+
+    file_Name.exists()              .assert_Is_False()
 
   it <span class="hljs-string">'temp_File'</span>,<span class="hljs-function">-&gt;</span>
     value = <span class="hljs-string">"abc"</span>.add_5_Letters()

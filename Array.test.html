@@ -19,41 +19,6 @@
           <div id="jump_page">
             
               
-              <a class="source" href="Array.html">
-                Array.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Boolean.html">
-                Boolean.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Function.html">
-                Function.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Number.html">
-                Number.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Object.html">
-                Object.litcoffee
-              </a>
-            
-              
-              <a class="source" href="String.html">
-                String.litcoffee
-              </a>
-            
-              
-              <a class="source" href="_register.html">
-                _register.js
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -84,6 +49,46 @@
               </a>
             
               
+              <a class="source" href="fluentnode.html">
+                fluentnode.coffee
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.md
+              </a>
+            
+              
+              <a class="source" href="Array.html">
+                Array.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Boolean.html">
+                Boolean.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Function.html">
+                Function.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Number.html">
+                Number.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Object.html">
+                Object.litcoffee
+              </a>
+            
+              
+              <a class="source" href="String.html">
+                String.litcoffee
+              </a>
+            
+              
               <a class="source" href="console.html">
                 console.litcoffee
               </a>
@@ -99,18 +104,23 @@
               </a>
             
               
-              <a class="source" href="globals.html">
-                globals.litcoffee
+              <a class="source" href="http.GET.html">
+                http.GET.litcoffee
+              </a>
+            
+              
+              <a class="source" href="http.POST.html">
+                http.POST.litcoffee
+              </a>
+            
+              
+              <a class="source" href="http.Server.html">
+                http.Server.litcoffee
               </a>
             
               
               <a class="source" href="http.html">
                 http.litcoffee
-              </a>
-            
-              
-              <a class="source" href="index.html">
-                index.md
               </a>
             
               
@@ -124,33 +134,48 @@
               </a>
             
               
-              <a class="source" href="Array.test.html">
-                Array.test.coffee
+              <a class="source" href="encoding.html">
+                encoding.litcoffee
               </a>
             
               
-              <a class="source" href="Boolean.test.html">
-                Boolean.test.coffee
+              <a class="source" href="globals.html">
+                globals.litcoffee
               </a>
             
               
-              <a class="source" href="Function.test.html">
-                Function.test.coffee
+              <a class="source" href="assert_Array.test.html">
+                assert_Array.test.coffee
               </a>
             
               
-              <a class="source" href="Number.test.html">
-                Number.test.coffee
+              <a class="source" href="assert_Boolean.test.html">
+                assert_Boolean.test.coffee
               </a>
             
               
-              <a class="source" href="Object.test.html">
-                Object.test.coffee
+              <a class="source" href="assert_Function.test.html">
+                assert_Function.test.coffee
               </a>
             
               
-              <a class="source" href="String.test.html">
-                String.test.coffee
+              <a class="source" href="assert_Number.test.html">
+                assert_Number.test.coffee
+              </a>
+            
+              
+              <a class="source" href="assert_Object.test.html">
+                assert_Object.test.coffee
+              </a>
+            
+              
+              <a class="source" href="assert_String.test.html">
+                assert_String.test.coffee
+              </a>
+            
+              
+              <a class="source" href="fluentnode.test.html">
+                fluentnode.test.coffee
               </a>
             
               
@@ -199,8 +224,18 @@
               </a>
             
               
-              <a class="source" href="globals.test.html">
-                globals.test.coffee
+              <a class="source" href="http.GET.test.html">
+                http.GET.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.POST.test.html">
+                http.POST.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.Server.test.html">
+                http.Server.test.coffee
               </a>
             
               
@@ -216,6 +251,16 @@
               
               <a class="source" href="process.test.html">
                 process.test.coffee
+              </a>
+            
+              
+              <a class="source" href="encoding.test.html">
+                encoding.test.coffee
+              </a>
+            
+              
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
               </a>
             
           </div>
@@ -238,74 +283,195 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              
+              <p>back to <a href="fluent.html">main</a></p>
+
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/assert/assert_Array'</span>)
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/assert/assert_Function'</span>)
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/assert/assert_Object'</span>)
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/fluentnode'</span>)
 
-assert = <span class="hljs-built_in">require</span> <span class="hljs-string">'assert'</span>
+expect     = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chai'</span>).expect
 
-describe <span class="hljs-string">'Assert | Array |'</span>,<span class="hljs-function">-&gt;</span>
+describe <span class="hljs-string">'| js-native | Array'</span>,<span class="hljs-function">-&gt;</span>
+  it <span class="hljs-string">'add'</span>,<span class="hljs-function">-&gt;</span>
+    [       ].add.assert_Is_Function()
+    [       ].add( <span class="hljs-string">'a'</span>     ).assert_Is([<span class="hljs-string">'a'</span>])
+    [<span class="hljs-string">'a'</span>    ].add( <span class="hljs-string">'b'</span>     ).assert_Is([<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>])
+    [<span class="hljs-string">'a'</span>    ].add( <span class="hljs-string">'b'</span>,<span class="hljs-string">'c'</span> ).assert_Is([<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>,<span class="hljs-string">'c'</span>])
+    [<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>].add( <span class="hljs-string">'c'</span>,<span class="hljs-string">'d'</span> ).assert_Is([<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>,<span class="hljs-string">'c'</span>,<span class="hljs-string">'d'</span>])
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'1'</span>].add( <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span> ).assert_Is([<span class="hljs-string">'1'</span>,<span class="hljs-string">'1'</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>])
 
-  it <span class="hljs-string">'assert_Is_Array'</span>, <span class="hljs-function">-&gt;</span>
-    [].assert_Is_Array.assert_Is_Function()
-    [].assert_Is_Array().assert_Is_Equal_To({})
-    [].assert_Is_Array().assert_Is_Equal_To([])
-    [].assert_Is_Array().assert_Is_Not_Equal_To([<span class="hljs-string">'a'</span>])
+    a = []
+    a.add(<span class="hljs-string">'1'</span>)
+    a.assert_Is([<span class="hljs-string">'1'</span>])
+    a.add(<span class="hljs-string">'2'</span>,<span class="hljs-string">'3'</span>)
+    a.assert_Is([<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>,<span class="hljs-string">'3'</span>])
+    a.add(<span class="hljs-number">4</span>).add(<span class="hljs-number">5</span>,<span class="hljs-number">6</span>)
+    a.assert_Is([<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>,<span class="hljs-string">'3'</span>,<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>])
 
-  it <span class="hljs-string">'assert_Size_Is'</span>, <span class="hljs-function">-&gt;</span>
-    [       ].assert_Size_Is.  assert_Is_Function()
-    [       ].assert_Size_Is(<span class="hljs-number">0</span>).assert_Is_Equal_To([      ])
-    [<span class="hljs-string">'a'</span>    ].assert_Size_Is(<span class="hljs-number">1</span>).assert_Is_Equal_To([<span class="hljs-string">'a'</span>   ])
-    [<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>].assert_Size_Is(<span class="hljs-number">2</span>).assert_Is_Equal_To([<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>])
+    [].add( <span class="hljs-literal">null</span>,    ).assert_Is([<span class="hljs-literal">null</span>])
+      .add( <span class="hljs-literal">undefined</span>).assert_Is([<span class="hljs-literal">null</span>,<span class="hljs-literal">undefined</span>            ])
+      .add( <span class="hljs-number">1</span>        ).assert_Is([<span class="hljs-literal">null</span>,<span class="hljs-literal">undefined</span>,<span class="hljs-number">1</span>          ])
+      .add( <span class="hljs-string">'a'</span>      ).assert_Is([<span class="hljs-literal">null</span>,<span class="hljs-literal">undefined</span>,<span class="hljs-number">1</span>,<span class="hljs-string">'a'</span>      ])
+      .add( [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]    ).assert_Is([<span class="hljs-literal">null</span>,<span class="hljs-literal">undefined</span>,<span class="hljs-number">1</span>,<span class="hljs-string">'a'</span>,[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]])
 
-  it <span class="hljs-string">'assert_Size_Is_Bigger_Than'</span>,<span class="hljs-function">-&gt;</span>
-    [       ].assert_Size_Is_Bigger_Than.  assert_Is_Function()
-    [       ].assert_Size_Is_Bigger_Than(-<span class="hljs-number">1</span>).assert_Is_Equal_To([      ])
-    [<span class="hljs-string">''</span>     ].assert_Size_Is_Bigger_Than(<span class="hljs-number">0</span>).assert_Is_Equal_To([<span class="hljs-string">''</span>    ])
-    [<span class="hljs-string">'a'</span>    ].assert_Size_Is_Bigger_Than(<span class="hljs-number">0</span>).assert_Is_Equal_To([<span class="hljs-string">'a'</span>   ])
-    [<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>].assert_Size_Is_Bigger_Than(<span class="hljs-number">1</span>).assert_Is_Equal_To([<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>])
-    (<span class="hljs-function">-&gt;</span> [<span class="hljs-string">''</span> ].assert_Size_Is_Bigger_Than(-<span class="hljs-number">1</span>)).assert_Not_Throws()
-    (<span class="hljs-function">-&gt;</span> [<span class="hljs-string">''</span> ].assert_Size_Is_Bigger_Than(<span class="hljs-number">1</span>)).assert_Throws()
+  it <span class="hljs-string">'contains'</span>,<span class="hljs-function">-&gt;</span>
+    [].contains.assert_Is_Function()
+    [            ].contains(   ).assert_Is_False()
+    [            ].contains(<span class="hljs-string">''</span> ).assert_Is_False()
+    [<span class="hljs-string">''</span>          ].contains(<span class="hljs-string">''</span> ).assert_Is_True()
+    [<span class="hljs-string">''</span>          ].contains(   ).assert_Is_False()
+    [<span class="hljs-string">'1'</span>         ].contains(<span class="hljs-string">'1'</span>).assert_Is_True()
+    [<span class="hljs-string">'1'</span>         ].contains(<span class="hljs-string">'2'</span>).assert_Is_False()
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>     ].contains(<span class="hljs-string">'1'</span>).assert_Is_True()
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>     ].contains(<span class="hljs-string">'2'</span>).assert_Is_True()
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>     ].contains(<span class="hljs-string">'3'</span>).assert_Is_False()
 
-    using [].assert_Size_Is_Bigger_Than, <span class="hljs-function">-&gt;</span>
-      @.assert_Is [].assert_Size_Is_Greater_Than
-      @.assert_Is [].assert_Size_Is_Above
-      @.assert_Is [].assert_Is_Greater_Than
-      @.assert_Is [].assert_Is_Bigger_Than
-      @.assert_Is [].assert_Greater_Than
-      @.assert_Is [].assert_Bigger_Than
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>     ].contains([<span class="hljs-string">'5'</span>    ]).assert_Is_False()
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>     ].contains([<span class="hljs-string">'5'</span>,<span class="hljs-string">'1'</span>]).assert_Is_False()
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>     ].contains([<span class="hljs-string">'1'</span>    ]).assert_Is_True()
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>     ].contains([<span class="hljs-string">'2'</span>    ]).assert_Is_True()
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>     ].contains([<span class="hljs-string">'1'</span>,<span class="hljs-string">'1'</span>]).assert_Is_True()
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>     ].contains([<span class="hljs-string">'2'</span>,<span class="hljs-string">'1'</span>]).assert_Is_True()
 
+  it <span class="hljs-string">'empty'</span>,<span class="hljs-function">-&gt;</span>
+    expect([            ].empty).to.be.an(<span class="hljs-string">'Function'</span>)
+    expect([            ].empty()).to.be.<span class="hljs-literal">true</span>
+    expect([<span class="hljs-string">''</span>          ].empty()).to.be.<span class="hljs-literal">false</span>
+    expect([<span class="hljs-literal">null</span>        ].empty()).to.be.<span class="hljs-literal">false</span>
 
-  it <span class="hljs-string">'assert_Size_Is_Not'</span>, <span class="hljs-function">-&gt;</span>
-    [       ].assert_Size_Is_Not.  assert_Is_Function()
-    [       ].assert_Size_Is_Not(<span class="hljs-number">1</span>).assert_Is_Equal_To([      ])
-    [<span class="hljs-string">'a'</span>    ].assert_Size_Is_Not(<span class="hljs-number">2</span>).assert_Is_Equal_To([<span class="hljs-string">'a'</span>   ])
-    [<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>].assert_Size_Is_Not(<span class="hljs-number">3</span>,).assert_Is_Equal_To([<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>])
+  it <span class="hljs-string">'first'</span>,<span class="hljs-function">-&gt;</span>
+    expect([            ].first).to.be.an(<span class="hljs-string">'Function'</span>)
+    expect([            ].first()).to.equal(<span class="hljs-literal">null</span>)
+    expect([<span class="hljs-string">''</span>          ].first()).to.equal(<span class="hljs-string">''</span>)
+    expect([<span class="hljs-string">'123'</span>       ].first()).to.equal(<span class="hljs-string">'123'</span>)
+    expect([<span class="hljs-string">'123'</span>, <span class="hljs-string">'abc'</span>].first()).to.equal(<span class="hljs-string">'123'</span>)
+    expect([<span class="hljs-literal">null</span>, <span class="hljs-string">'abc'</span> ].first()).to.equal(<span class="hljs-literal">null</span>)
 
-  it <span class="hljs-string">'assert_Contains'</span>, <span class="hljs-function">-&gt;</span>
-    [       ].assert_Contains.  assert_Is_Function()
-    [<span class="hljs-string">'a'</span>    ].assert_Contains(<span class="hljs-string">'a'</span>).assert_Is_Equal_To([<span class="hljs-string">'a'</span>   ])
-    [<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>].assert_Contains(<span class="hljs-string">'b'</span>).assert_Is_Equal_To([<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>])
-    (<span class="hljs-function">-&gt;</span> [<span class="hljs-string">'a'</span>].assert_Contains(<span class="hljs-string">''</span>)).assert_Throws()
+  it <span class="hljs-string">'fourth'</span>,<span class="hljs-function">-&gt;</span>
+    expect([               ].fourth).to.be.an(<span class="hljs-string">'Function'</span>)
+    expect([               ].fourth()).to.equal(<span class="hljs-literal">null</span>)
+    expect([<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>,<span class="hljs-string">'3'</span>,<span class="hljs-string">'4'</span>].fourth()).to.equal(<span class="hljs-string">'4'</span>)
 
-  it <span class="hljs-string">'assert_Not_Contains'</span>, <span class="hljs-function">-&gt;</span>
-    [       ].assert_Not_Contains.assert_Is_Function()
-    [<span class="hljs-string">'a'</span>    ].assert_Not_Contains(<span class="hljs-string">'1'</span>).assert_Is_Equal_To([<span class="hljs-string">'a'</span>   ])
-    [<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>].assert_Not_Contains(<span class="hljs-string">'2'</span>).assert_Is_Equal_To([<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>])
-    (<span class="hljs-function">-&gt;</span> [<span class="hljs-string">''</span> ].assert_Not_Contains(<span class="hljs-string">''</span>)).assert_Throws()
+  it <span class="hljs-string">'item'</span>,<span class="hljs-function">-&gt;</span>
+    [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>].item(<span class="hljs-number">0</span>).assert_Is(<span class="hljs-number">0</span>)
+    [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>].item(<span class="hljs-number">1</span>).assert_Is(<span class="hljs-number">1</span>)
+    assert_Is_Null([<span class="hljs-number">0</span>,<span class="hljs-number">1</span>].item(<span class="hljs-number">2</span>))
+    assert_Is_Null([<span class="hljs-number">0</span>,<span class="hljs-number">1</span>].item(-<span class="hljs-number">1</span>))
+    assert_Is_Null([<span class="hljs-number">0</span>,<span class="hljs-number">1</span>].item(<span class="hljs-number">9999</span>))
+    assert_Is_Null([<span class="hljs-number">0</span>,<span class="hljs-number">1</span>].item(<span class="hljs-literal">null</span>))
+    assert_Is_Null([<span class="hljs-number">0</span>,<span class="hljs-number">1</span>].item(<span class="hljs-literal">false</span>))
 
-  it <span class="hljs-string">'assert_Empty'</span>, <span class="hljs-function">-&gt;</span>
-    [].assert_Empty          .assert_Is_Function()
-    [].assert_Empty()        .assert_Is_Equal_To([])
-    (<span class="hljs-function">-&gt;</span> [<span class="hljs-string">'a'</span>].assert_Empty()).assert_Throws()
+  it <span class="hljs-string">'last'</span>, <span class="hljs-function">-&gt;</span>
+    expect([            ].last).to.be.an(<span class="hljs-string">'Function'</span>)
+    expect([            ].last()).to.equal(<span class="hljs-literal">null</span>)
+    expect([<span class="hljs-string">''</span>          ].last()).to.equal(<span class="hljs-string">''</span>)
+    expect([<span class="hljs-string">'123'</span>       ].last()).to.equal(<span class="hljs-string">'123'</span>)
+    expect([<span class="hljs-string">'123'</span>, <span class="hljs-string">'abc'</span>].last()).to.equal(<span class="hljs-string">'abc'</span>)
+    expect([<span class="hljs-string">'123'</span>, <span class="hljs-literal">null</span> ].last()).to.equal(<span class="hljs-literal">null</span>)
 
-  it <span class="hljs-string">'assert_Not_Empty'</span>, <span class="hljs-function">-&gt;</span>
-    [    ].assert_Not_Empty.  assert_Is_Function()
-    [<span class="hljs-string">'ab'</span>].assert_Not_Empty().assert_Is_Equal_To([<span class="hljs-string">'ab'</span>])
-    (<span class="hljs-function">-&gt;</span> [].assert_Not_Empty()).assert_Throws()</pre></div></div>
+  it <span class="hljs-string">'not_Contains'</span>,<span class="hljs-function">-&gt;</span>
+    [].not_Contains.assert_Is_Function()
+    [            ].not_Contains(   ).assert_Is_True()
+    [            ].not_Contains(<span class="hljs-string">''</span> ).assert_Is_True()
+    [<span class="hljs-string">''</span>          ].not_Contains(<span class="hljs-string">''</span> ).assert_Is_False()
+    [<span class="hljs-string">''</span>          ].not_Contains(   ).assert_Is_True()
+    [<span class="hljs-string">'1'</span>         ].not_Contains(<span class="hljs-string">'1'</span>).assert_Is_False()
+    [<span class="hljs-string">'1'</span>         ].not_Contains(<span class="hljs-string">'2'</span>).assert_Is_True()
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>     ].not_Contains(<span class="hljs-string">'1'</span>).assert_Is_False()
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>     ].not_Contains(<span class="hljs-string">'2'</span>).assert_Is_False()
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>     ].not_Contains(<span class="hljs-string">'3'</span>).assert_Is_True()
+
+  it <span class="hljs-string">'not_Empty'</span>,<span class="hljs-function">-&gt;</span>
+    [            ].not_Empty.assert_Is_Function()
+    [            ].not_Empty().assert_Is_False()
+    [<span class="hljs-string">''</span>          ].not_Empty().assert_Is_True()
+    [<span class="hljs-literal">null</span>        ].not_Empty().assert_Is_True()
+
+  it <span class="hljs-string">'log'</span>, <span class="hljs-function">-&gt;</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>see ‘{array}.log” test in test-fluent-console</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+  it <span class="hljs-string">'nth'</span>,<span class="hljs-function">-&gt;</span>
+    [].nth.assert_Is([].item)
+
+  it <span class="hljs-string">'remove_At'</span>,<span class="hljs-function">-&gt;</span>
+    [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>].remove_At(<span class="hljs-number">0</span>).assert_Is [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]
+    [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>].remove_At(<span class="hljs-number">1</span>).assert_Is [<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]
+    [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>].remove_At(<span class="hljs-number">2</span>).assert_Is [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]
+    [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>].remove_At(<span class="hljs-number">4</span>).assert_Is [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]
+
+  it <span class="hljs-string">'remove_First'</span>,<span class="hljs-function">-&gt;</span>
+    [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>].remove_First().assert_Is [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]
+    [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>  ].remove_First().assert_Is [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>  ]
+    [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>    ].remove_First().assert_Is [<span class="hljs-number">3</span>,<span class="hljs-number">4</span>    ]
+    [<span class="hljs-number">3</span>,<span class="hljs-number">4</span>      ].remove_First().assert_Is [<span class="hljs-number">4</span>      ]
+
+  it <span class="hljs-string">'remove_If_Contains'</span>,<span class="hljs-function">-&gt;</span>
+    [<span class="hljs-string">'0'</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>].remove_If_Contains(<span class="hljs-string">'0'</span>).assert_Is [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>  ]
+    [<span class="hljs-string">'0'</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>  ].remove_If_Contains(<span class="hljs-number">1</span>  ).assert_Is [<span class="hljs-string">'0'</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]
+    [<span class="hljs-string">'0'</span>,<span class="hljs-string">'12'</span>,<span class="hljs-string">'34'</span>].remove_If_Contains(<span class="hljs-string">'2'</span>).assert_Is [<span class="hljs-string">'0'</span>,<span class="hljs-string">'34'</span> ]
+    [<span class="hljs-string">'0'</span>,<span class="hljs-string">'14'</span>,<span class="hljs-string">'34'</span>].remove_If_Contains(<span class="hljs-string">'4'</span>).assert_Is [<span class="hljs-string">'0'</span>      ]
+
+  it <span class="hljs-string">'second'</span>,<span class="hljs-function">-&gt;</span>
+    expect([            ].second).to.be.an(<span class="hljs-string">'Function'</span>)
+    expect([            ].second()).to.equal(<span class="hljs-literal">null</span>)
+    expect([<span class="hljs-string">''</span>          ].second()).to.equal(<span class="hljs-literal">null</span>)
+    expect([<span class="hljs-string">'123'</span>       ].second()).to.equal(<span class="hljs-literal">null</span>)
+    expect([<span class="hljs-string">'123'</span>, <span class="hljs-string">'abc'</span>].second()).to.equal(<span class="hljs-string">'abc'</span>)
+    expect([<span class="hljs-string">'123'</span>, <span class="hljs-literal">null</span> ].second()).to.equal(<span class="hljs-literal">null</span>)
+
+  it <span class="hljs-string">'size'</span>,<span class="hljs-function">-&gt;</span>
+    expect([            ].size).to.be.an(<span class="hljs-string">'Function'</span>)
+    expect([            ].size()).to.equal(<span class="hljs-number">0</span>)
+    expect([<span class="hljs-string">''</span>          ].size()).to.equal(<span class="hljs-number">1</span>)
+    expect([<span class="hljs-string">'123'</span>       ].size()).to.equal(<span class="hljs-number">1</span>)
+    expect([<span class="hljs-string">'123'</span>, <span class="hljs-string">'abc'</span>].size()).to.equal(<span class="hljs-number">2</span>)
+    expect([<span class="hljs-string">'123'</span>, <span class="hljs-literal">null</span> ].size()).to.equal(<span class="hljs-number">2</span>)
+
+  it <span class="hljs-string">'starts_With'</span>, <span class="hljs-function">-&gt;</span>
+    [            ].starts_With.assert_Is_Function()
+    [            ].starts_With(   ).assert_Is_Equal_To([        ])
+    [<span class="hljs-string">''</span>          ].starts_With(<span class="hljs-string">''</span> ).assert_Is_Equal_To([        ])
+    [<span class="hljs-string">' '</span>         ].starts_With(<span class="hljs-string">' '</span>).assert_Is_Equal_To([<span class="hljs-string">' '</span>     ])
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'23'</span>,<span class="hljs-string">'2'</span>].starts_With(<span class="hljs-string">'1'</span>).assert_Is_Equal_To([<span class="hljs-string">'1'</span>     ])
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'23'</span>,<span class="hljs-string">'2'</span>].starts_With(<span class="hljs-string">'2'</span>).assert_Is_Equal_To([<span class="hljs-string">'23'</span>,<span class="hljs-string">'2'</span>])
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'23'</span>,<span class="hljs-string">'2'</span>].starts_With(<span class="hljs-string">'4'</span>).assert_Is_Equal_To([        ])
+
+  it <span class="hljs-string">'third'</span> ,<span class="hljs-function">-&gt;</span>
+    expect([               ].third).to.be.an(<span class="hljs-string">'Function'</span>)
+    expect([               ].third()).to.equal(<span class="hljs-literal">null</span>)
+    expect([<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>,<span class="hljs-string">'3'</span>,<span class="hljs-string">'4'</span>].third()).to.equal(<span class="hljs-string">'3'</span>)
+
+  it <span class="hljs-string">'take'</span>, <span class="hljs-function">-&gt;</span>
+    [            ].take.assert_Is_Function()
+    [            ].take( ).assert_Is_Equal_To([        ])
+    [<span class="hljs-string">''</span>          ].take(<span class="hljs-number">0</span>).assert_Is_Equal_To([        ])
+    [<span class="hljs-string">' '</span>         ].take(<span class="hljs-number">1</span>).assert_Is_Equal_To([<span class="hljs-string">' '</span>     ])
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'23'</span>,<span class="hljs-string">'2'</span>].take(<span class="hljs-number">1</span>).assert_Is_Equal_To([<span class="hljs-string">'1'</span>     ])
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'23'</span>,<span class="hljs-string">'2'</span>].take(<span class="hljs-number">2</span>).assert_Is_Equal_To([<span class="hljs-string">'1'</span>,<span class="hljs-string">'23'</span>])
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'23'</span>,<span class="hljs-string">'2'</span>].take(<span class="hljs-number">0</span>).assert_Is_Equal_To([        ])
+
+  it <span class="hljs-string">'unique'</span>, <span class="hljs-function">-&gt;</span>
+    [            ].unique.assert_Is_Function()
+    [            ].unique().assert_Is_Equal_To([])
+    [<span class="hljs-string">''</span>          ].unique().assert_Is_Equal_To([<span class="hljs-string">''</span>])
+    [<span class="hljs-string">'1'</span>         ].unique().assert_Is_Equal_To([<span class="hljs-string">'1'</span>])
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>     ].unique().assert_Is_Equal_To([<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>])
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'1'</span>     ].unique().assert_Is_Equal_To([<span class="hljs-string">'1'</span>])
+    [<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>,<span class="hljs-string">'1'</span> ].unique().assert_Is_Equal_To([<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>])</pre></div></div>
             
         </li>
         

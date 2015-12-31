@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>index.md</title>
+  <title>http.Server.litcoffee</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -271,7 +271,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>index.md</h1>
+                  <h1>http.Server.litcoffee</h1>
               </div>
           </li>
         
@@ -283,53 +283,108 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <!--
-the style tag below will hide the default docco title which in the current page is
-index.md and doesn't make sense to show
--->
-<style type="text/css">
-#title      { display : none; }
-</style>
-
-<p>NodeJS’s <a href="https://github.com/o2platform/fluentnode">FluentNode</a> is a set of Fluent apis for node applications (based on the concepts used in O2 Platforms C#’s FluentSharp APIs) and
-similar to UnderscoreJS except that FluentNode actualy extends the target Javascript objects)</p>
-<h2 id="install">Install</h2>
-<p>To use clone the <a href="https://github.com/o2platform/fluentnode">GitHub repo</a> or install using</p>
-<pre><code>npm install fluentnode --save
-</code></pre><h2 id="annotated-source-code">Annotated source code</h2>
-<p>The  extensions/protototypes are included the following files (and tests):</p>
-<p>####Core Javascript classes</p>
-<ul>
-<li><a href="Array.html">Array</a> (<a href="Array.test.html">tests</a>)</li>
-<li><a href="Boolean.html">Boolean</a> (<a href="Boolean.test.html">tests</a>)</li>
-<li><a href="Function.html">Function</a> (<a href="Function.test.html">tests</a>)</li>
-<li><a href="Number.html">Number</a> (<a href="Number.test.html">tests</a>)</li>
-<li><a href="Object.html">Object</a> (<a href="Object.test.html">tests</a>)</li>
-<li><a href="String.html">String</a> (<a href="String.test.html">tests</a>)</li>
-</ul>
-<p>####Node classes</p>
-<ul>
-<li><a href="console.html">console</a> (<a href="console.test.html">tests</a>)</li>
-<li><a href="fs.html">fs</a> (<a href="fs.test.html">tests</a>)</li>
-<li><a href="http.html">http</a> (<a href="http.test.html">tests</a>)</li>
-<li><a href="path.html">path</a> (<a href="path.test.html">tests</a>)</li>
-<li><a href="process.html">process</a> (<a href="process.test.html">tests</a>)</li>
-</ul>
-<p>####Assert helpers</p>
-<ul>
-<li><a href="assert_Array.html">assert Array</a></li>
-<li><a href="assert_Boolean.html">assert Boolean</a></li>
-<li><a href="assert_Function.html">assert Function</a></li>
-<li><a href="assert_Number.html">assert Number</a></li>
-<li><a href="assert_Object.html">assert Object</a></li>
-<li><a href="assert_String.html">assert String</a></li>
-</ul>
-<h4 id="other-files">Other files</h4>
-<ul>
-<li><a href="_register.html">_register.js</a></li>
-</ul>
+              <p>dependencies</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>http  = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>)
+https = <span class="hljs-built_in">require</span>(<span class="hljs-string">'https'</span>);
+url   = <span class="hljs-built_in">require</span>(<span class="hljs-string">'url'</span>)
+Server = http.Server</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p><strong>Server::add_Sockets_Close_Suport</strong></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-attribute">Server</span>::add_Sockets_Close_Suport = <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>add support for capturing and closing open sockets</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  @._sockets = {}
+  @._socket_Count = <span class="hljs-number">0</span>;
+  @.<span class="hljs-literal">on</span> <span class="hljs-string">'connection'</span>,  <span class="hljs-function"><span class="hljs-params">(socket)</span>=&gt;</span>
+    socket_id = @._socket_Count++
+    @._sockets[socket_id] = socket
+
+    socket.<span class="hljs-literal">on</span> <span class="hljs-string">'close'</span>,  <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>
+      <span class="hljs-keyword">delete</span> @._sockets[socket_id];
+  @
+
+<span class="hljs-attribute">Server</span>::close_And_Destroy_Sockets = <span class="hljs-function"><span class="hljs-params">(callback)</span>-&gt;</span>
+  <span class="hljs-keyword">if</span> (@._sockets != <span class="hljs-literal">undefined</span>)                    <span class="hljs-comment"># if this was set, destroy open sockets</span>
+    <span class="hljs-keyword">for</span> socket_Id <span class="hljs-keyword">of</span> @._sockets
+        @._sockets[socket_Id].destroy()
+        <span class="hljs-keyword">delete</span> @._sockets[socket_Id];
+  @.close -&gt;
+    callback()
+
+<span class="hljs-attribute">Server</span>::listen_OnPort_Saying = <span class="hljs-function"><span class="hljs-params">(port, text, callback)</span>-&gt;</span>
+  ip = <span class="hljs-string">'127.0.0.1'</span>
+  @.respond_With_String_As_Text(text)
+      .add_Sockets_Close_Suport()
+      .listen port, ip, <span class="hljs-function">-&gt;</span>
+          callback()
+
+<span class="hljs-attribute">Server</span>::respond_With_Request_Headers = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+  <span class="hljs-keyword">delete</span> @._events.request
+<span class="hljs-function">  <span class="hljs-title">simple_Response</span> = <span class="hljs-params">(req, res)</span> -&gt;</span>
+    res.writeHead(<span class="hljs-number">200</span>, {<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>})
+    res.end(req.headers.json_Str())
+  @.addListener(<span class="hljs-string">'request'</span>, simple_Response)
+  @
+
+<span class="hljs-attribute">Server</span>::respond_With_Request_Url = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+  <span class="hljs-keyword">delete</span> @._events.request
+<span class="hljs-function">  <span class="hljs-title">simple_Response</span> = <span class="hljs-params">(req, res)</span> -&gt;</span>
+    res.writeHead(<span class="hljs-number">200</span>, {<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>})
+    data = { <span class="hljs-attribute">url</span>: req.url}
+    res.end(data.json_Str())
+  @.addListener(<span class="hljs-string">'request'</span>, simple_Response)
+  @
+
+<span class="hljs-attribute">Server</span>::respond_With_String_As_Text = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+  <span class="hljs-keyword">delete</span> @._events.request                                <span class="hljs-comment"># removes previous listeners</span>
+<span class="hljs-function">  <span class="hljs-title">simple_Response</span> = <span class="hljs-params">(req, res)</span> -&gt;</span>
+      res.writeHead(<span class="hljs-number">200</span>, {<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'text/plain'</span>})
+      res.end(value)
+  @.addListener(<span class="hljs-string">'request'</span>, simple_Response)
+  @
+
+<span class="hljs-attribute">Server</span>::respond_With_Object_As_Json = <span class="hljs-function"><span class="hljs-params">(value)</span>-&gt;</span>
+  <span class="hljs-keyword">delete</span> @._events.request
+<span class="hljs-function">  <span class="hljs-title">json_Response</span> = <span class="hljs-params">(req, res)</span> -&gt;</span>
+    res.writeHead(<span class="hljs-number">200</span>, {<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>})
+    res.end(value.json_Str())
+  @.addListener(<span class="hljs-string">'request'</span>, json_Response)
+  @
+
+<span class="hljs-attribute">Server</span>::respond_With_Request_Object = <span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>
+  <span class="hljs-keyword">delete</span> @._events.request
+<span class="hljs-function">  <span class="hljs-title">json_Response</span> = <span class="hljs-params">(req, res)</span> -&gt;</span>
+    res.writeHead(<span class="hljs-number">200</span>, {<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>})
+    res.end(req.json_Inspect())                           <span class="hljs-comment"># unfortunatly there doesn't seem to be a way to create a JSON parseable object from req</span>
+  @.addListener(<span class="hljs-string">'request'</span>, json_Response)
+  @</pre></div></div>
             
         </li>
         

@@ -19,41 +19,6 @@
           <div id="jump_page">
             
               
-              <a class="source" href="Array.html">
-                Array.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Boolean.html">
-                Boolean.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Function.html">
-                Function.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Number.html">
-                Number.litcoffee
-              </a>
-            
-              
-              <a class="source" href="Object.html">
-                Object.litcoffee
-              </a>
-            
-              
-              <a class="source" href="String.html">
-                String.litcoffee
-              </a>
-            
-              
-              <a class="source" href="_register.html">
-                _register.js
-              </a>
-            
-              
               <a class="source" href="assert_Array.html">
                 assert_Array.litcoffee
               </a>
@@ -84,6 +49,46 @@
               </a>
             
               
+              <a class="source" href="fluentnode.html">
+                fluentnode.coffee
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.md
+              </a>
+            
+              
+              <a class="source" href="Array.html">
+                Array.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Boolean.html">
+                Boolean.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Function.html">
+                Function.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Number.html">
+                Number.litcoffee
+              </a>
+            
+              
+              <a class="source" href="Object.html">
+                Object.litcoffee
+              </a>
+            
+              
+              <a class="source" href="String.html">
+                String.litcoffee
+              </a>
+            
+              
               <a class="source" href="console.html">
                 console.litcoffee
               </a>
@@ -99,18 +104,23 @@
               </a>
             
               
-              <a class="source" href="globals.html">
-                globals.litcoffee
+              <a class="source" href="http.GET.html">
+                http.GET.litcoffee
+              </a>
+            
+              
+              <a class="source" href="http.POST.html">
+                http.POST.litcoffee
+              </a>
+            
+              
+              <a class="source" href="http.Server.html">
+                http.Server.litcoffee
               </a>
             
               
               <a class="source" href="http.html">
                 http.litcoffee
-              </a>
-            
-              
-              <a class="source" href="index.html">
-                index.md
               </a>
             
               
@@ -124,33 +134,48 @@
               </a>
             
               
-              <a class="source" href="Array.test.html">
-                Array.test.coffee
+              <a class="source" href="encoding.html">
+                encoding.litcoffee
               </a>
             
               
-              <a class="source" href="Boolean.test.html">
-                Boolean.test.coffee
+              <a class="source" href="globals.html">
+                globals.litcoffee
               </a>
             
               
-              <a class="source" href="Function.test.html">
-                Function.test.coffee
+              <a class="source" href="assert_Array.test.html">
+                assert_Array.test.coffee
               </a>
             
               
-              <a class="source" href="Number.test.html">
-                Number.test.coffee
+              <a class="source" href="assert_Boolean.test.html">
+                assert_Boolean.test.coffee
               </a>
             
               
-              <a class="source" href="Object.test.html">
-                Object.test.coffee
+              <a class="source" href="assert_Function.test.html">
+                assert_Function.test.coffee
               </a>
             
               
-              <a class="source" href="String.test.html">
-                String.test.coffee
+              <a class="source" href="assert_Number.test.html">
+                assert_Number.test.coffee
+              </a>
+            
+              
+              <a class="source" href="assert_Object.test.html">
+                assert_Object.test.coffee
+              </a>
+            
+              
+              <a class="source" href="assert_String.test.html">
+                assert_String.test.coffee
+              </a>
+            
+              
+              <a class="source" href="fluentnode.test.html">
+                fluentnode.test.coffee
               </a>
             
               
@@ -199,8 +224,18 @@
               </a>
             
               
-              <a class="source" href="globals.test.html">
-                globals.test.coffee
+              <a class="source" href="http.GET.test.html">
+                http.GET.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.POST.test.html">
+                http.POST.test.coffee
+              </a>
+            
+              
+              <a class="source" href="http.Server.test.html">
+                http.Server.test.coffee
               </a>
             
               
@@ -216,6 +251,16 @@
               
               <a class="source" href="process.test.html">
                 process.test.coffee
+              </a>
+            
+              
+              <a class="source" href="encoding.test.html">
+                encoding.test.coffee
+              </a>
+            
+              
+              <a class="source" href="globals.test.html">
+                globals.test.coffee
               </a>
             
           </div>
@@ -241,28 +286,63 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/assert/assert_Function'</span>)
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../../src/fluentnode'</span>)
 
-describe <span class="hljs-string">'Assert | Function |'</span>, <span class="hljs-function">-&gt;</span>
-  it <span class="hljs-string">'assert_Throws'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-    (<span class="hljs-function">-&gt;</span> throws <span class="hljs-string">'fail'</span>)  .assert_Throws()
-    <span class="hljs-keyword">try</span>
-      (<span class="hljs-function">-&gt;</span> <span class="hljs-number">42</span> == <span class="hljs-number">42</span>)     .assert_Throws()
-    <span class="hljs-keyword">catch</span> error
-      (error == <span class="hljs-string">'fail'</span>) .assert_Is_False()
-      done()
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Abc</span></span>
+  <span class="hljs-attribute">constructor</span>: <span class="hljs-function">-&gt;</span>
+    <span class="hljs-property">@value</span> = <span class="hljs-string">'abc'</span>
+    <span class="hljs-property">@aaaaa</span> = <span class="hljs-string">'abc'</span>
 
-  it <span class="hljs-string">'assert_Not_Throws'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
-    (<span class="hljs-function">-&gt;</span> <span class="hljs-number">42</span> == <span class="hljs-number">42</span>)       .assert_Not_Throws()
-    <span class="hljs-keyword">try</span>
-      (<span class="hljs-function">-&gt;</span> throws <span class="hljs-string">'fail'</span>).assert_Not_Throws()
-    <span class="hljs-keyword">catch</span> error
-      (error == <span class="hljs-string">'fail'</span>) .assert_Is_False()
-      done()
+  <span class="hljs-attribute">getValue</span>: <span class="hljs-function">-&gt;</span>
+    <span class="hljs-property">@value</span>
 
-  it <span class="hljs-string">'assert_Is_Function'</span>, <span class="hljs-function">-&gt;</span>
-    (<span class="hljs-function">-&gt;</span>).assert_Is_Function()
-    (<span class="hljs-function">-&gt;</span>).assert_Is_Function.assert_Is_Function()</pre></div></div>
+  <span class="hljs-attribute">getValue_Inside_Abc</span>: <span class="hljs-function">=&gt;</span>
+    <span class="hljs-property">@value</span>
+
+
+describe <span class="hljs-string">'| js-native | Function'</span>,<span class="hljs-function">-&gt;</span>
+
+  it <span class="hljs-string">'ctor'</span>,<span class="hljs-function">-&gt;</span>
+    Abc.assert_Is_Function().ctor().assert_Is_Object()
+                            .value.assert_Is(<span class="hljs-string">'abc'</span>)
+    Abc.ctor().str().assert_Is(<span class="hljs-keyword">new</span> Abc().str())
+    Abc.ctor().value.assert_Is_Not(<span class="hljs-string">'def'</span>)
+    ((<span class="hljs-keyword">new</span> Abc()).keys_All()).assert_Contains(<span class="hljs-string">'getValue'</span>)
+
+  it <span class="hljs-string">'invoke'</span>,<span class="hljs-function">-&gt;</span>
+    Abc.ctor().getValue.assert_Is_Function()
+    abc = <span class="hljs-keyword">new</span> Abc()
+    (abc.getValue()                   != <span class="hljs-literal">undefined</span>).assert_Is_True()
+    (abc.getValue.invoke()            == <span class="hljs-literal">undefined</span>).assert_Is_True()
+    (abc.getValue_Inside_Abc()        != <span class="hljs-literal">undefined</span>).assert_Is_True()
+    (abc.getValue_Inside_Abc.invoke() != <span class="hljs-literal">undefined</span>).assert_Is_True()
+    abc.getValue_Inside_Abc.invoke().assert_Is(<span class="hljs-string">'abc'</span>)
+    abc.getValue_Inside_Abc.invoke().assert_Is(<span class="hljs-keyword">new</span> Abc() .value)
+    abc.getValue_Inside_Abc.invoke().assert_Is(Abc.ctor().value)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>we could make this test better by adding a check for measuring that the timeout amount is correct</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  it <span class="hljs-string">'invoke_In'</span>, <span class="hljs-function"><span class="hljs-params">(done)</span>-&gt;</span>
+    done.invoke_In.assert_Is_Function()
+    done.invoke_In(<span class="hljs-number">0</span>)
+
+  it <span class="hljs-string">'source_Code'</span>, <span class="hljs-function"><span class="hljs-params">()</span> -&gt;</span>
+    test = <span class="hljs-keyword">new</span> Function(<span class="hljs-string">'return 42;'</span>)
+    test.assert_Is_Function()
+    test.source_Code.assert_Is_Function()
+    test.source_Code().assert_Is(<span class="hljs-string">"function anonymous() {\nreturn 42;\n}"</span>)
+    test.source_Code.assert_Is test.sourceCode</pre></div></div>
             
         </li>
         

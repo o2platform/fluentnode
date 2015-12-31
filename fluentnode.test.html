@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>index.md</title>
+  <title>fluentnode.test.coffee</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -271,7 +271,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>index.md</h1>
+                  <h1>fluentnode.test.coffee</h1>
               </div>
           </li>
         
@@ -283,51 +283,73 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <!--
-the style tag below will hide the default docco title which in the current page is
-index.md and doesn't make sense to show
--->
-<style type="text/css">
-#title      { display : none; }
-</style>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'../src/fluentnode'</span>)
 
-<p>NodeJS’s <a href="https://github.com/o2platform/fluentnode">FluentNode</a> is a set of Fluent apis for node applications (based on the concepts used in O2 Platforms C#’s FluentSharp APIs) and
-similar to UnderscoreJS except that FluentNode actualy extends the target Javascript objects)</p>
-<h2 id="install">Install</h2>
-<p>To use clone the <a href="https://github.com/o2platform/fluentnode">GitHub repo</a> or install using</p>
-<pre><code>npm install fluentnode --save
-</code></pre><h2 id="annotated-source-code">Annotated source code</h2>
-<p>The  extensions/protototypes are included the following files (and tests):</p>
-<p>####Core Javascript classes</p>
-<ul>
-<li><a href="Array.html">Array</a> (<a href="Array.test.html">tests</a>)</li>
-<li><a href="Boolean.html">Boolean</a> (<a href="Boolean.test.html">tests</a>)</li>
-<li><a href="Function.html">Function</a> (<a href="Function.test.html">tests</a>)</li>
-<li><a href="Number.html">Number</a> (<a href="Number.test.html">tests</a>)</li>
-<li><a href="Object.html">Object</a> (<a href="Object.test.html">tests</a>)</li>
-<li><a href="String.html">String</a> (<a href="String.test.html">tests</a>)</li>
-</ul>
-<p>####Node classes</p>
-<ul>
-<li><a href="console.html">console</a> (<a href="console.test.html">tests</a>)</li>
-<li><a href="fs.html">fs</a> (<a href="fs.test.html">tests</a>)</li>
-<li><a href="http.html">http</a> (<a href="http.test.html">tests</a>)</li>
-<li><a href="path.html">path</a> (<a href="path.test.html">tests</a>)</li>
-<li><a href="process.html">process</a> (<a href="process.test.html">tests</a>)</li>
-</ul>
-<p>####Assert helpers</p>
-<ul>
-<li><a href="assert_Array.html">assert Array</a></li>
-<li><a href="assert_Boolean.html">assert Boolean</a></li>
-<li><a href="assert_Function.html">assert Function</a></li>
-<li><a href="assert_Number.html">assert Number</a></li>
-<li><a href="assert_Object.html">assert Object</a></li>
-<li><a href="assert_String.html">assert String</a></li>
-</ul>
-<h4 id="other-files">Other files</h4>
-<ul>
-<li><a href="_register.html">_register.js</a></li>
-</ul>
+describe <span class="hljs-string">'| fluentnode.test'</span>,<span class="hljs-function">-&gt;</span>
+  it <span class="hljs-string">'/utils/*'</span>,<span class="hljs-function">-&gt;</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>/utils/globals</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-built_in">global</span>.existy .assert_Is_Function()
+    <span class="hljs-built_in">global</span>.is_Null.assert_Is_Function()
+    <span class="hljs-built_in">global</span>.log    .assert_Is_Function()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>/utils/encoding</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-string">''</span>.url_Encode.assert_Is_Function()
+
+  it <span class="hljs-string">'/assert/*'</span>,<span class="hljs-function">-&gt;</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>/assert/assert_Array</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    [].empty .assert_Is_Function()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>to-do add one test for each file/require</p>
 
             </div>
             
