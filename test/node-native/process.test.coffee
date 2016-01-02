@@ -6,6 +6,7 @@ describe '| node-native | process',->
     it 'start_Process', ->
       ''.start_Process.assert_Is_Function()
       if os.platform() is 'win32'
+        ### !pragma coverage-skip-block ###
         'cmd'.start_Process('/c','echo').assert_Is_Object()
                                         .constructor.name.assert_Is('ChildProcess')
         'cmd'.start_Process('/c',).pid.assert_Is_Number()
@@ -16,6 +17,7 @@ describe '| node-native | process',->
 
 
     if os.platform() is 'win32'  # test below Fail in Appveyor
+      ### !pragma coverage-skip-block ###
       return
 
     it 'start_Process_Redirect_Console', (done)->

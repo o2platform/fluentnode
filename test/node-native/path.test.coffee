@@ -4,7 +4,7 @@ require('../../src/fluentnode')
 expect  = require('chai').expect
 path    = require('path')
 
-describe '| path',->
+describe '| node-native | path',->
 
   it 'path_Combine', ->
     expect("".path_Combine  ).to.be.an('function')

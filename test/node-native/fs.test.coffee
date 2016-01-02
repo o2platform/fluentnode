@@ -4,7 +4,7 @@ require('../../src/fluentnode')
 
 expect     = require('chai').expect
 
-describe '| fs',->
+describe '| node-native | fs',->
   file_Contents = null
   tmp_File      = null
   tmp_Folder    = null
@@ -110,9 +110,9 @@ describe '| fs',->
 
   it 'file_Lines', ->
     "".file_Lines().assert_Is []
-    tmp_File = "aaaa\nbbbb".save_As('_tmp_file_Lines')
-    tmp_File.file_Lines().assert_Is ['aaaa','bbbb']
-    tmp_File.assert_File_Deleted()
+    tmp_File_2 = "aaaa\nbbbb".save_As('_tmp_file_Lines')
+    tmp_File_2.file_Lines().assert_Is ['aaaa','bbbb']
+    tmp_File_2.assert_File_Deleted()
 
   it 'file_Not_Exists' , ->
     ''.file_Not_Exists.assert_Is_Function()
@@ -139,10 +139,15 @@ describe '| fs',->
 
   it 'files' , ->
     ''.files.assert_Is_Function()
-    tmp_File_2   = '_temp_File_'  .add_5_Letters().file_Create(file_Contents).file_Name()
+    tmp_File_2   = '_temp_File_'  .add_5_Letters().append('.txt').file_Create(file_Contents).file_Name()
     files = './'.files()
     expectedFiles = [tmp_File.real_Path(), tmp_File_2.real_Path()]
+
     files.assert_Contains(expectedFiles)
+
+    files = './'.files('.txt')
+    files.assert_Contains(tmp_File_2.real_Path())
+
     tmp_File_2.assert_File_Deleted()
 
   it 'files_Recursive' , ->
