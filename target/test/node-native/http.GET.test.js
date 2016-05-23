@@ -6,7 +6,7 @@
 
   http = require('http');
 
-  describe('| http.GET', function() {
+  describe('| node-native | http.GET', function() {
     var bad_Url, server, test_Data, test_Ip, test_Port, url;
     test_Port = 45566 + Math.floor((Math.random() * 100) + 1);
     test_Ip = '127.0.0.1';

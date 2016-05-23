@@ -129,7 +129,7 @@
     for (key = i = 0, ref = this.length; 0 <= ref ? i < ref : i > ref; key = 0 <= ref ? ++i : --i) {
       output[this[key]] = this[key];
     }
-    return output.keys();
+    return output.keys_Own();
   };
 
 }).call(this);

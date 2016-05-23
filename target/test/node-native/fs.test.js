@@ -6,7 +6,7 @@
 
   expect = require('chai').expect;
 
-  describe('| fs', function() {
+  describe('| node-native | fs', function() {
     var file_Contents, tmp_File, tmp_Folder;
     file_Contents = null;
     tmp_File = null;
@@ -109,10 +109,11 @@
       return './aaa.js'.file_Exists().assert_Is_False();
     });
     it('file_Lines', function() {
+      var tmp_File_2;
       "".file_Lines().assert_Is([]);
-      tmp_File = "aaaa\nbbbb".save_As('_tmp_file_Lines');
-      tmp_File.file_Lines().assert_Is(['aaaa', 'bbbb']);
-      return tmp_File.assert_File_Deleted();
+      tmp_File_2 = "aaaa\nbbbb".save_As('_tmp_file_Lines');
+      tmp_File_2.file_Lines().assert_Is(['aaaa', 'bbbb']);
+      return tmp_File_2.assert_File_Deleted();
     });
     it('file_Not_Exists', function() {
       ''.file_Not_Exists.assert_Is_Function();
@@ -137,10 +138,12 @@
     it('files', function() {
       var expectedFiles, files, tmp_File_2;
       ''.files.assert_Is_Function();
-      tmp_File_2 = '_temp_File_'.add_5_Letters().file_Create(file_Contents).file_Name();
+      tmp_File_2 = '_temp_File_'.add_5_Letters().append('.txt').file_Create(file_Contents).file_Name();
       files = './'.files();
       expectedFiles = [tmp_File.real_Path(), tmp_File_2.real_Path()];
       files.assert_Contains(expectedFiles);
+      files = './'.files('.txt');
+      files.assert_Contains(tmp_File_2.real_Path());
       return tmp_File_2.assert_File_Deleted();
     });
     it('files_Recursive', function() {

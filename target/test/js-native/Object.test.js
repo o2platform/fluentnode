@@ -57,13 +57,14 @@
       o.json_Inspect().assert_Is("{ o: [Circular] }");
       return o.json_inspect().assert_Is("{ o: [Circular] }");
     });
-    it('keys', function() {
+    it('keys_Own , _keys', function() {
       var abc;
       abc = {
         key1: '',
         key2: ''
       };
-      return abc.keys().assert_Is_Equal_To(['key1', 'key2']);
+      abc.keys_Own().assert_Is_Equal_To(['key1', 'key2']);
+      return abc._keys().assert_Is_Equal_To(['key1', 'key2']);
     });
     it('keys_All', function() {
       var abc;
@@ -80,7 +81,7 @@
         return abc;
 
       })();
-      new abc().keys().assert_Is_Equal_To(['key1', 'key2']);
+      new abc().keys_Own().assert_Is_Equal_To(['key1', 'key2']);
       return new abc().keys_All().assert_Is_Equal_To(['key1', 'key2', 'key1_All', 'key2_All']);
     });
     it('values', function() {

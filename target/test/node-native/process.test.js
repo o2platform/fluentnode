@@ -10,6 +10,8 @@
     it('start_Process', function() {
       ''.start_Process.assert_Is_Function();
       if (os.platform() === 'win32') {
+
+        /* !pragma coverage-skip-block */
         'cmd'.start_Process('/c', 'echo').assert_Is_Object().constructor.name.assert_Is('ChildProcess');
         return 'cmd'.start_Process('/c').pid.assert_Is_Number();
       } else {
@@ -18,6 +20,8 @@
       }
     });
     if (os.platform() === 'win32') {
+
+      /* !pragma coverage-skip-block */
       return;
     }
     it('start_Process_Redirect_Console', function(done) {

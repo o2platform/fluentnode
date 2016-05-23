@@ -8,7 +8,7 @@
 
   path = require('path');
 
-  describe('| path', function() {
+  describe('| node-native | path', function() {
     it('path_Combine', function() {
       expect("".path_Combine).to.be.an('function');
       expect("".path_Combine()).to.be.an('string');

@@ -57,7 +57,7 @@
     value: Object.prototype.json_Inspect
   });
 
-  Object.defineProperty(Object.prototype, 'keys', {
+  Object.defineProperty(Object.prototype, 'keys_Own', {
     enumerable: false,
     writable: true,
     value: function() {
@@ -72,6 +72,12 @@
         return results;
       }).call(this);
     }
+  });
+
+  Object.defineProperty(Object.prototype, '_keys', {
+    enumerable: false,
+    writable: true,
+    value: Object.prototype.keys_Own
   });
 
   Object.defineProperty(Object.prototype, 'keys_All', {

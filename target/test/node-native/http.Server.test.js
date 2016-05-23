@@ -6,7 +6,7 @@
 
   http = require('http');
 
-  describe('| http.Server', function() {
+  describe('| node-native | http.Server', function() {
     var server, test_Data, test_Ip, test_Port, url;
     test_Port = 45566 + Math.floor((Math.random() * 100) + 1);
     test_Ip = '127.0.0.1';
@@ -26,7 +26,7 @@
       return server.close_And_Destroy_Sockets(function() {
         assert_Is_Null(server._handle);
         assert_Is_Null(server.address());
-        server._sockets.keys().assert_Is_Array().assert_Size_Is(0);
+        server._sockets.keys_Own().assert_Is_Array().assert_Size_Is(0);
         return done();
       });
     });
@@ -44,7 +44,7 @@
       server.address().port.assert_Is(test_Port);
       server.address().address.assert_Is(test_Ip);
       server._sockets.assert_Is_Object();
-      server._sockets.keys().assert_Is_Array().assert_Size_Is(0);
+      server._sockets._keys().assert_Is_Array().assert_Size_Is(0);
       return server._socket_Count.assert_Is(0);
     });
     it('respond_With_Request_Headers', function(done) {
