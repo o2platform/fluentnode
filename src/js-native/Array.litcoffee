@@ -118,7 +118,7 @@ Note that all elements (and match) will be converted into strings before compari
     Array::unique  = () ->
       output = {}
       output[@[key]] = @[key] for key in [0...@length]
-      output.keys()
+      output.keys_Own()
 
 
 ---

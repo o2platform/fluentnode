@@ -19,7 +19,7 @@ describe '| node-native | http.Server',->
     server.close_And_Destroy_Sockets ()->
       assert_Is_Null(server._handle)
       assert_Is_Null(server.address())
-      server._sockets.keys().assert_Is_Array().assert_Size_Is(0)
+      server._sockets.keys_Own().assert_Is_Array().assert_Size_Is(0)
       done()
 
   it 'global.__fluentnode.settings.http',->
@@ -30,13 +30,13 @@ describe '| node-native | http.Server',->
 
   it 'createServer_OnPort_Saying',()->
     server.listen_OnPort_Saying.assert_Is_Function()
-    server                  .assert_Instance_Of(http.Server)
-    server._handle          .assert_Is_Not_Null()
-    server.address().port   .assert_Is test_Port
-    server.address().address.assert_Is test_Ip
-    server._sockets         .assert_Is_Object()
-    server._sockets.keys()  .assert_Is_Array().assert_Size_Is(0)
-    server._socket_Count    .assert_Is(0)
+    server                   .assert_Instance_Of(http.Server)
+    server._handle           .assert_Is_Not_Null()
+    server.address().port    .assert_Is test_Port
+    server.address().address .assert_Is test_Ip
+    server._sockets          .assert_Is_Object()
+    server._sockets._keys()  .assert_Is_Array().assert_Size_Is(0)
+    server._socket_Count     .assert_Is(0)
 
   it 'respond_With_Request_Headers', (done)->
     server.respond_With_Request_Headers()

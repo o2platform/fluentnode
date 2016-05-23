@@ -37,9 +37,10 @@ describe '| js-native | Object',->
         o          .json_Inspect().assert_Is "{ o: [Circular] }"
         o          .json_inspect().assert_Is "{ o: [Circular] }"
 
-    it 'keys', ->
+    it 'keys_Own , _keys', ->
         abc = { key1:'', key2:''}
-        abc.keys().assert_Is_Equal_To(['key1', 'key2'])
+        abc.keys_Own().assert_Is_Equal_To(['key1', 'key2'])
+        abc._keys()   .assert_Is_Equal_To(['key1', 'key2'])
 
     it 'keys_All', ->
         class abc
@@ -49,7 +50,7 @@ describe '| js-native | Object',->
             key1_All:->
             key2_All:->
 
-        new abc().keys()    .assert_Is_Equal_To(['key1', 'key2'])
+        new abc().keys_Own().assert_Is_Equal_To(['key1', 'key2'])
         new abc().keys_All().assert_Is_Equal_To(['key1', 'key2', 'key1_All', 'key2_All'])
 
     it 'values', ->

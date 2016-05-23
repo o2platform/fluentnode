@@ -63,13 +63,20 @@ twin method: json_inspect (legacy)
 
     Object.defineProperty Object.prototype, 'json_inspect',enumerable  : false, writable    : true, value: Object::json_Inspect
 
-**keys**
-
-    Object.defineProperty Object.prototype, 'keys',
+**keys_Own**
+    
+Note: Breaking change in 0.6 version.
+This method used to be called keys() but was renamed to keys_Own() due to conflits with other packages usages of
+this extension method (and there wasn't an simple way to detect it)
+To make it easier there is also an _keys method which does the same thing
+        
+    Object.defineProperty Object.prototype, 'keys_Own',
         enumerable  : false,
         writable    : true,
         value: ->
             return (key for own key of @)
+
+    Object.defineProperty Object.prototype, '_keys',enumerable  : false, writable    : true, value: Object::keys_Own
 
 **keys_All**
 
