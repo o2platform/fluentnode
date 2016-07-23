@@ -24,6 +24,12 @@ Suports the case when ```value``` is a an Array, where all provided elements of 
       else
       (value in @)
 
+@.**duplicates**
+
+    Array::duplicates =  ()-> 
+      @.filter (x, i, self) ->
+        self.indexOf(x) == i && i != self.lastIndexOf(x)
+        
 @.**empty** ()
 
     Array::empty = ->

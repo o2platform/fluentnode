@@ -41,24 +41,33 @@ describe '| node-native | crypo',->
           (-> charSet_Numbers.assert_Contains(char)).assert_Not_Throws()
           (-> charSet_Letters.assert_Contains(char)).assert_Throws()
 
-   it 'checksum', ()->
-     '1234' .checksum().assert_Is_Not '12345'.checksum()
-     '1234' .checksum().assert_Is '81dc9bdb52d04dc20036dbd8313ed055'
-     'admin'.checksum().assert_Is '21232f297a57a5a743894a0e4a801fc3'
-     '1234' .checksum('sha1').assert_Is '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'
-     'admin'.checksum('sha1').assert_Is 'd033e22ae348aeb5660fc2140aec35850c4da997'
-     '1234' .checksum('sha256').assert_Is '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'
-     'admin'.checksum('sha256').assert_Is '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'
-     '1234' .checksum('sha512').assert_Is 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'
-     'admin'.checksum('sha512').assert_Is 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec'
+  it 'checksum', ()->
+    '1234' .checksum().assert_Is_Not '12345'.checksum()
+    '1234' .checksum().assert_Is '81dc9bdb52d04dc20036dbd8313ed055'
+    'admin'.checksum().assert_Is '21232f297a57a5a743894a0e4a801fc3'
+    '1234' .checksum('sha1').assert_Is '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'
+    'admin'.checksum('sha1').assert_Is 'd033e22ae348aeb5660fc2140aec35850c4da997'
+    '1234' .checksum('sha256').assert_Is '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'
+    'admin'.checksum('sha256').assert_Is '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'
+    '1234' .checksum('sha512').assert_Is 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'
+    'admin'.checksum('sha512').assert_Is 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec'
 
-     (()-> 'admin'.checksum('aaa')).assert_Throws((error)-> error.message.assert_Is 'Digest method not supported')
+    (()-> 'admin'.checksum('aaa')).assert_Throws((error)-> error.message.assert_Is 'Digest method not supported')
 
 
-   it 'random_String',->
+  it 'random_Chars',->
+    size = 10
+    chars = (size).random_Chars()
+    count = 0
+    for i in [0...size]
+      chars.charCodeAt(i+5)
+      count++
+    count.assert_Is size
+
+  it 'random_String',->
     (0).random_String().size().assert_Is_Equal_To(10)
     (1).random_String().size().assert_Is_Equal_To(1)
     (1).random_String().assert_Size_Is(1)
 
-   it 'random_Letters',->
+  it 'random_Letters',->
     (10).random_Letters().size().assert_Is_Equal_To(10)

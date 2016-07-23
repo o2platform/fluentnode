@@ -96,8 +96,17 @@ if start_Value is provided: returns a random number between start_Value and star
 
 Short version of ```toString```
 
-  Number::str =
-    -> @.toString()
+    Number::str =
+      -> @.toString()
 
+
+@.**str**
+Convert number to decimal (with max 4 decimal values)
+
+see https://twitter.com/DinisCruz/status/745283929142398976
+  
+    Number::to_Decimal = -> 
+      Number.parseFloat(@.toFixed(4))
+      
 ---
 back to [index](index.html)

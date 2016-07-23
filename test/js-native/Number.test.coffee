@@ -85,3 +85,22 @@ describe '| js-native | Number',->
     (0).str.assert_Is_Function()
     (0).str().assert_Is('0')
     (9).str().assert_Is('9')
+
+  it 'to_Decimal',->
+    a = 0.2
+    b = 0.4
+    c = a + b                                                                 # addition that will cause the prob
+    c             .assert_Is     0.6000000000000001                           # confirming the problem
+    c.to_Decimal().assert_Is     0.6                                          # confirming that .to_Decimal() works as expected
+    c.to_Decimal().assert_Is     0.60
+    c.to_Decimal().assert_Is     0.6000000
+    c.to_Decimal().assert_Is     0.6000000000000000
+    c.to_Decimal().assert_Is_Not 0.6000000000000001
+
+    (typeof c.to_Decimal()             ).assert_Is 'number'                   # check the value type name
+    (typeof c.to_Decimal().to_Decimal()).assert_Is 'number'                   # make sure there are no side effects with multiple transformations
+    c.to_Decimal()        .to_Decimal(). assert_Is 0.6
+
+    d = c.to_Decimal()
+    (d + 0.3)             .assert_Is 0.8999999999999999                       # confirm that we have the same prob if we do another addition
+    (d + 0.3).to_Decimal().assert_Is 0.9                                      # confirm we can use .to_Decimal to fix it

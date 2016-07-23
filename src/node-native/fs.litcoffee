@@ -205,7 +205,28 @@ returns a list of files and folders from the folder @
                                             files.push(item)
                                       return files
 
-    String::folders             = ->  item for item in @.files_And_Folders() when item.is_Folder()
+@.**folders**
+
+Returns list of folders (in the current folder)
+
+    String::folders = ->
+      folders = []
+      for item in @.files_And_Folders()
+        if item?.is_Folder()
+          folders.push item
+      folders
+
+@.**folders_Recursive**
+
+Returns recursive list of folders
+
+    String::folders_Recursive     = ()->
+      folders = []
+      for item in @.str().folders()
+        folders = folders.concat(item.folders_Recursive())
+        folders.push(item)
+
+      return folders
 
 @.**is_Folder**
 

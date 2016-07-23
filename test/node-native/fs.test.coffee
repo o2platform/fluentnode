@@ -166,11 +166,19 @@ describe '| node-native | fs',->
                                     .first().assert_Is(tmpFile)
     tmpFile.file_Delete().assert_Is_True()
 
+  it 'folder_Names', ->
+    '.'.folders().folder_Names().assert_Contains tmp_Folder.folder_Name()
+
   it 'folders' , ->
     ''.folders.assert_Is_Function()
     folders = '.'.folders()
     expectedFolders = (folder.realPath() for folder in 'src,test'.split(','))
     folders.assert_Contains(expectedFolders)
+
+  it 'folders_Recursive' , ->
+    root_Folder = wallaby?.localProjectDir || '.'
+    target_Folder = root_Folder.path_Combine 'docs'
+    target_Folder.folders_Recursive().folder_Names().assert_Is [ 'fonts', 'images', 'stylesheets', 'public' ]
 
   it 'is_Folder', ->
     ''          .is_Folder  .assert_Is_Function()

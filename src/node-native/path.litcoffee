@@ -56,5 +56,9 @@ If you want the full path, use the **parent_Folder** method
     String::folder_Name = ()->
       @.valueOf().file_Name()
 
+@.**folder_Names**
+      
+    Array::folder_Names = Array::file_Names      
+
 ---
 back to [index](index.html)

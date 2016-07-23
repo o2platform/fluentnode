@@ -49,6 +49,11 @@ Defaults to ```md5``` algorithm and ```hex``` encoding
             .update(@.toString(), 'utf8')
             .digest(encoding || 'hex')
 
+@.**random_Chars** ()
+
+    Number::random_Chars = ->
+      "".add_Random_Chars(@ + 0)
+    
 @.**random_String** ()
 
 Returns a random string of size @ made of ascii chars

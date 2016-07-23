@@ -46,6 +46,15 @@ describe '| js-native | Array',->
     ['1','2'     ].contains(['1','1']).assert_Is_True()
     ['1','2'     ].contains(['2','1']).assert_Is_True()
 
+  it 'duplicates', ->
+    ['1','2',3,4  ].duplicates().assert_Is [     ]
+    ['1','2',3,3  ].duplicates().assert_Is [3    ]
+    ['1','3',3,3  ].duplicates().assert_Is [3    ]
+    ['3','3',3,3  ].duplicates().assert_Is ['3',3]
+    ['3',3,3,3    ].duplicates().assert_Is [3    ]
+    ['3',null,null].duplicates().assert_Is [null ]
+
+
   it 'empty',->
     expect([            ].empty).to.be.an('Function')
     expect([            ].empty()).to.be.true
