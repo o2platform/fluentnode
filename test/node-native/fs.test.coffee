@@ -101,6 +101,10 @@ describe '| node-native | fs',->
     file_Name.file_Contents().assert_Is(file_Contents)
     file_Name.file_Delete().assert_Is_True()
 
+  it 'file_Delete', ->
+    # see other tests on 'file_Create and file_Delete'
+    'aaaaa'.file_Delete().assert_Is_True()
+
   it 'file_Exists' , ->
     ''.file_Exists.assert_Is_Function()
     tmp_Folder  .file_Exists().assert_Is_True()
@@ -231,6 +235,9 @@ describe '| node-native | fs',->
     value = "abc".add_5_Letters()
     './'.temp_File(value).assert_File_Exists()
                          .assert_File_Contents(value)
+                         .assert_File_Deleted()
+    './'.temp_File(null ).assert_File_Exists()
+                         .assert_File_Contents('')
                          .assert_File_Deleted()
 
     assert_Is_Null 'aaaaaa'.temp_File()

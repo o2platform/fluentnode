@@ -119,10 +119,11 @@ describe '| js-native | Array',->
     [3,4      ].remove_First().assert_Is [4      ]
 
   it 'remove_If_Contains',->
-    ['0',0,1,2,3,4].remove_If_Contains('0').assert_Is [1,2,3,4  ]
-    ['0',1,2,3,4  ].remove_If_Contains(1  ).assert_Is ['0',2,3,4]
-    ['0','12','34'].remove_If_Contains('2').assert_Is ['0','34' ]
-    ['0','14','34'].remove_If_Contains('4').assert_Is ['0'      ]
+    ['0',0,1,2,3,4].remove_If_Contains('0' ).assert_Is [1,2,3,4  ]
+    ['0',1,2,3,4  ].remove_If_Contains(1   ).assert_Is ['0',2,3,4]
+    ['0','12','34'].remove_If_Contains('2' ).assert_Is ['0','34' ]
+    ['0','14','34'].remove_If_Contains('4' ).assert_Is ['0'      ]
+    ['0',0,1,2,3,4].remove_If_Contains(null).assert_Is ['0',0,1,2,3,4]
 
   it 'second',->
     expect([            ].second).to.be.an('Function')
@@ -156,12 +157,19 @@ describe '| js-native | Array',->
 
   it 'take', ->
     [            ].take.assert_Is_Function()
-    [            ].take( ).assert_Is_Equal_To([        ])
-    [''          ].take(0).assert_Is_Equal_To([        ])
-    [' '         ].take(1).assert_Is_Equal_To([' '     ])
-    ['1','23','2'].take(1).assert_Is_Equal_To(['1'     ])
-    ['1','23','2'].take(2).assert_Is_Equal_To(['1','23'])
-    ['1','23','2'].take(0).assert_Is_Equal_To([        ])
+    [            ].take(  ).assert_Is_Equal_To [        ]
+    [''          ].take(0 ).assert_Is_Equal_To [        ]
+    [' '         ].take(1 ).assert_Is_Equal_To [' '     ]
+    ['1','23','2'].take(1 ).assert_Is_Equal_To ['1'     ]
+    ['1','23','2'].take(2 ).assert_Is_Equal_To ['1','23']
+    ['1','23','2'].take(0 ).assert_Is_Equal_To [        ]
+
+    # bad size values
+    ['1','23'].take(9999).assert_Is_Equal_To ['1','23']
+    ['1','23'].take(-1  ).assert_Is_Equal_To ['1','23']
+    ['1','23'].take(-2  ).assert_Is_Equal_To [        ]
+    ['1','23'].take(null).assert_Is_Equal_To [        ]
+    ['1','23'].take('a' ).assert_Is_Equal_To [        ]
 
   it 'unique', ->
     [            ].unique.assert_Is_Function()

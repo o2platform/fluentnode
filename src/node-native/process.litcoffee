@@ -15,8 +15,8 @@ dependencies
     String::start_Process_Redirect_Console = (args...)->
       args ?= []
       childProcess = @.start_Process(args)
-      childProcess.stdout.on 'data', (data)->console.log(data.str().trim())
-      childProcess.stderr.on 'data', (data)->console.log(data.str().trim())
+      childProcess.stdout.on 'data', (data)-> console.log(data.str().trim())
+      childProcess.stderr.on 'data', (data)-> console.log(data.str().trim())
       return childProcess
 
 **String::start_Process_Capture_Console_Out** args..., callback

@@ -16,14 +16,12 @@ note: Ideally we could do something like ```assert.equal(typeof(@), 'array', mes
 
 **Array::assert_Contains** value, [message]
 
-    Array::assert_Contains              = (value, message)->
-      message = message || "[assert_Contains]"
+    Array::assert_Contains              = (value)->      
       if value instanceof Array
         for item in value
-          @.contains(item).assert_Is_True("#{item} not found in array: #{@}")
-      else
-        message = message || "[assert_Contains]"
-        @.contains(value).assert_Is_True(message)
+          @.contains(item).assert_Is_True "#{item} not found in array: #{@}"
+      else            
+        @.contains(value).assert_Is_True "#{value} not found in array: #{@}"
       @
 
 **Array::assert_Empty** value,[message]

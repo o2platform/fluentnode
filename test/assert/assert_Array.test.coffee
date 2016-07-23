@@ -41,10 +41,13 @@ describe '| Assert | Array',->
     ['a','b'].assert_Size_Is_Not(3,).assert_Is_Equal_To(['a','b'])
 
   it 'assert_Contains', ->
-    [       ].assert_Contains.  assert_Is_Function()
+    [       ].assert_Contains     .assert_Is_Function()
     ['a'    ].assert_Contains('a').assert_Is_Equal_To(['a'   ])
     ['a','b'].assert_Contains('b').assert_Is_Equal_To(['a','b'])
     (-> ['a'].assert_Contains('')).assert_Throws()
+
+    (-> ['a','b'].assert_Contains('c')).assert_Throws 'c not found in array: a,b'
+
 
   it 'assert_Not_Contains', ->
     [       ].assert_Not_Contains.assert_Is_Function()
@@ -61,3 +64,18 @@ describe '| Assert | Array',->
     [    ].assert_Not_Empty.  assert_Is_Function()
     ['ab'].assert_Not_Empty().assert_Is_Equal_To(['ab'])
     (-> [].assert_Not_Empty()).assert_Throws()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

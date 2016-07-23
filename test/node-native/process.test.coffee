@@ -16,11 +16,11 @@ describe '| node-native | process',->
         'echo'.start_Process().pid.assert_Is_Number()
 
 
-    if os.platform() is 'win32'  # test below Fail in Appveyor
+    if os.platform() is 'win32'  # tests below Fail in Appveyor
       ### !pragma coverage-skip-block ###
       return
 
-    it 'start_Process_Redirect_Console', (done)->
+    it 'start_Process_Redirect_Console (good process)', (done)->
       tmp_file       = '_tmp_File_'.add_5_Letters().touch() 
       second_Message = ' this is the 2nd message '.add_5_Letters()
       original_log = console.log
@@ -35,6 +35,14 @@ describe '| node-native | process',->
         console.log = original_log
         tmp_file.assert_File_Deleted()
         done()
+
+    it 'start_Process_Redirect_Console (stderr message)', (done)->
+      log_Messages = []
+      console.log  = (logMsg)-> log_Messages.push(logMsg)
+      childProcess = 'ls'.start_Process_Redirect_Console 'aaaa'
+      childProcess.on 'exit', ->
+        log_Messages.assert_Is [ 'ls: aaaa: No such file or directory' ]        
+        done() 
 
     # Fails in Appveyor
     it 'String::start_Process_Capture_Console_Out', (done)->

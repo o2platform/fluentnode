@@ -10,6 +10,13 @@ If provided the **callback** method will be called with the Error object
 
     Function::assert_Throws=  (callback) ->
       message = "[assert_Throws]"
+      
+      if typeof callback is 'string'                          # support passing a string value as the expected error message
+        expected_Message = callback
+        callback = (error)->
+          error_Message = error.message || error
+          error_Message.assert_Is expected_Message, "Expected exception error to be '#{expected_Message}' but it was '#{error_Message}'"
+          
       onError = (error)=>
         callback error if callback
         true
