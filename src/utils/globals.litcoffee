@@ -51,9 +51,3 @@ Returns true if ```value``` exists and is not false
 
     global.truthly = (value)->
       value? and value != false
-
-**log** message
-
-Simple wrapper for console.log
-
-    global.log   = console.log

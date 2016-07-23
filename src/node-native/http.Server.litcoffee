@@ -25,7 +25,7 @@ dependencies
             @._sockets[socket_Id].destroy()
             delete @._sockets[socket_Id];
       @.close ->
-        callback()
+        callback() if callback
 
     Server::listen_OnPort_Saying = (port, text, callback)->
       ip = '127.0.0.1'

@@ -36,9 +36,6 @@ describe '| global',->
     is_Null(''       ).assert_False()
     is_Null(0        ).assert_False()
 
-  it 'log',->
-    log.assert_Is(console.log)
-
   it 'not_Null',->
     not_Null.assert_Is(existy)
 

@@ -77,6 +77,10 @@ describe '| js-native | Number',->
     1000 .random().assert_In_Between(-1,1000)
     10000.random().assert_In_Between(-1,10000)
 
+    100  .random(100).assert_In_Between(100,200)
+    1    .random(100).assert_In_Between(99,101)
+
+
   it 'str',->
     (0).str.assert_Is_Function()
     (0).str().assert_Is('0')

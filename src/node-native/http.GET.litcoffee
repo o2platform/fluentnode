@@ -36,7 +36,7 @@ Makes a GET request to @ and callback with (error, data, res)
 Makes a GET request to @ and callback with data (i.e. string representation of requested url)
 
     String::GET = (callback) ->
-      @.http_GET (error, data, res)-> callback(data)
+      @.http_GET (error, data, res)-> callback(data, error)
 
 
 @.**GET_Json**

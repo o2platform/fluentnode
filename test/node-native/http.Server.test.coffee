@@ -38,6 +38,23 @@ describe '| node-native | http.Server',->
     server._sockets._keys()  .assert_Is_Array().assert_Size_Is(0)
     server._socket_Count     .assert_Is(0)
 
+  it 'close_And_Destroy_Sockets (case when sockets where left open)', (done)->
+    temp_Port = 1000.random(40000)                        # random port 
+    temp_Url  = "http://127.0.0.1:#{temp_Port}"           # url with random port
+    using http.createServer(null), ->                     # create node http server
+      @.add_Sockets_Close_Suport()                        # keep track of opened sockets
+      @.addListener 'request', (req,res)=>                # listen for requests
+        @.close_And_Destroy_Sockets()                     # call the function we're testing
+        res.end 'aaaaa'                                   # this should never reach the http client
+      @.listen temp_Port                                  # start listening on random port
+
+    temp_Url.GET (data,error)->                           # send GET request to random port
+      assert_Is_Null data                                 # confirm that we received no data
+      error.message.assert_Is 'socket hang up'            # confirm that the socket error was
+      error.code.assert_Is 'ECONNRESET'                   # ECONNRESET
+      done()                                              # end test
+
+
   it 'respond_With_Request_Headers', (done)->
     server.respond_With_Request_Headers()
     port = url.split(':').last()

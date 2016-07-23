@@ -80,11 +80,17 @@ Logs @ to the console
     Number::log =
       -> console.log @.toString()
 
-@.**random**
+@.**random [start_Value]**
 
 returns a random number between 0 and @
 
-    Number::random = -> ~~(Math.random()*@)
+if start_Value is provided: returns a random number between start_Value and start_Value + @
+
+    Number::random = (start_From)-> 
+      value = ~~(Math.random()*@)
+      return value + start_From if start_From  
+      return value               
+      
 
 @.**str**
 
