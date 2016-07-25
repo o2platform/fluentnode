@@ -44,8 +44,21 @@
     return console.log(this.toString());
   };
 
-  Number.prototype.random = function() {
-    return ~~(Math.random() * this);
+  Number.prototype.random = function(start_From) {
+    var value;
+    value = ~~(Math.random() * this);
+    if (start_From) {
+      return value + start_From;
+    }
+    return value;
+  };
+
+  Number.prototype.str = function() {
+    return this.toString();
+  };
+
+  Number.prototype.to_Decimal = function() {
+    return Number.parseFloat(this.toFixed(4));
   };
 
 }).call(this);

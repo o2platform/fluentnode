@@ -6,7 +6,6 @@
     it('/utils/*', function() {
       global.existy.assert_Is_Function();
       global.is_Null.assert_Is_Function();
-      global.log.assert_Is_Function();
       return ''.url_Encode.assert_Is_Function();
     });
     return it('/assert/*', function() {

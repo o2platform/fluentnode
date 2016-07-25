@@ -11,17 +11,15 @@
     return this;
   };
 
-  Array.prototype.assert_Contains = function(value, message) {
+  Array.prototype.assert_Contains = function(value) {
     var i, item, len;
-    message = message || "[assert_Contains]";
     if (value instanceof Array) {
       for (i = 0, len = value.length; i < len; i++) {
         item = value[i];
         this.contains(item).assert_Is_True(item + " not found in array: " + this);
       }
     } else {
-      message = message || "[assert_Contains]";
-      this.contains(value).assert_Is_True(message);
+      this.contains(value).assert_Is_True(value + " not found in array: " + this);
     }
     return this;
   };

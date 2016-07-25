@@ -20,14 +20,14 @@
       });
     });
     it('add_Random_Letters', function() {
-      var char, charSet_Letters, charSet_Numbers, i, len, randomLetters, results;
+      var char, charSet_Letters, charSet_Numbers, j, len, randomLetters, results;
       value.add_Random_Letters(5).size().assert_Is(value.size().add(5));
       randomLetters = "".add_Random_Letters(5);
       charSet_Numbers = '0123456789';
       charSet_Letters = 'abcdefghijklmnopqrstuvwxyz';
       results = [];
-      for (i = 0, len = randomLetters.length; i < len; i++) {
-        char = randomLetters[i];
+      for (j = 0, len = randomLetters.length; j < len; j++) {
+        char = randomLetters[j];
         (function() {
           return charSet_Numbers.assert_Contains(char);
         }).assert_Throws();
@@ -43,15 +43,15 @@
       return ''.add_5_Random_Letters.assert_Is(''.add_5_Letters);
     });
     it('add_Random_Numbers', function() {
-      var char, charSet_Letters, charSet_Numbers, i, len, randomNumbers, results;
+      var char, charSet_Letters, charSet_Numbers, j, len, randomNumbers, results;
       value.add_Random_Numbers(5).size().assert_Is(value.size() + 5);
       "".add_Random_Numbers(500).size().assert_Is(500);
       randomNumbers = "".add_Random_Numbers(5);
       charSet_Numbers = '0123456789';
       charSet_Letters = 'abcdefghijklmnopqrstuvwxyz';
       results = [];
-      for (i = 0, len = randomNumbers.length; i < len; i++) {
-        char = randomNumbers[i];
+      for (j = 0, len = randomNumbers.length; j < len; j++) {
+        char = randomNumbers[j];
         (function() {
           return charSet_Numbers.assert_Contains(char);
         }).assert_Not_Throws();
@@ -76,6 +76,17 @@
       }).assert_Throws(function(error) {
         return error.message.assert_Is('Digest method not supported');
       });
+    });
+    it('random_Chars', function() {
+      var chars, count, i, j, ref, size;
+      size = 10;
+      chars = size.random_Chars();
+      count = 0;
+      for (i = j = 0, ref = size; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+        chars.charCodeAt(i + 5);
+        count++;
+      }
+      return count.assert_Is(size);
     });
     it('random_String', function() {
       0..random_String().size().assert_Is_Equal_To(10);

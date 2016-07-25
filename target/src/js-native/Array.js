@@ -4,20 +4,20 @@
     indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   Array.prototype.add = function() {
-    var i, item, len, value;
+    var item, j, len, value;
     value = 1 <= arguments.length ? slice.call(arguments, 0) : [];
-    for (i = 0, len = value.length; i < len; i++) {
-      item = value[i];
+    for (j = 0, len = value.length; j < len; j++) {
+      item = value[j];
       this.push(item);
     }
     return this;
   };
 
   Array.prototype.contains = function(value) {
-    var i, item, len;
+    var item, j, len;
     if (value instanceof Array) {
-      for (i = 0, len = value.length; i < len; i++) {
-        item = value[i];
+      for (j = 0, len = value.length; j < len; j++) {
+        item = value[j];
         if (!(indexOf.call(this, item) >= 0)) {
           return false;
         }
@@ -27,6 +27,12 @@
 
     }
     return indexOf.call(this, value) >= 0;
+  };
+
+  Array.prototype.duplicates = function() {
+    return this.filter(function(x, i, self) {
+      return self.indexOf(x) === i && i !== self.lastIndexOf(x);
+    });
   };
 
   Array.prototype.empty = function() {
@@ -104,10 +110,10 @@
   };
 
   Array.prototype.starts_With = function(value) {
-    var i, item, len, results;
+    var item, j, len, results;
     results = [];
-    for (i = 0, len = this.length; i < len; i++) {
-      item = this[i];
+    for (j = 0, len = this.length; j < len; j++) {
+      item = this[j];
       if (value && item.starts_With(value)) {
         results.push(item);
       }
@@ -124,9 +130,9 @@
   };
 
   Array.prototype.unique = function() {
-    var i, key, output, ref;
+    var j, key, output, ref;
     output = {};
-    for (key = i = 0, ref = this.length; 0 <= ref ? i < ref : i > ref; key = 0 <= ref ? ++i : --i) {
+    for (key = j = 0, ref = this.length; 0 <= ref ? j < ref : j > ref; key = 0 <= ref ? ++j : --j) {
       output[this[key]] = this[key];
     }
     return output.keys_Own();

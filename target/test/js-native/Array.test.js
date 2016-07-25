@@ -42,6 +42,14 @@
       ['1', '2'].contains(['1', '1']).assert_Is_True();
       return ['1', '2'].contains(['2', '1']).assert_Is_True();
     });
+    it('duplicates', function() {
+      ['1', '2', 3, 4].duplicates().assert_Is([]);
+      ['1', '2', 3, 3].duplicates().assert_Is([3]);
+      ['1', '3', 3, 3].duplicates().assert_Is([3]);
+      ['3', '3', 3, 3].duplicates().assert_Is(['3', 3]);
+      ['3', 3, 3, 3].duplicates().assert_Is([3]);
+      return ['3', null, null].duplicates().assert_Is([null]);
+    });
     it('empty', function() {
       expect([].empty).to.be.an('Function');
       expect([].empty()).to.be["true"];
@@ -116,7 +124,8 @@
       ['0', 0, 1, 2, 3, 4].remove_If_Contains('0').assert_Is([1, 2, 3, 4]);
       ['0', 1, 2, 3, 4].remove_If_Contains(1).assert_Is(['0', 2, 3, 4]);
       ['0', '12', '34'].remove_If_Contains('2').assert_Is(['0', '34']);
-      return ['0', '14', '34'].remove_If_Contains('4').assert_Is(['0']);
+      ['0', '14', '34'].remove_If_Contains('4').assert_Is(['0']);
+      return ['0', 0, 1, 2, 3, 4].remove_If_Contains(null).assert_Is(['0', 0, 1, 2, 3, 4]);
     });
     it('second', function() {
       expect([].second).to.be.an('Function');
@@ -155,7 +164,12 @@
       [' '].take(1).assert_Is_Equal_To([' ']);
       ['1', '23', '2'].take(1).assert_Is_Equal_To(['1']);
       ['1', '23', '2'].take(2).assert_Is_Equal_To(['1', '23']);
-      return ['1', '23', '2'].take(0).assert_Is_Equal_To([]);
+      ['1', '23', '2'].take(0).assert_Is_Equal_To([]);
+      ['1', '23'].take(9999).assert_Is_Equal_To(['1', '23']);
+      ['1', '23'].take(-1).assert_Is_Equal_To(['1', '23']);
+      ['1', '23'].take(-2).assert_Is_Equal_To([]);
+      ['1', '23'].take(null).assert_Is_Equal_To([]);
+      return ['1', '23'].take('a').assert_Is_Equal_To([]);
     });
     return it('unique', function() {
       [].unique.assert_Is_Function();

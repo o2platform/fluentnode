@@ -79,12 +79,32 @@
       10..random().assert_In_Between(-1, 10);
       100..random().assert_In_Between(-1, 100);
       1000..random().assert_In_Between(-1, 1000);
-      return 10000..random().assert_In_Between(-1, 10000);
+      10000..random().assert_In_Between(-1, 10000);
+      100..random(100).assert_In_Between(100, 200);
+      return 1..random(100).assert_In_Between(99, 101);
     });
-    return it('str', function() {
+    it('str', function() {
       0..str.assert_Is_Function();
       0..str().assert_Is('0');
       return 9..str().assert_Is('9');
+    });
+    return it('to_Decimal', function() {
+      var a, b, c, d;
+      a = 0.2;
+      b = 0.4;
+      c = a + b;
+      c.assert_Is(0.6000000000000001);
+      c.to_Decimal().assert_Is(0.6);
+      c.to_Decimal().assert_Is(0.60);
+      c.to_Decimal().assert_Is(0.6000000);
+      c.to_Decimal().assert_Is(0.6000000000000000);
+      c.to_Decimal().assert_Is_Not(0.6000000000000001);
+      (typeof c.to_Decimal()).assert_Is('number');
+      (typeof c.to_Decimal().to_Decimal()).assert_Is('number');
+      c.to_Decimal().to_Decimal().assert_Is(0.6);
+      d = c.to_Decimal();
+      (d + 0.3).assert_Is(0.8999999999999999);
+      return (d + 0.3).to_Decimal().assert_Is(0.9);
     });
   });
 

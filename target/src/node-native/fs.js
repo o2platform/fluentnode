@@ -204,16 +204,28 @@
   };
 
   String.prototype.folders = function() {
-    var i, item, len, ref, results;
+    var folders, i, item, len, ref;
+    folders = [];
     ref = this.files_And_Folders();
-    results = [];
     for (i = 0, len = ref.length; i < len; i++) {
       item = ref[i];
-      if (item.is_Folder()) {
-        results.push(item);
+      if (item != null ? item.is_Folder() : void 0) {
+        folders.push(item);
       }
     }
-    return results;
+    return folders;
+  };
+
+  String.prototype.folders_Recursive = function() {
+    var folders, i, item, len, ref;
+    folders = [];
+    ref = this.str().folders();
+    for (i = 0, len = ref.length; i < len; i++) {
+      item = ref[i];
+      folders = folders.concat(item.folders_Recursive());
+      folders.push(item);
+    }
+    return folders;
   };
 
   String.prototype.is_Folder = function() {

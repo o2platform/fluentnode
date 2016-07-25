@@ -47,6 +47,27 @@
       server._sockets._keys().assert_Is_Array().assert_Size_Is(0);
       return server._socket_Count.assert_Is(0);
     });
+    it('close_And_Destroy_Sockets (case when sockets where left open)', function(done) {
+      var temp_Port, temp_Url;
+      temp_Port = 1000..random(40000);
+      temp_Url = "http://127.0.0.1:" + temp_Port;
+      using(http.createServer(null), function() {
+        this.add_Sockets_Close_Suport();
+        this.addListener('request', (function(_this) {
+          return function(req, res) {
+            _this.close_And_Destroy_Sockets();
+            return res.end('aaaaa');
+          };
+        })(this));
+        return this.listen(temp_Port);
+      });
+      return temp_Url.GET(function(data, error) {
+        assert_Is_Null(data);
+        error.message.assert_Is('socket hang up');
+        error.code.assert_Is('ECONNRESET');
+        return done();
+      });
+    });
     it('respond_With_Request_Headers', function(done) {
       var port;
       server.respond_With_Request_Headers();

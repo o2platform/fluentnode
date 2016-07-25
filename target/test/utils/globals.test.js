@@ -38,9 +38,6 @@
       is_Null('').assert_False();
       return is_Null(0).assert_False();
     });
-    it('log', function() {
-      return log.assert_Is(console.log);
-    });
     it('not_Null', function() {
       return not_Null.assert_Is(existy);
     });

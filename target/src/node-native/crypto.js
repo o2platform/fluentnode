@@ -48,6 +48,10 @@
     return crypto.createHash(algorithm || 'md5').update(this.toString(), 'utf8').digest(encoding || 'hex');
   };
 
+  Number.prototype.random_Chars = function() {
+    return "".add_Random_Chars(this + 0);
+  };
+
   Number.prototype.random_String = function() {
     return "".add_Random_String(this + 0);
   };

@@ -30,6 +30,4 @@
     return (value != null) && value !== false;
   };
 
-  global.log = console.log;
-
 }).call(this);

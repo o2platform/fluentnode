@@ -4,17 +4,37 @@
 
   describe('| Assert | Function', function() {
     it('assert_Throws', function(done) {
-      var error, error1;
+      var error, error1, error2;
       (function() {
-        return throws('fail');
+        throw 'exception test';
       }).assert_Throws();
+      (function() {
+        return aaa.bbb();
+      }).assert_Throws();
+      (function() {
+        throw 'exception test';
+      }).assert_Throws(function(error) {
+        return error.assert_Is('exception test');
+      });
+      (function() {
+        throw 'exception test';
+      }).assert_Throws('exception test');
+      try {
+        (function() {
+          throw 'exception test';
+        }).assert_Throws('AAAA');
+      } catch (error1) {
+        error = error1;
+        error.message.assert_Is("Expected exception error to be 'AAAA' but it was 'exception test'");
+      }
       try {
         return (function() {
           return 42 === 42;
         }).assert_Throws();
-      } catch (error1) {
-        error = error1;
+      } catch (error2) {
+        error = error2;
         (error === 'fail').assert_Is_False();
+        error.message.assert_Is('Missing expected exception. [assert_Throws]');
         return done();
       }
     });

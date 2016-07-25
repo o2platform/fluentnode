@@ -101,6 +101,9 @@
       file_Name.file_Contents().assert_Is(file_Contents);
       return file_Name.file_Delete().assert_Is_True();
     });
+    it('file_Delete', function() {
+      return 'aaaaa'.file_Delete().assert_Is_True();
+    });
     it('file_Exists', function() {
       ''.file_Exists.assert_Is_Function();
       tmp_Folder.file_Exists().assert_Is_True();
@@ -156,6 +159,9 @@
       './src'.files_Recursive('.abcd').assert_Size_Is(1).first().assert_Is(tmpFile);
       return tmpFile.file_Delete().assert_Is_True();
     });
+    it('folder_Names', function() {
+      return '.'.folders().folder_Names().assert_Contains(tmp_Folder.folder_Name());
+    });
     it('folders', function() {
       var expectedFolders, folder, folders;
       ''.folders.assert_Is_Function();
@@ -171,6 +177,12 @@
         return results;
       })();
       return folders.assert_Contains(expectedFolders);
+    });
+    it('folders_Recursive', function() {
+      var root_Folder, target_Folder;
+      root_Folder = (typeof wallaby !== "undefined" && wallaby !== null ? wallaby.localProjectDir : void 0) || '.';
+      target_Folder = root_Folder.path_Combine('docs');
+      return target_Folder.folders_Recursive().folder_Names().assert_Is(['fonts', 'images', 'stylesheets', 'public']);
     });
     it('is_Folder', function() {
       ''.is_Folder.assert_Is_Function();
@@ -228,6 +240,7 @@
       var value;
       value = "abc".add_5_Letters();
       './'.temp_File(value).assert_File_Exists().assert_File_Contents(value).assert_File_Deleted();
+      './'.temp_File(null).assert_File_Exists().assert_File_Contents('').assert_File_Deleted();
       return assert_Is_Null('aaaaaa'.temp_File());
     });
     it('temp_Name_In_Folder', function() {

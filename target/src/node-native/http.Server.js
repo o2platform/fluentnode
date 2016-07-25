@@ -35,7 +35,9 @@
       }
     }
     return this.close(function() {
-      return callback();
+      if (callback) {
+        return callback();
+      }
     });
   };
 

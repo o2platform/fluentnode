@@ -5,8 +5,16 @@
   assert = require('assert');
 
   Function.prototype.assert_Throws = function(callback) {
-    var message, onError;
+    var expected_Message, message, onError;
     message = "[assert_Throws]";
+    if (typeof callback === 'string') {
+      expected_Message = callback;
+      callback = function(error) {
+        var error_Message;
+        error_Message = error.message || error;
+        return error_Message.assert_Is(expected_Message, "Expected exception error to be '" + expected_Message + "' but it was '" + error_Message + "'");
+      };
+    }
     onError = (function(_this) {
       return function(error) {
         if (callback) {

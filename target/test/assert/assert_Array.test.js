@@ -50,9 +50,12 @@
       [].assert_Contains.assert_Is_Function();
       ['a'].assert_Contains('a').assert_Is_Equal_To(['a']);
       ['a', 'b'].assert_Contains('b').assert_Is_Equal_To(['a', 'b']);
-      return (function() {
+      (function() {
         return ['a'].assert_Contains('');
       }).assert_Throws();
+      return (function() {
+        return ['a', 'b'].assert_Contains('c');
+      }).assert_Throws('c not found in array: a,b');
     });
     it('assert_Not_Contains', function() {
       [].assert_Not_Contains.assert_Is_Function();

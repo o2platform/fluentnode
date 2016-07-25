@@ -24,7 +24,7 @@
       /* !pragma coverage-skip-block */
       return;
     }
-    it('start_Process_Redirect_Console', function(done) {
+    it('start_Process_Redirect_Console (good process)', function(done) {
       var childProcess, log_Messages, original_log, second_Message, tmp_file;
       tmp_file = '_tmp_File_'.add_5_Letters().touch();
       second_Message = ' this is the 2nd message '.add_5_Letters();
@@ -40,6 +40,18 @@
         log_Messages.second().assert_Is(second_Message);
         console.log = original_log;
         tmp_file.assert_File_Deleted();
+        return done();
+      });
+    });
+    it('start_Process_Redirect_Console (stderr message)', function(done) {
+      var childProcess, log_Messages;
+      log_Messages = [];
+      console.log = function(logMsg) {
+        return log_Messages.push(logMsg);
+      };
+      childProcess = 'ls'.start_Process_Redirect_Console('aaaa');
+      return childProcess.on('exit', function() {
+        log_Messages.assert_Is(['ls: aaaa: No such file or directory']);
         return done();
       });
     });

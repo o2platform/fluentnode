@@ -47,7 +47,7 @@
 
   String.prototype.GET = function(callback) {
     return this.http_GET(function(error, data, res) {
-      return callback(data);
+      return callback(data, error);
     });
   };
 

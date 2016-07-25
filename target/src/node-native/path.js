@@ -60,4 +60,6 @@
     return this.valueOf().file_Name();
   };
 
+  Array.prototype.folder_Names = Array.prototype.file_Names;
+
 }).call(this);
