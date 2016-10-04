@@ -10,7 +10,7 @@
 twin methods: file_Parent_Folder, parent_Folder
 
     String::file_Dir_Name  = () ->
-      path.dirname @
+      path.dirname @.toString()
 
     String::file_Parent_Folder = String::file_Dir_Name
     String::parent_Folder      = String::file_Dir_Name
