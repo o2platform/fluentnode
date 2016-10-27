@@ -13,7 +13,7 @@
   };
 
   String.prototype.file_Dir_Name = function() {
-    return path.dirname(this);
+    return path.dirname(this.toString());
   };
 
   String.prototype.file_Parent_Folder = String.prototype.file_Dir_Name;

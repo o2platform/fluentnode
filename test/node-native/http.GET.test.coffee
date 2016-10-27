@@ -3,20 +3,20 @@ require('../../src/fluentnode')
 http = require 'http'
 
 describe '| node-native | http.GET',->
-  test_Port = 45566 + Math.floor((Math.random() * 100) + 1)
-  test_Ip   = '127.0.0.1'
+  test_Port = 45566 + Math.floor((Math.random() * 100) + 1)     
+  test_Ip   = '127.0.0.1'  
   test_Data = 'hello from web'
   url       = "http://#{test_Ip}:#{test_Port}"
   bad_Url   = 'http://aaaa.cccc.aaaa.dddd'
   server    = null
 
-  before (done)->
+  beforeEach (done)->
     server = http.createServer(null)
     server.listen_OnPort_Saying test_Port, test_Data, ()=>
       global.__fluentnode.http.HTTP_GET_TIMEOUT = 30
       done()
 
-  after (done)->
+  afterEach (done)->
     server.close_And_Destroy_Sockets ()->
       global.__fluentnode.http.HTTP_GET_TIMEOUT = 500
       done()
@@ -57,8 +57,8 @@ describe '| node-native | http.GET',->
       done()
 
   it 'http_GET bad port)' , (done)->
-    (-> url.append(1).http_GET()).assert_Throws  (error)->
-      error.message.assert_Contains "port should be >= 0 and < 65536: "
+    (-> url.append(1).http_GET()).assert_Throws  (error)->      
+      error.message.assert_Contains '"port" option should be >= 0 and < 65536: '
       done()
 
   it 'http_GET_Wait_For_Null', (done)->
