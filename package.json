@@ -26,10 +26,10 @@
   },
   "homepage": "https://github.com/o2platform/fluentnode",
   "devDependencies": {
-    "chai": "^1.9.1",
+    "chai": "^3.5.0",
     "coffee-script": "^1.10.0",
-    "docco": "^0.6.3",
-    "mocha": "^1.21.4"
+    "docco": "^0.7.0",
+    "mocha": "^3.2.0"
   },
   "dependencies": {
     "coffee-script": "^1.8.0"
