@@ -72,7 +72,7 @@ Helper functions for the nornally requested Array elements
 @.**log** ()
 
     Array::log = ->
-      @.str().log()
+      @._str().log()
       @
 
 @.**not_Contains** ()
@@ -103,7 +103,7 @@ Note that all elements (and match) will be converted into strings before compari
     Array::remove_If_Contains = (value)->
       return @ if not value
       @.filter (word) ->
-        word.str().not_Contains(value.str())
+        word._str().not_Contains(value._str())
 
 @.**size**
 

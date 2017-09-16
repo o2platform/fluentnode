@@ -19,9 +19,9 @@ Makes a GET request to @ and callback with (error, data, res)
 
 
     String::http_GET = (callback) ->
-      url = url.parse(@.str())
+      url = url.parse(@._str())
       engine = if url.protocol is 'https:' then https else http
-      req = engine.get @.str(), (res) ->
+      req = engine.get @._str(), (res) ->
         data = '';
         res.on 'data', (chunk) -> data += chunk
         res.on 'end' , (     ) -> callback null, data, res

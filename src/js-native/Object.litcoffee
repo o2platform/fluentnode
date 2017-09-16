@@ -4,11 +4,12 @@ enumerable value to false (otherwise 'for item of xyz' would include these metho
 todo: add check for already mapped methods. once that is done we should be able to add this method safely
 
 
-@.**str**
+@.**_str**
 
 Returns the ```toString``` result of the @ object
+Note: renamed to _str since str was causing some conflicts with some other packages
 
-    Object.defineProperty Object.prototype, 'str',
+    Object.defineProperty Object.prototype, '_str',
         enumerable  : false,
         writable    : true,
         value: ->

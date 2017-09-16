@@ -17,7 +17,7 @@ describe '| js-native | Function',->
   it 'ctor',->
     Abc.assert_Is_Function().ctor().assert_Is_Object()
                             .value.assert_Is('abc')
-    Abc.ctor().str().assert_Is(new Abc().str())
+    Abc.ctor()._str().assert_Is(new Abc()._str())
     Abc.ctor().value.assert_Is_Not('def')
     ((new Abc()).keys_All()).assert_Contains('getValue')
 

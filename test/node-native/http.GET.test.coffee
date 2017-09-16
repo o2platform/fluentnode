@@ -3,7 +3,7 @@ require('../../src/fluentnode')
 http = require 'http'
 
 describe '| node-native | http.GET',->
-  test_Port = 45566 + Math.floor((Math.random() * 100) + 1)     
+  test_Port = 4566 + Math.floor((Math.random() * 100) + 1)
   test_Ip   = '127.0.0.1'  
   test_Data = 'hello from web'
   url       = "http://#{test_Ip}:#{test_Port}"
@@ -57,8 +57,8 @@ describe '| node-native | http.GET',->
       done()
 
   it 'http_GET bad port)' , (done)->
-    (-> url.append(1).http_GET()).assert_Throws  (error)->      
-      error.message.assert_Contains '"port" option should be >= 0 and < 65536: '
+    (-> "http://127.0.0.1:99999".http_GET()).assert_Throws  (error)->
+      error.message.assert_Contains ' >= 0 and < 65536'
       done()
 
   it 'http_GET_Wait_For_Null', (done)->

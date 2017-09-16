@@ -7,11 +7,11 @@ dependencies
     Server = http.Server
 
     String::http_Status = (callback) ->
-      http.get @.str(), (res) ->
+      http.get @._str(), (res) ->
         callback res.statusCode
 
     String::http_With_Options = (options, callback) ->
-      url = url.parse(@.str())
+      url = url.parse(@._str())
       engine = if url.protocol is 'https:' then https else http
       options.hostname = options.hostname || url.hostname
       options.port     = options.port     || url.port

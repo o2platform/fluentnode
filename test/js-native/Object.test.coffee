@@ -8,12 +8,12 @@ describe '| js-native | Object',->
     o = {}          # recursive json object (should not stringify ok)
     o.o = o
 
-    it 'str',->
-        ""     .str().assert_Is ""
-        "123"  .str().assert_Is "123"
-        []     .str().assert_Is [].toString()
-        {}     .str().assert_Is {}.toString()
-        {a:'1'}.str().assert_Is "[object Object]"
+    it '_str',->
+        ""     ._str().assert_Is ""
+        "123"  ._str().assert_Is "123"
+        []     ._str().assert_Is [].toString()
+        {}     ._str().assert_Is {}.toString()
+        {a:'1'}._str().assert_Is "[object Object]"
 
     it 'json_Str',->
         ""   .json_Str().assert_Is "\"\""

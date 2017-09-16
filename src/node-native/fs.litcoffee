@@ -168,7 +168,7 @@ Writes ```content``` as file @
 
 
     String::file_Write  = (content)->
-      content.saveAs(@.str())
+      content.saveAs(@._str())
       @
 
 @.**file_Not_Exists**
@@ -197,7 +197,7 @@ returns a list of files and folders from the folder @
                                       return files
     String::files_Recursive     = (extension)->
                                       files = []
-                                      for item in @.str().files_And_Folders()
+                                      for item in @._str().files_And_Folders()
                                         if (item.is_Folder())
                                           files = files.concat(item.files_Recursive(extension))
                                         else
@@ -222,7 +222,7 @@ Returns recursive list of folders
 
     String::folders_Recursive     = ()->
       folders = []
-      for item in @.str().folders()
+      for item in @._str().folders()
         folders = folders.concat(item.folders_Recursive())
         folders.push(item)
 
