@@ -22,6 +22,7 @@ require('./assert/assert_String'  );
 
 require('./js-native/Array'    );
 require('./js-native/Boolean'  );
+require('./js-native/Buffer'  );
 require('./js-native/Function' );
 require('./js-native/Number'   );
 require('./js-native/Object'   );

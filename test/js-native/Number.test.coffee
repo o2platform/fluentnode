@@ -72,12 +72,12 @@ describe '| js-native | Number',->
     (0).invoke_After(done)
 
   it 'random', ->
-    10   .random().assert_In_Between(-1,10)
-    100  .random().assert_In_Between(-1,100)
-    1000 .random().assert_In_Between(-1,1000)
-    10000.random().assert_In_Between(-1,10000)
+    10   .random().assert_In_Between(-1,11)
+    100  .random().assert_In_Between(-1,101)
+    1000 .random().assert_In_Between(-1,1001)
+    10000.random().assert_In_Between(-1,10001)
 
-    100  .random(100).assert_In_Between(100,200)
+    100  .random(100).assert_In_Between(100,201)
     1    .random(100).assert_In_Between(99,101)
 
 

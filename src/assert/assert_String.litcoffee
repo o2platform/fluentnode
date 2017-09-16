@@ -36,7 +36,7 @@ twin method: assert_File_Contains
 Asserts that file ```@``` contents is the string ```value```
 
     String::assert_File_Contents = (value)->
-      message   = "expected file '#{@}' to be '#{value}'"
+      message   = "expected file '#{@}' contents to be '#{value}'"
       @.file_Contents().assert_Is value, message
       @.valueOf()
 
