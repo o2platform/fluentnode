@@ -155,6 +155,19 @@ describe '| js-native | String',->
       value.not_Contains(value + '1' ).assert_Is_True()
       value.not_Contains('1' + value ).assert_Is_True()
 
+  it 'not_Starts_With',->
+    using value,->
+      @.not_Starts_With.assert_Is_Function()
+      @.not_Starts_With('a'     ).assert_Is_False()
+      @.not_Starts_With('b'     ).assert_Is_True()
+      @.not_Starts_With('abc'   ).assert_Is_False()
+      @.not_Starts_With(value   ).assert_Is_False()
+      @.not_Starts_With(@ + 'a' ).assert_Is_True()
+      @.not_Starts_With( 'a' + @).assert_Is_True()
+      @.not_Starts_With(''      ).assert_Is_True()
+      @.assert_Is(@)
+
+
   it 'only_Letters', ->
     'aaa'.only_Letters().assert_Is 'aaa'
     'aAa'.only_Letters().assert_Is 'aAa'

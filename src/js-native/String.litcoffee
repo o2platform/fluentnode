@@ -117,6 +117,13 @@ returns @ in lowercase
     String::not_Contains  = (value)->
       @.indexOf(value) == -1
 
+@.**not_Starts_With** value
+
+Returns false when ```@``` doesn't start with ```value```
+
+    String::not_Starts_With = (value)->
+       @.starts_With(value) is false
+
 @.**only_Letters**
 
 Returns a string where all chars that are not an letter (uppper or lower case) are replaced
