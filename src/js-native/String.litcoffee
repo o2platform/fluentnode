@@ -88,9 +88,15 @@ twin methods: isnt
 
     String::isnt = String::is_Not
 
+@.**line**
+
+Appends '\n'
+
+    String::line = ()->  String(@) + "\n"
+
 @.**lines**
 
-returns @ split by '/n'
+returns @ split by '\n'
 
 twin methods: split_Lines
 

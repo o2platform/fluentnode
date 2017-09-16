@@ -124,6 +124,9 @@ describe '| js-native | String',->
     '' .is_Not('a').assert_True()
     '' .is_Not.assert_Is ''.isnt
 
+  it 'line', ->
+    "abcdefgf".line().assert_Is ['abcdefgf\n']
+    
   it 'lines', ->
     "abcdefgf".lines().assert_Is ['abcdefgf']
     "a\nd\ngf".lines().assert_Is ['a','d','gf']
