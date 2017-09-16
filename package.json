@@ -20,18 +20,17 @@
     "fluent"
   ],
   "author": "Dinis Cruz <dinis.cruz@owasp.org> (http://blog.diniscruz.com/)",
-  "license": "apache 2",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/o2platform/fluentnode/issues"
   },
   "homepage": "https://github.com/o2platform/fluentnode",
   "devDependencies": {
-    "chai": "^4.1.0",
-    "coffee-script": "^1.10.0",
+    "chai": "^4.1.2",
     "docco": "^0.7.0",
-    "mocha": "^3.2.0"
+    "mocha": "^3.5.3"
   },
   "dependencies": {
-    "coffee-script": "^1.8.0"
+    "coffee-script": "^1.12.7"
   }
 }
