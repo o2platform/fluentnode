@@ -59,9 +59,17 @@ dependencies
         (typeof(target) == 'undefined').assert_Is_False("expected value to not be undefined")
         target
 
+    Object.defineProperty Object.prototype, 'assert_Keys_Is',
+      enumerable  : false,
+      writable    : true,
+      value: (value)->
+        @._keys().assert_Is value
+        @
+
+
     Object.defineProperty Object.prototype, 'assert_Instance_Of',enumerable  : false, writable    : true, value: Object::assert_Is_Instance_Of
     Object.defineProperty Object.prototype, 'assert_Is'         ,enumerable  : false, writable    : true, value: Object::assert_Is_Equal_To
     Object.defineProperty Object.prototype, 'assert_Is_Not'     ,enumerable  : false, writable    : true, value: Object::assert_Is_Not_Equal_To
-    
+
 ---
 back to [index](index.html)

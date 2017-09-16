@@ -55,3 +55,7 @@ describe '| Assert | Object', ->
     assert_Is_Not_Undefined('123')
     (-> assert_Is_Not_Undefined('123')).assert_Not_Throws()
     (-> assert_Is_Not_Undefined(undefined)).assert_Throws()
+
+  it 'assert_Keys_Is', ->
+    a = b: 42, c: 42
+    a.assert_Keys_Is ['b','c']

@@ -126,7 +126,7 @@ describe '| js-native | String',->
 
   it 'line', ->
     "abcdefgf".line().assert_Is ['abcdefgf\n']
-    
+
   it 'lines', ->
     "abcdefgf".lines().assert_Is ['abcdefgf']
     "a\nd\ngf".lines().assert_Is ['a','d','gf']
